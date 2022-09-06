@@ -5,9 +5,6 @@
 
 #### Starting up ####
 
-# Source the functions
-source("inat_functions_public.R")
-
 # Check for packages and install if not installed
 if(!require(tidyverse)) install.packages("tidyverse")
 if(!require(rinat)) install.packages("rinat")
@@ -18,44 +15,69 @@ if(!require(shinythemes)) install.packages("shinythemes")
 if(!require(shinyWidgets)) install.packages("shinyWidgets")
 if(!require(bslib)) install.packages("bslib")
 if(!require(fresh)) install.packages("fresh")
+if(!require(png)) install.packages("png")
+if(!require(grid)) install.packages("grid")
+
+# Source the functions
+source("inat_functions_public.R")
+
 
 # Get the data
-#inat_data <- inat_recent(49610, "week", "outputs") # 49610 is the iNaturalist place_id for Acadia NP 
-#write.csv(inat_data, "app/inat_data.csv")
-inat_data <- read.csv("inat_data.csv")
+#inat_data <- inat_recent(49610, "week", "app/input_data") # 49610 is the iNaturalist place_id for Acadia NP 
+#write.csv(inat_data, "app/input_data/inat_data2.csv")
+inat_data <- read.csv("input_data/inat_data2.csv") %>% 
+  mutate(groups = ifelse(iconic.taxon.name == "Insecta", "Insects",
+                         ifelse(iconic.taxon.name == "Plantae", "Plants",
+                                ifelse(iconic.taxon.name == "Protozoa", "Protozoans",
+                                       ifelse(iconic.taxon.name == "Aves", "Birds",
+                                              ifelse(iconic.taxon.name == "Amphibia", "Amphibians",
+                                                     ifelse(iconic.taxon.name == "Reptilia", "Reptiles",
+                                                            ifelse(iconic.taxon.name == "Animalia", "Other animals",
+                                                                   ifelse(iconic.taxon.name == "Fungi", "Fungi including lichens", 
+                                                                          ifelse(iconic.taxon.name == "Chromista", "Kelp and seaweeds",
+                                                                                 ifelse(iconic.taxon.name == "Arachnida", "Spiders", 
+                                                                                        ifelse(iconic.taxon.name == "Mammalia", "Mammals",
+                                                                                               ifelse(iconic.taxon.name == "Mollusca", "Mollusks", "Other"))))))))))))) %>% 
+  arrange(groups)
+    
+
 
 #download_photos(inat_data, "www")
-photo_labs <- read.csv("www/summary_10random.csv")
-observers <- read.csv("outputs/summary_observers.csv")
-species <- read.csv("outputs/summary_species.csv")
-taxon <- read.csv("outputs/summary_taxon.csv")
+photo_labs <- read.csv("input_data/summary_10random.csv")
+observers <- read.csv("input_data/summary_observers.csv")
+species <- read.csv("input_data/summary_species.csv")
+taxon <- read.csv("input_data/summary_taxon.csv")
 
 
-# mytheme <- create_theme(
-#   theme = "default",
-#   bs_vars_navbar(
-#     default_bg = "#75b8d1",
-#     default_color = "#FFFFFF",
-#     default_link_color = "#FFFFFF",
-#     default_link_active_color = "#75b8d1",
-#     default_link_active_bg = "#FFFFFF",
-#     default_link_hover_color = "firebrick"
-#   ),
-#   output_file = NULL
-# )
+mytheme <- create_theme(
+  theme = "default",
+  bs_vars_navbar(
+    default_bg = "#354050",
+    default_color = "#FFFFFF",
+    default_link_color = "#FFFFFF",
+    default_link_active_color = "#323C7B",
+    default_link_active_bg = "#BFEFFF",
+    default_link_hover_color = "#20AB25"
+  ),
+  output_file = NULL
+)
+
+
 
 
 #### Shiny ui ####
 
 ui <- bootstrapPage(
   #tags$head(includeHTML("gtag.html")),
-  navbarPage(theme = shinytheme("flatly"), collapsible = TRUE,
-             HTML('<a style=";text-decoration:none;cursor:default;color:#71C546;" class="active" href="#">NPF Project</a>'), id="nav",
-             windowTitle = "NPF Project",
+  # navbarPage(theme = shinytheme("flatly"), collapsible = TRUE,
+  #            HTML('<a style=";text-decoration:none;cursor:default;color:#71C546;" class="active" href="#">NPF Project</a>'), id="nav",
+  #            windowTitle = "NPF Project",
   
-  # navbarPage(
-  #   title = "Custom navbar",
-  #   header = tagList(use_theme(mytheme)), # <-- use your theme
+  navbarPage(
+    HTML('<a style=";text-decoration:none;cursor:default;color:#20AB25;" class="active" href="#">NPF Project</a>'), id="nav",
+    windowTitle = "NPF Project",
+    #title = "NPF Project",
+    header = tagList(use_theme(mytheme)),
              
              tabPanel("Summary",
                       div(class = "outer",
@@ -64,7 +86,7 @@ ui <- bootstrapPage(
                           
                           absolutePanel(id = "photobar", class = "card",
                                         bottom = 0, left = 0, width = "100%", fixed = TRUE,
-                                        draggable = FALSE, height = "20%",
+                                        draggable = FALSE, height = "20.1%",
                                         
                                         tags$img(src = 'inat_obs_1.jpg', height = "100%", width = "auto"),
                                         tags$img(src = 'inat_obs_2.jpg', height = "100%", width = "auto"),
@@ -102,91 +124,93 @@ ui <- bootstrapPage(
                           leafletOutput("mymapbig", width = "100%", height = "100%"),
                           
                           absolutePanel(id = "controls", class = "panel panel-default",
-                                        top = 75, right = 20, width = 250, fixed = TRUE,
+                                        top = 75, right = 20, width = 300, fixed = TRUE,
                                         draggable = TRUE, height = "auto",
                                         
-                                        #span(tags$i(h6("Reported cases are subject to significant variation in testing policy and capacity between countries.")), style="color:#045a8d"),
-                                        h2(textOutput("box_title"), align = "left")
+                                        h2(textOutput("box_title"), align = "left"),
                                         #h4(textOutput("taxon_check_header"), align = "left"),
                                         
-                                        # pickerInput("iconic.taxon.name",
-                                        #             label = h3("Select groups of organisms to display on the map:"),
-                                        #             choices = as.character(unique(inat_data$iconic.taxon.name)),
-                                        #             options = list(`actions-box` = TRUE,
-                                        #                            `none-selected-text` = span("Please select a taxon!", style = "color:white")),
-                                        #             selected = as.character(unique(inat_data$iconic.taxon.name)),
-                                        #             multiple = TRUE)
+                                        # pickerInput("taxa_select", "Level:",   
+                                        #             choices = c("Taxon name"), 
+                                        #             selected = c("Taxon name"),
+                                        #             multiple = FALSE),
                                         
-                                        #h6(textOutput("clean_date_reactive"), align = "right"),
-                                        #h6(textOutput("reactive_country_count"), align = "right"),
-                                        #plotOutput("epi_curve", height="130px", width="100%"),
-                                        #plotOutput("cumulative_plot", height="130px", width="100%"),
-                                        
-                                        # sliderTextInput("observed.on",
-                                        #                 label = h5("Select dates:"),
-                                        #                 choices = format(as.Date(inat_data$observed.on, format = "%Y-%m-%d"), "%d %b %y"),
-                                        #                 selected = format(today(), "%d %b %y"),
-                                        #                 grid = FALSE,
-                                        #                 animate = animationOptions(interval = 1, loop = FALSE))
-                                        
+                                        pickerInput("taxa_select",
+                                                    label = h4("Select groups of organisms to display on the map:"),
+                                                    choices = as.character(unique(inat_data$groups)),
+                                                    options = list(`actions-box` = TRUE, `none-selected-text` = "Choose a group..."),
+                                                    selected = as.character(unique(inat_data$groups)),
+                                                    multiple = TRUE)
                           ),
 
                           
-                          absolutePanel(id = "logo", class = "card", bottom = 28, right = 58, width = 40, fixed = TRUE, draggable = FALSE, height = "auto",
-                                        tags$a(href = 'https://schoodicinstitute.org/', tags$img(src = 'Schoodic_Stacked.jpeg', height = '80', width = '80')))
+                          absolutePanel(id = "logo", class = "card", bottom = 28, left = 20, width = 40, fixed = TRUE, draggable = FALSE, height = "12%",
+                                        tags$a(href = 'https://schoodicinstitute.org/', tags$img(src = 'Schoodic_Stacked.jpeg', height = '100%', width = 'auto')))
                           
                       )
              ),
+    
+             tabPanel("Tree summary",
+                      div(class = "outer",
+                          tags$head(includeCSS("styles.css")),
+                          plotOutput("tree_plot", width = "100%", height = "100%"),
+                          
+                          absolutePanel(id = "controls", class = "panel panel-default",
+                                        top = 75, left = 20, width = 600, fixed = TRUE,
+                                        draggable = FALSE, height = "auto",
+                                        
+                                        h2("Total number of observations over the past week by group")
+                          )
+                      )
+              ),
              
              
              tabPanel("Recent photos",
-                      div(
-
-                        HTML('<center><img src="inat_obs_1.jpg"></center>'),
-                        h3(textOutput("phlab_1"), align = "center"),
-                        tags$br(),tags$br(),
-
-                        HTML('<center><img src="inat_obs_2.jpg"></center>'),
-                        h3(textOutput("phlab_2"), align = "center"),
-                        tags$br(),tags$br(),
-                        
-                        HTML('<center><img src="inat_obs_3.jpg"></center>'),
-                        h3(textOutput("phlab_3"), align = "center"),
-                        tags$br(),tags$br(),
-                        
-                        HTML('<center><img src="inat_obs_4.jpg"></center>'),
-                        h3(textOutput("phlab_4"), align = "center"),
-                        tags$br(),tags$br(),
-                        
-                        HTML('<center><img src="inat_obs_5.jpg"></center>'),
-                        h3(textOutput("phlab_5"), align = "center"),
-                        tags$br(),tags$br(),
-                        
-                        HTML('<center><img src="inat_obs_6.jpg"></center>'),
-                        h3(textOutput("phlab_6"), align = "center"),
-                        tags$br(),tags$br(),
-                        
-                        HTML('<center><img src="inat_obs_7.jpg"></center>'),
-                        h3(textOutput("phlab_7"), align = "center"),
-                        tags$br(),tags$br(),
-                        
-                        HTML('<center><img src="inat_obs_8.jpg"></center>'),
-                        h3(textOutput("phlab_8"), align = "center"),
-                        tags$br(),tags$br(),
-                        
-                        HTML('<center><img src="inat_obs_9.jpg"></center>'),
-                        h3(textOutput("phlab_9"), align = "center"),
-                        tags$br(),tags$br(),
-                        
-                        HTML('<center><img src="inat_obs_10.jpg"></center>'),
-                        h3(textOutput("phlab_10"), align = "center"),
-                        tags$br(),tags$br(),tags$br()
-                        
+                        div(
+                          
+                          HTML('<img src="inat_obs_1.jpg">'),
+                          #h3(textOutput("phlab_1"), align = "center"),
+                          #tags$br(),tags$br(),
+  
+                          HTML('<img src="inat_obs_2.jpg">'),
+                          h3(textOutput("phlab_2"), align = "center"),
+                          tags$br(),tags$br(),
+                          
+                          HTML('<center><img src="inat_obs_3.jpg"></center>'),
+                          h3(textOutput("phlab_3"), align = "center"),
+                          tags$br(),tags$br(),
+                          
+                          HTML('<center><img src="inat_obs_4.jpg"></center>'),
+                          h3(textOutput("phlab_4"), align = "center"),
+                          tags$br(),tags$br(),
+                          
+                          HTML('<center><img src="inat_obs_5.jpg"></center>'),
+                          h3(textOutput("phlab_5"), align = "center"),
+                          tags$br(),tags$br(),
+                          
+                          HTML('<center><img src="inat_obs_6.jpg"></center>'),
+                          h3(textOutput("phlab_6"), align = "center"),
+                          tags$br(),tags$br(),
+                          
+                          HTML('<center><img src="inat_obs_7.jpg"></center>'),
+                          h3(textOutput("phlab_7"), align = "center"),
+                          tags$br(),tags$br(),
+                          
+                          HTML('<center><img src="inat_obs_8.jpg"></center>'),
+                          h3(textOutput("phlab_8"), align = "center"),
+                          tags$br(),tags$br(),
+                          
+                          HTML('<center><img src="inat_obs_9.jpg"></center>'),
+                          h3(textOutput("phlab_9"), align = "center"),
+                          tags$br(),tags$br(),
+                          
+                          HTML('<center><img src="inat_obs_10.jpg"></center>'),
+                          h3(textOutput("phlab_10"), align = "center"),
+                          tags$br(),tags$br(),tags$br()
+                          
                      )
    
               ),
-
-             tabPanel("For land managers"),
              
              tabPanel("Data",
                       numericInput("maxrows", "Number of rows to display:", 25),
@@ -264,30 +288,48 @@ ui <- bootstrapPage(
 server = function(input, output, session) {
   
   output$mymapsum <- renderLeaflet({ 
-    make_leaflet(inat_data)
+    leaflet_summary(inat_data)
+  })
+  
+  output$tree_plot <- renderPlot({
+    make_tree_page()
+  })
+  
+  # observeEvent(input$taxa_select, {
+  #   if (input$level_select=="taxa_select") {
+  #     updatePickerInput(session = session, inputId = "taxa_select", 
+  #                       choices = as.character(unique(inat_data$iconic.taxon.name)), 
+  #                       selected = as.character(unique(inat_data$iconic.taxon.name)))
+  #   }
+  # }, ignoreInit = TRUE)
+  # 
+  # taxa_reactive_db = reactive({
+  #   if (input$taxa_select=="taxa_select") { 
+  #     db = inat_data
+  #     db$taxa = db$iconic.taxon.name
+  #   }
+  # 
+  # db %>% filter(taxa %in% input$taxa_select)
+  # })
+  
+  taxa_reactive_db = reactive({
+    inat_data %>% 
+      filter(groups == paste(input$taxa_select))
   })
   
   output$mymapbig <- renderLeaflet({ 
-    make_leaflet(inat_data)
+    make_leaflet(taxa_reactive_db())
   })
   
   output$box_title <- renderText({
     paste("iNaturalist observations from the past 7 days")
   })
   
-  # formatted_date = reactive({
-  #   format(as.Date(inat_data$observed_on, format="%Y-%m-%d"), "%Y-%m-%d")
-  # })
-  # 
-  # output$clean_date_reactive <- renderText({
-  #   format(as.POSIXct(formatted_date()),"%d %B %Y")
+  # reactive_db = reactive({
+  #   inat_data %>% 
+  #     filter(species == formatted_date()) 
   # })
   
-  reactive_db = reactive({
-    inat_data %>% 
-      filter(date == formatted_date()) 
-  })
-   
   output$phlab_1 <- renderText({
     paste0(photo_labs$common.name[1], " (", photo_labs$scientific.name[1], ")")
   })

@@ -3,6 +3,8 @@ require(rinat)
 require(purrr)
 require(readxl)
 require(leaflet)
+library(png)
+library(grid)
 
 ## List of functions
 # inat_recent()
@@ -532,6 +534,39 @@ make_leaflet <- function (x) {
 }
 
 
+#' Function to produce an interactive leaflet map widget of iNaturalist observations
+#'
+#' This function takes a data frame of iNaturalist records (created specifically for the
+#' output of the "inat_recent()" function) and produces a leaflet map widget with satellite 
+#' imagery base layer, labels of common names that appear when the mouse is hovered over a
+#' marker, and a link to the observation on iNaturalist accessible by clicking a marker.
+#'
+#' @inheritParams None
+#' @return A leaflet map widget of recent iNaturalist observations.
+#' @param x: Data frame of iNaturalist observations.
+#' @seealso None
+#' @export
+#' @examples  
+#' make_leaflet(inat_lastweek) 
+
+leaflet_summary <- function (x) {
+  
+  formap <- x
+  
+  maxLong = max(formap$longitude) #- 0.05
+  maxLat = max(formap$latitude) #+ 0.05 
+  minLong = min(formap$longitude) #+ 0.05
+  minLat = min(formap$latitude) #- 0.05
+  
+  map <- leaflet() %>% 
+    addProviderTiles(providers$Esri.WorldImagery) %>% 
+    addProviderTiles(providers$Stamen.TerrainLabels) %>% 
+    addMarkers(formap$longitude, formap$latitude, clusterOptions = markerClusterOptions()) %>% 
+    fitBounds(minLong, minLat, maxLong, maxLat)
+  
+  return(map)
+}
+
 
 
 #' Function to download photos of 10 random iNaturalist observations
@@ -599,10 +634,129 @@ download_photos <- function(x, output.path) {
   map2(loop_list, loop_filenames, get_pics)
   
   # Write the data frame
-  write.csv(pic_10random, paste(output.path, "summary_10random.csv", sep = "/"), row.names = F)
+  write.csv(pic_10random, paste(input_data, "summary_10random.csv", sep = "/"), row.names = F)
   
 }
 
 
+#' Function to create the tree page that summarizes obs by taxon
+#'
+#' This function takes a data frame of summarized iNaturalist records (created specifically by the
+#' output of the "inat_recent()" function) and creates the tree image page
+#'
+#' @inheritParams None
+#' @param x: Data frame of iNaturalist observations.
+#' @seealso None
+#' @export
+#' @examples  
+#' make_tree_page() 
 
+make_tree_page <- function() {
+    
+  img <- readPNG("www/treescape_npf.png")
+  
+  insecta <- readPNG("www/insecta.png")
+  plantae <- readPNG("www/plantae.png")
+  aves <- readPNG("www/aves.png")
+  fungi <- readPNG("www/fungi.png")
+  arachnida <- readPNG("www/arachnida.png")
+  reptilia <- readPNG("www/reptilia.png")
+  amphibia <- readPNG("www/amphibia.png")
+  animalia <- readPNG("www/animalia.png")
+  mammalia <- readPNG("www/mammalia.png")
+  chromista <- readPNG("www/chromista.png")
+  mollusca <- readPNG("www/mollusca.png")
+  protozoa <- readPNG("www/protozoa.png")
+  
+  
+  data <- read.csv("input_data/summary_taxon.csv") %>% 
+    select(taxon = iconic.taxon.name, count)
+  
+  
+  data <- data.frame(taxon = c("Insecta", "Plantae", "Aves", "Fungi", "Arachnida", "Reptilia", 
+                               "Amphibia", "Animalia", "Mammalia", "Chromista", "Mollusca", "Protozoa"),
+                     name = c("Insects", "Plants", "Birds", "Fungi", "Spiders", "Reptiles", 
+                              "Amphibians", "Other Animals", "Mammals", "Seaweeds", "Mollusks", "Protozoans"),
+                     count2 = rep(0, 12),
+                     x = c(1.038, 1.012, 0.973, 1.035, 1.023, 1.007, 1.018, 0.988, 0.9985, 0.978, 0.968, 1.025),
+                     y = c(1.011, 1.004, 0.992, 0.980, 1.005, 0.979, 0.993, 0.984, 0.991, 0.982, 0.982, 0.979)) %>% 
+    left_join(data) %>% 
+    mutate(count = replace_na(count, 0),
+           label = paste(name, count, sep = "\n")) %>% 
+    select(-count2)
+  
+  
+  get_coords <- function(input) {
+    
+    pic_loc <- data %>% 
+      select(taxon, x, y) %>% 
+      mutate(xmin = x - 0.0038,
+             xmax = x + 0.0038,
+             ymin = y - 0.0038,
+             ymax = y + 0.0038)
+    
+    input <- pic_loc %>% 
+      filter(taxon == paste(input))
+    
+    return(input)
+  }
+  
+  pic_loc <- data %>% 
+    select(taxon) %>%
+    list() %>% 
+    unlist() %>% 
+    map(., get_coords)
+  
+  
+  plot <- ggplot(data) +
+    annotation_custom(rasterGrob(img, interpolate=TRUE), xmin=-Inf, xmax=Inf, ymin=-Inf, ymax=Inf) +
+    annotation_custom(rasterGrob(insecta, interpolate=TRUE), xmin=pic_loc$taxon1$xmin,
+                      xmax=pic_loc$taxon1$xmax, ymin=pic_loc$taxon1$ymin, ymax=pic_loc$taxon1$ymax) +
+    
+    annotation_custom(rasterGrob(plantae, interpolate=TRUE), xmin=pic_loc$taxon2$xmin,
+                      xmax=pic_loc$taxon2$xmax, ymin=pic_loc$taxon2$ymin, ymax=pic_loc$taxon2$ymax) +
+    
+    annotation_custom(rasterGrob(aves, interpolate=TRUE), xmin=pic_loc$taxon3$xmin,
+                      xmax=pic_loc$taxon3$xmax, ymin=pic_loc$taxon3$ymin, ymax=pic_loc$taxon3$ymax) +
+    
+    annotation_custom(rasterGrob(fungi, interpolate=TRUE), xmin=pic_loc$taxon4$xmin,
+                      xmax=pic_loc$taxon4$xmax, ymin=pic_loc$taxon4$ymin, ymax=pic_loc$taxon4$ymax) +
+    
+    annotation_custom(rasterGrob(arachnida, interpolate=TRUE), xmin=pic_loc$taxon5$xmin,
+                      xmax=pic_loc$taxon5$xmax, ymin=pic_loc$taxon5$ymin, ymax=pic_loc$taxon5$ymax) +
+    
+    annotation_custom(rasterGrob(reptilia, interpolate=TRUE), xmin=pic_loc$taxon6$xmin,
+                      xmax=pic_loc$taxon6$xmax, ymin=pic_loc$taxon6$ymin, ymax=pic_loc$taxon6$ymax) +
+    
+    annotation_custom(rasterGrob(amphibia, interpolate=TRUE), xmin=pic_loc$taxon7$xmin,
+                      xmax=pic_loc$taxon7$xmax, ymin=pic_loc$taxon7$ymin, ymax=pic_loc$taxon7$ymax) +
+    
+    annotation_custom(rasterGrob(animalia, interpolate=TRUE), xmin=pic_loc$taxon8$xmin,
+                      xmax=pic_loc$taxon8$xmax, ymin=pic_loc$taxon8$ymin, ymax=pic_loc$taxon8$ymax) +
+    
+    annotation_custom(rasterGrob(mammalia, interpolate=TRUE), xmin=pic_loc$taxon9$xmin,
+                      xmax=pic_loc$taxon9$xmax, ymin=pic_loc$taxon9$ymin, ymax=pic_loc$taxon9$ymax) +
+    
+    annotation_custom(rasterGrob(chromista, interpolate=TRUE), xmin=pic_loc$taxon10$xmin,
+                      xmax=pic_loc$taxon10$xmax, ymin=pic_loc$taxon10$ymin, ymax=pic_loc$taxon10$ymax) +
+    
+    annotation_custom(rasterGrob(mollusca, interpolate=TRUE), xmin=pic_loc$taxon11$xmin,
+                      xmax=pic_loc$taxon11$xmax, ymin=pic_loc$taxon11$ymin, ymax=pic_loc$taxon11$ymax) +
+    
+    annotation_custom(rasterGrob(protozoa, interpolate=TRUE), xmin=pic_loc$taxon12$xmin,
+                      xmax=pic_loc$taxon12$xmax, ymin=pic_loc$taxon12$ymin, ymax=pic_loc$taxon12$ymax) +
+    
+    geom_text(aes(x = x, y = y, label = name), vjust = -4.4, size = 7, fontface = "bold") +
+    geom_text(aes(x = x, y = y, label = count), vjust = 5.3, size = 7, fontface = "bold") +
+    scale_x_continuous(expand = c(0.005, 0.005)) +
+    scale_y_continuous(expand = c(0.005, 0.005)) +
+    theme(panel.background = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_blank(),
+          axis.text = element_blank(),
+          legend.position = "none")
+  
+  return(plot)
+
+}
 

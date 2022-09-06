@@ -18,6 +18,16 @@ download_photos(test, "outputs/photos")
 
 
 
+library(rebird)
+
+eb <- ebirdregion(loc = "US-ME-009", max = 10000, back = 7, key = "kjh86bnmkpfh")
+
+
+
+
+
+
+
 
 # download.file("https://irma.nps.gov/NPSpecies/Search/DownloadSpeciesListFullListWithDetailsResults", 
 #               "data/raw/test",

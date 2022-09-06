@@ -508,7 +508,6 @@ new_npspecies <- function(x, output.path) {
 #' @examples  
 #' make_leaflet(inat_lastweek) 
 
-
 make_leaflet <- function (x) {
   
   formap <- x %>% 
@@ -523,6 +522,35 @@ make_leaflet <- function (x) {
   return(map)
 }
 
+
+
+#' Function to produce an interactive leaflet map widget of iNaturalist observations
+#'
+#' This function takes a data frame of iNaturalist records (created specifically for the
+#' output of the "inat_recent()" function) and produces a leaflet map widget with satellite 
+#' imagery base layer, labels of common names that appear when the mouse is hovered over a
+#' marker, and a link to the observation on iNaturalist accessible by clicking a marker.
+#'
+#' @inheritParams None
+#' @return A leaflet map widget of recent iNaturalist observations.
+#' @param x: Data frame of iNaturalist observations.
+#' @seealso None
+#' @export
+#' @examples  
+#' make_leaflet(inat_lastweek) 
+
+leaflet_summary <- function (x) {
+  
+  formap <- x %>% 
+    mutate(url = paste0("<b><a href='", url, "'>View observation<br>on iNaturalist</a></b>")) 
+  
+  map <- leaflet() %>% 
+    addProviderTiles(providers$Esri.WorldImagery) %>% 
+    addProviderTiles(providers$Stamen.TerrainLabels) %>% 
+    addMarkers(formap$longitude, formap$latitude, clusterOptions = markerClusterOptions())
+  
+  return(map)
+}
 
 
 
