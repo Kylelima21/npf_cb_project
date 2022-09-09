@@ -3,9 +3,11 @@ require(rinat)
 require(purrr)
 require(readxl)
 require(leaflet)
+require(rebird)
 
 ## List of functions
 # inat_recent()
+# ebird_recent()
 # te_species()
 # watchlist_species()
 # new_npspecies()
@@ -17,13 +19,13 @@ require(leaflet)
 #' Function returns summaries and a data frame of recent iNaturalist observations 
 #'
 #' This function takes a recent time span and returns all iNaturalist records from
-#' inside Acadia National Park boundaries during that time span. Additionally, this 
+#' inside a desired location during that time span. Additionally, this 
 #' function produces four data frames with summary statistics from the iNaturalist data.
 #'
 #' @inheritParams None
 #' @return A data frame of recent iNaturalist observations.
 #' @param timespan: The recent time span of interest. Options 
-#' are "week", "threeday", or "yesterday" as inputs for the "timespan" parameter.
+#' are "week", "threedays", or "yesterday" as inputs for the "timespan" parameter.
 #' @param output.path: The path you want the summary statistic tables to be written to.
 #' @param place: An iNaturalist slug (the place name) as a single string with words separated by hyphens. 
 #' For example, the place Acadia National Park would be "acadia-national-park" as found in the place page
@@ -42,7 +44,7 @@ inat_recent <- function(place_id, timespan, output.path) {
   if (timespan != "week") {
     if(timespan != "threeday") {
       if(timespan != "yesterday") {
-        stop("Entered time span is not accepted. Must be 'week', 'threeday' or 'yesterday'")
+        stop("Entered time span is not accepted. Must be 'week', 'threedays' or 'yesterday'")
       }
     }
   } 
@@ -78,8 +80,8 @@ inat_recent <- function(place_id, timespan, output.path) {
                  month = obs_month, 
                  maxresults = 10000) %>% 
       as_tibble() %>% 
-      select(scientific_name, common_name, iconic_taxon_name, observed_on, place_guess, 
-             latitude, longitude, positional_accuracy, user_id, captive_cultivated, url, image_url) %>% 
+      select(scientific_name, common_name, iconic_taxon_name, observed_on, place_guess,
+             latitude, longitude, positional_accuracy, user_login, user_id, id, captive_cultivated, url, image_url) %>% 
       mutate(common_name = tolower(common_name)) %>% 
       rename_all( ~ str_replace_all(., "_", "."))
     
@@ -102,7 +104,7 @@ inat_recent <- function(place_id, timespan, output.path) {
   
   
   # Runs if threedays is called
-  if (timespan == "threeday") {
+  if (timespan == "threedays") {
     
     # Subset this to three days
     inat_obs <- map2_dfr(year, month, get_inat_data) %>% 
@@ -121,6 +123,10 @@ inat_recent <- function(place_id, timespan, output.path) {
   }
   
   
+  inat_obs <- inat_obs %>% 
+    mutate(dup = duplicated(.)) %>% 
+    filter(dup == "FALSE")
+    
   
   if(length(inat_obs) >= 1) {
     message("Caluclating summary statistics for time span...")
@@ -131,21 +137,21 @@ inat_recent <- function(place_id, timespan, output.path) {
   
   ## Create summary tables
   # Number of obs in each taxon
-  summary_taxon <- inat_obs %>% 
+  summary_taxon <- inat_obs %>%
     group_by(iconic.taxon.name) %>% 
     summarise(count = length(iconic.taxon.name)) %>% 
     arrange(desc(count))
   
   # Number of observers = length, number of obs by user
-  summary_observers <- inat_obs %>% 
-    group_by(user.id) %>% 
+  summary_observers <- inat_obs %>%
+    group_by(user.login, user.id) %>% 
     summarise(count = length(user.id)) %>% 
     arrange(desc(count))
   
   # Number of obs for each species
-  summary_species <- inat_obs %>% 
+  summary_species <- inat_obs %>%
     group_by(scientific.name, common.name) %>% 
-    summarise(count = length(user.id)) %>% 
+    summarise(count = length(id)) %>% 
     arrange(desc(count))
   
   # # Random selection of 10 species
@@ -182,6 +188,43 @@ inat_recent <- function(place_id, timespan, output.path) {
   
 }
 
+
+
+#' Function returns a data frame of recent eBird observations 
+#'
+#' This function takes a recent time span and returns all eBird records from
+#' inside a desired location during that time span.
+#'
+#' @inheritParams None
+#' @return A data frame of recent eBird observations.
+#' @param ebird_loc: An eBird place name as a single string with components separated by hyphens. 
+#' For example, the Hancock County, Maine, USA is "US-ME-009". A full list of codes can be found 
+#' here: https://support.ebird.org/en/support/solutions/articles/48000838205-download-ebird-data
+#' @seealso None
+#' @export
+#' @examples  
+#' example_data <- ebird_recent("US-ME-009")
+
+ebird_recent <- function(ebird_loc) {
+  
+  codelist <- ebirdregion(loc = ebird_loc, back = 7, key = "kjh86bnmkpfh") %>% 
+    select(speciesCode) %>% 
+    unlist()
+  
+  run <- function(ebird_loc, code) {
+    
+    data <- ebirdregion(loc = ebird_loc, species = code, back = 7, key = "kjh86bnmkpfh") %>% 
+      select(comName, sciName, obsDt, lat, lng, subId) %>% 
+      mutate(url = paste0("https://ebird.org/checklist/", subId))
+    
+    return(data)
+  }
+  
+  output <- map2_dfr(ebird_loc, codelist, run)
+  
+  return(output)
+  
+}
 
 
 
@@ -346,7 +389,6 @@ te_species <- function(x, output.path) {
 #' @examples  
 #' watchlist_species(inat_lastweek, "outputs/te_species")
 
-
 watchlist_species <- function(x, output.path) {
   
   
@@ -357,7 +399,7 @@ watchlist_species <- function(x, output.path) {
   }
   
   
-  #Custom name repair function to be used later
+  # Custom name repair function to be used later
   custom_name_repair <- function(x) { tolower(gsub(" ", ".", x)) }
   
   
@@ -366,25 +408,51 @@ watchlist_species <- function(x, output.path) {
   }
   
   
-  #Non-native list according to NPSpecies distinctions, though I don't think this is really
-  #what we want?
-  nonnative <- read_excel("data/raw/NPSpecies_ACAD_20220612.xlsx", .name_repair = custom_name_repair) %>% 
-    select(order, family, scientific.name, common.names, category, 
-           occurrence, nativeness, abundance) %>% 
-    filter(nativeness == "Non-native")
+  # Rare native species list
+  rarenative <- read_excel("data/acad_watchlist_plants.xlsx", .name_repair = custom_name_repair) %>% 
+    filter(status == "rare native")
+  
+  invasive_ne <-  read_excel("data/acad_watchlist_plants.xlsx", .name_repair = custom_name_repair) %>% 
+    filter(status == "invasive not established")
+  
+  invasive_est <-  read_excel("data/acad_watchlist_plants.xlsx", .name_repair = custom_name_repair) %>% 
+    filter(status == "invasive established")
+  
+  pests <-  read_excel("data/acad_watchlist_plants.xlsx", .name_repair = custom_name_repair) %>% 
+    filter(status == "pest disease")
   
   
-  if(exists("nonnative")) {
+  if(exists("pests")) {
     message("Performing calculations...")
   }
   
   
-  #What species have been seen recently that are non-native?
-  nonnative_species <- x %>% 
-    filter(scientific.name %in% nonnative$scientific.name) %>% 
+  # Native but rare
+  rarenative_obs <- x %>% 
+    filter(scientific.name %in% rarenative$scientific.name) %>% 
     arrange(desc(observed.on)) %>% 
-    group_by(scientific.name) %>% 
-    slice(1)
+    group_by(scientific.name)
+  
+  
+  # Invasive but not yet established in ACAD
+  invasive_ne_obs <- x %>% 
+    filter(scientific.name %in% invasive_ne$scientific.name) %>% 
+    arrange(desc(observed.on)) %>% 
+    group_by(scientific.name)
+  
+  
+  # Invasive and established in ACAD
+  invasive_est_obs <- x %>% 
+    filter(scientific.name %in% invasive_est$scientific.name) %>% 
+    arrange(desc(observed.on)) %>% 
+    group_by(scientific.name)
+  
+  
+  # Vegetation pests and disease
+  pest_obs <- x %>% 
+    filter(scientific.name %in% pests$scientific.name) %>% 
+    arrange(desc(observed.on)) %>% 
+    group_by(scientific.name)
   
   
   if(exists("nonnative_species")) {
@@ -392,22 +460,39 @@ watchlist_species <- function(x, output.path) {
   }
   
   
-  if(length(nonnative_species$scientific.name) >= 1) {
-    write.csv(nonnative_species, paste(output.path, "nonnative_species.csv", sep = "/"))
+  if(length(rarenative_obs$scientific.name) >= 1) {
+    write.csv(rarenative_obs, paste(output.path, "rarenative_species.csv", sep = "/"))
   } else {
-    message("There are no non-native species recorded in these data...")
+    message("There are no native rare species recorded in these data...")
   }
   
   
-  if(exists("nonnative")) {
+  if(length(invasive_ne_obs$scientific.name) >= 1) {
+    write.csv(invasive_ne_obs, paste(output.path, "invasive_ne_species.csv", sep = "/"))
+  } else {
+    message("There are no invasive not yet established species recorded in these data...")
+  }
+  
+  
+  if(length(invasive_est_obs$scientific.name) >= 1) {
+    write.csv(invasive_est_obs, paste(output.path, "invasive_est_species.csv", sep = "/"))
+  } else {
+    message("There are no invasive established species recorded in these data...")
+  }
+  
+  
+  if(length(pest_obs$scientific.name) >= 1) {
+    write.csv(pest_obs, paste(output.path, "pest_species.csv", sep = "/"))
+  } else {
+    message("There are no pest/disease species recorded in these data...")
+  }
+  
+  
+  if(exists("pests")) {
     message("Calculations complete!")
   }
   
-  
-  #How to get invasive species list? Does NPS have a watch-list?
-  
 }
-
 
 
 
@@ -622,6 +707,20 @@ download_photos <- function(x, output.path) {
   write.csv(pic_10random, paste(output.path, "summary_10random.csv", sep = "/"), row.names = F)
   
 }
+
+
+#' Function to download photos of 10 random iNaturalist observations
+#'
+#' This function takes a data frame of iNaturalist records (created specifically for the
+#' output of the "inat_recent()" function) and downloads the images associated with 10 random and
+#' unique species.
+#'
+#' @inheritParams None
+#' @param x: Data frame of iNaturalist observations.
+#' @seealso None
+#' @export
+#' @examples  
+#' download_photos(inat_lastweek) 
 
 
 

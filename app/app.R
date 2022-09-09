@@ -230,14 +230,15 @@ ui <- bootstrapPage(
                         "This site is updated once daily.",
                       
                         tags$br(),tags$br(),tags$h4("Background"), 
-                        "Infr about the website, how, why it was built.",
+                        "Info about the website, how, why it was built.",
                         
                         tags$br(),tags$br(),tags$h4("Code"),
                         "Code and required elements to generate this Shiny app are available on ", tags$a(href="https://github.com/eparker12/nCoV_tracker", "Github."),
                         
                         tags$br(),tags$br(),tags$h4("Sources"),
-                        tags$b("iNaturalist: "), "The data used to create this app are provided by",
-                        tags$a(href="https://www.inaturalist.org/", "iNaturalist"), ".",
+                        "iNaturalist: The data used to create this app are provided by",
+                        tags$a(href="https://www.inaturalist.org/", "iNaturalist."), tags$br(), 
+                        "Photos used in this app were provided by Fyn Kynd, Hannah Webber, and Kyle Lima.",
                 
                         tags$br(),tags$br(),tags$h4("Authors"),
                         "Kyle Lima, Schoodic Institute at Acadia National Park",tags$br(),

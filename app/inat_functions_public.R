@@ -186,6 +186,43 @@ inat_recent <- function(place_id, timespan, output.path) {
 
 
 
+#' Function returns a data frame of recent eBird observations 
+#'
+#' This function takes a recent time span and returns all eBird records from
+#' inside a desired location during that time span.
+#'
+#' @inheritParams None
+#' @return A data frame of recent eBird observations.
+#' @param ebird_loc: An eBird place name as a single string with components separated by hyphens. 
+#' For example, the Hancock County, Maine, USA is "US-ME-009". A full list of codes can be found 
+#' here: https://support.ebird.org/en/support/solutions/articles/48000838205-download-ebird-data
+#' @seealso None
+#' @export
+#' @examples  
+#' example_data <- ebird_recent("US-ME-009")
+
+ebird_recent <- function(ebird_loc) {
+  
+  codelist <- ebirdregion(loc = ebird_loc, back = 7, key = "kjh86bnmkpfh") %>% 
+    select(speciesCode) %>% 
+    unlist()
+  
+  run <- function(ebird_loc, code) {
+    
+    data <- ebirdregion(loc = ebird_loc, species = code, back = 7, key = "kjh86bnmkpfh") %>% 
+      select(comName, sciName, obsDt, lat, lng, subId) %>% 
+      mutate(url = paste0("https://ebird.org/checklist/", subId))
+    
+    return(data)
+  }
+  
+  output <- map2_dfr(ebird_loc, codelist, run)
+  
+  return(output)
+  
+}
+
+
 
 #' Function summarizes iNaturalist observations for threatened/endangered species
 #'
