@@ -1,88 +1,34 @@
 "","scientific.name","common.name","count"
-"1","Pseudochorthippus curtipennis","marsh meadow grasshopper",56
-"2","Argiope trifasciata","banded garden spider",42
-"3","Danaus plexippus","monarch",35
-"4","Popillia japonica","japanese beetle",35
-"5","Roeseliana roeselii","roesel's bush-cricket",35
-"6","Comptonia peregrina","sweetfern",28
-"7","Actias luna","north american luna moth",21
-"8","Cercyonis pegala","common wood-nymph",21
-"9","Cisseps fulvicollis","yellow-collared scape moth",21
-"10","Coenonympha california","common ringlet",21
-"11","Cornus canadensis","canadian bunchberry",21
-"12","Pontederia cordata","pickerelweed",21
-"13","Thuja occidentalis","northern whitecedar",21
-"14","Viburnum cassinoides","northern wild raisin",21
-"15","Acer pensylvanicum","striped maple",14
-"16","Aralia nudicaulis","wild sarsaparilla",14
-"17","Argiope aurantia","yellow garden spider",14
-"18","Cladonia maxima","giant cladonia lichen",14
-"19","Cladonia stellaris","star-tipped reindeer lichen",14
-"20","Cupido comyntas","eastern tailed-blue",14
-"21","Dryobates villosus","hairy woodpecker",14
-"22","Larus marinus","great black-backed gull",14
-"23","Lobelia cardinalis","cardinal flower",14
-"24","Lycomorpha pholus","black-and-yellow lichen moth",14
-"25","Monotropa uniflora","ghost pipe",14
-"26","Sitta canadensis","red-breasted nuthatch",14
-"27","Somateria mollissima","common eider",14
-"28","Thamnophis sirtalis","common garter snake",14
-"29","Tringa melanoleuca","greater yellowlegs",14
-"30","Vanessa virginiensis","american lady",14
-"31","Abies balsamea","balsam fir",7
-"32","Acer rubrum","red maple",7
-"33","Apios americana","american groundnut",7
-"34","Apocynum androsaemifolium","spreading dogbane",7
-"35","Araneus diadematus","cross orbweaver",7
-"36","Argia fumipennis violacea","violet dancer",7
-"37","Ascophyllum nodosum","knotted wrack",7
-"38","Carcinus maenas","european green crab",7
-"39","Castor canadensis","american beaver",7
-"40","Celithemis elisa","calico pennant",7
-"41","Cichorium intybus","chicory",7
-"42","Dryocampa rubicunda","rosy maple moth",7
-"43","Egretta thula","snowy egret",7
-"44","Erethizon dorsatum","north american porcupine",7
-"45","Euphrasia nemorosa","common eyebright",7
-"46","Fomitopsis betulina","birch polypore",7
-"47","Ganoderma tsugae","hemlock varnish shelf",7
-"48","Gaultheria procumbens","eastern teaberry",7
-"49","Harmonia axyridis","asian lady beetle",7
-"50","Ilex mucronata","mountain holly",7
-"51","Impatiens capensis","common jewelweed",7
-"52","Junco hyemalis","dark-eyed junco",7
-"53","Junonia coenia","common buckeye",7
-"54","Lasallia papulosa","common toadskin lichen",7
-"55","Limax maximus","leopard slug",7
-"56","Linaria vulgaris","common toadflax",7
-"57","Lithobates clamitans","green frog",7
-"58","Lithobates palustris","pickerel frog",7
-"59","Lobaria pulmonaria","tree lungwort",7
-"60","Lophocampa caryae","hickory tussock moth",7
-"61","Lycaena phlaeas","small copper",7
-"62","Lysimachia borealis","northern starflower",7
-"63","Maianthemum canadense","canada mayflower",7
-"64","Melanoplus bivittatus","two-striped grasshopper",7
-"65","Melanoplus mancus","smith's spur-throat grasshopper",7
-"66","Metridium senile","plumose anemone",7
-"67","Metrobates hesperius","",7
-"68","Mitchella repens","partridgeberry",7
-"69","Necrophila americana","american carrion beetle",7
-"70","Onoclea sensibilis","sensitive fern",7
-"71","Orgyia leucostigma","white-marked tussock moth",7
-"72","Osmunda claytoniana","interrupted fern",7
-"73","Pandion haliaetus","osprey",7
-"74","Pelecinus polyturator","american pelecinid wasp",7
-"75","Pteridium aquilinum","common bracken",7
-"76","Rosa rugosa","rugosa rose",7
-"77","Sibbaldiopsis tridentata","three-toothed cinquefoil",7
-"78","Speyeria atlantis","atlantis fritillary",7
-"79","Speyeria cybele","great spangled fritillary",7
-"80","Tanacetum vulgare","tansy",7
-"81","Thamnophis sirtalis pallidulus","maritime garter snake",7
-"82","Toxomerus marginatus","margined calligrapher",7
-"83","Tremella mesenterica","witch's butter",7
-"84","Trifolium aureum","large hop clover",7
-"85","Umbilicaria mammulata","smooth rock tripe",7
-"86","Vespula alascensis","alaska yellowjacket",7
-"87","Viburnum opulus","guelder-rose",7
+"1","Epifagus virginiana","beechdrops",2
+"2","Fomitopsis betulina","birch polypore",2
+"3","Ilex mucronata","mountain holly",2
+"4","Limax maximus","leopard slug",2
+"5","Rosa rugosa","rugosa rose",2
+"6","Acer pensylvanicum","striped maple",1
+"7","Agalinis purpurea parviflora","small-flower false foxglove",1
+"8","Agarum clathratum","sieve kelp",1
+"9","Apis mellifera","western honey bee",1
+"10","Artomyces pyxidatus","crown-tipped coral fungus",1
+"11","Asclepias syriaca","common milkweed",1
+"12","Bolitotherus cornutus","forked fungus beetle",1
+"13","Calluna vulgaris","common heather",1
+"14","Climacodon septentrionalis","northern tooth",1
+"15","Cornus canadensis","canadian bunchberry",1
+"16","Cypripedium acaule","pink lady's slipper",1
+"17","Doellingeria umbellata","flat-top white aster",1
+"18","Dolichovespula arenaria","common aerial yellowjacket",1
+"19","Dryopteris marginalis","marginal wood fern",1
+"20","Geranium robertianum","herb robert",1
+"21","Hericium coralloides","coral tooth fungus",1
+"22","Lampropeltis triangulum","eastern milksnake",1
+"23","Larus argentatus","herring gull",1
+"24","Larus marinus","great black-backed gull",1
+"25","Lithobates palustris","pickerel frog",1
+"26","Meconema thalassinum","oak bush-cricket",1
+"27","Myrica gale","bog myrtle",1
+"28","Oclemena acuminata","whorled wood aster",1
+"29","Solanum dulcamara","bittersweet nightshade",1
+"30","Storeria occipitomaculata","red-bellied snake",1
+"31","Thamnophis sirtalis","common garter snake",1
+"32","Viburnum cassinoides","northern wild raisin",1
+"33","Viburnum lantanoides","hobblebush",1

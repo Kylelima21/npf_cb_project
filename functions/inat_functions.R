@@ -1,9 +1,20 @@
 require(tidyverse)
 require(rinat)
+require(lubridate)
+require(leaflet)
+require(shiny)
+require(shinythemes)
+require(shinyWidgets)
+require(bslib)
+require(fresh)
+require(png)
+require(grid)
 require(purrr)
 require(readxl)
-require(leaflet)
 require(rebird)
+require(downloader)
+require(sp)
+require(rgdal)
 
 ## List of functions
 # inat_recent()
@@ -13,7 +24,6 @@ require(rebird)
 # new_npspecies()
 # make_leaflet()
 # download_photos()
-
 
 
 #' Function returns summaries and a data frame of recent iNaturalist observations 
@@ -34,7 +44,6 @@ require(rebird)
 #' @export
 #' @examples  
 #' example_data <- inat_recent("acadia-national-park", "week", "outputs/inat_summary")
-
 
 inat_recent <- function(place_id, timespan, output.path) {
   
@@ -81,7 +90,7 @@ inat_recent <- function(place_id, timespan, output.path) {
                  maxresults = 10000) %>% 
       as_tibble() %>% 
       select(scientific_name, common_name, iconic_taxon_name, observed_on, place_guess,
-             latitude, longitude, positional_accuracy, user_login, user_id, id, captive_cultivated, url, image_url) %>% 
+             latitude, longitude, positional_accuracy, user_login, user_id, captive_cultivated, url, image_url) %>% 
       mutate(common_name = tolower(common_name)) %>% 
       rename_all( ~ str_replace_all(., "_", "."))
     
@@ -124,15 +133,17 @@ inat_recent <- function(place_id, timespan, output.path) {
   
   
   inat_obs <- inat_obs %>% 
-    mutate(dup = duplicated(.)) %>% 
-    filter(dup == "FALSE")
+    mutate(dup = duplicated(.),
+           observed.on = as.Date(observed.on)) %>% 
+    filter(dup == "FALSE") %>% 
+    select(-dup)
     
   
-  if(length(inat_obs) >= 1) {
-    message("Caluclating summary statistics for time span...")
-  }
+  # if(length(inat_obs) >= 1) {
+  #   message("Caluclating summary statistics for time span...")
+  # }
   
-  # Stop summarise output mesage
+  # Stop summarise output message
   options(dplyr.summarise.inform = FALSE)
   
   ## Create summary tables
@@ -144,7 +155,7 @@ inat_recent <- function(place_id, timespan, output.path) {
   
   # Number of observers = length, number of obs by user
   summary_observers <- inat_obs %>%
-    group_by(user.login, user.id) %>% 
+    group_by(user.id, user.login) %>% 
     summarise(count = length(user.id)) %>% 
     arrange(desc(count))
   
@@ -190,6 +201,7 @@ inat_recent <- function(place_id, timespan, output.path) {
 
 
 
+
 #' Function returns a data frame of recent eBird observations 
 #'
 #' This function takes a recent time span and returns all eBird records from
@@ -205,7 +217,7 @@ inat_recent <- function(place_id, timespan, output.path) {
 #' @examples  
 #' example_data <- ebird_recent("US-ME-009")
 
-ebird_recent <- function(ebird_loc) {
+ebird_recent <- function(ebird_loc, parkname) {
   
   codelist <- ebirdregion(loc = ebird_loc, back = 7, key = "kjh86bnmkpfh") %>% 
     select(speciesCode) %>% 
@@ -220,11 +232,18 @@ ebird_recent <- function(ebird_loc) {
     return(data)
   }
   
-  output <- map2_dfr(ebird_loc, codelist, run)
+  mid <- map2_dfr(ebird_loc, codelist, run) %>% 
+    mutate(iconic.taxon.name = "Aves",
+           obsDt = as.Date(obsDt)) %>% 
+    select(scientific.name = sciName, common.name = comName, iconic.taxon.name,
+           observed.on = obsDt, latitude = lat, longitude = lng, url)
+
+  output <- filter_nps(mid, parkname, lat = "latitude", long = "longitude")
   
   return(output)
   
 }
+
 
 
 
@@ -244,7 +263,6 @@ ebird_recent <- function(ebird_loc) {
 #' @export
 #' @examples  
 #' te_species(inat_lastweek, "outputs/te_species")
-
 
 te_species <- function(x, output.path) {
   
@@ -513,7 +531,6 @@ watchlist_species <- function(x, output.path) {
 #' @examples  
 #' new_npspecies(inat_lastweek, "outputs/new_park_species") 
 
-
 new_npspecies <- function(x, output.path) {
   
   
@@ -596,7 +613,7 @@ new_npspecies <- function(x, output.path) {
 make_leaflet <- function (x) {
   
   formap <- x %>% 
-    mutate(url = paste0("<b><a href='", url, "'>View observation<br>on iNaturalist</a></b>")) 
+    mutate(url = paste0("<b><a href='", url, "'>View observation<br>online</a></b>")) 
   
   map <- leaflet() %>% 
     addProviderTiles(providers$Esri.WorldImagery) %>% 
@@ -606,6 +623,7 @@ make_leaflet <- function (x) {
   
   return(map)
 }
+
 
 
 
@@ -639,6 +657,7 @@ leaflet_summary <- function (x) {
 
 
 
+
 #' Function to download photos of 10 random iNaturalist observations
 #'
 #' This function takes a data frame of iNaturalist records (created specifically for the
@@ -665,8 +684,9 @@ download_photos <- function(x, output.path) {
   
   # Filter the inat obs data frame so that there are no duplicate species
   pic_data <- x %>% 
-    group_by(scientific.name) %>% 
-    arrange(desc(observed.on)) %>% 
+    filter(!is.na(image.url)) %>% 
+    group_by(scientific.name) %>%
+    arrange(desc(observed.on)) %>%
     distinct() %>% 
     slice(1) %>% 
     ungroup()
@@ -709,19 +729,80 @@ download_photos <- function(x, output.path) {
 }
 
 
-#' Function to download photos of 10 random iNaturalist observations
+
+
+#' @description A simple function that will take a dataframe, filter by records inside ANP, and return a
+#' cleaned dataframe. IMPORTANT: This function only work for lat long data seperated
+#' in two different columns (one for lat and one for long).
 #'
-#' This function takes a data frame of iNaturalist records (created specifically for the
-#' output of the "inat_recent()" function) and downloads the images associated with 10 random and
-#' unique species.
+#' @param df Name of the dataframe you have read in.
+#' @param park The quoted name of the national park/monument that you want to filter records by. REQUIRES
+#' name format to be exact. Find a list of the 427 park names at this link: https://rpubs.com/klima21/filternps.
+#' @param lat The quoted column name that is your latitude data.
+#' @param long The quoted column name that is your longitude data.
 #'
-#' @inheritParams None
-#' @param x: Data frame of iNaturalist observations.
-#' @seealso None
+#' @return Returns a dataframe of the same structure, but filtered to records inside
+#' the specified park/monument. Some column names may change.
+#'
+#' @example
+#'
+#' # Read in data from working directory
+#' bird.dat <- read.csv("ebird_mappingloc_20220217.csv")
+#'
+#' # Use filter_nps function to filter the bird.dat dataframe to records inside Acadia National Park
+#' bird.anp <- filter_nps(bird.dat, "Acadia National ParK", lat = "y", long = "x")
+#'
 #' @export
-#' @examples  
-#' download_photos(inat_lastweek) 
 
-
+filter_nps <- function(df, park, lat, long) {
+  
+  if (file.exists("data/nps_boundary.zip") == FALSE) {
+    download('https://irma.nps.gov/DataStore/DownloadFile/673366', destfile = "data/nps_boundary.zip")
+  }
+  
+  
+  # if (file.exists("nps_boundary.shp") == FALSE) {
+  #   unzip("data/nps_boundary.zip")
+  # }
+  
+  
+  nps.bounds <- readOGR(unzip("data/nps_boundary.zip", "nps_boundary.shp"), verbose = FALSE)
+  
+  
+  select.bounds <- nps.bounds[nps.bounds@data$UNIT_NAME==paste(park), ]
+  
+  
+  if (length(select.bounds@polygons) < 1) {
+    stop("Function returned a park with 0 polygons. The park name does not exist. Go to https://rpubs.com/klima21/filternps for a list of valid park names.")
+  }
+  
+  
+  df <- df %>% rename(latitude=paste(lat), longitude=paste(long))
+  
+  df$"long" <- df$longitude
+  df$"lat" <- df$latitude
+  
+  coordinates(df) <- c("long", "lat")
+  
+  slot(df, "proj4string") <- slot(select.bounds, "proj4string")
+  
+  output <- over(select.bounds, df, returnList = TRUE)
+  
+  output.df <- data.frame(output) %>% 
+    rename_with(~str_replace(., "X15.", ""), everything())
+  
+  
+  if(length(output.df) < 1) {
+    stop("Function returned a dataframe with 0 records. Records may not be within the specifed park boundaries")
+  }
+  
+  
+  if(length(output.df) > 1) {
+    message("Calculations complete!")
+  }
+  
+  return(output.df)
+  
+}
 
 

@@ -6,15 +6,16 @@ kaww <- "142267"
 test <- inat_recent(acad, "week", "outputs")
 test2 <- ebird_recent("US-ME-009")
 
+eh <- bind_rows(test, test2)
 
-new_npspecies(test, "outputs")
+new_npspecies(eh, "outputs")
 
-te_species(test, "outputs")
+te_species(eh, "outputs")
 
-watchlist_species(test, "outputs")
+watchlist_species(eh, "outputs")
 
 
-make_leaflet(test)
+make_leaflet(eh)
 download_photos(test, "outputs/photos")
 
 
