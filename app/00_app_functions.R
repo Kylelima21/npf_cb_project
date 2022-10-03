@@ -334,20 +334,15 @@ filter_nps <- function(df, park, lat, long) {
 
 te_species <- function(x, output.path) {
   
-  
-  ##Check to make sure that parameter inputs are correct
-  #output.path
+  ## Check to make sure that parameter inputs are correct
+  # output.path
   if (str_sub(output.path, start = -1) == "/") {
     stop("Directory path cannot end with '/'")
   }
-
   
-  #Custom name repair function to be used later
+  
+  # Custom name repair function to be used later
   custom_name_repair <- function(x) { tolower(gsub(" ", ".", x)) }
-  
-  
-  #Need to figure out if we can get this file directly from URL, no luck with current tries
-  #download.file("https://irma.nps.gov/NPSpecies/Search/DownloadSpeciesListFullListWithDetailsResults", "data/raw/nonnative_table.xlsx")
   
   
   if(exists("custom_name_repair")) {
@@ -355,24 +350,19 @@ te_species <- function(x, output.path) {
   }
   
   
-  ##FEDERAL - An alternative data set from NPSpecies
-  #Read in the file and filter for the T, E, and SC species
-  fed_te_sp <- read_excel("data/raw/NPSpecies_ACAD_20220612.xlsx", .name_repair = custom_name_repair) %>% 
-    select(order, family, scientific.name, common.names, category, 
-           occurrence, te.species = 't&e', state.status) %>% 
-    filter(te.species == "E" | te.species == "E*" | te.species == "EmE" | te.species == "EmT" |
-             te.species == "T" | te.species == "SC" | te.species == "SOC") %>% 
-    mutate(te.species = ifelse(te.species == "E" | te.species == "E*" | te.species == "EmE", "E", paste(te.species)),
-           te.species = ifelse(te.species == "T" | te.species == "EmT", "T", paste(te.species)),
-           te.species = ifelse(te.species == "SC" | te.species == "SOC", "SC", paste(te.species)))
+  ## FEDERAL
+  fed_te_sp <- read_csv("data/federal_list_maine.csv") %>% 
+    rename_with(tolower, everything()) %>% 
+    select(scientific.name = "scientific name", common.name = "common name",
+           listing.status = "esa listing status") %>% 
+    mutate(level = "federal",
+           listing.status = tolower(listing.status))
   
   
-  ##STATE - An alternative data set from NPSpecies
-  #Read in the file and filter for the T, E, and SC species
-  state_te_sp <- read_excel("data/raw/NPSpecies_ACAD_20220612.xlsx", .name_repair = custom_name_repair) %>% 
-    select(order, family, scientific.name, common.names, category, 
-           occurrence, te.species = 't&e', state.status) %>% 
-    filter(state.status != "")
+  ## STATE
+  state_te_sp <- read_csv("data/maine_thrt_end_list.csv") %>% 
+    mutate(level = "state",
+           status = tolower(listing.status))
   
   
   if(exists("state_te_sp")) {
@@ -380,44 +370,44 @@ te_species <- function(x, output.path) {
   }
   
   
-  #All T, E, SC species from the last week
+  # All T, E species from the last week
   te_specieslist_federal <- x %>% 
     filter(scientific.name %in% fed_te_sp$scientific.name) %>% 
     select(scientific.name, common.name, iconic.taxon.name) %>% 
     left_join(fed_te_sp, by = "scientific.name") %>% 
-    select(scientific.name, common.name, taxon = iconic.taxon.name, te.species) %>% 
+    select(scientific.name, common.name = common.name.x, taxon = iconic.taxon.name, listing.status) %>% 
     distinct()
   
   
-  #Number of species per T&E category
+  # Number of species per T&E category
   te_summary_federal <- x %>% 
     filter(scientific.name %in% fed_te_sp$scientific.name) %>% 
     select(scientific.name, common.name, iconic.taxon.name) %>% 
     left_join(fed_te_sp, by = "scientific.name") %>% 
-    select(scientific.name, common.name, taxon = iconic.taxon.name, te.species) %>% 
+    select(scientific.name, common.name = common.name.x, taxon = iconic.taxon.name, listing.status) %>% 
     distinct() %>% 
-    group_by(te.species) %>% 
-    summarise(count = length(te.species))
+    group_by(listing.status) %>% 
+    summarise(count = length(listing.status))
   
   
-  #All T, E, SC species from the last week
+  # All T, E species from the last week
   te_specieslist_state <- x %>% 
     filter(scientific.name %in% state_te_sp$scientific.name) %>% 
     select(scientific.name, common.name, iconic.taxon.name) %>% 
     left_join(state_te_sp, by = "scientific.name") %>% 
-    select(scientific.name, common.name, taxon = iconic.taxon.name, state.status) %>% 
+    select(scientific.name, common.name = common.name.x, taxon = iconic.taxon.name, listing.status) %>% 
     distinct()
   
   
-  #Number of species per T&E category
+  # Number of species per T&E category
   te_summary_state <- x %>% 
     filter(scientific.name %in% state_te_sp$scientific.name) %>% 
     select(scientific.name, common.name, iconic.taxon.name) %>% 
     left_join(state_te_sp, by = "scientific.name") %>% 
-    select(scientific.name, common.name, taxon = iconic.taxon.name, state.status) %>% 
+    select(scientific.name, common.name = common.name.x, taxon = iconic.taxon.name, listing.status) %>% 
     distinct() %>% 
-    group_by(state.status) %>% 
-    summarise(count = length(state.status))
+    group_by(listing.status) %>% 
+    summarise(count = length(listing.status))
   
   
   if(exists("te_summary_state")) {
@@ -432,7 +422,7 @@ te_species <- function(x, output.path) {
   }
   
   
-  if(length(te_summary_federal$te.species) >= 1) {
+  if(length(te_summary_federal$listing.status) >= 1) {
     write.csv(te_summary_federal, paste(output.path, "te_summary_federal.csv", sep = "/"))
   }
   
@@ -444,7 +434,7 @@ te_species <- function(x, output.path) {
   }
   
   
-  if(length(te_summary_state$state.status) >= 1) {
+  if(length(te_summary_state$listing.status) >= 1) {
     write.csv(te_summary_state, paste(output.path, "te_summary_state.csv", sep = "/"))
   }
   
