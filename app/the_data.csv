@@ -1,0 +1,487 @@
+scientific.name,common.name,iconic.taxon.name,groups,observed.on,place.guess,latitude,longitude,positional.accuracy,user.login,user.id,captive.cultivated,url,image.url
+Lithobates catesbeianus,american bullfrog,Amphibia,Amphibians,2022-09-27,"Acadia National Park, Bar Harbor, ME, US",44.3687783333,-68.2115633333,17,nfisichelli,255732,false,https://www.inaturalist.org/observations/136819520,https://inaturalist-open-data.s3.amazonaws.com/photos/233567955/medium.jpg
+Hyla versicolor,gray treefrog,Amphibia,Amphibians,2022-09-27,"Parque Nacional Acadia, Birch Harbor, ME, US",44.3371648286,-68.0599711808,65,mapmaine,3667475,false,https://www.inaturalist.org/observations/136715540,https://static.inaturalist.org/photos/233374498/medium.jpg
+Larus argentatus,herring gull,Aves,Birds,2022-10-01,Schoodic Point,44.3323484755,-68.0610363185,1551,jaelgb,6082297,false,https://www.inaturalist.org/observations/137449230,https://inaturalist-open-data.s3.amazonaws.com/photos/234751344/medium.jpeg
+Troglodytes hiemalis,winter wren,Aves,Birds,2022-10-03,"Mount Desert Island, Mount Desert, ME, US",44.3152666558,-68.3390374762,22,asacerdotevelat,4333170,false,https://www.inaturalist.org/observations/137408868,
+Larus argentatus,herring gull,Aves,Birds,2022-09-29,"Nicatous Lake, Acadia National Park, Hancock, Maine, United States",44.2293286111,-68.3136002778,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137075347,https://inaturalist-open-data.s3.amazonaws.com/photos/234041000/medium.jpeg
+Larus argentatus,herring gull,Aves,Birds,2022-09-29,"Southwest Harbor, ME, USA",44.2417877778,-68.2998547222,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137075346,https://inaturalist-open-data.s3.amazonaws.com/photos/234040961/medium.jpeg
+Phalacrocorax auritus,double-crested cormorant,Aves,Birds,2022-09-29,"Southwest Harbor, ME, USA",44.2293836111,-68.3135738889,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137073853,https://inaturalist-open-data.s3.amazonaws.com/photos/234039005/medium.jpeg
+Larus argentatus,herring gull,Aves,Birds,2022-09-29,"Southwest Harbor, ME, USA",44.2282994444,-68.3121638889,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137073850,https://inaturalist-open-data.s3.amazonaws.com/photos/234039025/medium.jpeg
+Phalacrocorax auritus,double-crested cormorant,Aves,Birds,2022-09-29,"Southwest Harbor, ME, USA",44.2293283333,-68.3135991667,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137073848,https://inaturalist-open-data.s3.amazonaws.com/photos/234038981/medium.jpeg
+Catharus guttatus,hermit thrush,Aves,Birds,2022-09-29,"Southwest Harbor, ME, USA",44.2283391667,-68.3110697222,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137063193,https://inaturalist-open-data.s3.amazonaws.com/photos/234019042/medium.jpeg
+Zonotrichia albicollis,white-throated sparrow,Aves,Birds,2022-09-29,"Southwest Harbor, ME, USA",44.2337663889,-68.3201402778,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137058136,https://inaturalist-open-data.s3.amazonaws.com/photos/234009270/medium.jpeg
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-09-29,"Bar Harbor, ME, USA",44.3530708333,-68.2246825,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137047637,https://inaturalist-open-data.s3.amazonaws.com/photos/233989747/medium.jpeg
+Anas rubripes,american black duck,Aves,Birds,2022-10-03,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119900360,NA
+Anas rubripes,american black duck,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Anas rubripes,american black duck,Aves,Birds,2022-09-28,NA,44.342719,-68.059979,NA,NA,NA,NA,https://ebird.org/checklist/S119604644,NA
+Anas rubripes,american black duck,Aves,Birds,2022-09-28,NA,44.342688,-68.059978,NA,NA,NA,NA,https://ebird.org/checklist/S119573553,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-10-03,NA,44.3210234,-68.2540226,NA,NA,NA,NA,https://ebird.org/checklist/S119907076,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-10-03,NA,44.3292206,-68.1822252,NA,NA,NA,NA,https://ebird.org/checklist/S119890470,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-10-02,NA,44.3242409,-68.2499805,NA,NA,NA,NA,https://ebird.org/checklist/S119874611,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-10-02,NA,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S119874001,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-10-01,NA,44.233752,-68.3198708,NA,NA,NA,NA,https://ebird.org/checklist/S119786605,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-10-01,NA,44.3075112,-68.3174376,NA,NA,NA,NA,https://ebird.org/checklist/S119764387,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-10-01,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119750869,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119751907,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-09-30,NA,44.3489122,-68.1854868,NA,NA,NA,NA,https://ebird.org/checklist/S119740617,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-09-30,NA,44.3596058,-68.1849033,NA,NA,NA,NA,https://ebird.org/checklist/S119740510,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-09-29,NA,44.344341,-68.059111,NA,NA,NA,NA,https://ebird.org/checklist/S119684919,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-09-29,NA,44.3146368,-68.3434689,NA,NA,NA,NA,https://ebird.org/checklist/S119830214,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-09-29,NA,44.377619,-68.2269683,NA,NA,NA,NA,https://ebird.org/checklist/S119664688,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119671644,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-09-29,NA,44.2997267,-68.3435158,NA,NA,NA,NA,https://ebird.org/checklist/S119660412,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-09-29,NA,44.3096007,-68.2040691,NA,NA,NA,NA,https://ebird.org/checklist/S119891563,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-09-28,NA,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S119672232,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-09-28,NA,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S119569019,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-09-28,NA,44.2985701,-68.2123427,NA,NA,NA,NA,https://ebird.org/checklist/S119570518,NA
+Corvus brachyrhynchos,american crow,Aves,Birds,2022-09-27,NA,44.3289251,-68.1741893,NA,NA,NA,NA,https://ebird.org/checklist/S119527445,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-10-03,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119925944,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-10-03,NA,44.3210234,-68.2540226,NA,NA,NA,NA,https://ebird.org/checklist/S119907076,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-10-03,NA,44.3510205,-68.1898588,NA,NA,NA,NA,https://ebird.org/checklist/S119911089,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-10-02,NA,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S119874001,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-10-01,NA,44.233752,-68.3198708,NA,NA,NA,NA,https://ebird.org/checklist/S119786605,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-10-01,NA,44.3075112,-68.3174376,NA,NA,NA,NA,https://ebird.org/checklist/S119764387,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-09-30,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119713499,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-09-29,NA,44.3146368,-68.3434689,NA,NA,NA,NA,https://ebird.org/checklist/S119830214,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119671644,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-09-29,NA,44.2997267,-68.3435158,NA,NA,NA,NA,https://ebird.org/checklist/S119660412,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-09-29,NA,44.314947,-68.3361143,NA,NA,NA,NA,https://ebird.org/checklist/S119660342,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-09-29,NA,44.3096007,-68.2040691,NA,NA,NA,NA,https://ebird.org/checklist/S119891563,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-09-28,NA,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S119570080,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-09-28,NA,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S119569019,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-09-28,NA,44.2985701,-68.2123427,NA,NA,NA,NA,https://ebird.org/checklist/S119570518,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-09-27,NA,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S119538338,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-09-27,NA,44.3289251,-68.1741893,NA,NA,NA,NA,https://ebird.org/checklist/S119527445,NA
+Cyanocitta cristata,blue jay,Aves,Birds,2022-09-27,NA,44.373971,-68.261505,NA,NA,NA,NA,https://ebird.org/checklist/S119739703,NA
+Cathartes aura,turkey vulture,Aves,Birds,2022-10-02,NA,44.4267926,-68.3651733,NA,NA,NA,NA,https://ebird.org/checklist/S119842462,NA
+Cathartes aura,turkey vulture,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Cathartes aura,turkey vulture,Aves,Birds,2022-09-29,NA,44.3146368,-68.3434689,NA,NA,NA,NA,https://ebird.org/checklist/S119830214,NA
+Cathartes aura,turkey vulture,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119671644,NA
+Cathartes aura,turkey vulture,Aves,Birds,2022-09-28,NA,44.2985701,-68.2123427,NA,NA,NA,NA,https://ebird.org/checklist/S119570518,NA
+Regulus satrapa,golden-crowned kinglet,Aves,Birds,2022-10-03,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119925944,NA
+Regulus satrapa,golden-crowned kinglet,Aves,Birds,2022-10-03,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119917534,NA
+Regulus satrapa,golden-crowned kinglet,Aves,Birds,2022-10-02,NA,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S119874001,NA
+Regulus satrapa,golden-crowned kinglet,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Regulus satrapa,golden-crowned kinglet,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119751907,NA
+Regulus satrapa,golden-crowned kinglet,Aves,Birds,2022-09-30,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119713499,NA
+Regulus satrapa,golden-crowned kinglet,Aves,Birds,2022-09-29,NA,44.2997267,-68.3435158,NA,NA,NA,NA,https://ebird.org/checklist/S119660412,NA
+Regulus satrapa,golden-crowned kinglet,Aves,Birds,2022-09-28,NA,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S119672232,NA
+Regulus satrapa,golden-crowned kinglet,Aves,Birds,2022-09-28,NA,44.2985701,-68.2123427,NA,NA,NA,NA,https://ebird.org/checklist/S119570518,NA
+Regulus satrapa,golden-crowned kinglet,Aves,Birds,2022-09-28,NA,44.3018615,-68.3549166,NA,NA,NA,NA,https://ebird.org/checklist/S119719344,NA
+Regulus satrapa,golden-crowned kinglet,Aves,Birds,2022-09-27,NA,44.3289251,-68.1741893,NA,NA,NA,NA,https://ebird.org/checklist/S119527445,NA
+Regulus satrapa,golden-crowned kinglet,Aves,Birds,2022-09-27,NA,44.373971,-68.261505,NA,NA,NA,NA,https://ebird.org/checklist/S119739703,NA
+Regulus satrapa,golden-crowned kinglet,Aves,Birds,2022-09-27,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119511652,NA
+Regulus satrapa,golden-crowned kinglet,Aves,Birds,2022-09-27,NA,44.3104448,-68.3454215,NA,NA,NA,NA,https://ebird.org/checklist/S119719373,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-10-03,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119925944,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-10-03,NA,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S119908736,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-10-03,NA,44.3210234,-68.2540226,NA,NA,NA,NA,https://ebird.org/checklist/S119907076,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119874472,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-10-02,NA,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S119874001,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-10-02,NA,44.4267926,-68.3651733,NA,NA,NA,NA,https://ebird.org/checklist/S119842444,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-10-01,NA,44.3075112,-68.3174376,NA,NA,NA,NA,https://ebird.org/checklist/S119764387,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119751907,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-09-30,NA,44.3489122,-68.1854868,NA,NA,NA,NA,https://ebird.org/checklist/S119740617,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-09-30,NA,44.3596058,-68.1849033,NA,NA,NA,NA,https://ebird.org/checklist/S119740510,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-09-29,NA,44.344341,-68.059111,NA,NA,NA,NA,https://ebird.org/checklist/S119684919,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-09-29,NA,44.3146368,-68.3434689,NA,NA,NA,NA,https://ebird.org/checklist/S119830214,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-09-29,NA,44.3766313,-68.2511902,NA,NA,NA,NA,https://ebird.org/checklist/S119740192,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-09-29,NA,44.2574063,-68.3516939,NA,NA,NA,NA,https://ebird.org/checklist/S119657756,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-09-29,NA,44.2997267,-68.3435158,NA,NA,NA,NA,https://ebird.org/checklist/S119660412,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-09-29,NA,44.3096007,-68.2040691,NA,NA,NA,NA,https://ebird.org/checklist/S119891563,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-09-28,NA,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S119569019,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-09-28,NA,44.3018615,-68.3549166,NA,NA,NA,NA,https://ebird.org/checklist/S119719344,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-09-27,NA,44.3289251,-68.1741893,NA,NA,NA,NA,https://ebird.org/checklist/S119527445,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-09-27,NA,44.373971,-68.261505,NA,NA,NA,NA,https://ebird.org/checklist/S119739703,NA
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-09-27,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119511652,NA
+Nannopterum auritum,double-crested cormorant,Aves,Birds,2022-10-03,NA,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S119908736,NA
+Nannopterum auritum,double-crested cormorant,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Nannopterum auritum,double-crested cormorant,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Nannopterum auritum,double-crested cormorant,Aves,Birds,2022-10-01,NA,44.233752,-68.3198708,NA,NA,NA,NA,https://ebird.org/checklist/S119786605,NA
+Nannopterum auritum,double-crested cormorant,Aves,Birds,2022-10-01,NA,44.3075112,-68.3174376,NA,NA,NA,NA,https://ebird.org/checklist/S119764387,NA
+Nannopterum auritum,double-crested cormorant,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119751907,NA
+Nannopterum auritum,double-crested cormorant,Aves,Birds,2022-09-30,NA,44.3596058,-68.1849033,NA,NA,NA,NA,https://ebird.org/checklist/S119740510,NA
+Nannopterum auritum,double-crested cormorant,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119683379,NA
+Nannopterum auritum,double-crested cormorant,Aves,Birds,2022-09-28,NA,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S119570080,NA
+Nannopterum auritum,double-crested cormorant,Aves,Birds,2022-09-28,NA,44.2985701,-68.2123427,NA,NA,NA,NA,https://ebird.org/checklist/S119570518,NA
+Nannopterum auritum,double-crested cormorant,Aves,Birds,2022-09-27,NA,44.3080944,-68.3550911,NA,NA,NA,NA,https://ebird.org/checklist/S119528919,NA
+Nannopterum auritum,double-crested cormorant,Aves,Birds,2022-09-27,NA,44.3289251,-68.1741893,NA,NA,NA,NA,https://ebird.org/checklist/S119527445,NA
+Setophaga coronata,yellow-rumped warbler,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119874472,NA
+Setophaga coronata,yellow-rumped warbler,Aves,Birds,2022-10-02,NA,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S119874001,NA
+Setophaga coronata,yellow-rumped warbler,Aves,Birds,2022-10-02,NA,44.4267926,-68.3651733,NA,NA,NA,NA,https://ebird.org/checklist/S119842462,NA
+Setophaga coronata,yellow-rumped warbler,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Setophaga coronata,yellow-rumped warbler,Aves,Birds,2022-10-01,NA,44.233752,-68.3198708,NA,NA,NA,NA,https://ebird.org/checklist/S119786605,NA
+Setophaga coronata,yellow-rumped warbler,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119751907,NA
+Setophaga coronata,yellow-rumped warbler,Aves,Birds,2022-09-30,NA,44.3489122,-68.1854868,NA,NA,NA,NA,https://ebird.org/checklist/S119740617,NA
+Setophaga coronata,yellow-rumped warbler,Aves,Birds,2022-09-30,NA,44.3596058,-68.1849033,NA,NA,NA,NA,https://ebird.org/checklist/S119740510,NA
+Setophaga coronata,yellow-rumped warbler,Aves,Birds,2022-09-29,NA,44.344341,-68.059111,NA,NA,NA,NA,https://ebird.org/checklist/S119684919,NA
+Setophaga coronata,yellow-rumped warbler,Aves,Birds,2022-09-29,NA,44.3072668,-68.1901217,NA,NA,NA,NA,https://ebird.org/checklist/S119686837,NA
+Setophaga coronata,yellow-rumped warbler,Aves,Birds,2022-09-29,NA,44.3766313,-68.2511902,NA,NA,NA,NA,https://ebird.org/checklist/S119740192,NA
+Setophaga coronata,yellow-rumped warbler,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119671644,NA
+Setophaga coronata,yellow-rumped warbler,Aves,Birds,2022-09-29,NA,44.2997267,-68.3435158,NA,NA,NA,NA,https://ebird.org/checklist/S119660412,NA
+Setophaga coronata,yellow-rumped warbler,Aves,Birds,2022-09-28,NA,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S119672232,NA
+Setophaga coronata,yellow-rumped warbler,Aves,Birds,2022-09-28,NA,44.2985701,-68.2123427,NA,NA,NA,NA,https://ebird.org/checklist/S119570518,NA
+Setophaga coronata,yellow-rumped warbler,Aves,Birds,2022-09-27,NA,44.3065086,-68.2013869,NA,NA,NA,NA,https://ebird.org/checklist/S119535165,NA
+Setophaga coronata,yellow-rumped warbler,Aves,Birds,2022-09-27,NA,44.3289251,-68.1741893,NA,NA,NA,NA,https://ebird.org/checklist/S119527445,NA
+Larus marinus,great black-backed gull,Aves,Birds,2022-10-03,NA,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S119908736,NA
+Larus marinus,great black-backed gull,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Larus marinus,great black-backed gull,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Larus marinus,great black-backed gull,Aves,Birds,2022-10-01,NA,44.233752,-68.3198708,NA,NA,NA,NA,https://ebird.org/checklist/S119786605,NA
+Larus marinus,great black-backed gull,Aves,Birds,2022-10-01,NA,44.3075112,-68.3174376,NA,NA,NA,NA,https://ebird.org/checklist/S119764387,NA
+Larus marinus,great black-backed gull,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119751907,NA
+Larus marinus,great black-backed gull,Aves,Birds,2022-09-28,NA,44.2985701,-68.2123427,NA,NA,NA,NA,https://ebird.org/checklist/S119570518,NA
+Larus marinus,great black-backed gull,Aves,Birds,2022-09-27,NA,44.3065086,-68.2013869,NA,NA,NA,NA,https://ebird.org/checklist/S119535165,NA
+Larus marinus,great black-backed gull,Aves,Birds,2022-09-27,NA,44.3289251,-68.1741893,NA,NA,NA,NA,https://ebird.org/checklist/S119527445,NA
+Larus argentatus,herring gull,Aves,Birds,2022-10-03,NA,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S119908736,NA
+Larus argentatus,herring gull,Aves,Birds,2022-10-03,NA,44.3292206,-68.1822252,NA,NA,NA,NA,https://ebird.org/checklist/S119890470,NA
+Larus argentatus,herring gull,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119874472,NA
+Larus argentatus,herring gull,Aves,Birds,2022-10-02,NA,44.4267926,-68.3651733,NA,NA,NA,NA,https://ebird.org/checklist/S119842462,NA
+Larus argentatus,herring gull,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Larus argentatus,herring gull,Aves,Birds,2022-10-01,NA,44.233752,-68.3198708,NA,NA,NA,NA,https://ebird.org/checklist/S119786605,NA
+Larus argentatus,herring gull,Aves,Birds,2022-10-01,NA,44.3075112,-68.3174376,NA,NA,NA,NA,https://ebird.org/checklist/S119764387,NA
+Larus argentatus,herring gull,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119751907,NA
+Larus argentatus,herring gull,Aves,Birds,2022-09-29,NA,44.3766313,-68.2511902,NA,NA,NA,NA,https://ebird.org/checklist/S119740192,NA
+Larus argentatus,herring gull,Aves,Birds,2022-09-29,NA,44.3002228,-68.3505289,NA,NA,NA,NA,https://ebird.org/checklist/S119659916,NA
+Larus argentatus,herring gull,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119671644,NA
+Larus argentatus,herring gull,Aves,Birds,2022-09-28,NA,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S119570080,NA
+Larus argentatus,herring gull,Aves,Birds,2022-09-28,NA,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S119569019,NA
+Larus argentatus,herring gull,Aves,Birds,2022-09-28,NA,44.2985701,-68.2123427,NA,NA,NA,NA,https://ebird.org/checklist/S119570518,NA
+Larus argentatus,herring gull,Aves,Birds,2022-09-28,NA,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S119738013,NA
+Larus argentatus,herring gull,Aves,Birds,2022-09-27,NA,44.3065086,-68.2013869,NA,NA,NA,NA,https://ebird.org/checklist/S119535165,NA
+Larus argentatus,herring gull,Aves,Birds,2022-09-27,NA,44.3080944,-68.3550911,NA,NA,NA,NA,https://ebird.org/checklist/S119528919,NA
+Larus argentatus,herring gull,Aves,Birds,2022-09-27,NA,44.3289251,-68.1741893,NA,NA,NA,NA,https://ebird.org/checklist/S119527445,NA
+Gavia immer,common loon,Aves,Birds,2022-10-02,NA,44.3242409,-68.2499805,NA,NA,NA,NA,https://ebird.org/checklist/S119874611,NA
+Gavia immer,common loon,Aves,Birds,2022-10-02,NA,44.3625954,-68.0390396,NA,NA,NA,NA,https://ebird.org/checklist/S119857903,NA
+Gavia immer,common loon,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Gavia immer,common loon,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Gavia immer,common loon,Aves,Birds,2022-10-01,NA,44.233752,-68.3198708,NA,NA,NA,NA,https://ebird.org/checklist/S119786605,NA
+Gavia immer,common loon,Aves,Birds,2022-10-01,NA,44.3075112,-68.3174376,NA,NA,NA,NA,https://ebird.org/checklist/S119764387,NA
+Gavia immer,common loon,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119751907,NA
+Gavia immer,common loon,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119683379,NA
+Gavia immer,common loon,Aves,Birds,2022-09-28,NA,44.2985701,-68.2123427,NA,NA,NA,NA,https://ebird.org/checklist/S119570518,NA
+Gavia immer,common loon,Aves,Birds,2022-09-27,NA,44.3289251,-68.1741893,NA,NA,NA,NA,https://ebird.org/checklist/S119527445,NA
+Megaceryle alcyon,belted kingfisher,Aves,Birds,2022-10-01,NA,44.233752,-68.3198708,NA,NA,NA,NA,https://ebird.org/checklist/S119786605,NA
+Megaceryle alcyon,belted kingfisher,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119751907,NA
+Megaceryle alcyon,belted kingfisher,Aves,Birds,2022-09-30,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119713499,NA
+Megaceryle alcyon,belted kingfisher,Aves,Birds,2022-09-28,NA,44.342719,-68.059979,NA,NA,NA,NA,https://ebird.org/checklist/S119604644,NA
+Megaceryle alcyon,belted kingfisher,Aves,Birds,2022-09-28,NA,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S119570080,NA
+Aix sponsa,wood duck,Aves,Birds,2022-09-29,NA,44.3623836,-68.1951383,NA,NA,NA,NA,https://ebird.org/checklist/S119665975,NA
+Aix sponsa,wood duck,Aves,Birds,2022-09-29,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119656770,NA
+Larus delawarensis,ring-billed gull,Aves,Birds,2022-10-03,NA,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S119908736,NA
+Larus delawarensis,ring-billed gull,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119874472,NA
+Larus delawarensis,ring-billed gull,Aves,Birds,2022-10-02,NA,44.4267926,-68.3651733,NA,NA,NA,NA,https://ebird.org/checklist/S119842444,NA
+Larus delawarensis,ring-billed gull,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Larus delawarensis,ring-billed gull,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119706661,NA
+Larus delawarensis,ring-billed gull,Aves,Birds,2022-09-28,NA,44.2985701,-68.2123427,NA,NA,NA,NA,https://ebird.org/checklist/S119570518,NA
+Larus delawarensis,ring-billed gull,Aves,Birds,2022-09-27,NA,44.3080944,-68.3550911,NA,NA,NA,NA,https://ebird.org/checklist/S119528919,NA
+Anas platyrhynchos,mallard,Aves,Birds,2022-10-03,NA,44.3292206,-68.1822252,NA,NA,NA,NA,https://ebird.org/checklist/S119890470,NA
+Anas platyrhynchos,mallard,Aves,Birds,2022-10-02,NA,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S119874001,NA
+Anas platyrhynchos,mallard,Aves,Birds,2022-09-30,NA,44.3489122,-68.1854868,NA,NA,NA,NA,https://ebird.org/checklist/S119740617,NA
+Anas platyrhynchos,mallard,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119706661,NA
+Tringa solitaria,solitary sandpiper,Aves,Birds,2022-10-02,NA,44.4267926,-68.3651733,NA,NA,NA,NA,https://ebird.org/checklist/S119842462,NA
+Ardea herodias,great blue heron,Aves,Birds,2022-10-02,NA,44.4267926,-68.3651733,NA,NA,NA,NA,https://ebird.org/checklist/S119842444,NA
+Ardea herodias,great blue heron,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119706661,NA
+Ardea herodias,great blue heron,Aves,Birds,2022-09-28,NA,44.342719,-68.059979,NA,NA,NA,NA,https://ebird.org/checklist/S119604644,NA
+Ardea herodias,great blue heron,Aves,Birds,2022-09-28,NA,44.342688,-68.059978,NA,NA,NA,NA,https://ebird.org/checklist/S119573553,NA
+Branta canadensis,canada goose,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Dryobates pubescens,downy woodpecker,Aves,Birds,2022-10-03,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119925944,NA
+Dryobates pubescens,downy woodpecker,Aves,Birds,2022-10-03,NA,44.3210234,-68.2540226,NA,NA,NA,NA,https://ebird.org/checklist/S119907076,NA
+Dryobates pubescens,downy woodpecker,Aves,Birds,2022-10-02,NA,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S119874001,NA
+Dryobates pubescens,downy woodpecker,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Dryobates pubescens,downy woodpecker,Aves,Birds,2022-10-01,NA,44.3075112,-68.3174376,NA,NA,NA,NA,https://ebird.org/checklist/S119764387,NA
+Dryobates pubescens,downy woodpecker,Aves,Birds,2022-09-29,NA,44.2574063,-68.3516939,NA,NA,NA,NA,https://ebird.org/checklist/S119657756,NA
+Dryobates pubescens,downy woodpecker,Aves,Birds,2022-09-29,NA,44.3096007,-68.2040691,NA,NA,NA,NA,https://ebird.org/checklist/S119891563,NA
+Dryobates pubescens,downy woodpecker,Aves,Birds,2022-09-28,NA,44.3018615,-68.3549166,NA,NA,NA,NA,https://ebird.org/checklist/S119719344,NA
+Dumetella carolinensis,gray catbird,Aves,Birds,2022-10-03,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119925944,NA
+Dumetella carolinensis,gray catbird,Aves,Birds,2022-10-03,NA,44.3210234,-68.2540226,NA,NA,NA,NA,https://ebird.org/checklist/S119907076,NA
+Dumetella carolinensis,gray catbird,Aves,Birds,2022-09-30,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119713499,NA
+Dumetella carolinensis,gray catbird,Aves,Birds,2022-09-29,NA,44.2574063,-68.3516939,NA,NA,NA,NA,https://ebird.org/checklist/S119657756,NA
+Melanerpes carolinus,red-bellied woodpecker,Aves,Birds,2022-10-03,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119925944,NA
+Strix varia,barred owl,Aves,Birds,2022-10-03,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119925944,NA
+Strix varia,barred owl,Aves,Birds,2022-09-28,NA,44.3096007,-68.2040691,NA,NA,NA,NA,https://ebird.org/checklist/S119553209,NA
+Zonotrichia leucophrys,white-crowned sparrow,Aves,Birds,2022-09-30,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119713499,NA
+Zenaida macroura,mourning dove,Aves,Birds,2022-10-03,NA,44.3210234,-68.2540226,NA,NA,NA,NA,https://ebird.org/checklist/S119907076,NA
+Zenaida macroura,mourning dove,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Melospiza melodia,song sparrow,Aves,Birds,2022-10-03,NA,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S119908736,NA
+Melospiza melodia,song sparrow,Aves,Birds,2022-10-03,NA,44.3210234,-68.2540226,NA,NA,NA,NA,https://ebird.org/checklist/S119907076,NA
+Melospiza melodia,song sparrow,Aves,Birds,2022-10-03,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119917534,NA
+Melospiza melodia,song sparrow,Aves,Birds,2022-10-03,NA,44.3292206,-68.1822252,NA,NA,NA,NA,https://ebird.org/checklist/S119890470,NA
+Melospiza melodia,song sparrow,Aves,Birds,2022-10-02,NA,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S119874001,NA
+Melospiza melodia,song sparrow,Aves,Birds,2022-10-02,NA,44.4267926,-68.3651733,NA,NA,NA,NA,https://ebird.org/checklist/S119842462,NA
+Melospiza melodia,song sparrow,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Setophaga palmarum,palm warbler,Aves,Birds,2022-10-02,NA,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S119874001,NA
+Setophaga palmarum,palm warbler,Aves,Birds,2022-09-28,NA,44.2985701,-68.2123427,NA,NA,NA,NA,https://ebird.org/checklist/S119570518,NA
+Turdus migratorius,american robin,Aves,Birds,2022-10-02,NA,44.3242409,-68.2499805,NA,NA,NA,NA,https://ebird.org/checklist/S119874611,NA
+Turdus migratorius,american robin,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Turdus migratorius,american robin,Aves,Birds,2022-10-01,NA,44.233752,-68.3198708,NA,NA,NA,NA,https://ebird.org/checklist/S119786605,NA
+Turdus migratorius,american robin,Aves,Birds,2022-10-01,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119750869,NA
+Turdus migratorius,american robin,Aves,Birds,2022-09-29,NA,44.2574063,-68.3516939,NA,NA,NA,NA,https://ebird.org/checklist/S119657756,NA
+Turdus migratorius,american robin,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119683379,NA
+Turdus migratorius,american robin,Aves,Birds,2022-09-27,NA,44.3065086,-68.2013869,NA,NA,NA,NA,https://ebird.org/checklist/S119535165,NA
+Turdus migratorius,american robin,Aves,Birds,2022-09-27,NA,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S119538338,NA
+Bombycilla cedrorum,cedar waxwing,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Bombycilla cedrorum,cedar waxwing,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Bombycilla cedrorum,cedar waxwing,Aves,Birds,2022-10-01,NA,44.3075112,-68.3174376,NA,NA,NA,NA,https://ebird.org/checklist/S119764387,NA
+Bombycilla cedrorum,cedar waxwing,Aves,Birds,2022-10-01,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119750869,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-10-03,NA,44.3210234,-68.2540226,NA,NA,NA,NA,https://ebird.org/checklist/S119907076,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-10-02,NA,44.3242409,-68.2499805,NA,NA,NA,NA,https://ebird.org/checklist/S119874611,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119874472,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-10-02,NA,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S119874001,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-10-01,NA,44.233752,-68.3198708,NA,NA,NA,NA,https://ebird.org/checklist/S119786605,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-10-01,NA,44.3075112,-68.3174376,NA,NA,NA,NA,https://ebird.org/checklist/S119764387,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119751907,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-09-30,NA,44.3596058,-68.1849033,NA,NA,NA,NA,https://ebird.org/checklist/S119740510,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-09-29,NA,44.344341,-68.059111,NA,NA,NA,NA,https://ebird.org/checklist/S119684919,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-09-29,NA,44.3072668,-68.1901217,NA,NA,NA,NA,https://ebird.org/checklist/S119686837,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-09-29,NA,44.3146368,-68.3434689,NA,NA,NA,NA,https://ebird.org/checklist/S119830214,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-09-29,NA,44.2574063,-68.3516939,NA,NA,NA,NA,https://ebird.org/checklist/S119657756,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-09-29,NA,44.2997267,-68.3435158,NA,NA,NA,NA,https://ebird.org/checklist/S119660412,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-09-29,NA,44.3096007,-68.2040691,NA,NA,NA,NA,https://ebird.org/checklist/S119891563,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-09-28,NA,44.342719,-68.059979,NA,NA,NA,NA,https://ebird.org/checklist/S119604644,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-09-28,NA,44.3018615,-68.3549166,NA,NA,NA,NA,https://ebird.org/checklist/S119719344,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-09-27,NA,44.3065086,-68.2013869,NA,NA,NA,NA,https://ebird.org/checklist/S119535165,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-09-27,NA,44.3289251,-68.1741893,NA,NA,NA,NA,https://ebird.org/checklist/S119527445,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-09-27,NA,44.373971,-68.261505,NA,NA,NA,NA,https://ebird.org/checklist/S119739703,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-09-27,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119511652,NA
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-09-27,NA,44.3104448,-68.3454215,NA,NA,NA,NA,https://ebird.org/checklist/S119719373,NA
+Chroicocephalus philadelphia,bonaparte's gull,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Somateria mollissima,common eider,Aves,Birds,2022-10-03,NA,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S119908736,NA
+Somateria mollissima,common eider,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119874472,NA
+Somateria mollissima,common eider,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Somateria mollissima,common eider,Aves,Birds,2022-10-01,NA,44.233752,-68.3198708,NA,NA,NA,NA,https://ebird.org/checklist/S119786605,NA
+Somateria mollissima,common eider,Aves,Birds,2022-09-30,NA,44.3596058,-68.1849033,NA,NA,NA,NA,https://ebird.org/checklist/S119740510,NA
+Somateria mollissima,common eider,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119706661,NA
+Somateria mollissima,common eider,Aves,Birds,2022-09-29,NA,44.3072668,-68.1901217,NA,NA,NA,NA,https://ebird.org/checklist/S119686837,NA
+Somateria mollissima,common eider,Aves,Birds,2022-09-28,NA,44.2985701,-68.2123427,NA,NA,NA,NA,https://ebird.org/checklist/S119570518,NA
+Somateria mollissima,common eider,Aves,Birds,2022-09-28,NA,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S119738013,NA
+Somateria mollissima,common eider,Aves,Birds,2022-09-27,NA,44.3065086,-68.2013869,NA,NA,NA,NA,https://ebird.org/checklist/S119535165,NA
+Somateria mollissima,common eider,Aves,Birds,2022-09-27,NA,44.3289251,-68.1741893,NA,NA,NA,NA,https://ebird.org/checklist/S119527445,NA
+Spizella passerina,chipping sparrow,Aves,Birds,2022-10-03,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119917534,NA
+Sayornis phoebe,eastern phoebe,Aves,Birds,2022-10-02,NA,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S119874001,NA
+Sayornis phoebe,eastern phoebe,Aves,Birds,2022-10-01,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119750869,NA
+Sayornis phoebe,eastern phoebe,Aves,Birds,2022-09-29,NA,44.344341,-68.059111,NA,NA,NA,NA,https://ebird.org/checklist/S119684919,NA
+Corvus corax,common raven,Aves,Birds,2022-10-03,NA,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S119908736,NA
+Corvus corax,common raven,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Corvus corax,common raven,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Corvus corax,common raven,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119751907,NA
+Corvus corax,common raven,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119671644,NA
+Corvus corax,common raven,Aves,Birds,2022-09-28,NA,44.2985701,-68.2123427,NA,NA,NA,NA,https://ebird.org/checklist/S119570518,NA
+Haliaeetus leucocephalus,bald eagle,Aves,Birds,2022-10-02,NA,44.4267926,-68.3651733,NA,NA,NA,NA,https://ebird.org/checklist/S119842444,NA
+Haliaeetus leucocephalus,bald eagle,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Haliaeetus leucocephalus,bald eagle,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Haliaeetus leucocephalus,bald eagle,Aves,Birds,2022-09-30,NA,44.3292206,-68.1822252,NA,NA,NA,NA,https://ebird.org/checklist/S119721896,NA
+Haliaeetus leucocephalus,bald eagle,Aves,Birds,2022-09-29,NA,44.2574063,-68.3516939,NA,NA,NA,NA,https://ebird.org/checklist/S119657756,NA
+Haliaeetus leucocephalus,bald eagle,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119671644,NA
+Haliaeetus leucocephalus,bald eagle,Aves,Birds,2022-09-28,NA,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S119672232,NA
+Haliaeetus leucocephalus,bald eagle,Aves,Birds,2022-09-28,NA,44.2985701,-68.2123427,NA,NA,NA,NA,https://ebird.org/checklist/S119570518,NA
+Spinus tristis,american goldfinch,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Spinus tristis,american goldfinch,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Spinus tristis,american goldfinch,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119683379,NA
+Spinus tristis,american goldfinch,Aves,Birds,2022-09-28,NA,44.2985701,-68.2123427,NA,NA,NA,NA,https://ebird.org/checklist/S119570518,NA
+Dryocopus pileatus,pileated woodpecker,Aves,Birds,2022-10-03,NA,44.3210234,-68.2540226,NA,NA,NA,NA,https://ebird.org/checklist/S119907076,NA
+Dryocopus pileatus,pileated woodpecker,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119751907,NA
+Buteo lineatus,red-shouldered hawk,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119683379,NA
+Pluvialis squatarola,black-bellied plover,Aves,Birds,2022-09-29,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119656770,NA
+Dryobates villosus,hairy woodpecker,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119874472,NA
+Dryobates villosus,hairy woodpecker,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Dryobates villosus,hairy woodpecker,Aves,Birds,2022-09-30,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119728041,NA
+Dryobates villosus,hairy woodpecker,Aves,Birds,2022-09-29,NA,44.344341,-68.059111,NA,NA,NA,NA,https://ebird.org/checklist/S119684919,NA
+Dryobates villosus,hairy woodpecker,Aves,Birds,2022-09-27,NA,44.373971,-68.261505,NA,NA,NA,NA,https://ebird.org/checklist/S119739703,NA
+Catharus guttatus,hermit thrush,Aves,Birds,2022-10-02,NA,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S119874001,NA
+Catharus guttatus,hermit thrush,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Catharus guttatus,hermit thrush,Aves,Birds,2022-10-01,NA,44.233752,-68.3198708,NA,NA,NA,NA,https://ebird.org/checklist/S119786605,NA
+Catharus guttatus,hermit thrush,Aves,Birds,2022-10-01,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119750869,NA
+Catharus guttatus,hermit thrush,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119751907,NA
+Catharus guttatus,hermit thrush,Aves,Birds,2022-09-28,NA,44.341108,-68.061201,NA,NA,NA,NA,https://ebird.org/checklist/S119737895,NA
+Junco hyemalis,dark-eyed junco,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Junco hyemalis,dark-eyed junco,Aves,Birds,2022-10-01,NA,44.3075112,-68.3174376,NA,NA,NA,NA,https://ebird.org/checklist/S119764387,NA
+Junco hyemalis,dark-eyed junco,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119706661,NA
+Junco hyemalis,dark-eyed junco,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119683379,NA
+Junco hyemalis,dark-eyed junco,Aves,Birds,2022-09-27,NA,44.3065086,-68.2013869,NA,NA,NA,NA,https://ebird.org/checklist/S119535165,NA
+Junco hyemalis,dark-eyed junco,Aves,Birds,2022-09-27,NA,44.3289251,-68.1741893,NA,NA,NA,NA,https://ebird.org/checklist/S119527445,NA
+Catharus ustulatus,swainson's thrush,Aves,Birds,2022-10-03,NA,44.3210234,-68.2540226,NA,NA,NA,NA,https://ebird.org/checklist/S119907076,NA
+Catharus ustulatus,swainson's thrush,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119706661,NA
+Sphyrapicus varius,yellow-bellied sapsucker,Aves,Birds,2022-10-03,NA,44.3210234,-68.2540226,NA,NA,NA,NA,https://ebird.org/checklist/S119907076,NA
+Sphyrapicus varius,yellow-bellied sapsucker,Aves,Birds,2022-09-29,NA,44.3072668,-68.1901217,NA,NA,NA,NA,https://ebird.org/checklist/S119686837,NA
+Vireo olivaceus,red-eyed vireo,Aves,Birds,2022-10-03,NA,44.3210234,-68.2540226,NA,NA,NA,NA,https://ebird.org/checklist/S119907076,NA
+Vireo olivaceus,red-eyed vireo,Aves,Birds,2022-09-29,NA,44.2997267,-68.3435158,NA,NA,NA,NA,https://ebird.org/checklist/S119660412,NA
+Zonotrichia albicollis,white-throated sparrow,Aves,Birds,2022-10-03,NA,44.3210234,-68.2540226,NA,NA,NA,NA,https://ebird.org/checklist/S119907076,NA
+Zonotrichia albicollis,white-throated sparrow,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Zonotrichia albicollis,white-throated sparrow,Aves,Birds,2022-10-01,NA,44.3075112,-68.3174376,NA,NA,NA,NA,https://ebird.org/checklist/S119764387,NA
+Zonotrichia albicollis,white-throated sparrow,Aves,Birds,2022-10-01,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119750869,NA
+Zonotrichia albicollis,white-throated sparrow,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119751907,NA
+Zonotrichia albicollis,white-throated sparrow,Aves,Birds,2022-09-29,NA,44.344341,-68.059111,NA,NA,NA,NA,https://ebird.org/checklist/S119684919,NA
+Zonotrichia albicollis,white-throated sparrow,Aves,Birds,2022-09-29,NA,44.3072668,-68.1901217,NA,NA,NA,NA,https://ebird.org/checklist/S119686837,NA
+Zonotrichia albicollis,white-throated sparrow,Aves,Birds,2022-09-29,NA,44.3146368,-68.3434689,NA,NA,NA,NA,https://ebird.org/checklist/S119830214,NA
+Zonotrichia albicollis,white-throated sparrow,Aves,Birds,2022-09-29,NA,44.3096007,-68.2040691,NA,NA,NA,NA,https://ebird.org/checklist/S119891563,NA
+Zonotrichia albicollis,white-throated sparrow,Aves,Birds,2022-09-27,NA,44.3289251,-68.1741893,NA,NA,NA,NA,https://ebird.org/checklist/S119527445,NA
+Zonotrichia albicollis,white-throated sparrow,Aves,Birds,2022-09-27,NA,44.373971,-68.261505,NA,NA,NA,NA,https://ebird.org/checklist/S119739703,NA
+Zonotrichia albicollis,white-throated sparrow,Aves,Birds,2022-09-27,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119511652,NA
+Colaptes auratus,northern flicker,Aves,Birds,2022-10-02,NA,44.4267926,-68.3651733,NA,NA,NA,NA,https://ebird.org/checklist/S119842444,NA
+Colaptes auratus,northern flicker,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Colaptes auratus,northern flicker,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Colaptes auratus,northern flicker,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Colaptes auratus,northern flicker,Aves,Birds,2022-10-01,NA,44.3075112,-68.3174376,NA,NA,NA,NA,https://ebird.org/checklist/S119764387,NA
+Colaptes auratus,northern flicker,Aves,Birds,2022-09-29,NA,44.2574063,-68.3516939,NA,NA,NA,NA,https://ebird.org/checklist/S119657756,NA
+Colaptes auratus,northern flicker,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119683379,NA
+Meleagris gallopavo,wild turkey,Aves,Birds,2022-09-29,NA,44.377619,-68.2269683,NA,NA,NA,NA,https://ebird.org/checklist/S119664688,NA
+Meleagris gallopavo,wild turkey,Aves,Birds,2022-09-29,NA,44.2997267,-68.3435158,NA,NA,NA,NA,https://ebird.org/checklist/S119660412,NA
+Haemorhous purpureus,purple finch,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Haemorhous purpureus,purple finch,Aves,Birds,2022-10-01,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119750869,NA
+Haemorhous purpureus,purple finch,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119683379,NA
+Baeolophus bicolor,tufted titmouse,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119874472,NA
+Baeolophus bicolor,tufted titmouse,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Passer domesticus,house sparrow,Aves,Birds,2022-09-28,NA,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S119570080,NA
+Falco columbarius,merlin,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Falco columbarius,merlin,Aves,Birds,2022-09-30,NA,44.3489122,-68.1854868,NA,NA,NA,NA,https://ebird.org/checklist/S119740617,NA
+Falco columbarius,merlin,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119671644,NA
+Falco columbarius,merlin,Aves,Birds,2022-09-28,NA,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S119672232,NA
+Buteo platypterus,broad-winged hawk,Aves,Birds,2022-09-29,NA,44.3623836,-68.1951383,NA,NA,NA,NA,https://ebird.org/checklist/S119665975,NA
+Buteo platypterus,broad-winged hawk,Aves,Birds,2022-09-29,NA,44.2533766,-68.3407102,NA,NA,NA,NA,https://ebird.org/checklist/S119662776,NA
+Buteo platypterus,broad-winged hawk,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119671644,NA
+Corthylio calendula,ruby-crowned kinglet,Aves,Birds,2022-10-02,NA,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S119874001,NA
+Corthylio calendula,ruby-crowned kinglet,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119706661,NA
+Corthylio calendula,ruby-crowned kinglet,Aves,Birds,2022-09-27,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119511652,NA
+Sitta carolinensis,white-breasted nuthatch,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119874472,NA
+Sitta carolinensis,white-breasted nuthatch,Aves,Birds,2022-09-30,NA,44.3595601,-68.1861067,NA,NA,NA,NA,https://ebird.org/checklist/S119740530,NA
+Sitta carolinensis,white-breasted nuthatch,Aves,Birds,2022-09-29,NA,44.3096007,-68.2040691,NA,NA,NA,NA,https://ebird.org/checklist/S119891563,NA
+Lophodytes cucullatus,hooded merganser,Aves,Birds,2022-10-03,NA,44.3292206,-68.1822252,NA,NA,NA,NA,https://ebird.org/checklist/S119890470,NA
+Certhia americana,brown creeper,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119874472,NA
+Certhia americana,brown creeper,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119706661,NA
+Certhia americana,brown creeper,Aves,Birds,2022-09-27,NA,44.3065086,-68.2013869,NA,NA,NA,NA,https://ebird.org/checklist/S119535165,NA
+Certhia americana,brown creeper,Aves,Birds,2022-09-27,NA,44.3104448,-68.3454215,NA,NA,NA,NA,https://ebird.org/checklist/S119719373,NA
+Vireo solitarius,blue-headed vireo,Aves,Birds,2022-09-29,NA,44.2997267,-68.3435158,NA,NA,NA,NA,https://ebird.org/checklist/S119660412,NA
+Vireo solitarius,blue-headed vireo,Aves,Birds,2022-09-27,NA,44.373971,-68.261505,NA,NA,NA,NA,https://ebird.org/checklist/S119739703,NA
+Vireo solitarius,blue-headed vireo,Aves,Birds,2022-09-27,NA,44.3104448,-68.3454215,NA,NA,NA,NA,https://ebird.org/checklist/S119719373,NA
+Setophaga pinus,pine warbler,Aves,Birds,2022-10-02,NA,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S119874001,NA
+Mergus serrator,red-breasted merganser,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Spatula clypeata,northern shoveler,Aves,Birds,2022-10-02,NA,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S119874001,NA
+Geothlypis trichas,common yellowthroat,Aves,Birds,2022-10-02,NA,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S119874001,NA
+Aythya collaris,ring-necked duck,Aves,Birds,2022-10-02,NA,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S119874001,NA
+Melanitta americana,black scoter,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Melanitta americana,black scoter,Aves,Birds,2022-10-01,NA,44.233752,-68.3198708,NA,NA,NA,NA,https://ebird.org/checklist/S119786605,NA
+Loxia curvirostra,red crossbill,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Loxia curvirostra,red crossbill,Aves,Birds,2022-10-01,NA,44.3075112,-68.3174376,NA,NA,NA,NA,https://ebird.org/checklist/S119764387,NA
+Loxia curvirostra,red crossbill,Aves,Birds,2022-09-29,NA,44.3096007,-68.2040691,NA,NA,NA,NA,https://ebird.org/checklist/S119891563,NA
+Loxia curvirostra,red crossbill,Aves,Birds,2022-09-28,NA,44.3018615,-68.3549166,NA,NA,NA,NA,https://ebird.org/checklist/S119719344,NA
+Loxia curvirostra,red crossbill,Aves,Birds,2022-09-27,NA,44.3065086,-68.2013869,NA,NA,NA,NA,https://ebird.org/checklist/S119535165,NA
+Loxia curvirostra,red crossbill,Aves,Birds,2022-09-27,NA,44.3104448,-68.3454215,NA,NA,NA,NA,https://ebird.org/checklist/S119719373,NA
+Larus fuscus,lesser black-backed gull,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Cepphus grylle,black guillemot,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Cepphus grylle,black guillemot,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Cepphus grylle,black guillemot,Aves,Birds,2022-10-01,NA,44.233752,-68.3198708,NA,NA,NA,NA,https://ebird.org/checklist/S119786605,NA
+Cepphus grylle,black guillemot,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119751907,NA
+Cepphus grylle,black guillemot,Aves,Birds,2022-09-29,NA,44.3072668,-68.1901217,NA,NA,NA,NA,https://ebird.org/checklist/S119686837,NA
+Branta bernicla,brant,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Larus hyperboreus,glaucous gull,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Phalacrocorax carbo,great cormorant,Aves,Birds,2022-10-02,NA,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S119871512,NA
+Phalacrocorax carbo,great cormorant,Aves,Birds,2022-09-29,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119656770,NA
+Accipiter striatus,sharp-shinned hawk,Aves,Birds,2022-09-29,NA,44.3146368,-68.3434689,NA,NA,NA,NA,https://ebird.org/checklist/S119830214,NA
+Accipiter striatus,sharp-shinned hawk,Aves,Birds,2022-09-29,NA,44.3623836,-68.1951383,NA,NA,NA,NA,https://ebird.org/checklist/S119665975,NA
+Accipiter striatus,sharp-shinned hawk,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119671644,NA
+Accipiter striatus,sharp-shinned hawk,Aves,Birds,2022-09-28,NA,44.2985701,-68.2123427,NA,NA,NA,NA,https://ebird.org/checklist/S119570518,NA
+Melanitta perspicillata,surf scoter,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Melanitta perspicillata,surf scoter,Aves,Birds,2022-10-01,NA,44.233752,-68.3198708,NA,NA,NA,NA,https://ebird.org/checklist/S119786605,NA
+Troglodytes hiemalis,winter wren,Aves,Birds,2022-10-02,NA,44.3329687,-68.2666183,NA,NA,NA,NA,https://ebird.org/checklist/S119887492,NA
+Troglodytes hiemalis,winter wren,Aves,Birds,2022-10-01,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119750869,NA
+Melospiza georgiana,swamp sparrow,Aves,Birds,2022-10-01,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119750869,NA
+Chordeiles minor,common nighthawk,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Accipiter cooperii,cooper's hawk,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Accipiter cooperii,cooper's hawk,Aves,Birds,2022-09-29,NA,44.344341,-68.059111,NA,NA,NA,NA,https://ebird.org/checklist/S119684919,NA
+Accipiter cooperii,cooper's hawk,Aves,Birds,2022-09-29,NA,44.3146368,-68.3434689,NA,NA,NA,NA,https://ebird.org/checklist/S119830214,NA
+Accipiter cooperii,cooper's hawk,Aves,Birds,2022-09-29,NA,44.3623836,-68.1951383,NA,NA,NA,NA,https://ebird.org/checklist/S119665975,NA
+Accipiter cooperii,cooper's hawk,Aves,Birds,2022-09-29,NA,44.2574063,-68.3516939,NA,NA,NA,NA,https://ebird.org/checklist/S119657756,NA
+Accipiter cooperii,cooper's hawk,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119671644,NA
+Morus bassanus,northern gannet,Aves,Birds,2022-10-02,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119838673,NA
+Morus bassanus,northern gannet,Aves,Birds,2022-09-27,NA,44.3289251,-68.1741893,NA,NA,NA,NA,https://ebird.org/checklist/S119527445,NA
+Falco sparverius,american kestrel,Aves,Birds,2022-09-29,NA,44.3396485,-68.1772259,NA,NA,NA,NA,https://ebird.org/checklist/S119686892,NA
+Falco sparverius,american kestrel,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119671644,NA
+Circus hudsonius,northern harrier,Aves,Birds,2022-09-29,NA,44.3146368,-68.3434689,NA,NA,NA,NA,https://ebird.org/checklist/S119830214,NA
+Circus hudsonius,northern harrier,Aves,Birds,2022-09-29,NA,44.3396485,-68.1772259,NA,NA,NA,NA,https://ebird.org/checklist/S119686892,NA
+Circus hudsonius,northern harrier,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119683379,NA
+Pipilo erythrophthalmus,eastern towhee,Aves,Birds,2022-10-01,NA,44.338348,-68.2267982,NA,NA,NA,NA,https://ebird.org/checklist/S119772515,NA
+Falco peregrinus,peregrine falcon,Aves,Birds,2022-09-29,NA,44.2574063,-68.3516939,NA,NA,NA,NA,https://ebird.org/checklist/S119657756,NA
+Falco peregrinus,peregrine falcon,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119671644,NA
+Podiceps grisegena,red-necked grebe,Aves,Birds,2022-09-29,NA,44.3072668,-68.1901217,NA,NA,NA,NA,https://ebird.org/checklist/S119686837,NA
+Haemorhous mexicanus,house finch,Aves,Birds,2022-09-28,NA,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S119672232,NA
+Setophaga americana,northern parula,Aves,Birds,2022-09-30,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119728041,NA
+Buteo jamaicensis,red-tailed hawk,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119683379,NA
+Setophaga magnolia,magnolia warbler,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119683379,NA
+Setophaga ruticilla,american redstart,Aves,Birds,2022-09-30,NA,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S119728041,NA
+Pandion haliaetus,osprey,Aves,Birds,2022-09-30,NA,44.2316668,-68.3256161,NA,NA,NA,NA,https://ebird.org/checklist/S119706661,NA
+Pandion haliaetus,osprey,Aves,Birds,2022-09-29,NA,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S119671644,NA
+Pandion haliaetus,osprey,Aves,Birds,2022-09-28,NA,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S119570080,NA
+Spiza americana,dickcissel,Aves,Birds,2022-09-30,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119713499,NA
+Ammospiza nelsoni,nelson's sparrow,Aves,Birds,2022-09-30,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119713499,NA
+Setophaga petechia,yellow warbler,Aves,Birds,2022-09-30,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119713499,NA
+Ardea alba,great egret,Aves,Birds,2022-09-29,NA,44.2533766,-68.3407102,NA,NA,NA,NA,https://ebird.org/checklist/S119662776,NA
+Picoides arcticus,black-backed woodpecker,Aves,Birds,2022-09-28,NA,44.2985701,-68.2123427,NA,NA,NA,NA,https://ebird.org/checklist/S119570518,NA
+Cistothorus palustris,marsh wren,Aves,Birds,2022-09-28,NA,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S119572180,NA
+Danaus plexippus,monarch,Insecta,Insects,2022-10-03,"Acadia National Park, Bar Harbor, ME, US",44.325625,-68.1867833333,4,karenruebhall,1605510,false,https://www.inaturalist.org/observations/137471512,https://inaturalist-open-data.s3.amazonaws.com/photos/234794292/medium.jpg
+Diplolepis spinosa,,Insecta,Insects,2022-09-29,"Nicatous Lake, Acadia National Park, Hancock, Maine, United States",44.2418077778,-68.3000422222,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137057561,https://inaturalist-open-data.s3.amazonaws.com/photos/234007746/medium.jpeg
+Eristalis tenax,common drone fly,Insecta,Insects,2022-09-29,"Bar Harbor, ME, USA",44.3521413889,-68.2258527778,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137056061,https://inaturalist-open-data.s3.amazonaws.com/photos/234004663/medium.jpeg
+Bombus impatiens,common eastern bumble bee,Insecta,Insects,2022-09-29,"Bar Harbor, ME, USA",44.3521477778,-68.2239763889,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137047641,https://inaturalist-open-data.s3.amazonaws.com/photos/233989900/medium.jpeg
+Bombus ternarius,tricolored bumble bee,Insecta,Insects,2022-09-27,"Southwest Harbor, ME, USA",44.3037397222,-68.3425994444,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137035138,https://inaturalist-open-data.s3.amazonaws.com/photos/233967002/medium.jpeg
+Antheraea polyphemus,polyphemus moth,Insecta,Insects,2022-09-27,"Southwest Harbor, ME, USA",44.3146611111,-68.3431972222,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137034716,https://inaturalist-open-data.s3.amazonaws.com/photos/233966524/medium.jpg
+Sericomyia chrysotoxoides,oblique-banded pond fly,Insecta,Insects,2022-09-29,"Winter Harbor, ME, USA",44.3756894223,-68.0749697456,61,carol-in-maine,14060,false,https://www.inaturalist.org/observations/136996316,https://inaturalist-open-data.s3.amazonaws.com/photos/233898026/medium.jpg
+Helophilus fasciatus,narrow-headed marsh fly,Insecta,Insects,2022-09-29,"Winter Harbor, ME, USA",44.3758848448,-68.0749145372,61,carol-in-maine,14060,false,https://www.inaturalist.org/observations/136995250,https://inaturalist-open-data.s3.amazonaws.com/photos/233895198/medium.jpg
+Atteva aurea,ailanthus webworm moth,Insecta,Insects,2022-09-29,"Acadia National Park, Birch Harbor, ME, US",44.3381783333,-68.0592111667,30,elizhalasz,1552603,false,https://www.inaturalist.org/observations/136973835,https://inaturalist-open-data.s3.amazonaws.com/photos/233854141/medium.jpg
+Erethizon dorsatum,north american porcupine,Mammalia,Mammals,2022-10-01,"Acadia National Park, Mount Desert, ME, US",44.3210966667,-68.2542033333,4,sanshel,6164323,false,https://www.inaturalist.org/observations/137290065,https://inaturalist-open-data.s3.amazonaws.com/photos/234448180/medium.jpg
+Tamiasciurus hudsonicus,american red squirrel,Mammalia,Mammals,2022-09-29,"Mt Desert, ME, USA",44.3324577778,-68.4070163889,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137063197,https://inaturalist-open-data.s3.amazonaws.com/photos/234019184/medium.jpeg
+Phocoena phocoena,harbour porpoise,Mammalia,Mammals,2022-09-30,"Schoodic Point, Winter Harbor, ME 04693, USA",44.3323493,-68.0610361,1551,tgonye23,5507960,false,https://www.inaturalist.org/observations/137058246,https://inaturalist-open-data.s3.amazonaws.com/photos/234009527/medium.jpg
+Castor canadensis,american beaver,Mammalia,Mammals,2022-09-29,"Southwest Harbor, ME, USA",44.2424058333,-68.2995258333,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137057565,https://inaturalist-open-data.s3.amazonaws.com/photos/234008179/medium.jpeg
+Echinarachnius parma,common sand dollar,Animalia,Other animals,2022-10-01,"Skillings River, Birch Harbor, ME, US",44.374584702600004,-68.0702978975,128,brendan295,6211134,false,https://www.inaturalist.org/observations/137186672,https://static.inaturalist.org/photos/234249261/medium.jpg
+Carcinus maenas,european green crab,Animalia,Other animals,2022-10-01,"Schoodic Loop Rd, Birch Harbor, ME, US",44.3746071356,-68.0693904777,3,brendan295,6211134,false,https://www.inaturalist.org/observations/137185936,https://static.inaturalist.org/photos/234247819/medium.jpg
+Solanum dulcamara,bittersweet nightshade,Plantae,Plants,2022-10-02,"Bar Harbor, ME, USA",44.3290695668,-68.1802718744,2,agave6_tomwalker,167833,false,https://www.inaturalist.org/observations/137465369,https://inaturalist-open-data.s3.amazonaws.com/photos/234783145/medium.jpeg
+Medeola virginiana,cucumber root,Plantae,Plants,2022-10-03,"Hancock County, US-ME, US",44.30557828,-68.2766123563,6,polypodius,3280215,false,https://www.inaturalist.org/observations/137448781,https://static.inaturalist.org/photos/234750511/medium.jpeg
+Eurybia macrophylla,large-leaved aster,Plantae,Plants,2022-10-02,"Bar Harbor, ME, USA",44.3200285841,-68.1892739193,2,agave6_tomwalker,167833,false,https://www.inaturalist.org/observations/137413008,https://inaturalist-open-data.s3.amazonaws.com/photos/234685948/medium.jpeg
+Rosa rugosa,rugosa rose,Plantae,Plants,2022-10-01,"Acadia National Park, Bar Harbor, ME, US",44.3599690218,-68.1880980079,11,sanshel,6164323,false,https://www.inaturalist.org/observations/137187379,https://inaturalist-open-data.s3.amazonaws.com/photos/234250827/medium.jpg
+Pteridium aquilinum,common bracken,Plantae,Plants,2022-09-28,"Mt Desert, ME 04675, USA",44.3210479722,-68.250775,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/137137066,https://inaturalist-open-data.s3.amazonaws.com/photos/234159524/medium.jpeg
+Spiraea tomentosa,steeplebush,Plantae,Plants,2022-09-28,"Bar Harbor, ME 04609, USA",44.3535003,-68.2460276997,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/137137047,https://inaturalist-open-data.s3.amazonaws.com/photos/234159483/medium.jpeg
+Abies balsamea,balsam fir,Plantae,Plants,2022-09-28,"Bar Harbor, ME 04609, USA",44.3535218,-68.2459079,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/137137007,https://inaturalist-open-data.s3.amazonaws.com/photos/234159415/medium.jpeg
+Solidago puberula,downy goldenrod,Plantae,Plants,2022-09-28,"Bar Harbor, ME 04609, USA",44.3539677997,-68.2449806997,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/137136940,https://inaturalist-open-data.s3.amazonaws.com/photos/234159327/medium.jpeg
+Solidago flexicaulis,broad-leaved goldenrod,Plantae,Plants,2022-09-28,"Mt Desert, ME 04660, USA",44.3349146997,-68.2345389,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/137136892,https://inaturalist-open-data.s3.amazonaws.com/photos/234159277/medium.jpeg
+Epipactis helleborine,broad-leafed helleborine,Plantae,Plants,2022-09-28,"Mt Desert, ME 04660, USA",44.307808,-68.2027729722,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/137136860,https://inaturalist-open-data.s3.amazonaws.com/photos/234159261/medium.jpeg
+Oclemena acuminata,whorled wood aster,Plantae,Plants,2022-09-28,"Mt Desert, ME 04660, USA",44.306825,-68.2011849722,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/137136850,https://inaturalist-open-data.s3.amazonaws.com/photos/234159250/medium.jpeg
+Empetrum nigrum,black crowberry,Plantae,Plants,2022-09-29,"Bar Harbor, ME 04609, USA",44.3111639722,-68.1895839722,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/137136816,https://inaturalist-open-data.s3.amazonaws.com/photos/234159176/medium.jpeg
+Euphrasia nemorosa,common eyebright,Plantae,Plants,2022-09-29,"Bar Harbor, ME 04609, USA",44.3290599722,-68.1851889722,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/137090579,https://inaturalist-open-data.s3.amazonaws.com/photos/234069987/medium.jpeg
+Epifagus virginiana,beechdrops,Plantae,Plants,2022-09-30,"Bar Harbor, ME 04609, USA",44.3593072997,-68.2072040997,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/137089953,https://inaturalist-open-data.s3.amazonaws.com/photos/234068729/medium.jpeg
+Oclemena nemoralis,bog aster,Plantae,Plants,2022-09-30,"Bar Harbor, ME 04609, USA",44.3569253,-68.2073572,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/137084290,https://inaturalist-open-data.s3.amazonaws.com/photos/234058365/medium.jpeg
+Aronia melanocarpa,black chokeberry,Plantae,Plants,2022-09-30,"Bar Harbor, ME 04609, USA",44.3554835997,-68.2066822997,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/137084277,https://inaturalist-open-data.s3.amazonaws.com/photos/234058334/medium.jpeg
+Chamaedaphne calyculata,leatherleaf,Plantae,Plants,2022-09-30,"Bar Harbor, ME 04609, USA",44.3568209722,-68.2072849722,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/137084268,https://inaturalist-open-data.s3.amazonaws.com/photos/234058309/medium.jpeg
+Viburnum acerifolium,mapleleaf viburnum,Plantae,Plants,2022-09-30,"Bar Harbor, ME 04609, USA",44.3577209722,-68.20744,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/137084259,https://inaturalist-open-data.s3.amazonaws.com/photos/234058274/medium.jpeg
+Solidago simplex,sticky goldenrod,Plantae,Plants,2022-09-29,"Bar Harbor, ME 04609, USA",44.351517,-68.2239469722,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/137084240,https://inaturalist-open-data.s3.amazonaws.com/photos/234058247/medium.jpeg
+Betula populifolia,gray birch,Plantae,Plants,2022-09-30,"Bar Harbor, ME 04609, USA",44.357367000000004,-68.207487,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/137077244,https://inaturalist-open-data.s3.amazonaws.com/photos/234044873/medium.jpeg
+Abies balsamea,balsam fir,Plantae,Plants,2022-09-29,"Nicatous Lake, Acadia National Park, Hancock, Maine, United States",44.2323333333,-68.318025,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137064427,https://inaturalist-open-data.s3.amazonaws.com/photos/234021023/medium.jpg
+Comptonia peregrina,sweetfern,Plantae,Plants,2022-09-29,"Southwest Harbor, ME, USA",44.2327,-68.3188166667,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137064421,https://inaturalist-open-data.s3.amazonaws.com/photos/234020966/medium.jpg
+Dryopteris intermedia,intermediate wood fern,Plantae,Plants,2022-09-29,"Nicatous Lake, Acadia National Park, Hancock, Maine, United States",44.2329777778,-68.3193305556,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137064420,https://inaturalist-open-data.s3.amazonaws.com/photos/234020925/medium.jpg
+Abies balsamea,balsam fir,Plantae,Plants,2022-09-29,"Nicatous Lake, Acadia National Park, Hancock, Maine, United States",44.2336666667,-68.3199388889,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137064412,https://inaturalist-open-data.s3.amazonaws.com/photos/234020629/medium.jpg
+Kalmia angustifolia,sheep laurel,Plantae,Plants,2022-09-29,"Bar Harbor, ME, USA",44.3519222222,-68.2239805556,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137063784,https://inaturalist-open-data.s3.amazonaws.com/photos/234019729/medium.jpg
+Cornus canadensis,canadian bunchberry,Plantae,Plants,2022-09-29,"Southwest Harbor, ME, USA",44.2321625,-68.3176775,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137060496,https://inaturalist-open-data.s3.amazonaws.com/photos/234010480/medium.jpeg
+Rosa rugosa,rugosa rose,Plantae,Plants,2022-09-29,"Nicatous Lake, Acadia National Park, Hancock, Maine, United States",44.2421791667,-68.2997241667,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137058133,https://inaturalist-open-data.s3.amazonaws.com/photos/234009202/medium.jpeg
+Betula alleghaniensis,yellow birch,Plantae,Plants,2022-09-29,"Bar Harbor, ME, USA",44.3643394444,-68.2323072222,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137056069,https://inaturalist-open-data.s3.amazonaws.com/photos/234005076/medium.jpeg
+Maianthemum canadense,canada mayflower,Plantae,Plants,2022-09-29,"Bar Harbor, ME, USA",44.3643819444,-68.2326419444,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137056066,https://inaturalist-open-data.s3.amazonaws.com/photos/234004976/medium.jpeg
+Juniperus communis,common juniper,Plantae,Plants,2022-09-29,"Bar Harbor, ME, USA",44.3518788889,-68.2238938889,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137047859,https://inaturalist-open-data.s3.amazonaws.com/photos/233990261/medium.jpeg
+Sibbaldiopsis tridentata,three-toothed cinquefoil,Plantae,Plants,2022-09-29,"Bar Harbor, ME, USA",44.3522111111,-68.2239244444,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137047638,https://inaturalist-open-data.s3.amazonaws.com/photos/233989827/medium.jpeg
+Abies balsamea,balsam fir,Plantae,Plants,2022-09-29,"Cochrane Point, Acadia National Park, Hancock, Maine, United States",44.3530797222,-68.2256716667,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137047633,https://inaturalist-open-data.s3.amazonaws.com/photos/233989668/medium.jpeg
+Maianthemum canadense,canada mayflower,Plantae,Plants,2022-09-27,"Nicatous Lake, Acadia National Park, Hancock, Maine, United States",44.3104,-68.3428694444,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137035147,https://inaturalist-open-data.s3.amazonaws.com/photos/233967182/medium.jpg
+Hylocomium splendens,stairstep moss,Plantae,Plants,2022-09-27,"Nicatous Lake, Acadia National Park, Hancock, Maine, United States",44.3104388889,-68.3428638889,NA,schizoform,1815672,false,https://www.inaturalist.org/observations/137035131,https://inaturalist-open-data.s3.amazonaws.com/photos/233966852/medium.jpg
+Sarracenia purpurea,purple pitcher plant,Plantae,Plants,2022-09-30,"Hancock County, US-ME, US",44.3541968749,-68.2778386567,NA,bevware,482319,false,https://www.inaturalist.org/observations/137022650,https://static.inaturalist.org/photos/233947294/medium.jpeg
+Osmunda claytoniana,interrupted fern,Plantae,Plants,2022-09-28,"Mt Desert, ME 04660, USA",44.338633,-68.261137,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/136855931,https://inaturalist-open-data.s3.amazonaws.com/photos/233634925/medium.jpeg
+Morella caroliniensis,southern bayberry,Plantae,Plants,2022-09-28,"Mt Desert, ME 04660, USA",44.3064689722,-68.2012689722,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/136853096,https://inaturalist-open-data.s3.amazonaws.com/photos/233629880/medium.jpeg
+Spiraea alba,white meadowsweet,Plantae,Plants,2022-09-27,"Bar Harbor, ME 04609, USA",44.3686718,-68.211545,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/136754015,https://inaturalist-open-data.s3.amazonaws.com/photos/233445486/medium.jpeg
+Osmunda spectabilis,american royal fern,Plantae,Plants,2022-09-27,"Bar Harbor, ME 04609, USA",44.3675909722,-68.2117269722,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/136750826,https://inaturalist-open-data.s3.amazonaws.com/photos/233440551/medium.jpeg
+Acer pensylvanicum,striped maple,Plantae,Plants,2022-09-27,"Acadia National Park, Mount Desert, ME, US",44.31153,-68.2077866667,4,jnaffy,3083380,false,https://www.inaturalist.org/observations/136736152,https://inaturalist-open-data.s3.amazonaws.com/photos/233411743/medium.jpg
+Hamamelis virginiana,american witch-hazel,Plantae,Plants,2022-09-27,"Bar Harbor, ME 04609, USA",44.391513,-68.236283,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/136722730,https://inaturalist-open-data.s3.amazonaws.com/photos/233387632/medium.jpeg
+Pinus rigida,pitch pine,Plantae,Plants,2022-09-27,"Bar Harbor, ME 04609, USA",44.3913876,-68.2511355997,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/136720072,https://inaturalist-open-data.s3.amazonaws.com/photos/233386884/medium.jpeg
+Aronia melanocarpa,black chokeberry,Plantae,Plants,2022-09-27,Mount Desert,44.3380317688,-68.2856292725,4,wjnewton,3270721,false,https://www.inaturalist.org/observations/136711196,https://static.inaturalist.org/photos/233367019/medium.jpeg
+Eupatorium perfoliatum,common boneset,Plantae,Plants,2022-09-27,"Bar Harbor, ME 04609, USA",44.394708,-68.2494889722,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/136702039,https://inaturalist-open-data.s3.amazonaws.com/photos/233350833/medium.jpeg
+Betula papyrifera,paper birch,Plantae,Plants,2022-09-27,"Southwest Harbor, ME 04679, USA",44.2466519722,-68.3132569722,NA,craigmartin,42300,false,https://www.inaturalist.org/observations/136680687,https://inaturalist-open-data.s3.amazonaws.com/photos/233317789/medium.jpeg
+Thamnophis sirtalis,common garter snake,Reptilia,Reptiles,2022-09-29,"Acadia National Park, Isle au Haut, ME, US",44.0279278333,-68.6504366667,4,jennifer792,1350093,false,https://www.inaturalist.org/observations/136967989,https://static.inaturalist.org/photos/233842971/medium.jpg
+Thamnophis sirtalis pallidulus,maritime garter snake,Reptilia,Reptiles,2022-09-28,"Acadia National Park, Birch Harbor, ME, US",44.3443213497,-68.0600264669,8,riski,1423154,false,https://www.inaturalist.org/observations/136850648,https://inaturalist-open-data.s3.amazonaws.com/photos/233646158/medium.jpg
+Thamnophis sirtalis,common garter snake,Reptilia,Reptiles,2022-09-28,"Acadia National Park, Birch Harbor, ME, US",44.3443518598,-68.0600599107,6,riski,1423154,false,https://www.inaturalist.org/observations/136850574,https://inaturalist-open-data.s3.amazonaws.com/photos/233624836/medium.jpg
