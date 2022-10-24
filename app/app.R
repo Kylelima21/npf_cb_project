@@ -32,20 +32,20 @@ source("00_app_functions.R")
 
 ## Read in the data
 # iNaturalist with some mods
-inat_data <- read.csv("the_data.csv") %>% 
-  mutate(groups = ifelse(iconic.taxon.name == "Insecta", "Insects",
-                         ifelse(iconic.taxon.name == "Plantae", "Plants",
-                                ifelse(iconic.taxon.name == "Protozoa", "Protozoans",
-                                       ifelse(iconic.taxon.name == "Aves", "Birds",
-                                              ifelse(iconic.taxon.name == "Amphibia", "Amphibians",
-                                                     ifelse(iconic.taxon.name == "Reptilia", "Reptiles",
-                                                            ifelse(iconic.taxon.name == "Animalia", "Other animals",
-                                                                   ifelse(iconic.taxon.name == "Fungi", "Fungi including lichens", 
-                                                                          ifelse(iconic.taxon.name == "Chromista", "Kelp and seaweeds",
-                                                                                 ifelse(iconic.taxon.name == "Arachnida", "Spiders", 
-                                                                                        ifelse(iconic.taxon.name == "Mammalia", "Mammals",
-                                                                                               ifelse(iconic.taxon.name == "Mollusca", "Mollusks", "Other"))))))))))))) %>% 
-  arrange(groups)
+inat_data <- read.csv("the_data.csv") #%>% 
+  # mutate(groups = ifelse(iconic.taxon.name == "Insecta", "Insects",
+  #                        ifelse(iconic.taxon.name == "Plantae", "Plants",
+  #                               ifelse(iconic.taxon.name == "Protozoa", "Protozoans",
+  #                                      ifelse(iconic.taxon.name == "Aves", "Birds",
+  #                                             ifelse(iconic.taxon.name == "Amphibia", "Amphibians",
+  #                                                    ifelse(iconic.taxon.name == "Reptilia", "Reptiles",
+  #                                                           ifelse(iconic.taxon.name == "Animalia", "Other animals",
+  #                                                                  ifelse(iconic.taxon.name == "Fungi", "Fungi including lichens", 
+  #                                                                         ifelse(iconic.taxon.name == "Chromista", "Kelp and seaweeds",
+  #                                                                                ifelse(iconic.taxon.name == "Arachnida", "Spiders", 
+  #                                                                                       ifelse(iconic.taxon.name == "Mammalia", "Mammals",
+  #                                                                                              ifelse(iconic.taxon.name == "Mollusca", "Mollusks", "Other"))))))))))))) %>% 
+  # arrange(groups)
     
 # Photo labels and info
 photo_labs <- read.csv("www/summary_10random.csv")
@@ -184,48 +184,61 @@ ui <- bootstrapPage(
              
              
              tabPanel("Recent photos",
-                        div(
+                        div(class = "photo",
+                            tags$head(includeCSS("styles.css")),
                           
+                        wellPanel(id = "photopage",
                           HTML('<img src="inat_obs_1.jpg">'),
-                          #h3(textOutput("phlab_1"), align = "center"),
-                          #tags$br(),tags$br(),
-  
                           HTML('<img src="inat_obs_2.jpg">'),
-                          h3(textOutput("phlab_2"), align = "center"),
-                          tags$br(),tags$br(),
+                          HTML('<img src="inat_obs_3.jpg">'),
+                          HTML('<img src="inat_obs_4.jpg">'),
+                          HTML('<img src="inat_obs_5.jpg">'),
+                          HTML('<img src="inat_obs_6.jpg">'),
+                          HTML('<img src="inat_obs_7.jpg">'),
+                          HTML('<img src="inat_obs_8.jpg">'),
+                          HTML('<img src="inat_obs_9.jpg">'),
+                          HTML('<img src="inat_obs_10.jpg">')
                           
-                          HTML('<center><img src="inat_obs_3.jpg"></center>'),
-                          h3(textOutput("phlab_3"), align = "center"),
-                          tags$br(),tags$br(),
-                          
-                          HTML('<center><img src="inat_obs_4.jpg"></center>'),
-                          h3(textOutput("phlab_4"), align = "center"),
-                          tags$br(),tags$br(),
-                          
-                          HTML('<center><img src="inat_obs_5.jpg"></center>'),
-                          h3(textOutput("phlab_5"), align = "center"),
-                          tags$br(),tags$br(),
-                          
-                          HTML('<center><img src="inat_obs_6.jpg"></center>'),
-                          h3(textOutput("phlab_6"), align = "center"),
-                          tags$br(),tags$br(),
-                          
-                          HTML('<center><img src="inat_obs_7.jpg"></center>'),
-                          h3(textOutput("phlab_7"), align = "center"),
-                          tags$br(),tags$br(),
-                          
-                          HTML('<center><img src="inat_obs_8.jpg"></center>'),
-                          h3(textOutput("phlab_8"), align = "center"),
-                          tags$br(),tags$br(),
-                          
-                          HTML('<center><img src="inat_obs_9.jpg"></center>'),
-                          h3(textOutput("phlab_9"), align = "center"),
-                          tags$br(),tags$br(),
-                          
-                          HTML('<center><img src="inat_obs_10.jpg"></center>'),
-                          h3(textOutput("phlab_10"), align = "center"),
-                          tags$br(),tags$br(),tags$br()
-                          
+                          # HTML('<img src="inat_obs_1.jpg">'),
+                          # #h3(textOutput("phlab_1"), align = "center"),
+                          # #tags$br(),tags$br(),
+                          # 
+                          # HTML('<img src="inat_obs_2.jpg">'),
+                          # # h3(textOutput("phlab_2"), align = "center"),
+                          # # tags$br(),tags$br(),
+                          # 
+                          # HTML('<center><img src="inat_obs_3.jpg"></center>'),
+                          # # h3(textOutput("phlab_3"), align = "center"),
+                          # # tags$br(),tags$br(),
+                          # 
+                          # HTML('<center><img src="inat_obs_4.jpg"></center>'),
+                          # # h3(textOutput("phlab_4"), align = "center"),
+                          # # tags$br(),tags$br(),
+                          # 
+                          # HTML('<center><img src="inat_obs_5.jpg"></center>'),
+                          # # h3(textOutput("phlab_5"), align = "center"),
+                          # # tags$br(),tags$br(),
+                          # 
+                          # HTML('<center><img src="inat_obs_6.jpg"></center>'),
+                          # # h3(textOutput("phlab_6"), align = "center"),
+                          # # tags$br(),tags$br(),
+                          # 
+                          # HTML('<center><img src="inat_obs_7.jpg"></center>'),
+                          # # h3(textOutput("phlab_7"), align = "center"),
+                          # # tags$br(),tags$br(),
+                          # 
+                          # HTML('<center><img src="inat_obs_8.jpg"></center>'),
+                          # # h3(textOutput("phlab_8"), align = "center"),
+                          # # tags$br(),tags$br(),
+                          # 
+                          # HTML('<center><img src="inat_obs_9.jpg"></center>'),
+                          # # h3(textOutput("phlab_9"), align = "center"),
+                          # # tags$br(),tags$br(),
+                          # 
+                          # HTML('<center><img src="inat_obs_10.jpg"></center>'),
+                          # h3(textOutput("phlab_10"), align = "center"),
+                          # tags$br(),tags$br(),tags$br()
+                        )    
                      )
    
               ),

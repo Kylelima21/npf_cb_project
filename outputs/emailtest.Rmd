@@ -1,0 +1,14 @@
+---
+title: Test graph
+output: blastula::blastula_email
+---
+
+Greetings all! I wanted to show you this graph.
+If I had more to say, I could use formatting like _italics_ and **bold**. HTML css works, too, such as <span style='color:red;'>changing font color</span>.
+
+```{r echo = FALSE}
+library(ggplot2)
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point() + 
+  ggtitle("MPG by Weight")
+```

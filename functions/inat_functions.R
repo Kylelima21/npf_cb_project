@@ -513,7 +513,7 @@ watchlist_species <- function(x, output.path) {
 #'
 #' This function takes a data frame of observations, path to the species list,
 #' and the path for the outputs. It creates a CSV file of all the species in 
-#' the data frame that have not been recored in the park before. The results are
+#' the data frame that have not been recorded in the park before. The results are
 #' written out to the provided directory.
 #'
 #' @inheritParams None
@@ -727,14 +727,14 @@ download_photos <- function(x, output.path) {
 
 filter_nps <- function(df, park, lat, long) {
   
-  if (!file.exists("data/nps_boundary")) {
-    download('https://irma.nps.gov/DataStore/DownloadFile/673366', destfile = "data/nps_boundary.zip")
-  }
-  
-  
-  if (!file.exists("data/nps_boundary")) {
-    unzip("data/nps_boundary.zip", exdir = "data/nps_boundary")
-  }
+  # if (!file.exists("data/nps_boundary")) {
+  #   download('https://irma.nps.gov/DataStore/DownloadFile/673366', destfile = "data/nps_boundary.zip")
+  # }
+  # 
+  # 
+  # if (!file.exists("data/nps_boundary")) {
+  #   unzip("data/nps_boundary.zip", exdir = "data/nps_boundary")
+  # }
   
   
   nps.bounds <- readOGR("data/nps_boundary/nps_boundary.shp", verbose = FALSE)

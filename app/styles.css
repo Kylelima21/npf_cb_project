@@ -12,6 +12,14 @@ div.outer {
   padding: 0;
 }
 
+div.photo {
+  top: 51px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+}
+
 /* Customize fonts */
 body, label, input, button, select { 
   font-family: 'Helvetica Neue', Helvetica;
@@ -42,7 +50,7 @@ h1, h2, h3, h4 { font-weight: 700; }
 #photopage {
   /* Appearance */
   background-color: #354050;
-  padding: 0px 0px 0px 0px;
+  padding: 10px 10px 10px 10px;
   cursor: move;
 }
 

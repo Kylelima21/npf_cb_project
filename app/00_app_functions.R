@@ -32,21 +32,19 @@ require(rgdal)
 #' Function returns summaries and a data frame of recent iNaturalist observations 
 #'
 #' This function takes a recent time span and returns all iNaturalist records from
-#' inside Acadia National Park boundaries during that time span. Additionally, this 
+#' inside a desired location during that time span. Additionally, this 
 #' function produces four data frames with summary statistics from the iNaturalist data.
 #'
 #' @inheritParams None
 #' @return A data frame of recent iNaturalist observations.
 #' @param timespan: The recent time span of interest. Options 
-#' are "week", "threeday", or "yesterday" as inputs for the "timespan" parameter.
+#' are "week", "threedays", or "yesterday" as inputs for the "timespan" parameter.
 #' @param output.path: The path you want the summary statistic tables to be written to.
 #' @param place: An iNaturalist slug (the place name) as a single string with words separated by hyphens. 
 #' For example, the place Acadia National Park would be "acadia-national-park" as found in the place page
 #' url: https://www.inaturalist.org/observations?place_id=142267
 #' @seealso None
 #' @export
-#' @examples  
-#' example_data <- inat_recent("acadia-national-park", "week", "outputs/inat_summary")
 
 inat_recent <- function(place_id, timespan, output.path) {
   
@@ -74,9 +72,9 @@ inat_recent <- function(place_id, timespan, output.path) {
   date.filter <- format(Sys.Date()-1:7, "%Y-%m-%d") %>% 
     as_tibble() %>% 
     rename(date = value) %>% 
-    mutate(year = as.numeric(str_replace(date, "(\\d*)\\-\\d*\\-\\d*", "\\1")),
-           month = as.numeric(str_replace(date, "\\d*\\-(\\d*)\\-\\d*", "\\1")),
-           day = as.numeric(str_replace(date, "\\d*\\-\\d*\\-(\\d*)", "\\1")))
+    mutate(year = as.numeric(year(date)),
+           month = as.numeric(month(date)),
+           day = as.numeric(day(date)))
   
   
   # List the month and year for get_inat_obs sub-function
@@ -103,7 +101,7 @@ inat_recent <- function(place_id, timespan, output.path) {
   
   
   if(exists("get_inat_data")) {
-    message("Asking nicely for data from iNaturalist...")
+    message("Crawling data over from iNaturalist...")
   }
   
   
@@ -180,7 +178,7 @@ inat_recent <- function(place_id, timespan, output.path) {
   
   
   if(length(inat_obs) >= 1) {
-    message("Calculations complete!")
+    message("Data retrieval successful!")
   }
   
   
@@ -191,29 +189,30 @@ inat_recent <- function(place_id, timespan, output.path) {
 
 
 
-#' Function returns a data frame of recent eBird observations 
+#' Function returns a data frame of recent eBird observations.
 #'
 #' This function takes a recent time span and returns all eBird records from
-#' inside a desired location during that time span.
+#' inside a designated area during that time span.
 #'
 #' @inheritParams None
 #' @return A data frame of recent eBird observations.
 #' @param ebird_loc: An eBird place name as a single string with components separated by hyphens. 
 #' For example, the Hancock County, Maine, USA is "US-ME-009". A full list of codes can be found 
 #' here: https://support.ebird.org/en/support/solutions/articles/48000838205-download-ebird-data
-#' @seealso None
 #' @export
-#' @examples  
-#' example_data <- ebird_recent("US-ME-009")
 
 ebird_recent <- function(ebird_loc, parkname) {
   
+  # Starting message
   message("Flying in the data from eBird...")
   
-  codelist <- ebirdregion(loc = ebird_loc, back = 7, key = "kjh86bnmkpfh") %>% 
-    select(speciesCode) %>% 
-    unlist()
   
+  # Get code list
+  codelist <- ebirdregion(loc = ebird_loc, back = 7, key = "kjh86bnmkpfh") %>% 
+    pull(speciesCode)
+  
+  
+  # Create a run function to pull the data for each species in the code list
   run <- function(ebird_loc, code) {
     
     data <- ebirdregion(loc = ebird_loc, species = code, back = 7, key = "kjh86bnmkpfh") %>% 
@@ -223,13 +222,45 @@ ebird_recent <- function(ebird_loc, parkname) {
     return(data)
   }
   
+  
+  # Map over this function and clean
   mid <- map2_dfr(ebird_loc, codelist, run) %>% 
     mutate(iconic.taxon.name = "Aves",
            obsDt = as.Date(obsDt)) %>% 
     select(scientific.name = sciName, common.name = comName, iconic.taxon.name,
            observed.on = obsDt, latitude = lat, longitude = lng, url)
   
+  # Select records inside the designated area
   output <- filter_nps(mid, parkname, lat = "latitude", long = "longitude")
+  
+  
+  if(length(output) >= 1) {
+    message("Data retrieval successful!")
+  } else {
+    stop("There are no recent eBird records inside this park.")
+  }
+  
+  
+  return(output)
+  
+}
+
+
+
+
+#' Function returns a combined data frame of recent citsci observations.
+#'
+#' @inheritParams None
+#' @return A combined data frame of recent citsci observations.
+#' @param x: One data frame of citsci data from either the inat_recent or the
+#' ebird_recent functions.
+#' @param y: Another data frame of citsci data from either the inat_recent or the
+#' ebird_recent functions.
+#' @export
+
+combine_citsci_data <- function(x, y) {
+  
+  output <- bind_rows(x, y)
   
   return(output)
   
@@ -263,17 +294,17 @@ ebird_recent <- function(ebird_loc, parkname) {
 
 filter_nps <- function(df, park, lat, long) {
   
-  if (file.exists("app/www/nps_boundary.zip") == FALSE) {
-    download('https://irma.nps.gov/DataStore/DownloadFile/673366', destfile = "app/www/nps_boundary.zip")
-  }
+  # if (!file.exists("app/www/nps_boundary.zip")) {
+  #   download('https://irma.nps.gov/DataStore/DownloadFile/673366', destfile = "app/www/nps_boundary.zip")
+  # }
+  # 
+  # 
+  # if (!dir.exists("app/www/nps_boundary")) {
+  #   unz("app/www/nps_boundary.zip")
+  # }
   
   
-  if (file.exists("app/www/nps_boundary/nps_boundary.shp") == FALSE) {
-    unzip("app/www/nps_boundary.zip")
-  }
-  
-  
-  nps.bounds <- readOGR(unzip("app/www/nps_boundary.zip", "nps_boundary.shp"), verbose = FALSE)
+  nps.bounds <- readOGR("app/www/nps_boundary/nps_boundary.shp", verbose = FALSE)
   
   
   select.bounds <- nps.bounds[nps.bounds@data$UNIT_NAME==paste(park), ]
@@ -286,27 +317,23 @@ filter_nps <- function(df, park, lat, long) {
   
   df <- df %>% rename(latitude=paste(lat), longitude=paste(long))
   
+  
   df$"long" <- df$longitude
   df$"lat" <- df$latitude
   
+  
   coordinates(df) <- c("long", "lat")
+  
   
   slot(df, "proj4string") <- slot(select.bounds, "proj4string")
   
+  
   output <- over(select.bounds, df, returnList = TRUE)
+  
   
   output.df <- data.frame(output) %>% 
     rename_with(~str_replace(., "X15.", ""), everything())
   
-  
-  if(length(output.df) < 1) {
-    stop("Function returned a dataframe with 0 records. Records may not be within the specifed park boundaries")
-  }
-  
-  
-  if(length(output.df) > 1) {
-    message("Calculations complete!")
-  }
   
   return(output.df)
   
@@ -315,24 +342,24 @@ filter_nps <- function(df, park, lat, long) {
 
 
 
-#' Function summarizes iNaturalist observations for threatened/endangered species
+#' Function summarizes iNaturalist observations for watchlist species
 #'
 #' This function takes a data frame of iNaturalist records (created specifically for the
 #' output of the "inat_recent()" function) and the path for the outputs. It creates .csv
-#' files of all the species in the data frame listed as species of concern, threatened, 
-#' and endangered as well as some summary statistics. This is done at both the federal and 
-#' state levels. Nothing is returned in R, only written out to the provided directory.
+#' files of all the species in the data frame listed as non-native and invasive as well 
+#' as some summary statistics. This is done at both the federal and state levels. Data is 
+#' written out to the provided directory.
 #'
 #' @inheritParams None
-#' @return A data frame of recent iNaturalist observations.
+#' @return A dataframe of recent iNaturalist observations.
 #' @param x: Data frame of iNaturalist observations.
 #' @param output.path: The path you want the summary statistic tables to be written to.
 #' @seealso None
 #' @export
 #' @examples  
-#' te_species(inat_lastweek, "outputs/te_species")
+#' watchlist_species(inat_lastweek, "outputs/te_species")
 
-te_species <- function(x, output.path) {
+watchlist_species <- function(x, output.path) {
   
   ## Check to make sure that parameter inputs are correct
   # output.path
@@ -341,17 +368,18 @@ te_species <- function(x, output.path) {
   }
   
   
+  # Stop this output from showing
+  options(readr.show_col_types = FALSE)
+  
+  
   # Custom name repair function to be used later
   custom_name_repair <- function(x) { tolower(gsub(" ", ".", x)) }
   
   
-  if(exists("custom_name_repair")) {
-    message("Gathering a list of threatened and endangered species...")
-  }
-  
-  
-  ## FEDERAL
-  fed_te_sp <- read_csv("data/federal_list_maine.csv") %>% 
+  ### THREATENED/ENDANGERED
+  ## Federal
+  # Read in the file and filter for the T, E, and SC species
+  fed_te_sp <- read_csv("app/www/federal_list_maine.csv") %>% 
     rename_with(tolower, everything()) %>% 
     select(scientific.name = "scientific name", common.name = "common name",
            listing.status = "esa listing status") %>% 
@@ -359,15 +387,11 @@ te_species <- function(x, output.path) {
            listing.status = tolower(listing.status))
   
   
-  ## STATE
-  state_te_sp <- read_csv("data/maine_thrt_end_list.csv") %>% 
+  ## State
+  # Read in the file and filter for the T, E, and SC species
+  state_te_sp <- read_csv("app/www/maine_thrt_end_list.csv") %>% 
     mutate(level = "state",
            status = tolower(listing.status))
-  
-  
-  if(exists("state_te_sp")) {
-    message("Performing calculations...")
-  }
   
   
   # All T, E species from the last week
@@ -410,37 +434,138 @@ te_species <- function(x, output.path) {
     summarise(count = length(listing.status))
   
   
-  if(exists("te_summary_state")) {
-    message("Saving results to designated directory...")
-  }
+  
+  ## RARE, INVASIVE, PESTS
+  # Rare native species list
+  listsp <- read_excel("app/www/acad_watchlist_species.xlsx", .name_repair = custom_name_repair) 
+  
+  rarenative <- listsp %>% 
+    filter(status == "rare native")
+  
+  invasive_ne <- listsp %>% 
+    filter(status == "invasive not established")
+  
+  invasive_est <- listsp %>% 
+    filter(status == "invasive established")
+  
+  pests <- listsp %>% 
+    filter(status == "pest disease")
+  
+  otherinsects <- listsp %>% 
+    filter(status == "insect")
   
   
+  # Native but rare
+  rarenative_obs <- x %>% 
+    filter(scientific.name %in% rarenative$scientific.name) %>% 
+    arrange(desc(observed.on)) %>% 
+    group_by(scientific.name)
+  
+  
+  # Invasive but not yet established in ACAD
+  invasive_ne_obs <- x %>% 
+    filter(scientific.name %in% invasive_ne$scientific.name) %>% 
+    arrange(desc(observed.on)) %>% 
+    group_by(scientific.name)
+  
+  
+  # Invasive and established in ACAD
+  invasive_est_obs <- x %>% 
+    filter(scientific.name %in% invasive_est$scientific.name) %>% 
+    arrange(desc(observed.on)) %>% 
+    group_by(scientific.name)
+  
+  
+  # Vegetation pests and disease
+  pest_obs <- x %>% 
+    filter(scientific.name %in% pests$scientific.name) %>% 
+    arrange(desc(observed.on)) %>% 
+    group_by(scientific.name)
+  
+  # Other insects
+  insect_obs <- x %>% 
+    filter(scientific.name %in% otherinsects$scientific.name) %>% 
+    arrange(desc(observed.on)) %>% 
+    group_by(scientific.name)
+  
+  
+  ## Writing out data and displaying totals by category
+  # Federal TE
   if(length(te_specieslist_federal$scientific.name) >= 1) {
-    write.csv(te_specieslist_federal, paste(output.path, "te_specieslist_federal.csv", sep = "/"))
+    write.csv(te_specieslist_federal, paste(output.path, "te_specieslist_federal.csv", sep = "/"), row.names = F)
+    message(paste0("Number of federally threatened/endangered species: ", length(te_specieslist_federal$scientific.name)))
   } else {
-    message("There are no federally threatened/endangered species recorded in these data...")
+    message(paste0("Number of federally threatened/endangered species: ", length(te_specieslist_federal$scientific.name)))
   }
   
+  # if(length(te_summary_federal$listing.status) >= 1) {
+  #   write.csv(te_summary_federal, paste(output.path, "te_summary_federal.csv", sep = "/"), row.names = F)
+  # }
   
-  if(length(te_summary_federal$listing.status) >= 1) {
-    write.csv(te_summary_federal, paste(output.path, "te_summary_federal.csv", sep = "/"))
-  }
   
-  
+  # State TE
   if(length(te_specieslist_state$scientific.name) >= 1) {
-    write.csv(te_specieslist_state, paste(output.path, "te_specieslist_state.csv", sep = "/"))
+    write.csv(te_specieslist_state, paste(output.path, "te_specieslist_state.csv", sep = "/"), row.names = F)
+    message(paste0("Number of state threatened/endangered species: ", length(te_specieslist_state$scientific.name)))
   } else {
-    message("There are no state threatened/endangered species recorded in these data...")
+    message(paste0("Number of state threatened/endangered species: ", length(te_specieslist_state$scientific.name)))
+  }
+  
+  # if(length(te_summary_state$listing.status) >= 1) {
+  #   write.csv(te_summary_state, paste(output.path, "te_summary_state.csv", sep = "/"), row.names = F)
+  # }
+  
+  
+  # Rare, natives
+  if(length(rarenative_obs$scientific.name) >= 1) {
+    write.csv(rarenative_obs, paste(output.path, "rarenative_species.csv", sep = "/"), row.names = F)
+    message(paste0("Number of rare, native plant species: ", length(rarenative_obs$scientific.name)))
+    
+  } else {
+    message(paste0("Number of rare, native plant species: ", length(rarenative_obs$scientific.name)))
   }
   
   
-  if(length(te_summary_state$listing.status) >= 1) {
-    write.csv(te_summary_state, paste(output.path, "te_summary_state.csv", sep = "/"))
+  # Invasive not established in park
+  if(length(invasive_ne_obs$scientific.name) >= 1) {
+    write.csv(invasive_ne_obs, paste(output.path, "invasive_ne_species.csv", sep = "/"), row.names = F)
+    message(paste0("Number of non-established invasive plant species: ", length(invasive_ne_obs$scientific.name)))
+  } else {
+    message(paste0("Number of non-established invasive plant species: ", length(invasive_ne_obs$scientific.name)))
+    
   }
   
   
-  if(exists("te_summary_state")) {
-    message("Calculations complete!")
+  # Invasive established in park
+  if(length(invasive_est_obs$scientific.name) >= 1) {
+    write.csv(invasive_est_obs, paste(output.path, "invasive_est_species.csv", sep = "/"), row.names = F)
+    message(paste0("Number of established invasive plant species: ", length(invasive_est_obs$scientific.name)))
+  } else {
+    message(paste0("Number of established invasive plant species: ", length(invasive_est_obs$scientific.name)))
+  }
+  
+  
+  # Tree pests
+  if(length(pest_obs$scientific.name) >= 1) {
+    write.csv(pest_obs, paste(output.path, "pest_species.csv", sep = "/"), row.names = F)
+    message(paste0("Number of tree pest species: ", length(pest_obs$scientific.name)))
+  } else {
+    message(paste0("Number of tree pest species: ", length(pest_obs$scientific.name)))
+  }
+  
+  
+  # Other insects
+  if(length(insect_obs$scientific.name) >= 1) {
+    write.csv(insect_obs, paste(output.path, "otherinsect_species.csv", sep = "/"), row.names = F)
+    message(paste0("Number of other insects of concern: ", length(insect_obs$scientific.name)))
+  } else {
+    message(paste0("Number of other insects of concern: ", length(insect_obs$scientific.name)))
+  }
+  
+  
+  # Final completion message
+  if(exists("pests")) {
+    message("Results have been saved to designated directory if > 0 species were detected.")
   }
   
 }
@@ -448,203 +573,99 @@ te_species <- function(x, output.path) {
 
 
 
-#' Function summarizes iNaturalist observations for watchlist species
+#' Function summarizes any new species observed within the designated area.
 #'
-#' This function takes a data frame of iNaturalist records (created specifically for the
-#' output of the "inat_recent()" function) and the path for the outputs. It creates .csv
-#' files of all the species in the data frame listed as non-native and invasive as well 
-#' as some summary statistics. This is done at both the federal and state levels. Nothing 
-#' is returned in R, only written out to the provided directory.
+#' This function takes a data frame of observations, path to the species list,
+#' and the path for the outputs. It creates a CSV file of all the species in 
+#' the data frame that have not been recorded in the park before. The results are
+#' written out to the provided directory.
 #'
 #' @inheritParams None
-#' @return A dataframe of recent iNaturalist observations.
-#' @param x: Data frame of iNaturalist observations.
-#' @param output.path: The path you want the summary statistic tables to be written to.
+#' @return A data frame of species not yet recorded in the designated area.
+#' @param x: Data frame of citizen science observations.
+#' @param species.list.path The path to your created species list for the designated area.
+#' @param output.path: The path you want the summary CSV to be written to.
 #' @seealso None
 #' @export
-#' @examples  
-#' watchlist_species(inat_lastweek, "outputs/te_species")
 
-watchlist_species <- function(x, output.path) {
+new_npspecies <- function(x, species.list.path, output.path) {
   
-  
-  ##Check to make sure that parameter inputs are correct
-  #output.path
+  ## Check to make sure that parameter inputs are correct
+  # output.path
   if (str_sub(output.path, start = -1) == "/") {
     stop("Directory path cannot end with '/'")
   }
   
   
-  #Custom name repair function to be used later
+  # Custom name repair function to be used later
   custom_name_repair <- function(x) { tolower(gsub(" ", ".", x)) }
   
   
-  if(exists("custom_name_repair")) {
-    message("Gathering a list of watchlist species...")
-  }
+  # Get the full species list
+  park_sp_list <- read.csv(paste(species.list.path))
   
   
-  #Non-native list according to NPSpecies distinctions, though I don't think this is really
-  #what we want?
-  nonnative <- read_excel("data/raw/NPSpecies_ACAD_20220612.xlsx", .name_repair = custom_name_repair) %>% 
-    select(order, family, scientific.name, common.names, category, 
-           occurrence, nativeness, abundance) %>% 
-    filter(nativeness == "Non-native")
-  
-  
-  if(exists("nonnative")) {
-    message("Performing calculations...")
-  }
-  
-  
-  #What species have been seen recently that are non-native?
-  nonnative_species <- x %>% 
-    filter(scientific.name %in% nonnative$scientific.name) %>% 
-    arrange(desc(observed.on)) %>% 
-    group_by(scientific.name) %>% 
-    slice(1)
-  
-  
-  if(exists("nonnative_species")) {
-    message("Saving results to designated directory...")
-  }
-  
-  
-  if(length(nonnative_species$scientific.name) >= 1) {
-    write.csv(nonnative_species, paste(output.path, "nonnative_species.csv", sep = "/"))
-  } else {
-    message("There are no non-native species recorded in these data...")
-  }
-  
-  
-  if(exists("nonnative")) {
-    message("Calculations complete!")
-  }
-  
-  
-  #How to get invasive species list? Does NPS have a watch-list?
-  
-}
-
-
-
-#' Function summarizes iNaturalist observations for new park species
-#'
-#' This function takes a data frame of iNaturalist records (created specifically for the
-#' output of the "inat_recent()" function) and the path for the outputs. It creates .csv
-#' files of all the species in the data frame that have not been confirmed in the park 
-#' before. Nothing is returned in R, only written out to the provided directory.
-#'
-#' @inheritParams None
-#' @return A dataframe of recent iNaturalist observations.
-#' @param x: Data frame of iNaturalist observations.
-#' @param output.path: The path you want the summary statistic tables to be written to.
-#' @seealso None
-#' @export
-#' @examples  
-#' new_npspecies(inat_lastweek, "outputs/new_park_species") 
-
-new_npspecies <- function(x, output.path) {
-  
-  
-  ##Check to make sure that parameter inputs are correct
-  #output.path
-  if (str_sub(output.path, start = -1) == "/") {
-    stop("Directory path cannot end with '/'")
-  }
-  
-  
-  #Custom name repair function to be used later
-  custom_name_repair <- function(x) { tolower(gsub(" ", ".", x)) }
-  
-  
-  if(exists("custom_name_repair")) {
-    message("Gathering a list of confirmed species...")
-  }
-  
-  
-  #Get the full species list
-  acad_sp_list <- read_excel("data/raw/NPSpecies_ACAD_20220612.xlsx", .name_repair = custom_name_repair) %>% 
-    select(order, family, scientific.name, common.names, category, occurrence)
-  
-  
-  if(exists("acad_sp_list")) {
-    message("Performing calculations...")
-  }
-  
-  
-  #New species according to the NPSpecies list
+  # New species according to the NPSpecies list
   new_species <- x %>% 
-    filter(!scientific.name %in% acad_sp_list$scientific.name) %>% 
+    filter(scientific.name %in% park_sp_list$scientific.name) %>% 
     arrange(desc(observed.on)) %>% 
     group_by(scientific.name) %>% 
     slice(1)
   
-  # #What about unconfirmed or species recorded as not present inside the park?
-  # unconfirmed <- acad_sp_list %>% filter(occurrence == "Unconfirmed" | occurrence == "Not In Park")
-  # 
-  # test %>% 
-  #   filter(scientific.name %in% unconfirmed$scientific.name)
   
-  
-  if(exists("new_species")) {
-    message("Saving results to designated directory...")
-  }
-  
-  
+  # Print summary and write out if appropriate
   if(length(new_species$scientific.name) >= 1) {
     write.csv(new_species, paste(output.path, "new_species.csv", sep = "/"))
+    message(paste0("Number of new species: ", length(new_species$scientific.name)))
   } else {
-    message("There are no new species recorded in these data...")
+    message(paste0("Number of new species: ", length(new_species$scientific.name)))
   }
   
   
-  if(exists("new_species")) {
-    message("Calculations complete!")
+  # Final print
+  if(length(new_species$scientific.name) >= 1) {
+    message("Results were saved to designated directory.")
+  } else {
+    message("No results were saved to designated directory as there were 0 new species")
   }
   
 }
 
 
 
-#' Function to produce an interactive leaflet map widget of iNaturalist observations
+
+#' Function to produce an interactive leaflet map widget of recent observations.
 #'
-#' This function takes a data frame of iNaturalist records (created specifically for the
-#' output of the "inat_recent()" function) and produces a leaflet map widget with satellite 
-#' imagery base layer, labels of common names that appear when the mouse is hovered over a
-#' marker, and a link to the observation on iNaturalist accessible by clicking a marker.
+#' This function takes a data frame of recent observations and produces a leaflet map widget 
+#' with satellite imagery base layer, labels of common names that appear when the mouse is 
+#' hovered over a marker, and a link to the observation online accessible by clicking a marker.
 #'
 #' @inheritParams None
 #' @return A leaflet map widget of recent iNaturalist observations.
-#' @param x: Data frame of iNaturalist observations.
+#' @param x: Data frame of citizen science observations.
 #' @seealso None
 #' @export
-#' @examples  
-#' make_leaflet(inat_lastweek) 
 
 make_leaflet <- function (x) {
   
+  # Create an extra column with the url
   formap <- x %>% 
-    mutate(url = paste0("<center><b><a href='", url, "'>View observation<br>online</a></b></center>"),
-           latitude = jitter(latitude, factor = 16),
-           longitude = jitter(longitude, factor = 16)) 
+    mutate(url = paste0("<b><a href='", url, "'>View observation<br>online</a></b>")) 
   
-  maxLong = max(formap$longitude) - 0.05
-  maxLat = max(formap$latitude) + 0.05 
-  minLong = min(formap$longitude) + 0.05
-  minLat = min(formap$latitude) - 0.05
-
+  
+  # Make the leaflet map
   map <- leaflet() %>% 
     addProviderTiles(providers$Esri.WorldImagery) %>% 
     addProviderTiles(providers$Stamen.TerrainLabels) %>% 
     addMarkers(formap$longitude, formap$latitude, label = formap$common.name,
-               popup = formap$url, #options = popupOptions(minWidth = 600),
-               labelOptions = labelOptions(textsize = "15px")) %>%
-    fitBounds(minLong, minLat, maxLong, maxLat)
+               popup = formap$url)
   
   
+  # Call the map for display
   return(map)
+  
 }
+
 
 
 
@@ -660,17 +681,17 @@ make_leaflet <- function (x) {
 #' @param x: Data frame of iNaturalist observations.
 #' @seealso None
 #' @export
-#' @examples  
-#' make_leaflet(inat_lastweek) 
 
 leaflet_summary <- function (x) {
   
   formap <- x
   
+  
   maxLong = max(formap$longitude) #- 0.05
   maxLat = max(formap$latitude) #+ 0.05 
   minLong = min(formap$longitude) #+ 0.05
   minLat = min(formap$latitude) #- 0.05
+  
   
   map <- leaflet() %>% 
     addProviderTiles(providers$Esri.WorldImagery) %>% 
@@ -678,8 +699,11 @@ leaflet_summary <- function (x) {
     addMarkers(formap$longitude, formap$latitude, clusterOptions = markerClusterOptions()) %>% 
     fitBounds(minLong, minLat, maxLong, maxLat)
   
+  
   return(map)
+  
 }
+
 
 
 
@@ -693,8 +717,6 @@ leaflet_summary <- function (x) {
 #' @param x: Data frame of iNaturalist observations.
 #' @seealso None
 #' @export
-#' @examples  
-#' download_photos(inat_lastweek) 
 
 download_photos <- function(x, output.path) {
   
@@ -746,12 +768,21 @@ download_photos <- function(x, output.path) {
     }
   
   # Run the loop
-  map2(loop_list, loop_filenames, get_pics)
+    repeat {
+      
+      tmp <- try(map2(loop_list, loop_filenames, get_pics))
+      
+      if (!(inherits(tmp, "try-error"))) 
+        break
+      
+    }
+  #map2(loop_list, loop_filenames, get_pics)
   
   # Write the data frame
   write.csv(pic_10random, paste(output.path, "summary_10random.csv", sep = "/"), row.names = F)
   
 }
+
 
 
 
