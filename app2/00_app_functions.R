@@ -17,6 +17,7 @@ require(sp)
 require(rgdal)
 require(fullPage)
 require(hashids)
+require(shinyalert)
 
 
 ## List of functions
@@ -218,7 +219,7 @@ ebird_recent <- function(ebird_loc, parkname) {
   run <- function(ebird_loc, code) {
     
     data <- ebirdregion(loc = ebird_loc, species = code, back = 7, key = "kjh86bnmkpfh") %>% 
-      select(comName, sciName, obsDt, lat, lng, subId) %>% 
+      select(comName, sciName, obsDt, locName, lat, lng, subId) %>% 
       mutate(url = paste0("https://ebird.org/checklist/", subId))
     
     return(data)
@@ -230,7 +231,8 @@ ebird_recent <- function(ebird_loc, parkname) {
     mutate(iconic.taxon.name = "Aves",
            obsDt = as.Date(obsDt)) %>% 
     select(scientific.name = sciName, common.name = comName, iconic.taxon.name,
-           observed.on = obsDt, latitude = lat, longitude = lng, url)
+           observed.on = obsDt, place.guess = locName, latitude = lat, longitude = lng, url)
+  
   
   # Select records inside the designated area
   output <- filter_nps(mid, parkname, lat = "latitude", long = "longitude")
@@ -385,195 +387,82 @@ watchlist_species <- function(x, output.path) {
   ### THREATENED/ENDANGERED
   ## Federal
   # Read in the file and filter for the T, E, and SC species
-  fed_te_sp <- read_csv("app/www/datasets/federal_list_maine.csv") %>% 
+  fed_te_sp <- read_csv("app2/www/datasets/federal_list_maine.csv") %>% 
     rename_with(tolower, everything()) %>% 
     select(scientific.name = "scientific name", common.name = "common name",
            listing.status = "esa listing status") %>% 
     mutate(level = "federal",
-           listing.status = tolower(listing.status))
+           listing.status = tolower(listing.status),
+           listing.status = paste0("federally ", listing.status)) %>% 
+    dplyr::select(-level)
   
   
   ## State
   # Read in the file and filter for the T, E, and SC species
-  state_te_sp <- read_csv("app/www/datasets/maine_thrt_end_list.csv") %>% 
+  state_te_sp <- read_csv("app2/www/datasets/maine_thrt_end_list.csv") %>% 
     mutate(level = "state",
-           status = tolower(listing.status))
+           listing.status = tolower(listing.status),
+           listing.status = paste0("state ", listing.status)) %>% 
+    dplyr::select(-level)
   
   
   # All T, E species from the last week
   te_specieslist_federal <- x %>% 
     filter(scientific.name %in% fed_te_sp$scientific.name) %>% 
-    select(scientific.name, common.name, iconic.taxon.name) %>% 
+    select(scientific.name, common.name, observed.on, place.guess, url) %>% 
     left_join(fed_te_sp, by = "scientific.name") %>% 
-    select(scientific.name, common.name = common.name.x, taxon = iconic.taxon.name, listing.status) %>% 
-    distinct()
-  
-  
-  # Number of species per T&E category
-  te_summary_federal <- x %>% 
-    filter(scientific.name %in% fed_te_sp$scientific.name) %>% 
-    select(scientific.name, common.name, iconic.taxon.name) %>% 
-    left_join(fed_te_sp, by = "scientific.name") %>% 
-    select(scientific.name, common.name = common.name.x, taxon = iconic.taxon.name, listing.status) %>% 
-    distinct() %>% 
-    group_by(listing.status) %>% 
-    summarise(count = length(listing.status))
+    select(scientific.name, common.name = common.name.x, observed.on, location = place.guess, 
+           listing.status, url)
   
   
   # All T, E species from the last week
   te_specieslist_state <- x %>% 
     filter(scientific.name %in% state_te_sp$scientific.name) %>% 
-    select(scientific.name, common.name, iconic.taxon.name) %>% 
+    select(scientific.name, common.name, observed.on, place.guess, url) %>% 
     left_join(state_te_sp, by = "scientific.name") %>% 
-    select(scientific.name, common.name = common.name.x, taxon = iconic.taxon.name, listing.status) %>% 
-    distinct()
+    select(scientific.name, common.name = common.name.x, date = observed.on, 
+           location = place.guess, listing.status, url)
   
+  # Combine and export
+  all_te_sp <- dplyr::bind_rows(te_specieslist_federal, te_specieslist_state) #%>% 
+  # mutate(link = paste0("<a href= ", "'", url, "' target='_blank'>view record here</a>")) %>% 
+  # dplyr::select(-url)
   
-  # Number of species per T&E category
-  te_summary_state <- x %>% 
-    filter(scientific.name %in% state_te_sp$scientific.name) %>% 
-    select(scientific.name, common.name, iconic.taxon.name) %>% 
-    left_join(state_te_sp, by = "scientific.name") %>% 
-    select(scientific.name, common.name = common.name.x, taxon = iconic.taxon.name, listing.status) %>% 
-    distinct() %>% 
-    group_by(listing.status) %>% 
-    summarise(count = length(listing.status))
+  write.csv(all_te_sp, paste(output.path, "te_specieslist.csv", sep = "/"), row.names = F)
   
   
   
   ## RARE, INVASIVE, PESTS
   # Rare native species list
-  listsp <- read_excel("app/www/datasets/acad_watchlist_species.xlsx", .name_repair = custom_name_repair) 
+  listsp <- read_excel("app2/www/datasets/acad_watchlist_species.xlsx", .name_repair = custom_name_repair) 
   
-  rarenative <- listsp %>% 
-    filter(status == "rare native")
+  rares <- listsp %>% 
+    filter(status == "rare native" | status == "insect")
   
   invasive_ne <- listsp %>% 
-    filter(status == "invasive not established")
-  
-  invasive_est <- listsp %>% 
-    filter(status == "invasive established")
-  
-  pests <- listsp %>% 
-    filter(status == "pest disease")
-  
-  otherinsects <- listsp %>% 
-    filter(status == "insect")
+    filter(status == "invasive not established" |
+             status == "invasive established" |
+             status == "pest disease")
   
   
   # Native but rare
-  rarenative_obs <- x %>% 
+  rares_obs <- x %>% 
     filter(scientific.name %in% rarenative$scientific.name) %>% 
-    arrange(desc(observed.on)) %>% 
-    group_by(scientific.name)
+    arrange(desc(observed.on)) %>%
+    dplyr::select(scientific.name, common.name, date = observed.on, 
+                  location = place.guess, url)
   
   
-  # Invasive but not yet established in ACAD
-  invasive_ne_obs <- x %>% 
+  # Invasives and pests
+  invasive_obs <- x %>% 
     filter(scientific.name %in% invasive_ne$scientific.name) %>% 
-    arrange(desc(observed.on)) %>% 
-    group_by(scientific.name)
+    arrange(desc(observed.on))
   
   
-  # Invasive and established in ACAD
-  invasive_est_obs <- x %>% 
-    filter(scientific.name %in% invasive_est$scientific.name) %>% 
-    arrange(desc(observed.on)) %>% 
-    group_by(scientific.name)
-  
-  
-  # Vegetation pests and disease
-  pest_obs <- x %>% 
-    filter(scientific.name %in% pests$scientific.name) %>% 
-    arrange(desc(observed.on)) %>% 
-    group_by(scientific.name)
-  
-  # Other insects
-  insect_obs <- x %>% 
-    filter(scientific.name %in% otherinsects$scientific.name) %>% 
-    arrange(desc(observed.on)) %>% 
-    group_by(scientific.name)
-  
-  
-  ## Writing out data and displaying totals by category
-  # Federal TE
-  if(length(te_specieslist_federal$scientific.name) >= 1) {
-    write.csv(te_specieslist_federal, paste(output.path, "te_specieslist_federal.csv", sep = "/"), row.names = F)
-    message(paste0("Number of federally threatened/endangered species: ", length(te_specieslist_federal$scientific.name)))
-  } else {
-    message(paste0("Number of federally threatened/endangered species: ", length(te_specieslist_federal$scientific.name)))
-  }
-  
-  # if(length(te_summary_federal$listing.status) >= 1) {
-  #   write.csv(te_summary_federal, paste(output.path, "te_summary_federal.csv", sep = "/"), row.names = F)
-  # }
-  
-  
-  # State TE
-  if(length(te_specieslist_state$scientific.name) >= 1) {
-    write.csv(te_specieslist_state, paste(output.path, "te_specieslist_state.csv", sep = "/"), row.names = F)
-    message(paste0("Number of state threatened/endangered species: ", length(te_specieslist_state$scientific.name)))
-  } else {
-    message(paste0("Number of state threatened/endangered species: ", length(te_specieslist_state$scientific.name)))
-  }
-  
-  # if(length(te_summary_state$listing.status) >= 1) {
-  #   write.csv(te_summary_state, paste(output.path, "te_summary_state.csv", sep = "/"), row.names = F)
-  # }
-  
-  
-  # Rare, natives
-  if(length(rarenative_obs$scientific.name) >= 1) {
-    write.csv(rarenative_obs, paste(output.path, "rarenative_species.csv", sep = "/"), row.names = F)
-    message(paste0("Number of rare, native plant species: ", length(rarenative_obs$scientific.name)))
-    
-  } else {
-    message(paste0("Number of rare, native plant species: ", length(rarenative_obs$scientific.name)))
-  }
-  
-  
-  # Invasive not established in park
-  if(length(invasive_ne_obs$scientific.name) >= 1) {
-    write.csv(invasive_ne_obs, paste(output.path, "invasive_ne_species.csv", sep = "/"), row.names = F)
-    message(paste0("Number of non-established invasive plant species: ", length(invasive_ne_obs$scientific.name)))
-  } else {
-    message(paste0("Number of non-established invasive plant species: ", length(invasive_ne_obs$scientific.name)))
-    
-  }
-  
-  
-  # Invasive established in park
-  if(length(invasive_est_obs$scientific.name) >= 1) {
-    write.csv(invasive_est_obs, paste(output.path, "invasive_est_species.csv", sep = "/"), row.names = F)
-    message(paste0("Number of established invasive plant species: ", length(invasive_est_obs$scientific.name)))
-  } else {
-    message(paste0("Number of established invasive plant species: ", length(invasive_est_obs$scientific.name)))
-  }
-  
-  
-  # Tree pests
-  if(length(pest_obs$scientific.name) >= 1) {
-    write.csv(pest_obs, paste(output.path, "pest_species.csv", sep = "/"), row.names = F)
-    message(paste0("Number of tree pest species: ", length(pest_obs$scientific.name)))
-  } else {
-    message(paste0("Number of tree pest species: ", length(pest_obs$scientific.name)))
-  }
-  
-  
-  # Other insects
-  if(length(insect_obs$scientific.name) >= 1) {
-    write.csv(insect_obs, paste(output.path, "otherinsect_species.csv", sep = "/"), row.names = F)
-    message(paste0("Number of other insects of concern: ", length(insect_obs$scientific.name)))
-  } else {
-    message(paste0("Number of other insects of concern: ", length(insect_obs$scientific.name)))
-  }
-  
-  
-  # Final completion message
-  if(exists("pests")) {
-    message("Results have been saved to designated directory if > 0 species were detected.")
-  }
-  
+  # Export
+  write.csv(rares_obs, paste(output.path, "rare_specieslist.csv", sep = "/"), row.names = F)
+  write.csv(invasive_obs, paste(output.path, "invasive_pestslist.csv", sep = "/"), row.names = F)
+
 }
 
 
@@ -615,25 +504,30 @@ new_npspecies <- function(x, species.list.path, output.path) {
   new_species <- x %>% 
     filter(scientific.name %in% park_sp_list$scientific.name) %>% 
     arrange(desc(observed.on)) %>% 
-    group_by(scientific.name) %>% 
-    slice(1)
+    # group_by(scientific.name) %>% 
+    # slice(1) %>% 
+    #mutate(link = paste("<a href=", url, " target='_blank'>view record here</a>")) %>% 
+    dplyr::select(scientific.name, common.name, location = place.guess, 
+                  date = observed.on, url)
   
   
-  # Print summary and write out if appropriate
-  if(length(new_species$scientific.name) >= 1) {
-    write.csv(new_species, paste(output.path, "new_species.csv", sep = "/"))
-    message(paste0("Number of new species: ", length(new_species$scientific.name)))
-  } else {
-    message(paste0("Number of new species: ", length(new_species$scientific.name)))
-  }
+  write.csv(new_species, paste(output.path, "new_species.csv", sep = "/"))
   
-  
-  # Final print
-  if(length(new_species$scientific.name) >= 1) {
-    message("Results were saved to designated directory.")
-  } else {
-    message("No results were saved to designated directory as there were 0 new species")
-  }
+  # # Print summary and write out if appropriate
+  # if(length(new_species$scientific.name) >= 1) {
+  #   write.csv(new_species, paste(output.path, "new_species.csv", sep = "/"))
+  #   message(paste0("Number of new species: ", length(new_species$scientific.name)))
+  # } else {
+  #   message(paste0("Number of new species: ", length(new_species$scientific.name)))
+  # }
+  # 
+  # 
+  # # Final print
+  # if(length(new_species$scientific.name) >= 1) {
+  #   message("Results were saved to designated directory.")
+  # } else {
+  #   message("No results were saved to designated directory as there were 0 new species")
+  # }
   
 }
 
