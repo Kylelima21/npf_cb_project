@@ -5,7 +5,7 @@ source("app2/00_app_functions.R")
 
 ## Raw data
 # Pull iNaturalist and eBird data
-inat <- inat_recent("49610", "week", "app/www")
+inat <- inat_recent("49610", "week")
 ebird <- ebird_recent("US-ME-009", "Acadia National Park")
 
 # Make a df with 'groups' to add to the data
@@ -27,7 +27,7 @@ write_csv(final_data, "app2/www/datasets/the_data.csv")
 # Download the images to the www folder
 download_photos(final_data, "app2/www/img/obs")
 
-## Run watchlist and new species analyis
+## Run watchlist and new species analysis
 # Get watchlist species
 watchlist_species(final_data, "app2/www/datasets")
 

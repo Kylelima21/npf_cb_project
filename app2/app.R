@@ -4,382 +4,400 @@
 
 #### Starting up ####
 
-## Packages
-# Check for packages and install if not installed
-if(!require(tidyverse)) install.packages("tidyverse")
-if(!require(rinat)) install.packages("rinat")
-if(!require(lubridate)) install.packages("lubridate")
-if(!require(leaflet)) install.packages("leaflet")
-if(!require(shiny)) install.packages("shiny")
-if(!require(shinythemes)) install.packages("shinythemes")
-if(!require(shinyWidgets)) install.packages("shinyWidgets")
-if(!require(bslib)) install.packages("bslib")
-if(!require(fresh)) install.packages("fresh")
-if(!require(png)) install.packages("png")
-if(!require(grid)) install.packages("grid")
-if(!require(purrr)) install.packages("purrr")
-if(!require(readxl)) install.packages("readxl")
-if(!require(rebird)) install.packages("rebird")
-if(!require(downloader)) install.packages("downloader")
-if(!require(sp)) install.packages("sp")
-if(!require(rgdal)) install.packages("rgdal")
-if(!require(fullPage)) install.packages("fullPage")
-if(!require(hashids)) install.packages("hashids")
-
 ## Functions
 # Source the functions
 source("00_app_functions.R")
-source('src/lightbox.R')
 
-## Read in the data
-# iNaturalist with some mods
+## Data
+# Read in the base data
 the_data <- read.csv("www/datasets/the_data.csv") %>% 
   arrange(common.name)
 
-# Observer summary
-observers <- read.csv("www/datasets/summary_observers.csv")
-
-# Species summary
-species <- read.csv("www/datasets/summary_species.csv")
-
-# Taxon summary
-taxon <- read.csv("www/datasets/summary_taxon.csv")
-
-# New park species
-new_species <- read.csv("www/datasets/new_species.csv")
-
-# T and E species
-te_species <- read.csv("www/datasets/te_specieslist.csv")
-
-# Rare species
-rare_species <- read.csv("www/datasets/rare_specieslist.csv")
-
-# Invasives and pests
-invasive_species <- read.csv("www/datasets/invasive_pestslist.csv")
+# # Observer summary
+# observers <- read.csv("www/datasets/summary_observers.csv")
+# 
+# # Species summary
+# species <- read.csv("www/datasets/summary_species.csv")
+# 
+# # Taxon summary
+# taxon <- read.csv("www/datasets/summary_taxon.csv")
+# 
+# # New park species
+# new_species <- read.csv("www/datasets/new_species.csv")
+# 
+# # T and E species
+# te_species <- read.csv("www/datasets/te_specieslist.csv")
+# 
+# # Rare species
+# rare_species <- read.csv("www/datasets/rare_specieslist.csv")
+# 
+# # Invasives and pests
+# invasive_species <- read.csv("www/datasets/invasive_pestslist.csv")
 
 # Images
 images <- data.frame(src = list.files('www/img/obs')) %>%
   tidyr::separate(col = 'src', c('id', 'user', "img.num", "type"), sep = '_|\\.', remove = FALSE) %>%
   rowwise() %>%
-  mutate(#key = hashids::encode(1e3 + as.integer(img.num), hashid_settings(salt = 'this is my salt')),
-         user = str_replace_all(user, "\\+", "_"),
+  mutate(user = str_replace_all(user, "\\+", "_"),
          src = paste0("img/obs/", src)) %>% 
   arrange(img.num)
 
-
+options(dplyr.summarise.inform = FALSE)
 
 
 #### Shiny ui ####
 
-ui <- function() {
+ui <- fluidPage(
   
-  pagePiling(
-    tags$head(includeCSS("www/css/styles.css")),
-    sections.color = c('white', 'white', 'white', 'white', 'white', 'white'),
-    opts = list(easing = "swing"),
-    menu = c(
-      "Home" = "home",
-      "Summary Map" = "map",
-      "Species Explorer" = "species",
-      "Species of Interest" = "rare",
-      "Gallery" = "gallery",
-      "About" = "about"
-    ),
+  ## SET UP
+  tags$head(
+    tags$link(type = "text/css", rel = "stylesheet", href = "css/style.css"),
+    tags$meta(name = "viewport", content = "width=device-width, initial-scale=1.0"),
+    tags$title("Acadia National Park Citizen Science Explorer"),
+    tags$script(src = "index.js", type = "module", "defer")
+  ),
+
+  ### BODY
+  tags$body(
+    div(class = "back-box"),
     
+    ## Navigation
+    div(class = "primary-header",
+     div(class = "logo-one",
+         tags$img(src = "img/cit_sci_explorer.png", alt = "Citizen science explorer logo",
+                  class = "cs-logo")),
+     div(class = "menu-nav-box",
+         tags$nav(tags$ul(`aria-label` = "Primary navigation", role = "list",
+                          tags$li(tags$a(href = "#", "Home")),
+                          tags$li(tags$a(href = "#intro", "Introduction")),
+                          tags$li(tags$a(href = "#summary", "Summary")),
+                          tags$li(tags$a(href = "#spex", "Species Explorer")),
+                          tags$li(tags$a(href = "#science", "Science")),
+                          tags$li(tags$a(href = "#gallery", "Gallery")),
+                          tags$li(tags$a(href = "#about", "About"))))),
+     div(class = "logo-two",
+         tags$img(src = "img/schoodic_stacked.jpeg", alt = "Schoodic Institute at Acadia National Park",
+                  class = "logo"))),
     
     ## Home
-    pageSectionImage(
-      center = TRUE,
-      img = "img/monarch.jpg",
-      menu = "home",
-      
-      h1(textOutput("title"), class = "headerw shadow-dark"),
-      
-      h3("Citizen Science Explorer", class = "subheader shadow-dark"),
-      
-      absolutePanel(id = "logo", class = "panel", left = "1.5%", width = "auto", fixed = TRUE, draggable = FALSE,
-                    a(tags$img(src = 'img/schoodic_horizontal.jpeg', height = '100%', width = 'auto'),
-                      href = 'https://schoodicinstitute.org/', target = "_blank")),
-
-      absolutePanel(id = "botbord", fixed = TRUE, draggable = FALSE),
-
-      absolutePanel(class = "loglink twitter", fixed = TRUE, draggable = FALSE, height = "auto",
-                    actionButton("twitter_share", label = "", icon = icon("twitter"), style = 'padding:6px',
-                                 onclick = sprintf("window.open('%s')", 
-                                                   "https://twitter.com/SchoodicInst"))),
-      
-      absolutePanel(class = "loglink fb", fixed = TRUE, draggable = FALSE, height = "auto",
-                    actionButton("facebook_share", label = "", icon = icon("facebook"), style = 'padding:6px',
-                                 onclick = sprintf("window.open('%s')", 
-                                                   "https://www.facebook.com/SchoodicInstitute"))),
-    
-      absolutePanel(class = "loglink insta", fixed = TRUE, draggable = FALSE, height = "auto",
-                    actionButton("instagram_share", label = "", icon = icon("instagram"), style = 'padding:6px',
-                                 onclick = sprintf("window.open('%s')", 
-                                                   "https://www.instagram.com/schoodicinst/"))),
-      
-      absolutePanel(class = "loglink youtube", fixed = TRUE, draggable = FALSE, height = "auto",
-                    actionButton("youtube_share", label = "", icon = icon("youtube"), style = 'padding:6px',
-                                 onclick = sprintf("window.open('%s')", 
-                                                   "https://www.youtube.com/user/SchoodicInstitute"))),
-      
-      absolutePanel(class = "loglink linkedin", fixed = TRUE, draggable = FALSE, height = "auto",
-                    actionButton("linkedin_share", label = "", icon = icon("linkedin"), style = 'padding:6px',
-                                 onclick = sprintf("window.open('%s')", 
-                                                   "https://www.linkedin.com/company/schoodicinstitute/"))),
+    div(class = "titlebox",
+       h1(textOutput("title"), class = "title-homepage"),
+       h3("Citizen Science Explorer", class = "subtitle-homepage")
     ),
+    div(class = "photo-cred",
+        "Photo by ", 
+        a("Ben Tero", href = "https://www.instagram.com/btero/",
+          target = "_blank")
+        ),
     
+    ## Intro
+    div(class = "spacer", 
+        div(class = "intro-box",
+            div(class = "anchors",  id = "intro"),
+            div(class = "body-title-box",
+                icon("book-open",  class = "body-box-icon"), 
+                h4("Introduction", class = "body-titles")),
+            div(class = "intro-text",
+                h3("Welcome to the Acadia National Park citizen science explorer. Here you will find 
+                   summaries of Acadia National Park iNaturalist and eBird records from the last week. 
+                   In addition to summaries, we present some recent science that has been made possible 
+                   by your contributions to these citizen science projects. We hope that you enjoy 
+                   exploring recent sightings in the area, and understand how critical to science your 
+                   time and effort are when you contribute to citizen science efforts."))
+    )),
     
-    ## Summary Map
-    pageSection(
-      center = TRUE,
-      menu = "map",
-      leafletOutput("mapsum", height = "100%"),
-      
-      absolutePanel(id = "instruct", class = "panel",
-                    top = 15, right = 40, 
-                    width = 360, height = "auto",
-                    fixed = TRUE, draggable = FALSE,
-                    
-                    h2("Observations from the past week:"),br(),
-                    h4(textOutput("total_observers"), align = "left"),br(),
-                    h4(textOutput("top_taxa"), align = "left"),br(),
-                    h4(textOutput("top_sp"), align = "left")
-                    ),
-      
-      h1("?", class = "help"),
-      
-      HTML("<selection class='help-desc'>
-            <h3>How to use this page:</h3>
-            <h5><br/>1. Click on a circle marker to expand the sightings.<br/><br/>
-               2. Hover your cursor over any blue marker to see the species.<br/><br/>
-               3. Click on any blue marker to open a window with a link to the observation.</h5>")
-    ), 
-    
-    
-    ## Species Explorer
-    pageSection(
-      center = TRUE,
-      menu = "species",
-      leafletOutput("reactspmap", height = "100%"),
-
-      absolutePanel(id = "instruct", class = "panel panel-default",
-                    top = 40, right = 40, 
-                    width = 325, height = "auto",
-                    fixed = TRUE, draggable = FALSE,
-
-                    h1("Species Explorer"),br(),
-
-                    pickerInput("spselect",
-                                label = "Select a species:",
-                                choices = unique(the_data$common.name),
-                                options = list(`live-search` = TRUE,
-                                               size = 18,
-                                               header = "Search Menu"),
-                                selected = unique(the_data$common.name)[1],
-                                multiple = FALSE))
+    ## Data summary
+    div(class = "summary-box", 
+        div(class = "anchors", id = "summary"),
+        div(class = "body-title-box",
+            icon("table",  class = "body-box-icon"), 
+            h4("Data Summary", class = "body-titles")),
+        div(class = "inat-box", 
+            img(src = "img/inat.png", alt = "iNaturalist", class = "obs-logos"),
+            div(class = "sep-line"),
+            div(class = "inat-display-grid",
+                div(class = "observers-format",
+                    h4(tags$b("Observers")),
+                    icon("users"),
+                    h2(textOutput("total_observers"), class = "summary-stat-text")),
+                div(class = "observations-format",
+                    h4(tags$b("Observations")),
+                    icon("camera-retro"),
+                    h2(textOutput("total_observations"), class = "summary-stat-text")),
+                div(class = "comgroup-format",
+                    h4(tags$b("Most Common Group")),
+                    icon("bacteria"),
+                    h2(textOutput("top_taxa"), class = "summary-stat-text")),
+                div(class = "comsp-format",
+                    h4(tags$b("Most Common Species")),
+                    icon("leaf"),
+                    h2(textOutput("top_sp"), class = "summary-stat-text")),
+                div(class = "percent-format",
+                    icon("database"),
+                    h2(textOutput("percent_text_i"), class = "percent-stat-text")))),
+        div(class = "ebird-box",
+            img(src = "img/ebird.png", alt = "eBird", class = "obs-logos"),
+            div(class = "sep-line"),
+            div(class = "ebird-display-grid",
+                div(class = "observers-format",
+                    h4(tags$b("Checklists")),
+                    icon("list-check"),
+                    h2(textOutput("total_checklists_e"), class = "summary-stat-text")),
+                div(class = "observations-format",
+                    h4(tags$b("Total Species")),
+                    icon("feather"),
+                    h2(textOutput("total_sp_e"), class = "summary-stat-text")),
+                div(class = "comgroup-format",
+                    h4(tags$b("Total Birds")),
+                    icon("binoculars"),
+                    h2(textOutput("total_birds_e"), class = "summary-stat-text")),
+                div(class = "comsp-format",
+                    h4(tags$b("Most Frequent Species")),
+                    icon("crow"),
+                    h2(textOutput("top_sp_e"), class = "summary-stat-text")),
+                div(class = "percent-format",
+                    icon("database"),
+                    h2(textOutput("percent_text_e"), class = "percent-stat-text"))))
     ),
+
+    ## Species explorer
+    div(class = "spex-box",
+        div(class = "anchors", id = "spex"),
+        div(class = "body-title-box",
+            icon("tree",  class = "body-box-icon"), 
+            h4("Species Explorer", class = "body-titles")),
+        div(class = "picker-box",
+            pickerInput("spselect",
+                        label = "Select a species:",
+                        choices = unique(the_data$common.name),
+                        options = list(`live-search` = TRUE,
+                                       size = 11,
+                                       header = "Search Menu"),
+                        selected = unique(the_data$common.name)[1],
+                        width = "100%",
+                        multiple = FALSE)),
+          div(class = "map-box",
+              leafletOutput("reactspmap", height = "100%"),
+              div(class = "help",
+                  icon("circle-info")),
+              div(class = "help-desc",
+                  h5("1. Click on a circle marker to expand the sightings."),
+                  h5("2. Hover your cursor over any blue marker to see the species."),
+                  h5("3. Click on any blue marker to open a window with a link to the observation.")))),
     
-    
-    ## Rare/Threat Species
-    pageSectionImage(
-      img = "img/pollen.jpg",
-      center = TRUE,
-      menu = "rare",
-      
-      #h2("New Park Species")
-      # textOutput("newsp"),
-      # tableOutput("newsp_tab"), br(),
-      # 
-      # h2("Threatened/Endangered Species"),
-      # textOutput("te"),
-      # dataTableOutput("te_tab")
-      
-      h2("How are your observations being used?", class = "headerw"),
-      textOutput("descrip_sp"),
-      
-      # pageRow(
-      #   pageColumn(
-      #     h2("New Park Species", class = "white"),
-      #     textOutput("newsp"),br(),br(),br()),
-      #   pageColumn(
-      #     h2("Threatened/Endangered Species", class = "white"),
-      #     textOutput("te")))
-          
-      # pageRow(
-      #   pageColumn(
-      #     h2("New Park Species", class = "white"),
-      #     textOutput("newsp"),br(),br(),br()),
-      #   pageColumn(
-      #     h2("Threatened/Endangered Species", class = "white"),
-      #     textOutput("te"),br(),br(),br()),
-      #   pageColumn(
-      #     h2("Rare Species", class = "white"),
-      #     textOutput("rare")),
-      #   pageColumn(
-      #     h2("Species of Conservation Concern", class = "white"),
-      #     textOutput("invasive")))
-    ),
-    
-    
+    ## Science
+    div(class = "science-box",
+        div(class = "anchors", id = "science"),
+        div(class = "body-title-box",
+            icon("microscope",  class = "body-box-icon"), 
+            h4("Science", class = "body-titles"))),
+
     ## Gallery
-    pageSectionImage(
-      img = "img/sch.JPG",
-      center = TRUE,
-      menu = "species",
-      
-      
-      div(class='product',
-          div(class='container',
-              div(class='row',
-                  div(class='col-xs-12 col-sm-6 col-md-4',
-                      div(class='single-product',
-                          div(class='box-area',
-                              div(class='box-front',
-                                  img(src=images$src[1])),
-                              div(class='box-back text-center',
-                                  div(class='back-content',
-                                      h2(images$id[1]),
-                                      h5("©", images$user[1])))))),
-                  div(class='col-xs-12 col-sm-6 col-md-4',
-                      div(class='single-product',
-                          div(class='box-area',
-                              div(class='box-front',
-                                  img(src=images$src[2])),
-                              div(class='box-back text-center',
-                                  div(class='back-content',
-                                      h2(images$id[2]),
-                                      h5("©", images$user[2])))))),
-                  div(class='col-xs-12 col-sm-6 col-md-4',
-                      div(class='single-product',
-                          div(class='box-area',
-                              div(class='box-front',
-                                  img(src=images$src[3])),
-                              div(class='box-back text-center',
-                                  div(class='back-content',
-                                      h2(images$id[3]),
-                                      h5("©", images$user[3])))))),
-                  div(class='col-xs-12 col-sm-6 col-md-4',
-                      div(class='single-product',
-                          div(class='box-area',
-                              div(class='box-front',
-                                  img(src=images$src[4])),
-                              div(class='box-back text-center',
-                                  div(class='back-content',
-                                      h2(images$id[4]),
-                                      h5("©", images$user[4])))))),
-                  div(class='col-xs-12 col-sm-6 col-md-4',
-                      div(class='single-product',
-                          div(class='box-area',
-                              div(class='box-front',
-                                  img(src=images$src[5])),
-                              div(class='box-back text-center',
-                                  div(class='back-content',
-                                      h2(images$id[5]),
-                                      h5("©", images$user[5])))))),
-                  div(class='col-xs-12 col-sm-6 col-md-4',
-                      div(class='single-product',
-                          div(class='box-area',
-                              div(class='box-front',
-                                  img(src=images$src[6])),
-                              div(class='box-back text-center',
-                                  div(class='back-content',
-                                      h2(images$id[6]),
-                                      h5("©", images$user[6])))))),
-                  div(class='col-xs-12 col-sm-6 col-md-4',
-                      div(class='single-product',
-                          div(class='box-area',
-                              div(class='box-front',
-                                  img(src=images$src[7])),
-                              div(class='box-back text-center',
-                                  div(class='back-content',
-                                      h2(images$id[7]),
-                                      h5("©", images$user[7])))))),
-                  div(class='col-xs-12 col-sm-6 col-md-4',
-                      div(class='single-product',
-                          div(class='box-area',
-                              div(class='box-front',
-                                  img(src=images$src[8])),
-                              div(class='box-back text-center',
-                                  div(class='back-content',
-                                      h2(images$id[8]),
-                                      h5("©", images$user[8])))))),
-                  div(class='col-xs-12 col-sm-6 col-md-4',
-                      div(class='single-product',
-                          div(class='box-area',
-                              div(class='box-front',
-                                  img(src=images$src[9])),
-                              div(class='box-back text-center',
-                                  div(class='back-content',
-                                      h2(images$id[9]),
-                                      h5("©", images$user[9]))))))
-                  )))
-
-      # column(10, uiOutput('lb'))
-    ),
-    
+    div(class = "box-photo-gallery",
+        div(class = "anchors", id = "gallery"),
+        div(class = "body-title-box",
+            icon("image",  class = "body-box-icon"),
+            h4("Photo Gallery", class = "body-titles")),
+        div(class = "grid-wrapper",
+            div(tabindex = 0, class = "img-container",
+                img(src = images$src[1]),
+                div(class = "img-label",
+                    h3(images$id[1]),
+                    h4("©", images$user[1]))),
+            div(tabindex = 0, class = "img-container",
+                img(src = images$src[2]),
+                div(class = "img-label",
+                    h3(images$id[2]),
+                    h4("©", images$user[2]))),
+            div(tabindex = 0, class = "img-container",
+                img(src = images$src[3]),
+                div(class = "img-label",
+                    h3(images$id[3]),
+                    h4("©", images$user[3]))),
+            div(tabindex = 0, class = "img-container",
+                img(src = images$src[4]),
+                div(class = "img-label",
+                    h3(images$id[4]),
+                    h4("©", images$user[4]))),
+            div(tabindex = 0, class = "img-container",
+                img(src = images$src[5]),
+                div(class = "img-label",
+                    h3(images$id[5]),
+                    h4("©", images$user[5]))),
+            div(tabindex = 0, class = "img-container",
+                img(src = images$src[6]),
+                div(class = "img-label",
+                    h3(images$id[6]),
+                    h4("©", images$user[6]))),
+            div(tabindex = 0, class = "img-container",
+                img(src = images$src[7]),
+                div(class = "img-label",
+                    h3(images$id[7]),
+                    h4("©", images$user[7]))),
+            div(tabindex = 0, class = "img-container",
+                img(src = images$src[8]),
+                div(class = "img-label",
+                    h3(images$id[8]),
+                    h4("©", images$user[8])))
+            # img(src = images$src[2]),
+            # img(src = images$src[3]),
+            # img(src = images$src[4]),
+            # img(src = images$src[5]),
+            # img(src = images$src[6]),
+            # img(src = images$src[7]),
+            # img(src = images$src[8])
+            # div(img(src = images$src[1])),
+            # div(img(src = images$src[2])),
+            # div(class = "tall",
+            #     img(src = images$src[3])),
+            # div(img(src = images$src[4])),
+            # div(class = "wide",
+            #     img(src = images$src[5])),
+            # div(class = "tall",
+            #     img(src = images$src[6])),
+            # div(class = "big",
+            #     img(src = images$src[7])),
+            # div(img(src = images$src[8])),
+            # div(class = "wide",
+            #     img(src = images$src[9]))
+            )
+        ),
     
     ## About
-    pageSectionImage(
-      center = FALSE,
-      img = "img/frog.jpg",
-      menu = "about",
+    div(class = "about-grid-box",
+        div(class = "anchors", id = "about"),
+        div(class = "body-title-box",
+            icon("circle-info",  class = "body-box-icon"),
+            h4("About This Page", class = "body-titles")),
+        div(class = "about-info-box",
+            h4("Last Updated"),
+            textOutput("today"),
+            h4("Background"),
+            "Info about the website, how, why it was built.",
+            h4("Code"),
+            "Code and required elements to generate this Shiny app are available on ",
+            a("Github.", href = "https://github.com/Kylelima21/npf_cb_project",
+              target = "_blank"),
+            h4("Sources"),
+            "Data supplied by ", a("iNaturalist",
+                                   href = "https://www.inaturalist.org/",
+                                   target = "_blank"), " and ",
+                                 a("eBird", href = "https://www.ebird.org/", 
+                                   target = "_blank"),
+            h4("Authors"),
+            "Kyle Lima, Schoodic Institute at Acadia National Park",br(),
+            "Nicholas Fisichelli, Schoodic Institute at Acadia National Park",br(),
+            "Peter Nelson, Schoodic Institute at Acadia National Park",br(),
+            "Seth Benz, Schoodic Institute at Acadia National Park",br(),
+            "Catherine Schmidt, Schoodic Institute at Acadia National Park",
+            h4("Get in Touch!"),
+            "Email Kyle Lima with any questions or concerns - klima@schoodicinstitute.org"),
+        div(class = "about-download-box",
+            tags$img(src = "img/cit_sci_explorer.png", alt = "Citizen science explorer logo", class = "about-logo"),
+            h4("Download the past week's data here:"),
+            div(class = "download-button",
+                downloadButton("downloadCsv", "Download as CSV")),
+            h5("Data supplied by iNaturalist and eBird and modified by Schoodic Institute at Acadia National Park.",
+               )
+            )
+        ),
+        
+    ## Footer
+    tags$footer(
+          div(class = "footer-background",
+              div(class = "footer-grid-box",
+                  div(class = "footer-left-box",
+                      div(tags$img(src = "img/schoodic_horizontal.jpeg", alt = "Schoodic Institute", class = "footer-logo")),
+                      div(class = "logo-text", tags$em("Our mission is inspiring science, learning, and community for a changing world."))),
+  
+                  div(class = "footer-nav-box",
+                      tags$ul(`aria-label` = "Footer navigation", role = "list",
+                              tags$li(tags$a(href = "#", "Home")),
+                              tags$li(tags$a(href = "#intro", "Introduction")),
+                              tags$li(tags$a(href = "#summary", "Summary")),
+                              tags$li(tags$a(href = "#spex", "Species Explorer")),
+                              tags$li(tags$a(href = "#science", "Science")),
+                              tags$li(tags$a(href = "#gallery", "Gallery")),
+                              tags$li(tags$a(href = "#about", "About")))),
+  
+                  div(class = "footer-copyright-box",
+                      textOutput("copyright_txt")),
+  
+                  div(class = "footer-link-box",
+                      div(tabindex = "-1", class = "footer-button-position",
+                          tags$a(href = "https://schoodicinstitute.org/", target = "_blank",
+                                 tags$button(class = "button", "Visit our website!"))),
+                      div(class = "footer-link-wrapper",
+                          tags$ul(`aria-list` = "Social media links", role = "list",
+                                  tags$li(tags$a(`aria-label` = "Facebook", class = "footer-links",
+                                                 href = "https://www.facebook.com/SchoodicInstitute",
+                                                 target = "_blank",
+                                                 icon("facebook"))),
+                                  tags$li(tags$a(`aria-label` = "Twitter", class = "footer-links",
+                                                 href = "https://twitter.com/SchoodicInst",
+                                                 target = "_blank",
+                                                 icon("twitter"))),
+                                  tags$li(tags$a(`aria-label` = "Instagram", class = "footer-links",
+                                                 href = "https://www.instagram.com/schoodicinst/",
+                                                 target = "_blank",
+                                                 icon("instagram"))),
+                                  tags$li(tags$a(`aria-label` = "Youtube", class = "footer-links",
+                                                 href = "https://www.youtube.com/user/SchoodicInstitute",
+                                                 target = "_blank",
+                                                 icon("youtube"))),
+                                  tags$li(tags$a(`aria-label` = "Linked in", class = "footer-links",
+                                                 href = "https://www.linkedin.com/company/schoodicinstitute/",
+                                                 target = "_blank",
+                                                 icon("linkedin"))))))
+                  )
+                  )
+      )
       
-      absolutePanel(id = "logo", class = "panel", bottom = "1.5%", right = "2%", width = "auto", fixed = TRUE, draggable = FALSE,
-                    a(tags$img(src = 'img/schoodic_horizontal.jpeg', height = '100%', width = 'auto'),
-                      href = 'https://schoodicinstitute.org/', target = "_blank")),
-    
-      absolutePanel(id = "sources", class = "panel panel-default",
-                    top = "10%", left = 25, 
-                    width = "35%", height = "86%",
-                    fixed = TRUE, draggable = FALSE,
-              
-                    h4("Last updated"),
-                    textOutput("today"),
-              
-                    br(),h4("Background"),
-                    "Info about the website, how, why it was built.",
-              
-                    br(),br(),h4("Code"),
-                    "Code and required elements to generate this Shiny app are available on ", 
-                    a("Github.", href = "https://github.com/Kylelima21/npf_cb_project", 
-                      target = "_blank"),
-              
-                    br(),br(),h4("Sources"),
-                    "Data supplied by ", a("iNaturalist",
-                                           href = "https://www.inaturalist.org/",
-                                           target = "_blank"), " and ", 
-                    a("eBird", href = "https://www.ebird.org/", target = "_blank"),
-              
-                    br(),br(),h4("Authors"),
-                    "Kyle Lima, Schoodic Institute at Acadia National Park",br(),
-                    "Nicholas Fisichelli, Schoodic Institute at Acadia National Park",br(),
-                    "Peter Nelson, Schoodic Institute at Acadia National Park",br(),
-                    "Seth Benz, Schoodic Institute at Acadia National Park",br(),
-                    "Catherine Schmidt, Schoodic Institute at Acadia National Park",
-              
-                    br(),br(),h4("Get in touch!"),
-                    "Kyle Lima - klima@schoodicinstitute.org"),
-                   
-      absolutePanel(id = "data", class = "panel panel-default",
-                    bottom = "1.5%", right = "41%", 
-                    width = "20%", height = "27%",
-                    fixed = TRUE, draggable = FALSE,
-                    
-                    h3("Download the past week's data here:"),
-                    
-                    downloadButton("downloadCsv", "Download as CSV"), br(), br(),
-                    
-                    "Data supplied by ", a("iNaturalist", 
-                                           href = "https://www.inaturalist.org/", 
-                                           target = "_blank"), " and ", 
-                    a("eBird", href = "https://www.ebird.org/", target = "_blank"), 
-                    " and modified by ",
-                    a("Schoodic Institute at Acadia National Park.", 
-                      href = 'https://schoodicinstitute.org/', target = "_blank"))
-    )
   )
-}
+)
+             
+
+            
+  #   
+  #   ## Rare/Threat Species
+  #   pageSectionImage(
+  #     img = "img/razo.jpg",
+  #     center = TRUE,
+  #     menu = "rare",
+  #     
+  #     #h2("New Park Species")
+  #     # textOutput("newsp"),
+  #     # tableOutput("newsp_tab"), br(),
+  #     # 
+  #     # h2("Threatened/Endangered Species"),
+  #     # textOutput("te"),
+  #     # dataTableOutput("te_tab")
+  #     
+  #     h2("How are your observations being used?", class = "header-home"),
+  #     textOutput("descrip_sp"),
+  #     
+  #     # pageRow(
+  #     #   pageColumn(
+  #     #     h2("New Park Species", class = "white"),
+  #     #     textOutput("newsp"),br(),br(),br()),
+  #     #   pageColumn(
+  #     #     h2("Threatened/Endangered Species", class = "white"),
+  #     #     textOutput("te")))
+  #         
+  #     # pageRow(
+  #     #   pageColumn(
+  #     #     h2("New Park Species", class = "white"),
+  #     #     textOutput("newsp"),br(),br(),br()),
+  #     #   pageColumn(
+  #     #     h2("Threatened/Endangered Species", class = "white"),
+  #     #     textOutput("te"),br(),br(),br()),
+  #     #   pageColumn(
+  #     #     h2("Rare Species", class = "white"),
+  #     #     textOutput("rare")),
+  #     #   pageColumn(
+  #     #     h2("Species of Conservation Concern", class = "white"),
+  #     #     textOutput("invasive")))
+  #   ),
 
 
 
@@ -389,16 +407,64 @@ ui <- function() {
 
 server <- function(input, output, session) {
   
-  # output$lb <- renderUI({
-  #   lightbox_gallery(images[sample(1:nrow(images), 8, replace = FALSE),], 'gallery', display = TRUE)
-  # })
-  
   ## Title page header
   output$title <- renderText("Acadia National Park")
   
-  ## Leaflet for the total festival
-  output$mapsum <- renderLeaflet({ 
-    leaflet_summary(read.csv("www/datasets/the_data.csv"))
+  ## Leaflet for eBird obs
+  output$emap <- renderLeaflet({ 
+    leaflet_summary(the_data %>% filter(source == "eBird"))
+  })
+  
+  ## Leaflet for eBird obs
+  output$imap <- renderLeaflet({ 
+    leaflet_summary(the_data %>% filter(source == "iNaturalist"))
+  })
+  
+  ## Pie Chart
+  output$percentplot <- renderPlot({
+    the_data %>%
+      group_by(source) %>% 
+      summarise(count = length(source)) %>% 
+      mutate(category = "citsci",
+             percent = round((count/sum(count)*100), 0)) %>%
+      ggplot(aes(x = category, y = percent, fill = source)) +
+      geom_col() + 
+      coord_flip() +
+      guides(fill = guide_legend(reverse = TRUE)) +
+      geom_text(aes(x = category, y = percent, label = percent, group = source),
+                position = position_stack(vjust = 0.5), size = 7, color = "#eae7e7") +
+      scale_fill_manual(values = c("#0d042ad9", "#0c3e13d9")) +
+      theme_minimal() +
+      theme(axis.title = element_blank(),
+            axis.text = element_blank(),
+            plot.background = element_blank(),
+            panel.background = element_blank(),
+            panel.grid = element_blank(),
+            legend.background = element_blank(),
+            legend.title = element_blank(),
+            legend.text = element_text(size = 20, color = "black"),
+            legend.key.size = unit(1, "cm"),
+            legend.spacing.x = unit(1, "cm"),
+            legend.position = "bottom")
+  }, bg = "transparent")
+  
+  ## Percent plot text output
+  output$percent_text_i <- renderText({
+    dat <- the_data %>%
+      group_by(source) %>% 
+      summarise(count = length(source)) %>% 
+      mutate(percent = round((count/sum(count)*100), 0))
+    
+    paste0(dat$percent[2], "% of the data was collected by iNaturalist")
+  })
+  
+  output$percent_text_e <- renderText({
+    dat <- the_data %>%
+      group_by(source) %>% 
+      summarise(count = length(source)) %>% 
+      mutate(percent = round((count/sum(count)*100), 0))
+    
+    paste0(dat$percent[1], "% of the data was collected by eBird")
   })
   
   ## Reactive data frame for Species Explorer tab
@@ -412,22 +478,94 @@ server <- function(input, output, session) {
     species_leaflet(speciesreact())
   })
   
+  ### iNat
   ## Text output for the top recorded species
   output$top_sp <- renderText({
-    paste("The most commonly reported species was", species$common.name[1],
-          "with", species$count[1], "observations.", sep = " ")
+    species <- the_data %>% 
+      filter(source == "iNaturalist") %>% 
+      group_by(scientific.name, common.name) %>%
+      summarise(count = length(user.id)) %>%
+      arrange(desc(count))
+      
+    paste(species$common.name[1])
+          #, " (", species$count[1], " observations)")
   })
   
   ## Text output for the group with the most observations
   output$top_taxa <- renderText({
-    paste("The group with the most observations was", taxon$iconic.taxon.name[1],
-          "with", taxon$count[1], "observations.", sep = " ")
+    taxon <- the_data %>%
+      filter(source == "iNaturalist") %>% 
+      group_by(iconic.taxon.name) %>%
+      summarise(count = length(iconic.taxon.name)) %>%
+      arrange(desc(count))
+    
+    paste(taxon$iconic.taxon.name[1])
+          #" (", taxon$count[1], " observations)")
   })
   
-  ## Text output for the number of total obs
+  ## Text output for the number of total observers
   output$total_observers <- renderText({
-    paste(sum(observers$count), "research-grade observations by", 
-          length(observers$user.id), "observers were reported to iNaturalist.", sep = " ")
+    observers <- the_data %>%
+      filter(source == "iNaturalist") %>% 
+      group_by(user.id, user.login) %>%
+      summarise(count = length(user.id)) %>%
+      arrange(desc(count))
+    
+    paste0(length(observers$user.id))
+  })
+  
+  ## Total observations
+  output$total_observations <- renderText({
+    observers <- the_data %>%
+      filter(source == "iNaturalist") %>% 
+      group_by(user.id, user.login) %>%
+      summarise(count = length(user.id)) %>%
+      arrange(desc(count))
+    
+    paste0(sum(observers$count))
+  })
+  
+  ### eBird
+  ## Text output for the top recorded species
+  output$top_sp_e <- renderText({
+    species <- the_data %>% 
+      filter(source == "eBird") %>% 
+      group_by(scientific.name, common.name) %>%
+      summarise(count = length(common.name)) %>%
+      arrange(desc(count))
+    
+    paste(species$common.name[1])
+  })
+  
+  ## Text output for the group with the most observations
+  output$total_sp_e <- renderText({
+    taxon <- the_data %>%
+      filter(source == "eBird") %>% 
+      group_by(common.name) %>%
+      summarise(count = length(common.name)) %>% 
+      arrange(desc(count))
+    
+    paste(length(taxon$common.name))
+  })
+  
+  ## Text output for the number of total checklists
+  output$total_checklists_e <- renderText({
+    observers <- the_data %>%
+      filter(source == "eBird") %>% 
+      group_by(checklist) %>%
+      summarise(count = length(unique(checklist))) %>%
+      arrange(desc(count))
+    
+    paste(length(observers$checklist))
+  })
+  
+  ## Text output for the number of total birds
+  output$total_birds_e <- renderText({
+    obs <- the_data %>%
+      filter(source == "eBird") %>% 
+      mutate(count = replace(count, is.na(count), 1))
+    
+    paste(sum(obs$count))
   })
   
   ## Text output for species of interest description
@@ -499,13 +637,18 @@ server <- function(input, output, session) {
       write.csv(inat_data_download, file, row.names = F)
     })
   
+  ## Copyright text
+  output$copyright_txt <- renderText({
+    date <- today()
+    paste0("© ", year(date), " Schoodic Institute at Acadia National Park")
+  })
+  
 }
 
 
 
 #### Run the app ####
 
-#runApp(shinyApp(ui, server), launch.browser = TRUE)
 shinyApp(ui, server)
 
 

@@ -3,6 +3,7 @@ require(rinat)
 require(lubridate)
 require(leaflet)
 require(shiny)
+require(shinyjs)
 require(shinythemes)
 require(shinyWidgets)
 require(bslib)
@@ -49,7 +50,7 @@ require(shinyalert)
 #' @seealso None
 #' @export
 
-inat_recent <- function(place_id, timespan, output.path) {
+inat_recent <- function(place_id, timespan) {
   
   ## Check to make sure that parameter inputs are correct
   # timespan
@@ -62,13 +63,13 @@ inat_recent <- function(place_id, timespan, output.path) {
   } 
   
   
-  # output.path
-  if (str_sub(output.path, start = -1) == "/") {
-    stop("Directory path cannot end with '/'")
-  }
-  if (str_sub(output.path, start = -1) == "`\`") {
-    stop("Directory path cannot end with '\'")
-  }
+  # # output.path
+  # if (str_sub(output.path, start = -1) == "/") {
+  #   stop("Directory path cannot end with '/'")
+  # }
+  # if (str_sub(output.path, start = -1) == "`\`") {
+  #   stop("Directory path cannot end with '\'")
+  # }
   
   
   # Get the past week's dates and format
@@ -142,43 +143,15 @@ inat_recent <- function(place_id, timespan, output.path) {
     mutate(dup = duplicated(.),
            observed.on = as.Date(observed.on)) %>% 
     filter(dup == "FALSE") %>% 
-    select(-dup)
-  
-  
-  # if(length(inat_obs) >= 1) {
-  #   message("Caluclating summary statistics for time span...")
-  # }
-  
+    select(-dup) %>% 
+    mutate(source = "iNaturalist",
+           checklist = NA,
+           count = 1)
+
   
   # Stop summarise output message
   options(dplyr.summarise.inform = FALSE)
-  
-  
-  ## Create summary tables
-  # Number of obs in each taxon
-  summary_taxon <- inat_obs %>% 
-    group_by(iconic.taxon.name) %>% 
-    summarise(count = length(iconic.taxon.name)) %>% 
-    arrange(desc(count))
-  
-  # Number of observers = length, number of obs by user
-  summary_observers <- inat_obs %>% 
-    group_by(user.id, user.login) %>% 
-    summarise(count = length(user.id)) %>% 
-    arrange(desc(count))
-  
-  # Number of obs for each species
-  summary_species <- inat_obs %>% 
-    group_by(scientific.name, common.name) %>% 
-    summarise(count = length(user.id)) %>% 
-    arrange(desc(count))
-  
-  
-  # Write out the summary tables
-  write.csv(summary_taxon, paste(output.path, "summary_taxon.csv", sep = "/"))
-  write.csv(summary_observers, paste(output.path, "summary_observers.csv", sep = "/"))      
-  write.csv(summary_species, paste(output.path, "summary_species.csv", sep = "/"))
-  
+
   
   if(length(inat_obs) >= 1) {
     message("Data retrieval successful!")
@@ -219,7 +192,6 @@ ebird_recent <- function(ebird_loc, parkname) {
   run <- function(ebird_loc, code) {
     
     data <- ebirdregion(loc = ebird_loc, species = code, back = 7, key = "kjh86bnmkpfh") %>% 
-      select(comName, sciName, obsDt, locName, lat, lng, subId) %>% 
       mutate(url = paste0("https://ebird.org/checklist/", subId))
     
     return(data)
@@ -230,12 +202,16 @@ ebird_recent <- function(ebird_loc, parkname) {
   mid <- map2_dfr(ebird_loc, codelist, run) %>% 
     mutate(iconic.taxon.name = "Aves",
            obsDt = as.Date(obsDt)) %>% 
-    select(scientific.name = sciName, common.name = comName, iconic.taxon.name,
-           observed.on = obsDt, place.guess = locName, latitude = lat, longitude = lng, url)
+    select(scientific.name = sciName, common.name = comName, iconic.taxon.name, count = howMany,
+           observed.on = obsDt, place.guess = locName, latitude = lat, longitude = lng, checklist = subId, url)
   
   
   # Select records inside the designated area
-  output <- filter_nps(mid, parkname, lat = "latitude", long = "longitude")
+  filtered <- filter_nps(mid, parkname, lat = "latitude", long = "longitude")
+  
+  
+  output <- filtered %>% 
+    mutate(source = "eBird")
   
   
   if(length(output) >= 1) {
