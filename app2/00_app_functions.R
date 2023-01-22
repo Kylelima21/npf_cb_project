@@ -253,17 +253,17 @@ combine_citsci_data <- function(x, y, join) {
 
 
 
-#' @description A simple function that will take a dataframe, filter by records inside ANP, and return a
-#' cleaned dataframe. IMPORTANT: This function only work for lat long data seperated
+#' @description A simple function that will take a data frame, filter by records inside ANP, and return a
+#' cleaned data frame. IMPORTANT: This function only work for lat long data separated
 #' in two different columns (one for lat and one for long).
 #'
-#' @param df Name of the dataframe you have read in.
-#' @param park The quoted name of the national park/monument that you want to filter records by. REQUIRES
+#' @param df Name of the data frame you have read in.
+#' @param park The quoted name of the national park/monument that you want to filter records by. Requires
 #' name format to be exact. Find a list of the 427 park names at this link: https://rpubs.com/klima21/filternps.
 #' @param lat The quoted column name that is your latitude data.
 #' @param long The quoted column name that is your longitude data.
 #'
-#' @return Returns a dataframe of the same structure, but filtered to records inside
+#' @return Returns a data frame of the same structure, but filtered to records inside
 #' the specified park/monument. Some column names may change.
 #'
 #' @example
@@ -271,7 +271,7 @@ combine_citsci_data <- function(x, y, join) {
 #' # Read in data from working directory
 #' bird.dat <- read.csv("ebird_mappingloc_20220217.csv")
 #'
-#' # Use filter_nps function to filter the bird.dat dataframe to records inside Acadia National Park
+#' # Use filter_nps function to filter the bird.dat data frame to records inside Acadia National Park
 #' bird.anp <- filter_nps(bird.dat, "Acadia National ParK", lat = "y", long = "x")
 #'
 #' @export

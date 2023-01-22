@@ -1,0 +1,67 @@
+---
+title: Test graph
+output: blastula::blastula_email
+---
+
+<link rel="stylesheet" href="email_style.css"/>
+
+```{r echo = FALSE, include = FALSE}
+library(tidyverse)
+library(lubridate)
+source("email_functions.R")
+
+start <- format(today() - 6, "%d %B %Y")
+end <- format(today(), "%d %B %Y")
+
+# ## Pull iNaturalist and eBird data
+# inat <- inat_recent("49610")
+# ebird <- ebird_recent("US-ME-009", "Acadia National Park")
+# 
+# 
+# ## Combine the two data frames
+# final_data <- combine_citsci_data(inat, ebird)
+
+final_data <- read.csv("weeks_data.csv")
+
+watchlist_species(final_data, "outputs")
+
+pests <- read.csv("outputs/invasive_pestslist.csv")
+rare <- read.csv("outputs/rare_specieslist.csv")
+te <- read.csv("outputs/te_specieslist.csv")
+
+```
+
+
+<div style="
+  text-align: center; 
+  margin: auto;
+  padding: 10px 0 20px 0;
+">
+<div style="
+  color: rgba(13, 4, 42); 
+  font-size: 30px; 
+  font-weight: 700;
+"> 
+Citizen Science Report
+</div>
+<div style="
+  color: rgba(13, 4, 42); 
+  font-size: 20px; 
+  font-weight: 500;
+"> 
+Acadia National Park
+</div>
+</div>
+
+
+
+Welcome to the weekly report of iNaturalist and eBird records. These are all observations submitted from `r start` to `r end` for the species that you have identified as species of interest. 
+
+
+```{r echo = FALSE}
+
+```
+
+
+
+
