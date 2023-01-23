@@ -10,7 +10,7 @@ library(blastula)
 
 
 #------------------------------------------------#
-####           Packages Required              ####
+####         Create and send email            ####
 #------------------------------------------------#
 
 ## Can run to see example of what the email will look like
@@ -31,7 +31,7 @@ library(blastula)
 smtp_send(render_email('email_alerts/email_material.Rmd'),
           from = "klima@schoodicinstitute.org",
           to = "klima@schoodicinstitute.org",
-          subject = "Your weekly citizen science report for species of interest",
+          subject = "Acadia National Park Citizen Science Report",
           credentials = creds_key("kmail")
 )
 
