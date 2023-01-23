@@ -1,18 +1,39 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: Sending NPF Email
+run-name: ${{ github.actor }} is sending the email 🚀
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Run-Email-Sender-Script:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
+      - uses: actions/checkout@v2 # Checkout branch into the runner
+      - uses: r-lib/actions/setup-r@master # Set up R runtime
+        with:
+          r-version: 'release'
+          
+      - name: Setup renv # Set up R env to install packages
         run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+          install.packages('remotes')
+          remotes::install_github("rstudio/renv")
+        shell: Rscript {0}
+        
+      - uses: actions/cache@v2 # Cache packages so won't be compiled everytime job is run
+        with:
+          path: ~/.local/share/renv
+          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-renv-
+      - name: Install dependencies # Install the dependencies eg. Dplyr, tidyverse etc
+        run: renv::restore()
+        shell: Rscript {0}
+  
+      - name: Generate data # Run the script
+        run: source("email_alerts/email_sender.R")
+        shell: Rscript {0}
+      
+      - name: Commit files # Commit changes
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add .
+          git diff-index --quiet HEAD || (git commit -m "send weekly email" && git push)
+
