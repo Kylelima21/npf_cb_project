@@ -26,13 +26,19 @@ library(blastula)
 #   #overwrite = TRUE
 # )
 
+# create_smtp_creds_file(
+#   file = "kmail",
+#   user = "klima@schoodicinstitute.org",
+#   provider = "gmail"
+# )
+
 
 ## Produce and send the email
 smtp_send(render_email('email_alerts/email_material.Rmd'),
           from = "klima@schoodicinstitute.org",
           to = "klima@schoodicinstitute.org",
           subject = "Acadia National Park Citizen Science Report",
-          credentials = creds_key("kmail")
+          credentials = creds_file("email_alerts/kmail")
 )
 
 
