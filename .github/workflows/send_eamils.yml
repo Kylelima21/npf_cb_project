@@ -10,8 +10,10 @@ jobs:
           
       - name: Install packages
         run: |
-          R -e 'install.packages("tidyverse")'
           R -e 'install.packages("blastula")'
+          R -e 'install.packages("curl")'
+          R -e 'install.packages("httr")'
+          R -e 'install.packages("tidyverse")'
           R -e 'install.packages("lubridate")'
           
       - name: Run email script
