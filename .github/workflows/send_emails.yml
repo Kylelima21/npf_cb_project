@@ -23,5 +23,5 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add .
-          git diff-index --quiet HEAD || (git commit -m "send weekly email" && git push)
+          git diff-index --quiet HEAD || (git commit -m "sent weekly email" && git push)
 
