@@ -1,96 +1,128 @@
 ---
-title: "weekly_manager_report"
-author: "Schoodic Institute"
-date: "`r Sys.Date()`"
-output: html_document
+output: 
+  html_document:
+    css: pages_style.css
 ---
 
-<link rel="stylesheet" href="email_style.css"/>
 
 ```{r echo = FALSE, include = FALSE}
 library(tidyverse)
 library(lubridate)
-library(gt)
+library(kableExtra)
 library(htmltools)
 source("email_functions.R")
 
-start <- format(today() - 6, "%d %B %Y")
-end <- format(today(), "%d %B %Y")
+start <- format(today() - 7, "%d %B %Y")
+end <- format(today()-1, "%d %B %Y")
 
-# ## Pull iNaturalist and eBird data
-# inat <- inat_recent("49610")
-# ebird <- ebird_recent("US-ME-009", "Acadia National Park")
-# 
-# 
-# ## Combine the two data frames
-# final_data <- combine_citsci_data(inat, ebird)
+## Pull iNaturalist and eBird data
+inat <- inat_recent("49610")
+ebird <- ebird_recent("US-ME-009", "Acadia National Park")
 
-final_data <- read.csv("weeks_data.csv")
+## Combine the two data frames
+final_data <- combine_citsci_data(inat, ebird)
 
+#final_data <- read.csv("weeks_data.csv")
+
+## Run the summary function on the final data
 watchlist_species(final_data, "outputs")
 
 pests <- read.csv("outputs/invasive_pestslist.csv") %>% 
-  select(scientific.name, common.name, user = user.login, observed.on, url)
-rare <- read.csv("outputs/rare_specieslist.csv")
-te <- read.csv("outputs/te_specieslist.csv")
+  select(scientific.name, common.name, user = user.login, observed.on, url) %>% 
+  mutate(link = glue::glue("[view observation]({url})"),
+         link = map(link, gt::md)) %>%
+  select(-url)
+
+rare <- read.csv("outputs/rare_specieslist.csv") %>% 
+  select(scientific.name, common.name, observed.on = date, url) %>% 
+  mutate(link = glue::glue("[view observation]({url})"),
+         link = map(link, gt::md)) %>%
+  select(-url)
+
+
+te <- read.csv("outputs/te_specieslist.csv") %>% 
+  select(scientific.name, common.name, listing.status, observed.on, url) %>% 
+  mutate(link = glue::glue("[view observation]({url})"),
+         link = map(link, gt::md)) %>%
+  select(-url)
 
 ```
 
 
 <!-- Header -->
-<div style = "
-  text-align: center; 
-  padding: 3px 0;
-  background-image: linear-gradient(240deg, rgba(146, 206, 208, 1), rgba(85, 143, 94, 1));
-  border-radius: 5px;
-  ">
-  
-<div style = "
-  color: rgba(13, 4, 42, 1); 
-  font-size: 30px; 
-  font-weight: 700;
-  "> 
-Citizen Science Report
-</div>
-
-<div style = "
-  color: rgba(13, 4, 42, 1); 
-  font-size: 20px; 
-  font-weight: 500;
-  "> 
-Acadia National Park
-</div>
-
+<div class = "title-box">
+  <div class = "title">
+  Citizen Science Report
+  </div>
+  <div class = "title2">
+  Acadia National Park
+  </div>
+  <div class = "subtitle"> 
+  `r start` - `r end`
+  </div>
 </div>
 
 
 <!-- Introduction -->
-<div style = "
-  position: relative;
-  margin: 20px auto;
-  height: 200px;
-  width: 300px;
-  border-radius: 5px;
-  box-shadow: 3px 2px 1rem rgba(0, 0, 0, 0.2);
-  ">
-<img src = "img/monarch.jpg" alt = "iNaturalist logo" style = "
-  object-fit: cover;
-  overflow: hidden;
-  ">
-</div>
-  
-<div style = "
-  color: rgba(13, 4, 42, 1);
-  ">
-Welcome to the weekly report of iNaturalist and eBird records. These are all observations submitted from `r start` to `r end` for the species that you have identified as being of particular interest. The data for this report comes from open source citizen science projects: iNaturalist and eBird.
+<div class = "intro-box">
+  <div class = "body-title-box">
+  <i class = "body-box-icon"></i>
+  <h4 class = "body-titles"> Introduction </h4>
+  </div>
+  <div class = "intro-img-box">
+  <img src = "img/inat.png" alt = "iNaturalist logo" class = "inat-logo">
+  <img src = "img/ebird.png" alt = "eBird logo" class = "ebird-logo">
+  </div>
+  <div class = "intro-text">
+  Welcome to the weekly report of iNaturalist and eBird records. These are all observations submitted    from `r start` to `r end` for the species that you have identified as being of particular interest.
+  The data for this report comes from open source citizen science projects: iNaturalist and eBird. The   records here are both casual and research grade observations, so erroneous identifications are        possible.
+  </div>
 </div>
 
 
 
-```{r echo = FALSE}
-pests %>%
-  mutate(link = glue::glue("[view observation]({url})"),
-         link = map(link, gt::md)) %>%
-  select(-url) %>% 
-  gt()
-```
+<!-- Pests -->
+<div class = "pests-box">
+  <div class = "body-title-box">
+  <i class = "body-box-icon"></i>
+  <h4 class = "body-titles"> Pest Species </h4>
+  </div>
+  <div class = "pests-img-box">
+  <img src = "img/hwa.jpeg" alt = "A Hemlock tree infested with Hemlock Wooly Adelgid" class = "pests-img">
+  </div>
+  <div class = "pests-table">
+  `r ifelse(length(pests$scientific.name) > 0, kbl(pests) %>% kable_styling(bootstrap_options = "hover"), paste0("<h3> There were no pest species reported this week. </h3>"))`
+  </div>
+</div>
+
+
+
+<!-- Threatened and Endangered -->
+<div class = "te-box">
+  <div class = "body-title-box">
+  <i class = "body-box-icon"></i>
+  <h4 class = "body-titles"> Threatened & Endangered Species </h4>
+  </div>
+  <div class = "te-img-box">
+  <img src = "img/rekn.jpeg" alt = "Two Red Knots in flight" class = "te-img">
+  </div>
+  <div class = "te-table">
+  `r ifelse(length(te$scientific.name) > 0, kbl(te) %>% kable_styling(bootstrap_options = "hover"), paste0("<h3> There were no threatened or endangered species reported this week. </h3>"))`
+  </div>
+</div>
+
+
+
+<!-- Rare species -->
+<div class = "rare-box">
+  <div class = "body-title-box">
+  <i class = "body-box-icon"></i>
+  <h4 class = "body-titles"> Rare Species </h4>
+  </div>
+  <div class = "rare-img-box">
+  <img src = "img/notr.jpeg" alt = "A flowering Nodding Trillium" class = "rare-img">
+  </div>
+  <div class = "rare-table">
+  `r ifelse(length(rare$scientific.name) > 0, kbl(rare) %>% kable_styling(bootstrap_options = "hover"), paste0("<h3> There were no rare species reported this week. </h3>"))`
+  </div>
+</div>

@@ -205,15 +205,6 @@ combine_citsci_data <- function(x, y, join) {
 
 filter_nps <- function(df, park, lat, long) {
   
-  # if (!file.exists("app/www/nps_boundary.zip")) {
-  #   download('https://irma.nps.gov/DataStore/DownloadFile/673366', destfile = "app/www/nps_boundary.zip")
-  # }
-  # 
-  # 
-  # if (!dir.exists("app/www/nps_boundary")) {
-  #   unz("app/www/nps_boundary.zip")
-  # }
-  
   
   nps.bounds <- readOGR("nps_boundary/nps_boundary.shp", verbose = FALSE)
   
