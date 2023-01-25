@@ -1,4 +1,6 @@
 ---
+title: ANP Citizen Science Report
+author: Schoodic Institute at Acadia National Park
 output: 
   html_document:
     css: email_alerts/pages_style.css
@@ -16,14 +18,14 @@ source("email_alerts/email_functions.R")
 start <- format(today() - 7, "%d %B %Y")
 end <- format(today()-1, "%d %B %Y")
 
-# ## Pull iNaturalist and eBird data
-# inat <- inat_recent("49610")
-# ebird <- ebird_recent("US-ME-009", "Acadia National Park")
-# 
-# ## Combine the two data frames
-# final_data <- combine_citsci_data(inat, ebird)
+## Pull iNaturalist and eBird data
+inat <- inat_recent("49610")
+ebird <- ebird_recent("US-ME-009", "Acadia National Park")
 
-final_data <- read.csv("email_alerts/weeks_data.csv")
+## Combine the two data frames
+final_data <- combine_citsci_data(inat, ebird)
+
+# final_data <- read.csv("email_alerts/weeks_data.csv")
 
 ## Run the summary function on the final data
 watchlist_species(final_data, "email_alerts/outputs")
@@ -52,10 +54,10 @@ te <- read.csv("email_alerts/outputs/te_specieslist.csv") %>%
 
 <!-- Header -->
 <div class = "title-box">
-  <div class = "title">
+  <div class = "titlemain">
   Citizen Science Report
   </div>
-  <div class = "title2">
+  <div class = "titlemain2">
   Acadia National Park
   </div>
   <div class = "subtitle"> 

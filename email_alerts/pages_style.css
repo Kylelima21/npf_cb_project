@@ -25,6 +25,10 @@
   scroll-behavior: smooth;
 }
 
+.title, .author {
+  display: none;
+}
+
 html:focus-within {
   scroll-behavior: smooth;
 }
@@ -77,13 +81,13 @@ ol[role="list"] {
   margin: 15px 0;
 }
 
-.title {
+.titlemain {
   color: var(--clr-base-purple); 
   font-size: 60px; 
   font-weight: 600;
 }
 
-.title2 {
+.titlemain2 {
   color: var(--clr-base-purple); 
   font-size: 55px; 
   font-weight: 600;
