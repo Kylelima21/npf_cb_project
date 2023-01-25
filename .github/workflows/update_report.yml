@@ -20,7 +20,7 @@ jobs:
           R -e 'install.packages("htmltools")'
           
       - name: Run rmd to update info
-        run: Rscript index.Rmd
+        run: Rscript -e 'rmarkdown::render(input = "index.Rmd")'
       
       - name: Commit files # Commit changes
         run: |
