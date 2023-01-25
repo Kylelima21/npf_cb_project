@@ -22,7 +22,7 @@ ebird <- ebird_recent("US-ME-009", "Acadia National Park")
 ## Combine the two data frames
 final_data <- combine_citsci_data(inat, ebird)
 
-#final_data <- read.csv("weeks_data.csv")
+# final_data <- read.csv("weeks_data.csv")
 
 ## Run the summary function on the final data
 watchlist_species(final_data, "outputs")
@@ -63,6 +63,7 @@ te <- read.csv("outputs/te_specieslist.csv") %>%
 </div>
 
 
+
 <!-- Introduction -->
 <div class = "intro-box">
   <div class = "body-title-box">
@@ -70,8 +71,8 @@ te <- read.csv("outputs/te_specieslist.csv") %>%
   <h4 class = "body-titles"> Introduction </h4>
   </div>
   <div class = "intro-img-box">
-  <img src = "img/inat.png" alt = "iNaturalist logo" class = "inat-logo">
-  <img src = "img/ebird.png" alt = "eBird logo" class = "ebird-logo">
+  <a href = "https://www.inaturalist.org/"><img src = "img/inat.png" alt = "iNaturalist logo" class      = "inat-logo"></a>
+  <a href = "https://ebird.org/"><img src = "img/ebird.png" alt = "eBird logo" class =                   "ebird-logo"></a>
   </div>
   <div class = "intro-text">
   Welcome to the weekly report of iNaturalist and eBird records. These are all observations submitted    from `r start` to `r end` for the species that you have identified as being of particular interest.
@@ -88,7 +89,7 @@ te <- read.csv("outputs/te_specieslist.csv") %>%
   <h4 class = "body-titles"> Pest Species </h4>
   </div>
   <div class = "pests-img-box">
-  <img src = "img/hwa.jpeg" alt = "A Hemlock tree infested with Hemlock Wooly Adelgid" class = "pests-img">
+  <img src = "img/hwa.jpeg" alt = "A Hemlock tree infested with Hemlock Wooly Adelgid" class =          "pests-img">
   </div>
   <div class = "pests-table">
   `r ifelse(length(pests$scientific.name) > 0, kbl(pests) %>% kable_styling(bootstrap_options = "hover"), paste0("<h3> There were no pest species reported this week. </h3>"))`
@@ -124,5 +125,22 @@ te <- read.csv("outputs/te_specieslist.csv") %>%
   </div>
   <div class = "rare-table">
   `r ifelse(length(rare$scientific.name) > 0, kbl(rare) %>% kable_styling(bootstrap_options = "hover"), paste0("<h3> There were no rare species reported this week. </h3>"))`
+  </div>
+</div>
+
+
+
+<!-- Credits -->
+<div class = "credits-box">
+  <div>
+  <a href = "https://schoodicinstitute.org/"><img src = "img/schoodic_horizontal.jpeg" alt = "Schoodic   Institute at Acadia National Park logo" class = "schoodic-img"></a>
+  <h5 class = "credits-text"> This page was created by Schoodic Institute at Acadia National Park </h5>
+  </div>
+  <div class = "credits-text">
+  <h5> Photo credits: </h5>
+  <h5> Acadia landscape by Ben Tero </h5>
+  <h5> Hemlock Wolly Adelgid by jesse94 </h5>
+  <h5> Red Knot by Fyn Kynd </h5>
+  <h5> Nodding Trillium by Kristen_smith2 </h5>
   </div>
 </div>
