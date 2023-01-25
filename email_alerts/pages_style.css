@@ -1,0 +1,372 @@
+/* Set core root defaults */
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+
+:root {
+  --clr-base-blue: rgb(146, 206, 208, 1);
+  --clr-base-green: rgb(85, 143, 94, 1);
+  --clr-base-purple: rgba(13, 4, 42, 1);
+
+  --clr-opaque-green: rgb(85, 143, 94, 0.7);
+  --clr-opaque-purple: rgba(13, 4, 42, 0.7);
+
+  --clr-body-boxes: rgba(122, 154, 157, 0.6);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', Sans-Serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+a:focus {
+  outline: 2px solid rgba(255, 255, 255, 1);
+  outline-offset: 3px;
+}
+
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  background-image: url("img/background_BT.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  overflow-x: hidden;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+.body-title-box {
+  position: absolute;
+  top: 0;
+  left: 1%;
+  align-items: center;
+  justify-content: left;
+  color: black;
+}
+
+.body-titles {
+  margin-left: 1rem;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+
+
+
+
+/* Title styling*/
+
+.title-box {
+  position: relative;
+  text-align: left; 
+  margin: 15px 0;
+}
+
+.title {
+  color: var(--clr-base-purple); 
+  font-size: 60px; 
+  font-weight: 600;
+}
+
+.title2 {
+  color: var(--clr-base-purple); 
+  font-size: 55px; 
+  font-weight: 600;
+}
+
+.subtitle {
+  color: var(--clr-base-purple); 
+  font-size: 30px; 
+  font-weight: 500;
+}
+
+
+
+
+
+
+/* Intro styling*/
+
+.intro-box {
+  position: relative;
+  background-color: var(--clr-body-boxes);
+  margin: 50px auto;
+  width: 100%;
+  padding: 50px 30px 30px 30px;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  display: grid;
+  grid-column-gap: 30px;
+  grid-template-columns: 40% 56%;
+  grid-template-areas: 
+    "theimg text"
+}
+
+.intro-text {
+  grid-area: text;
+  margin: auto;
+  padding: 20px;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  color: black;
+  font-size: 18px;
+}
+
+.intro-img-box {
+  grid-area: theimg;
+  margin: auto;
+  padding: 20px;
+  border-radius: 1rem;
+  background-color: var(--clr-opaque-green);
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas: 
+    "inat"
+    "ebird"
+}
+
+.inat-logo {
+  grid-area: inat;
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 80px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.4);
+  padding: 2rem 3.5rem;
+  border-radius: 8rem;
+  margin-bottom: 2rem;
+}
+
+.ebird-logo {
+  grid-area: ebird;
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 80px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.4);
+  padding: 2rem 3.5rem;
+  border-radius: 8rem;
+  margin-bottom: 2rem;
+}
+
+
+
+
+
+/* Pests box styling */
+
+.pests-box {
+  position: relative;
+  background-color: var(--clr-body-boxes);
+  margin: 50px auto;
+  width: 100%;
+  padding: 50px 30px 30px 30px;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas: 
+    "images"
+    "text"
+}
+
+.pests-img {
+  grid-area: images;
+  max-height: 150px;
+  width: 95%;
+  margin: 20px 20px 20px 20px;
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.pests-table {
+  grid-area: text;
+  margin: auto;
+  padding: 20px;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  color: black;
+  font-size: 18px;
+}
+
+
+
+
+
+/* TE box styling */
+
+.te-box {
+  position: relative;
+  background-color: var(--clr-body-boxes);
+  margin: 50px auto;
+  width: 100%;
+  padding: 50px 30px 30px 30px;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas: 
+    "images"
+    "text"
+}
+
+.te-img {
+  grid-area: images;
+  max-height: 150px;
+  width: 95%;
+  margin: 20px 20px 20px 20px;
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.te-table {
+  grid-area: text;
+  margin: auto;
+  padding: 20px;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  color: black;
+  font-size: 18px;
+}
+
+
+
+
+
+/* Rare box styling */
+
+.rare-box {
+  position: relative;
+  background-color: var(--clr-body-boxes);
+  margin: 50px auto;
+  width: 100%;
+  padding: 50px 30px 30px 30px;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas: 
+    "images"
+    "text"
+}
+
+.rare-img {
+  grid-area: images;
+  max-height: 150px;
+  width: 95%;
+  margin: 20px 20px 20px 20px;
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.rare-table {
+  grid-area: text;
+  margin: auto;
+  padding: 20px;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  color: black;
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+/* Credits box styling */
+
+.credits-box {
+  position: relative;
+  background-color: transparent;
+  margin: 50px auto;
+  width: 100%;
+  padding: 30px;
+  display: grid;
+  grid-column-gap: 15px;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: 
+    "images text"
+}
+
+.schoodic-img {
+  grid-area: images;
+  width: 70%;
+  margin: 20px;
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.credits-text {
+  grid-area: text;
+  margin: auto;
+  padding: 10px;
+  border-radius: 1rem;
+  /*background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);*/
+  color: white;
+  font-size: 15px;
+}
+
+
+
+
+
+
+/* Media query styling */
+
+@media screen and (max-width: 880px) {
+  
+  .intro-box {
+    grid-column-gap: none;
+    grid-template-columns: 100%;
+    grid-template-areas: 
+      "text"
+      "theimg"
+  }
+  
+  .intro-img-box {
+    margin-top: 20px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: 
+      "inat ebird"
+  }
+  
+}
+
+

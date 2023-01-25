@@ -11,7 +11,6 @@ library(lubridate)
 
 start <- format(today() - 7, "%d %B %Y")
 end <- format(today() - 1, "%d %B %Y")
-year <- format(today(), "%Y")
 
 ```
 
@@ -20,8 +19,7 @@ year <- format(today(), "%Y")
 <div style = "
   text-align: center; 
   padding: 3px 0;
-  background-image: linear-gradient(240deg, rgba(146, 206, 208, 1), rgba(85, 143, 94, 1));
-  border-radius: 5px;
+  background-image: linear-gradient(240deg, rgba(146, 206, 208, 0.8), rgba(85, 143, 94, 0.8));
   ">
   
 <div style = "
@@ -76,10 +74,10 @@ The weekly report has been updated! This report summarizes iNaturalist and eBird
   position: relative;
   font-size: 20px;
   font-weight: 500;
-  color: rgba(146, 206, 208, 1);
-  background-color: rgba(13, 4, 42, 1);
+  color: white;
+  background-color: rgb(48, 44, 100);
   text-decoration: none;
-  padding: 10px 20px;
+  padding: 20px 25px;
   border-radius: 100vmax;
   ">
 Go to the report!
