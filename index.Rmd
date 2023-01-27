@@ -13,6 +13,7 @@ library(tidyverse)
 library(lubridate)
 library(kableExtra)
 library(htmltools)
+library(gt)
 source("email_alerts/email_functions.R")
 
 start <- format(today() - 7, "%d %B %Y")
