@@ -5,7 +5,7 @@ on: [push]
    # - cron:  '40 12 * * 1'
     
 jobs:
-  Run-Email-Sender-Script:
+  Update-Citsci-Report-Pages:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2 # Checkout branch into the runner
@@ -20,6 +20,7 @@ jobs:
           R -e 'install.packages("htmltools")'
           R -e 'install.packages("rinat")'
           R -e 'install.packages("rebird")'
+          R -e 'install.packages("rgdal")'
           
       - name: Run rmd to update info
         run: Rscript -e 'rmarkdown::render(input = "index.Rmd")'
