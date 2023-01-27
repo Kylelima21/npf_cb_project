@@ -36,7 +36,8 @@ library(blastula)
 ## Produce and send the email
 smtp_send(render_email('email_alerts/email_material.Rmd'),
           from = "klima@schoodicinstitute.org",
-          to = c("klima@schoodicinstitute.org", "kylelemur21@gmail.com"),
+          to = c("klima@schoodicinstitute.org", "nfisichelli@schoodicinstitute.org", "Jesse_Wheeler@nps.gov",
+                 "sbenz@schoodicinstitute.org"),
           subject = "Acadia National Park Citizen Science Report",
           credentials = creds_file("email_alerts/kmail")
 )
