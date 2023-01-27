@@ -18,6 +18,8 @@ jobs:
           R -e 'install.packages("lubridate")'
           R -e 'install.packages("kableExtra")'
           R -e 'install.packages("htmltools")'
+          R -e 'install.packages("rinat")'
+          R -e 'install.packages("rebird")'
           
       - name: Run rmd to update info
         run: Rscript -e 'rmarkdown::render(input = "index.Rmd")'
