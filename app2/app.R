@@ -54,12 +54,12 @@ ui <- fluidPage(
     tags$link(type = "text/css", rel = "stylesheet", href = "css/style.css"),
     tags$meta(name = "viewport", content = "width=device-width, initial-scale=1.0"),
     tags$title("Acadia National Park Citizen Science Explorer"),
-    tags$script(src = "index.js", type = "module", "defer")
+    tags$script(src = "css/index.js", type = "module", "defer")
   ),
 
   ### BODY
   tags$body(
-    div(class = "back-box"),
+    #div(class = "back-box"),
     
     ## Navigation
     div(class = "primary-header",
@@ -85,7 +85,7 @@ ui <- fluidPage(
        h3("Citizen Science Explorer", class = "subtitle-homepage")
     ),
     div(class = "photo-cred",
-        "Photo by ", 
+        "Photo by ",
         a("Ben Tero", href = "https://www.instagram.com/btero/",
           target = "_blank")
         ),
@@ -97,13 +97,22 @@ ui <- fluidPage(
             div(class = "body-title-box",
                 icon("book-open",  class = "body-box-icon"), 
                 h4("Introduction", class = "body-titles")),
-            div(class = "intro-text",
-                h3("Welcome to the Acadia National Park citizen science explorer. Here you will find 
-                   summaries of Acadia National Park iNaturalist and eBird records from the last week. 
-                   In addition to summaries, we present some recent science that has been made possible 
-                   by your contributions to these citizen science projects. We hope that you enjoy 
-                   exploring recent sightings in the area, and understand how critical to science your 
-                   time and effort are when you contribute to citizen science efforts."))
+            div(class = "intro-content",
+                img(src = "img/citsci.jpg", alt = "A group of citizen scientists collecting data
+                    with iNatuarlist", class = "citsci-image"),
+                div(class = "intro-text",
+                    h2("Welcome to the Acadia National Park citizen science explorer!"),
+                    h3("Here you will find summaries of Acadia National Park iNaturalist and eBird records from the last week.
+                        In addition to summaries, we present some recent science that has been made possible
+                        by your contributions to these citizen science projects. We hope that you enjoy
+                        exploring recent sightings in the area, and understand how critical to science your
+                        time and effort are when you contribute to citizen science efforts."),
+                    div(class = "intro-three",
+                        img(src = "img/trsw.jpeg", alt = "Tree Swallow sitting on a wooden post"),
+                        img(src = "img/frog.jpg", alt = "Northern Leopard Frog in a gravel path"),
+                        img(src = "img/monarch.jpg", alt = "Monarch feeding from a red clover flower"))
+                    ))
+                    
     )),
     
     ## Data summary
@@ -190,8 +199,16 @@ ui <- fluidPage(
         div(class = "anchors", id = "science"),
         div(class = "body-title-box",
             icon("microscope",  class = "body-box-icon"), 
-            h4("Science", class = "body-titles"))),
-
+            h4("Science", class = "body-titles")),
+        div(class = "science-content",
+            img(src = "img/atsp.jpg", alt = "An American Tree Sparrow perched in a shrub", class = "science-img"),
+            div(class = "science-text",
+                h2("Acadia National Park Winter Birds: 51 Years of Change Along the Coast of Maine"),
+                h3("This project analyzed 51 years of citizen science effort from the National Audubon Society
+                   Christmas Bird Counts of Acadia National Park."),
+                a(href = "https://schoodicinstitute.org/new-research-shows-dramatic-declines-in-acadia-national-park-winter-bird-populations/", 
+                  target = "_blank", tabindex = "-1", tags$button(class = "btn-green", "Learn more"))))),
+                
     ## Gallery
     div(class = "box-photo-gallery",
         div(class = "anchors", id = "gallery"),
@@ -239,27 +256,6 @@ ui <- fluidPage(
                 div(class = "img-label",
                     h3(images$id[8]),
                     h4("©", images$user[8])))
-            # img(src = images$src[2]),
-            # img(src = images$src[3]),
-            # img(src = images$src[4]),
-            # img(src = images$src[5]),
-            # img(src = images$src[6]),
-            # img(src = images$src[7]),
-            # img(src = images$src[8])
-            # div(img(src = images$src[1])),
-            # div(img(src = images$src[2])),
-            # div(class = "tall",
-            #     img(src = images$src[3])),
-            # div(img(src = images$src[4])),
-            # div(class = "wide",
-            #     img(src = images$src[5])),
-            # div(class = "tall",
-            #     img(src = images$src[6])),
-            # div(class = "big",
-            #     img(src = images$src[7])),
-            # div(img(src = images$src[8])),
-            # div(class = "wide",
-            #     img(src = images$src[9]))
             )
         ),
     
@@ -270,10 +266,12 @@ ui <- fluidPage(
             icon("circle-info",  class = "body-box-icon"),
             h4("About This Page", class = "body-titles")),
         div(class = "about-info-box",
-            h4("Last Updated"),
-            textOutput("today"),
             h4("Background"),
-            "Info about the website, how, why it was built.",
+            "This project was made possible in part by a grant from the National Park Foundation. 
+            Due to this grant, ",
+            a("Schoodic Institute at Acadia National Park", href = "https://schoodicinstitute.org/",
+              target = "_blank"),
+            "was able to create this Shiny application to communicate citizen science in parks.",
             h4("Code"),
             "Code and required elements to generate this Shiny app are available on ",
             a("Github.", href = "https://github.com/Kylelima21/npf_cb_project",
@@ -282,21 +280,16 @@ ui <- fluidPage(
             "Data supplied by ", a("iNaturalist",
                                    href = "https://www.inaturalist.org/",
                                    target = "_blank"), " and ",
-                                 a("eBird", href = "https://www.ebird.org/", 
+                                 a("eBird.", href = "https://www.ebird.org/", 
                                    target = "_blank"),
-            h4("Authors"),
-            "Kyle Lima, Schoodic Institute at Acadia National Park",br(),
-            "Nicholas Fisichelli, Schoodic Institute at Acadia National Park",br(),
-            "Peter Nelson, Schoodic Institute at Acadia National Park",br(),
-            "Seth Benz, Schoodic Institute at Acadia National Park",br(),
-            "Catherine Schmidt, Schoodic Institute at Acadia National Park",
             h4("Get in Touch!"),
-            "Email Kyle Lima with any questions or concerns - klima@schoodicinstitute.org"),
+            "Contact Kyle Lima with any questions or concerns at klima@schoodicinstitute.org",
+            h6(textOutput("today"))),
         div(class = "about-download-box",
             tags$img(src = "img/cit_sci_explorer.png", alt = "Citizen science explorer logo", class = "about-logo"),
             h4("Download the past week's data here:"),
             div(class = "download-button",
-                downloadButton("downloadCsv", "Download as CSV")),
+                downloadButton("downloadCsv", "Download as CSV", class = "btn-purple")),
             h5("Data supplied by iNaturalist and eBird and modified by Schoodic Institute at Acadia National Park.",
                )
             )
@@ -324,9 +317,9 @@ ui <- fluidPage(
                       textOutput("copyright_txt")),
   
                   div(class = "footer-link-box",
-                      div(tabindex = "-1", class = "footer-button-position",
-                          tags$a(href = "https://schoodicinstitute.org/", target = "_blank",
-                                 tags$button(class = "button", "Visit our website!"))),
+                      div(class = "footer-button-position",
+                          tags$a(href = "https://schoodicinstitute.org/", target = "_blank", tabindex = "-1",
+                                 tags$button(class = "btn-purple", "Visit our website!"))),
                       div(class = "footer-link-wrapper",
                           tags$ul(`aria-list` = "Social media links", role = "list",
                                   tags$li(tags$a(`aria-label` = "Facebook", class = "footer-links",
@@ -352,52 +345,10 @@ ui <- fluidPage(
                   )
                   )
       )
-      
   )
 )
-             
 
-            
-  #   
-  #   ## Rare/Threat Species
-  #   pageSectionImage(
-  #     img = "img/razo.jpg",
-  #     center = TRUE,
-  #     menu = "rare",
-  #     
-  #     #h2("New Park Species")
-  #     # textOutput("newsp"),
-  #     # tableOutput("newsp_tab"), br(),
-  #     # 
-  #     # h2("Threatened/Endangered Species"),
-  #     # textOutput("te"),
-  #     # dataTableOutput("te_tab")
-  #     
-  #     h2("How are your observations being used?", class = "header-home"),
-  #     textOutput("descrip_sp"),
-  #     
-  #     # pageRow(
-  #     #   pageColumn(
-  #     #     h2("New Park Species", class = "white"),
-  #     #     textOutput("newsp"),br(),br(),br()),
-  #     #   pageColumn(
-  #     #     h2("Threatened/Endangered Species", class = "white"),
-  #     #     textOutput("te")))
-  #         
-  #     # pageRow(
-  #     #   pageColumn(
-  #     #     h2("New Park Species", class = "white"),
-  #     #     textOutput("newsp"),br(),br(),br()),
-  #     #   pageColumn(
-  #     #     h2("Threatened/Endangered Species", class = "white"),
-  #     #     textOutput("te"),br(),br(),br()),
-  #     #   pageColumn(
-  #     #     h2("Rare Species", class = "white"),
-  #     #     textOutput("rare")),
-  #     #   pageColumn(
-  #     #     h2("Species of Conservation Concern", class = "white"),
-  #     #     textOutput("invasive")))
-  #   ),
+
 
 
 
@@ -623,7 +574,8 @@ server <- function(input, output, session) {
   ## Text for today's date
   output$today <- renderText({
     date <- today()
-    format(date, "%B %d, %Y")
+    date <- format(date, "%B %d, %Y")
+    paste0("Last updated: ", date)
   })
   
   ## Output to download data as a CSV

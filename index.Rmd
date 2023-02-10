@@ -56,7 +56,7 @@ te <- read.csv("email_alerts/outputs/te_specieslist.csv") %>%
 <!-- Header -->
 <div class = "title-box">
   <div class = "titlemain">
-  Citizen Science Report
+  Citizen Science: Manager's Report
   </div>
   <div class = "titlemain2">
   Acadia National Park
@@ -79,8 +79,9 @@ te <- read.csv("email_alerts/outputs/te_specieslist.csv") %>%
   <a href = "https://ebird.org/"><img src = "email_alerts/img/ebird.png" alt = "eBird logo" class =     "ebird-logo"></a>
   </div>
   <div class = "intro-text">
-  Welcome to the weekly report of iNaturalist and eBird records. These are all observations submitted    from `r start` to `r end` for the species that you have identified as being of particular interest.
-  The data for this report comes from open source citizen science projects: iNaturalist and eBird. The   records here are both casual and research grade observations, so erroneous identifications are        possible.
+  Welcome to the weekly report of iNaturalist and eBird records. These are all observations submitted   from `r start` to `r end` for the species that Acadia National Park managers have identified as       being of particular interest. 
+  
+  These data for this report comes from open source citizen science projects: iNaturalist and eBird.    The records here are both casual and research grade observations, so erroneous identifications are    possible.
   </div>
 </div>
 
@@ -89,12 +90,10 @@ te <- read.csv("email_alerts/outputs/te_specieslist.csv") %>%
 <!-- Pests -->
 <div class = "pests-box">
   <div class = "body-title-box">
-  <i class = "body-box-icon"></i>
   <h4 class = "body-titles"> Pest Species </h4>
   </div>
-  <div class = "pests-img-box">
-  <img src = "email_alerts/img/hwa.jpeg" alt = "A Hemlock tree infested with Hemlock Wooly Adelgid"     class = "pests-img">
-  </div>
+  <img src = "email_alerts/img/hwa.jpeg" alt = "A Hemlock tree infested with Hemlock Woolly Adelgid"    class = "pests-img">
+  <h5 class = "cite"> © jesse94 </h5>
   <div class = "pests-table">
   `r ifelse(length(pests$scientific.name) > 0, kbl(pests) %>% kable_styling(bootstrap_options = "hover"), paste0("<h3> There were no pest species reported this week. </h3>"))`
   </div>
@@ -105,12 +104,10 @@ te <- read.csv("email_alerts/outputs/te_specieslist.csv") %>%
 <!-- Threatened and Endangered -->
 <div class = "te-box">
   <div class = "body-title-box">
-  <i class = "body-box-icon"></i>
   <h4 class = "body-titles"> Threatened & Endangered Species </h4>
   </div>
-  <div class = "te-img-box">
   <img src = "email_alerts/img/rekn.jpeg" alt = "Two Red Knots in flight" class = "te-img">
-  </div>
+  <h5 class = "cite"> © Fyn Kynd </h5>
   <div class = "te-table">
   `r ifelse(length(te$scientific.name) > 0, kbl(te) %>% kable_styling(bootstrap_options = "hover"), paste0("<h3> There were no threatened or endangered species reported this week. </h3>"))`
   </div>
@@ -121,12 +118,10 @@ te <- read.csv("email_alerts/outputs/te_specieslist.csv") %>%
 <!-- Rare species -->
 <div class = "rare-box">
   <div class = "body-title-box">
-  <i class = "body-box-icon"></i>
   <h4 class = "body-titles"> Rare Species </h4>
   </div>
-  <div class = "rare-img-box">
   <img src = "email_alerts/img/notr.jpeg" alt = "A flowering Nodding Trillium" class = "rare-img">
-  </div>
+  <h5 class = "cite"> © Kristen_smith2 </h5>
   <div class = "rare-table">
   `r ifelse(length(rare$scientific.name) > 0, kbl(rare) %>% kable_styling(bootstrap_options = "hover"), paste0("<h3> There were no rare species reported this week. </h3>"))`
   </div>
@@ -138,13 +133,10 @@ te <- read.csv("email_alerts/outputs/te_specieslist.csv") %>%
 <div class = "credits-box">
   <div>
   <a href = "https://schoodicinstitute.org/"><img src = "email_alerts/img/schoodic_horizontal.jpeg"     alt = "Schoodic Institute at Acadia National Park logo" class = "schoodic-img"></a>
-  <h5 class = "credits-text"> This page was created by Schoodic Institute at Acadia National Park       </h5>
   </div>
-  <div class = "credits-text">
-  <h5> Photo credits: </h5>
-  <h5> Acadia landscape by Ben Tero </h5>
-  <h5> Hemlock Wolly Adelgid by jesse94 </h5>
-  <h5> Red Knot by Fyn Kynd </h5>
-  <h5> Nodding Trillium by Kristen_smith2 </h5>
+  <div class = "credits-text"> 
+  This project was made possible in part by a grant from the National Park Foundation.
+  
+  Background art of Acadia National Park created by Ben Tero. 
   </div>
 </div>
