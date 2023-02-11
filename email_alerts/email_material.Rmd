@@ -27,7 +27,7 @@ end <- format(today() - 1, "%d %B %Y")
   font-size: 30px;
   font-weight: 700;
   ">
-  Citizen Science Report - Acadia National Park
+  Citizen Science: Manager's Report
   </div>
 
   <div style = "
@@ -59,7 +59,7 @@ end <- format(today() - 1, "%d %B %Y")
   color: rgba(13, 4, 42, 1);
   font-size: 16px;
   ">
-  The weekly report has been updated! This report summarizes iNaturalist and eBird records of the       species that you have identified as being of management interest. Click the button below to view      the report.
+  The weekly report has been updated! This report summarizes iNaturalist and eBird records of the       species that Acadia National Park managers have identified as being of management interest. Click     the button below to view the report.
 </div>
 
 

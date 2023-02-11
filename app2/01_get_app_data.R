@@ -29,9 +29,9 @@ download_photos(final_data, "app2/www/img/obs")
 
 ## Run watchlist and new species analysis
 # Get watchlist species
-watchlist_species(final_data, "app2/www/datasets")
+# watchlist_species(final_data, "app2/www/datasets")
 
 # Get new species
-new_npspecies(final_data, "app2/www/datasets/acad_species_list.csv", "app2/www/datasets")
+# new_npspecies(final_data, "app2/www/datasets/acad_species_list.csv", "app2/www/datasets")
 
 

@@ -1,231 +1,133 @@
 scientific.name,common.name,iconic.taxon.name,groups,observed.on,place.guess,latitude,longitude,positional.accuracy,user.login,user.id,captive.cultivated,url,image.url,source,checklist,count
-Anas rubripes,american black duck,Aves,Birds,2023-01-05,"Ship Harbor Trail, Southwest Harbor, Maine, US (44.229, -68.322)",44.228531,-68.3215672,NA,NA,NA,NA,https://ebird.org/checklist/S125472264,NA,eBird,S125472264,10
-Anas rubripes,american black duck,Aves,Birds,2023-01-03,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S125323466,NA,eBird,S125323466,5
-Anas rubripes,american black duck,Aves,Birds,2023-01-03,Acadia NP--Schoodic Loop Road (Mt. Desert Narrows),44.366956,-68.076409,NA,NA,NA,NA,https://ebird.org/checklist/S125312478,NA,eBird,S125312478,6
-Anas rubripes,american black duck,Aves,Birds,2023-01-02,Acadia NP--Schoodic Peninsula,44.3403019,-68.0582428,NA,NA,NA,NA,https://ebird.org/checklist/S125252674,NA,eBird,S125252674,2
-Anas rubripes,american black duck,Aves,Birds,2023-01-01,Acadia NP--Sand Beach,44.3292206,-68.1822252,NA,NA,NA,NA,https://ebird.org/checklist/S125161427,NA,eBird,S125161427,10
-Anas rubripes,american black duck,Aves,Birds,2023-01-01,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S125211702,NA,eBird,S125211702,10
-Anas rubripes,american black duck,Aves,Birds,2022-12-31,Acadia NP--Schooner Head Overlook,44.3396485,-68.1772259,NA,NA,NA,NA,https://ebird.org/checklist/S124992582,NA,eBird,S124992582,2
-Corvus brachyrhynchos,american crow,Aves,Birds,2023-01-06,"32 Nannau Wood, Bar Harbor, Maine, US (44.375, -68.195)",44.3745038,-68.1945682,NA,NA,NA,NA,https://ebird.org/checklist/S125523973,NA,eBird,S125523973,3
-Corvus brachyrhynchos,american crow,Aves,Birds,2023-01-05,"Ship Harbor Trail, Southwest Harbor, Maine, US (44.229, -68.322)",44.228531,-68.3215672,NA,NA,NA,NA,https://ebird.org/checklist/S125472264,NA,eBird,S125472264,4
-Corvus brachyrhynchos,american crow,Aves,Birds,2023-01-04,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S125431358,NA,eBird,S125431358,NA
-Corvus brachyrhynchos,american crow,Aves,Birds,2023-01-03,Acadia NP--Schoodic Institute Campus,44.3353649,-68.0611429,NA,NA,NA,NA,https://ebird.org/checklist/S125352436,NA,eBird,S125352436,1
-Corvus brachyrhynchos,american crow,Aves,Birds,2023-01-03,"42 Main St, Mount Desert US-ME 44.30191, -68.24102",44.301908,-68.241021,NA,NA,NA,NA,https://ebird.org/checklist/S125353727,NA,eBird,S125353727,NA
-Corvus brachyrhynchos,american crow,Aves,Birds,2023-01-03,Acadia NP--Schoodic Loop Road (Mt. Desert Narrows),44.366956,-68.076409,NA,NA,NA,NA,https://ebird.org/checklist/S125312478,NA,eBird,S125312478,2
-Corvus brachyrhynchos,american crow,Aves,Birds,2023-01-03,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S125310345,NA,eBird,S125310345,4
-Corvus brachyrhynchos,american crow,Aves,Birds,2023-01-03,Acadia NP--Witch Hole Pond Carriage Path Loop,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S125311596,NA,eBird,S125311596,1
-Corvus brachyrhynchos,american crow,Aves,Birds,2023-01-02,"Pine Ridge Trail, Kittredge Brook Forest Preserve (MCHT)",44.3758491,-68.3046627,NA,NA,NA,NA,https://ebird.org/checklist/S125241484,NA,eBird,S125241484,2
-Corvus brachyrhynchos,american crow,Aves,Birds,2023-01-02,"Acadia National Park, Mount Desert US-ME 44.31303, -68.21514",44.313033,-68.21514,NA,NA,NA,NA,https://ebird.org/checklist/S125368161,NA,eBird,S125368161,2
-Corvus brachyrhynchos,american crow,Aves,Birds,2023-01-02,Acadia NP--Schoodic Peninsula,44.3403019,-68.0582428,NA,NA,NA,NA,https://ebird.org/checklist/S125252674,NA,eBird,S125252674,3
-Corvus brachyrhynchos,american crow,Aves,Birds,2023-01-01,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125100958,NA,eBird,S125100958,2
-Corvus brachyrhynchos,american crow,Aves,Birds,2022-12-31,Acadia NP--Jesup Path,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S124988510,NA,eBird,S124988510,2
-Corvus brachyrhynchos,american crow,Aves,Birds,2022-12-31,Acadia NP--Eagle Lake,44.3766313,-68.2511902,NA,NA,NA,NA,https://ebird.org/checklist/S124989049,NA,eBird,S124989049,1
-Corvus brachyrhynchos,american crow,Aves,Birds,2022-12-31,Acadia NP--Seawall Campground,44.2433544,-68.3073664,NA,NA,NA,NA,https://ebird.org/checklist/S124973822,NA,eBird,S124973822,1
-Corvus brachyrhynchos,american crow,Aves,Birds,2022-12-31,Acadia NP--Cadillac Mtn.,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S124981638,NA,eBird,S124981638,3
-Spinus tristis,american goldfinch,Aves,Birds,2022-12-31,Acadia NP--Jesup Path,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S124988510,NA,eBird,S124988510,2
-Turdus migratorius,american robin,Aves,Birds,2023-01-01,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125100958,NA,eBird,S125100958,2
-Haliaeetus leucocephalus,bald eagle,Aves,Birds,2023-01-02,"Acadia National Park, Mount Desert US-ME 44.31303, -68.21514",44.313033,-68.21514,NA,NA,NA,NA,https://ebird.org/checklist/S125368161,NA,eBird,S125368161,3
-Haliaeetus leucocephalus,bald eagle,Aves,Birds,2023-01-01,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125100958,NA,eBird,S125100958,1
-Empetrum nigrum,black crowberry,Plantae,Plants,2023-01-01,"Acadia National Park, Birch Harbor, ME, US",44.3338466667,-68.0617,11,nfisichelli,255732,false,https://www.inaturalist.org/observations/145581976,https://inaturalist-open-data.s3.amazonaws.com/photos/250092262/medium.jpg,iNaturalist,NA,1
-Cepphus grylle,black guillemot,Aves,Birds,2023-01-03,"Schoodic Loop Road, Winter Harbor, Maine, US (44.351, -68.046)",44.3505992,-68.0464508,NA,NA,NA,NA,https://ebird.org/checklist/S125326082,NA,eBird,S125326082,2
-Cepphus grylle,black guillemot,Aves,Birds,2023-01-03,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S125323466,NA,eBird,S125323466,7
-Cepphus grylle,black guillemot,Aves,Birds,2023-01-03,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125317532,NA,eBird,S125317532,13
-Cepphus grylle,black guillemot,Aves,Birds,2023-01-03,Arey Cove turnout,44.336492,-68.0563813,NA,NA,NA,NA,https://ebird.org/checklist/S125321554,NA,eBird,S125321554,2
-Cepphus grylle,black guillemot,Aves,Birds,2023-01-03,Acadia NP--Schoodic Loop Road (Mt. Desert Narrows),44.366956,-68.076409,NA,NA,NA,NA,https://ebird.org/checklist/S125312478,NA,eBird,S125312478,3
-Cepphus grylle,black guillemot,Aves,Birds,2023-01-03,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S125310345,NA,eBird,S125310345,3
-Cepphus grylle,black guillemot,Aves,Birds,2023-01-02,Acadia NP--Schoodic Peninsula,44.3403019,-68.0582428,NA,NA,NA,NA,https://ebird.org/checklist/S125252674,NA,eBird,S125252674,5
-Melanitta americana,black scoter,Aves,Birds,2023-01-04,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S125397828,NA,eBird,S125397828,17
-Melanitta americana,black scoter,Aves,Birds,2023-01-03,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125317532,NA,eBird,S125317532,9
-Melanitta americana,black scoter,Aves,Birds,2023-01-03,Arey Cove turnout,44.336492,-68.0563813,NA,NA,NA,NA,https://ebird.org/checklist/S125321554,NA,eBird,S125321554,2
-Melanitta americana,black scoter,Aves,Birds,2023-01-03,Acadia NP--Schoodic Loop Road (Mt. Desert Narrows),44.366956,-68.076409,NA,NA,NA,NA,https://ebird.org/checklist/S125312478,NA,eBird,S125312478,1
-Melanitta americana,black scoter,Aves,Birds,2023-01-03,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S125310345,NA,eBird,S125310345,7
-Melanitta americana,black scoter,Aves,Birds,2023-01-02,Acadia NP--Schoodic Peninsula,44.3403019,-68.0582428,NA,NA,NA,NA,https://ebird.org/checklist/S125252674,NA,eBird,S125252674,1
-Melanitta americana,black scoter,Aves,Birds,2022-12-31,Acadia NP--Schooner Head Overlook,44.3396485,-68.1772259,NA,NA,NA,NA,https://ebird.org/checklist/S124992582,NA,eBird,S124992582,10
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-01-06,"32 Nannau Wood, Bar Harbor, Maine, US (44.375, -68.195)",44.3745038,-68.1945682,NA,NA,NA,NA,https://ebird.org/checklist/S125523973,NA,eBird,S125523973,3
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-01-05,"Ship Harbor Trail, Southwest Harbor, Maine, US (44.229, -68.322)",44.228531,-68.3215672,NA,NA,NA,NA,https://ebird.org/checklist/S125472264,NA,eBird,S125472264,14
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-01-04,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S125431358,NA,eBird,S125431358,4
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-01-03,"Schoodic Loop Road, Winter Harbor, Maine, US (44.351, -68.046)",44.3505992,-68.0464508,NA,NA,NA,NA,https://ebird.org/checklist/S125326082,NA,eBird,S125326082,9
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-01-03,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S125323466,NA,eBird,S125323466,12
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-01-03,"Schoodic Campus Ballfield , Maine, US (44.34, -68.059)",44.3395789,-68.0588486,NA,NA,NA,NA,https://ebird.org/checklist/S125320899,NA,eBird,S125320899,6
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-01-03,"42 Main St, Mount Desert US-ME 44.30191, -68.24102",44.301908,-68.241021,NA,NA,NA,NA,https://ebird.org/checklist/S125353727,NA,eBird,S125353727,NA
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-01-03,Acadia NP--Witch Hole Pond Carriage Path Loop,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S125311596,NA,eBird,S125311596,5
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-01-02,"Pine Ridge Trail, Kittredge Brook Forest Preserve (MCHT)",44.3758491,-68.3046627,NA,NA,NA,NA,https://ebird.org/checklist/S125241484,NA,eBird,S125241484,3
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-01-02,"Acadia National Park, Mount Desert US-ME 44.31303, -68.21514",44.313033,-68.21514,NA,NA,NA,NA,https://ebird.org/checklist/S125368161,NA,eBird,S125368161,6
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-01-01,Acadia NP--Sand Beach,44.3292206,-68.1822252,NA,NA,NA,NA,https://ebird.org/checklist/S125161427,NA,eBird,S125161427,4
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-01-01,Acadia NP--Schoodic Institute Campus,44.3353649,-68.0611429,NA,NA,NA,NA,https://ebird.org/checklist/S125100724,NA,eBird,S125100724,1
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-01-01,Acadia NP-SERC Campus,44.334648,-68.060953,NA,NA,NA,NA,https://ebird.org/checklist/S125101412,NA,eBird,S125101412,6
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-01-01,Acadia NP--Beech Mtn./Beech Cliff Trails,44.3146368,-68.3434689,NA,NA,NA,NA,https://ebird.org/checklist/S125067925,NA,eBird,S125067925,2
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-01-01,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S125099132,NA,eBird,S125099132,6
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-12-31,Acadia NP--Eagle Lake,44.3766313,-68.2511902,NA,NA,NA,NA,https://ebird.org/checklist/S124989049,NA,eBird,S124989049,4
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-12-31,Acadia NP--Seawall Campground,44.2433544,-68.3073664,NA,NA,NA,NA,https://ebird.org/checklist/S124973822,NA,eBird,S124973822,4
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-12-31,Acadia NP--Cadillac Mtn.,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S124981638,NA,eBird,S124981638,17
-Poecile atricapillus,black-capped chickadee,Aves,Birds,2022-12-31,Acadia NP--Sargent Mt.,44.3481336,-68.2717656,NA,NA,NA,NA,https://ebird.org/checklist/S124967292,NA,eBird,S124967292,11
-Rissa tridactyla,black-legged kittiwake,Aves,Birds,2023-01-01,"Schoodic Point, Winter Harbor, ME 04693, USA",44.3323493,-68.0610361,1551,cvschmitt,256926,false,https://www.inaturalist.org/observations/145601926,https://inaturalist-open-data.s3.amazonaws.com/photos/250129740/medium.jpg,iNaturalist,NA,1
-Rissa tridactyla,black-legged kittiwake,Aves,Birds,2023-01-01,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125100958,NA,eBird,S125100958,8
-Cyanocitta cristata,blue jay,Aves,Birds,2023-01-02,"Acadia National Park, Mount Desert US-ME 44.31303, -68.21514",44.313033,-68.21514,NA,NA,NA,NA,https://ebird.org/checklist/S125368161,NA,eBird,S125368161,3
-Cyanocitta cristata,blue jay,Aves,Birds,2023-01-01,Acadia NP-SERC Campus,44.334648,-68.060953,NA,NA,NA,NA,https://ebird.org/checklist/S125101412,NA,eBird,S125101412,1
-Cyanocitta cristata,blue jay,Aves,Birds,2023-01-01,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S125124863,NA,eBird,S125124863,2
-Cyanocitta cristata,blue jay,Aves,Birds,2023-01-01,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125100958,NA,eBird,S125100958,1
-Bombycilla garrulus,bohemian waxwing,Aves,Birds,2022-12-31,Acadia NP--Jesup Path,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S124988510,NA,eBird,S124988510,82
-Certhia americana,brown creeper,Aves,Birds,2023-01-03,"Schoodic Loop Road, Winter Harbor, Maine, US (44.351, -68.046)",44.3505992,-68.0464508,NA,NA,NA,NA,https://ebird.org/checklist/S125326082,NA,eBird,S125326082,1
-Certhia americana,brown creeper,Aves,Birds,2023-01-02,"Acadia National Park, Mount Desert US-ME 44.31303, -68.21514",44.313033,-68.21514,NA,NA,NA,NA,https://ebird.org/checklist/S125368161,NA,eBird,S125368161,1
-Certhia americana,brown creeper,Aves,Birds,2023-01-01,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125100958,NA,eBird,S125100958,1
-Certhia americana,brown creeper,Aves,Birds,2022-12-31,Acadia NP--Eagle Lake,44.3766313,-68.2511902,NA,NA,NA,NA,https://ebird.org/checklist/S124989049,NA,eBird,S124989049,2
-Certhia americana,brown creeper,Aves,Birds,2022-12-31,Acadia NP--Cadillac Mtn.,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S124981638,NA,eBird,S124981638,1
-Bucephala albeola,bufflehead,Aves,Birds,2023-01-05,"Ship Harbor Trail, Southwest Harbor, Maine, US (44.229, -68.322)",44.228531,-68.3215672,NA,NA,NA,NA,https://ebird.org/checklist/S125472264,NA,eBird,S125472264,4
-Bucephala albeola,bufflehead,Aves,Birds,2023-01-03,"Schoodic Loop Road, Winter Harbor, Maine, US (44.351, -68.046)",44.3505992,-68.0464508,NA,NA,NA,NA,https://ebird.org/checklist/S125326082,NA,eBird,S125326082,4
-Bucephala albeola,bufflehead,Aves,Birds,2023-01-03,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S125323466,NA,eBird,S125323466,3
-Bucephala albeola,bufflehead,Aves,Birds,2023-01-03,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125317532,NA,eBird,S125317532,5
-Bucephala albeola,bufflehead,Aves,Birds,2023-01-03,Acadia NP--Schoodic Loop Road (Mt. Desert Narrows),44.366956,-68.076409,NA,NA,NA,NA,https://ebird.org/checklist/S125312478,NA,eBird,S125312478,5
-Bucephala albeola,bufflehead,Aves,Birds,2023-01-02,Acadia NP--Schoodic Peninsula,44.3403019,-68.0582428,NA,NA,NA,NA,https://ebird.org/checklist/S125252674,NA,eBird,S125252674,16
-Bucephala albeola,bufflehead,Aves,Birds,2023-01-01,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S125211702,NA,eBird,S125211702,7
-Branta canadensis,canada goose,Aves,Birds,2023-01-01,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125100958,NA,eBird,S125100958,1
-Somateria mollissima,common eider,Aves,Birds,2023-01-05,"Ship Harbor Trail, Southwest Harbor, Maine, US (44.229, -68.322)",44.228531,-68.3215672,NA,NA,NA,NA,https://ebird.org/checklist/S125472264,NA,eBird,S125472264,9
-Somateria mollissima,common eider,Aves,Birds,2023-01-04,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S125397828,NA,eBird,S125397828,20
-Somateria mollissima,common eider,Aves,Birds,2023-01-03,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125317532,NA,eBird,S125317532,7
-Somateria mollissima,common eider,Aves,Birds,2023-01-02,Acadia NP--Schoodic Peninsula,44.3403019,-68.0582428,NA,NA,NA,NA,https://ebird.org/checklist/S125252674,NA,eBird,S125252674,20
-Somateria mollissima,common eider,Aves,Birds,2023-01-01,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S125099132,NA,eBird,S125099132,2
-Somateria mollissima,common eider,Aves,Birds,2022-12-31,Acadia NP--Schooner Head Overlook,44.3396485,-68.1772259,NA,NA,NA,NA,https://ebird.org/checklist/S124992582,NA,eBird,S124992582,9
-Bucephala clangula,common goldeneye,Aves,Birds,2023-01-02,Acadia NP--Schoodic Peninsula,44.3403019,-68.0582428,NA,NA,NA,NA,https://ebird.org/checklist/S125252674,NA,eBird,S125252674,6
-Gavia immer,common loon,Aves,Birds,2023-01-06,"32 Nannau Wood, Bar Harbor, Maine, US (44.375, -68.195)",44.3745038,-68.1945682,NA,NA,NA,NA,https://ebird.org/checklist/S125523973,NA,eBird,S125523973,1
-Gavia immer,common loon,Aves,Birds,2023-01-05,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S125489601,NA,eBird,S125489601,1
-Gavia immer,common loon,Aves,Birds,2023-01-05,"Ship Harbor Trail, Southwest Harbor, Maine, US (44.229, -68.322)",44.228531,-68.3215672,NA,NA,NA,NA,https://ebird.org/checklist/S125472264,NA,eBird,S125472264,1
-Gavia immer,common loon,Aves,Birds,2023-01-04,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S125397828,NA,eBird,S125397828,2
-Gavia immer,common loon,Aves,Birds,2023-01-03,"Schoodic Loop Road, Winter Harbor, Maine, US (44.351, -68.046)",44.3505992,-68.0464508,NA,NA,NA,NA,https://ebird.org/checklist/S125326082,NA,eBird,S125326082,2
-Gavia immer,common loon,Aves,Birds,2023-01-03,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S125323466,NA,eBird,S125323466,4
-Gavia immer,common loon,Aves,Birds,2023-01-03,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125317532,NA,eBird,S125317532,5
-Gavia immer,common loon,Aves,Birds,2023-01-03,Acadia NP--Schoodic Loop Road (Mt. Desert Narrows),44.366956,-68.076409,NA,NA,NA,NA,https://ebird.org/checklist/S125312478,NA,eBird,S125312478,2
-Gavia immer,common loon,Aves,Birds,2023-01-03,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S125310345,NA,eBird,S125310345,2
-Gavia immer,common loon,Aves,Birds,2023-01-02,Acadia NP--Schoodic Peninsula,44.3403019,-68.0582428,NA,NA,NA,NA,https://ebird.org/checklist/S125252674,NA,eBird,S125252674,5
-Gavia immer,common loon,Aves,Birds,2023-01-01,Arey Cove turnout,44.336492,-68.0563813,NA,NA,NA,NA,https://ebird.org/checklist/S125100627,NA,eBird,S125100627,1
-Gavia immer,common loon,Aves,Birds,2022-12-31,Acadia NP--Schooner Head Overlook,44.3396485,-68.1772259,NA,NA,NA,NA,https://ebird.org/checklist/S124992582,NA,eBird,S124992582,3
-Mergus merganser,common merganser,Aves,Birds,2023-01-03,Acadia NP--Eagle Lake,44.3766313,-68.2511902,NA,NA,NA,NA,https://ebird.org/checklist/S125305930,NA,eBird,S125305930,4
-Mergus merganser,common merganser,Aves,Birds,2023-01-02,Acadia NP--Schoodic Peninsula,44.3403019,-68.0582428,NA,NA,NA,NA,https://ebird.org/checklist/S125252674,NA,eBird,S125252674,2
-Corvus corax,common raven,Aves,Birds,2023-01-03,"Schoodic Campus Ballfield , Maine, US (44.34, -68.059)",44.3395789,-68.0588486,NA,NA,NA,NA,https://ebird.org/checklist/S125320899,NA,eBird,S125320899,1
-Corvus corax,common raven,Aves,Birds,2023-01-03,Acadia NP--Schoodic Institute Campus,44.3353649,-68.0611429,NA,NA,NA,NA,https://ebird.org/checklist/S125352436,NA,eBird,S125352436,2
-Corvus corax,common raven,Aves,Birds,2023-01-03,Acadia NP--Witch Hole Pond Carriage Path Loop,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S125311596,NA,eBird,S125311596,1
-Corvus corax,common raven,Aves,Birds,2023-01-02,"Acadia National Park, Mount Desert US-ME 44.31303, -68.21514",44.313033,-68.21514,NA,NA,NA,NA,https://ebird.org/checklist/S125368161,NA,eBird,S125368161,1
-Corvus corax,common raven,Aves,Birds,2023-01-01,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S125124863,NA,eBird,S125124863,2
-Corvus corax,common raven,Aves,Birds,2023-01-01,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125100958,NA,eBird,S125100958,2
-Junco hyemalis,dark-eyed junco,Aves,Birds,2023-01-05,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S125489601,NA,eBird,S125489601,2
-Junco hyemalis,dark-eyed junco,Aves,Birds,2023-01-04,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S125397828,NA,eBird,S125397828,3
-Junco hyemalis,dark-eyed junco,Aves,Birds,2023-01-03,Acadia NP--Schoodic Institute Campus,44.3353649,-68.0611429,NA,NA,NA,NA,https://ebird.org/checklist/S125352436,NA,eBird,S125352436,28
-Junco hyemalis,dark-eyed junco,Aves,Birds,2023-01-03,"42 Main St, Mount Desert US-ME 44.30191, -68.24102",44.301908,-68.241021,NA,NA,NA,NA,https://ebird.org/checklist/S125353727,NA,eBird,S125353727,4
-Junco hyemalis,dark-eyed junco,Aves,Birds,2023-01-02,"Acadia National Park, Mount Desert US-ME 44.31303, -68.21514",44.313033,-68.21514,NA,NA,NA,NA,https://ebird.org/checklist/S125368161,NA,eBird,S125368161,1
-Junco hyemalis,dark-eyed junco,Aves,Birds,2023-01-01,Acadia NP--Sand Beach,44.3292206,-68.1822252,NA,NA,NA,NA,https://ebird.org/checklist/S125161427,NA,eBird,S125161427,2
-Junco hyemalis,dark-eyed junco,Aves,Birds,2023-01-01,Acadia NP--Pretty Marsh picnic area,44.3334847,-68.4041781,NA,NA,NA,NA,https://ebird.org/checklist/S125077857,NA,eBird,S125077857,5
-Junco hyemalis,dark-eyed junco,Aves,Birds,2023-01-01,Acadia NP-SERC Campus,44.334648,-68.060953,NA,NA,NA,NA,https://ebird.org/checklist/S125101412,NA,eBird,S125101412,23
-Junco hyemalis,dark-eyed junco,Aves,Birds,2023-01-01,Acadia NP--Beech Mtn./Beech Cliff Trails,44.3146368,-68.3434689,NA,NA,NA,NA,https://ebird.org/checklist/S125067925,NA,eBird,S125067925,2
-Junco hyemalis,dark-eyed junco,Aves,Birds,2023-01-01,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S125211702,NA,eBird,S125211702,8
-Junco hyemalis,dark-eyed junco,Aves,Birds,2022-12-31,Acadia NP--Eagle Lake,44.3766313,-68.2511902,NA,NA,NA,NA,https://ebird.org/checklist/S124989049,NA,eBird,S124989049,1
-Junco hyemalis,dark-eyed junco,Aves,Birds,2022-12-31,Acadia NP--Seawall Campground,44.2433544,-68.3073664,NA,NA,NA,NA,https://ebird.org/checklist/S124973822,NA,eBird,S124973822,6
-Dryobates pubescens,downy woodpecker,Aves,Birds,2023-01-04,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S125397828,NA,eBird,S125397828,1
-Dryobates pubescens,downy woodpecker,Aves,Birds,2023-01-02,"Acadia National Park, Mount Desert US-ME 44.31303, -68.21514",44.313033,-68.21514,NA,NA,NA,NA,https://ebird.org/checklist/S125368161,NA,eBird,S125368161,1
-Dryobates pubescens,downy woodpecker,Aves,Birds,2023-01-01,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125100958,NA,eBird,S125100958,1
-Dryobates pubescens,downy woodpecker,Aves,Birds,2022-12-31,Acadia NP--Cadillac Mtn.,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S124981638,NA,eBird,S124981638,1
-Regulus satrapa,golden-crowned kinglet,Aves,Birds,2023-01-01,"Winter Harbor, ME, USA",44.3345254617,-68.0582156512,15,cvschmitt,256926,false,https://www.inaturalist.org/observations/145601924,https://inaturalist-open-data.s3.amazonaws.com/photos/250129731/medium.jpg,iNaturalist,NA,1
-Regulus satrapa,golden-crowned kinglet,Aves,Birds,2023-01-06,"32 Nannau Wood, Bar Harbor, Maine, US (44.375, -68.195)",44.3745038,-68.1945682,NA,NA,NA,NA,https://ebird.org/checklist/S125523973,NA,eBird,S125523973,2
-Regulus satrapa,golden-crowned kinglet,Aves,Birds,2023-01-05,"Ship Harbor Trail, Southwest Harbor, Maine, US (44.229, -68.322)",44.228531,-68.3215672,NA,NA,NA,NA,https://ebird.org/checklist/S125472264,NA,eBird,S125472264,1
-Regulus satrapa,golden-crowned kinglet,Aves,Birds,2023-01-03,Acadia NP--Witch Hole Pond Carriage Path Loop,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S125311596,NA,eBird,S125311596,1
-Regulus satrapa,golden-crowned kinglet,Aves,Birds,2023-01-02,"Pine Ridge Trail, Kittredge Brook Forest Preserve (MCHT)",44.3758491,-68.3046627,NA,NA,NA,NA,https://ebird.org/checklist/S125241484,NA,eBird,S125241484,4
-Regulus satrapa,golden-crowned kinglet,Aves,Birds,2023-01-01,Acadia NP--Schoodic Institute Campus,44.3353649,-68.0611429,NA,NA,NA,NA,https://ebird.org/checklist/S125100724,NA,eBird,S125100724,1
-Regulus satrapa,golden-crowned kinglet,Aves,Birds,2023-01-01,Acadia NP-SERC Campus,44.334648,-68.060953,NA,NA,NA,NA,https://ebird.org/checklist/S125101412,NA,eBird,S125101412,2
-Regulus satrapa,golden-crowned kinglet,Aves,Birds,2023-01-01,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125100958,NA,eBird,S125100958,4
-Regulus satrapa,golden-crowned kinglet,Aves,Birds,2023-01-01,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S125099132,NA,eBird,S125099132,3
-Regulus satrapa,golden-crowned kinglet,Aves,Birds,2022-12-31,Acadia NP--Seawall Campground,44.2433544,-68.3073664,NA,NA,NA,NA,https://ebird.org/checklist/S124973822,NA,eBird,S124973822,1
-Regulus satrapa,golden-crowned kinglet,Aves,Birds,2022-12-31,Acadia NP--Cadillac Mtn.,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S124981638,NA,eBird,S124981638,1
-Larus marinus,great black-backed gull,Aves,Birds,2023-01-03,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125317532,NA,eBird,S125317532,1
-Larus marinus,great black-backed gull,Aves,Birds,2023-01-01,Acadia NP--Schoodic Institute Campus,44.3353649,-68.0611429,NA,NA,NA,NA,https://ebird.org/checklist/S125100724,NA,eBird,S125100724,1
-Larus marinus,great black-backed gull,Aves,Birds,2023-01-01,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S125124863,NA,eBird,S125124863,3
-Larus marinus,great black-backed gull,Aves,Birds,2023-01-01,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S125099132,NA,eBird,S125099132,1
-Phalacrocorax carbo,great cormorant,Aves,Birds,2023-01-01,"Schoodic Point, Winter Harbor, ME 04693, USA",44.3323493,-68.0610361,1551,cvschmitt,256926,false,https://www.inaturalist.org/observations/145602529,https://inaturalist-open-data.s3.amazonaws.com/photos/250131375/medium.jpg,iNaturalist,NA,1
-Phalacrocorax carbo,great cormorant,Aves,Birds,2023-01-03,"Schoodic Loop Road, Winter Harbor, Maine, US (44.351, -68.046)",44.3505992,-68.0464508,NA,NA,NA,NA,https://ebird.org/checklist/S125326082,NA,eBird,S125326082,1
-Phalacrocorax carbo,great cormorant,Aves,Birds,2023-01-03,Acadia NP--Schoodic Loop Road (Mt. Desert Narrows),44.366956,-68.076409,NA,NA,NA,NA,https://ebird.org/checklist/S125312478,NA,eBird,S125312478,2
-Phalacrocorax carbo,great cormorant,Aves,Birds,2023-01-02,Acadia NP--Schoodic Peninsula,44.3403019,-68.0582428,NA,NA,NA,NA,https://ebird.org/checklist/S125252674,NA,eBird,S125252674,1
-Phalacrocorax carbo,great cormorant,Aves,Birds,2023-01-01,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125100958,NA,eBird,S125100958,2
-Phalacrocorax carbo,great cormorant,Aves,Birds,2023-01-01,"Acadia National Park, Winter Harbor US-ME (44.3652,-68.0762) Mark Island Wayside",44.36524,-68.076212,NA,NA,NA,NA,https://ebird.org/checklist/S125099482,NA,eBird,S125099482,2
-Phalacrocorax carbo,great cormorant,Aves,Birds,2022-12-31,Acadia NP--Schooner Head Overlook,44.3396485,-68.1772259,NA,NA,NA,NA,https://ebird.org/checklist/S124992582,NA,eBird,S124992582,1
-Dryobates villosus,hairy woodpecker,Aves,Birds,2023-01-01,Acadia NP--Schoodic Institute Campus,44.3353649,-68.0611429,NA,NA,NA,NA,https://ebird.org/checklist/S125100724,NA,eBird,S125100724,1
-Dryobates villosus,hairy woodpecker,Aves,Birds,2022-12-31,Acadia NP--Jesup Path,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S124988510,NA,eBird,S124988510,1
-Histrionicus histrionicus,harlequin duck,Aves,Birds,2023-01-03,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125317532,NA,eBird,S125317532,2
-Larus argentatus,herring gull,Aves,Birds,2023-01-06,"32 Nannau Wood, Bar Harbor, Maine, US (44.375, -68.195)",44.3745038,-68.1945682,NA,NA,NA,NA,https://ebird.org/checklist/S125523973,NA,eBird,S125523973,1
-Larus argentatus,herring gull,Aves,Birds,2023-01-05,"Ship Harbor Trail, Southwest Harbor, Maine, US (44.229, -68.322)",44.228531,-68.3215672,NA,NA,NA,NA,https://ebird.org/checklist/S125472264,NA,eBird,S125472264,23
-Larus argentatus,herring gull,Aves,Birds,2023-01-03,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125317532,NA,eBird,S125317532,18
-Larus argentatus,herring gull,Aves,Birds,2023-01-03,Acadia NP--Schoodic Loop Road (Mt. Desert Narrows),44.366956,-68.076409,NA,NA,NA,NA,https://ebird.org/checklist/S125312478,NA,eBird,S125312478,1
-Larus argentatus,herring gull,Aves,Birds,2023-01-02,Acadia NP--Schoodic Peninsula,44.3403019,-68.0582428,NA,NA,NA,NA,https://ebird.org/checklist/S125252674,NA,eBird,S125252674,7
-Larus argentatus,herring gull,Aves,Birds,2023-01-01,Acadia NP--Schoodic Institute Campus,44.3353649,-68.0611429,NA,NA,NA,NA,https://ebird.org/checklist/S125100724,NA,eBird,S125100724,3
-Larus argentatus,herring gull,Aves,Birds,2023-01-01,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S125124863,NA,eBird,S125124863,NA
-Larus argentatus,herring gull,Aves,Birds,2023-01-01,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S125099132,NA,eBird,S125099132,4
-Lophodytes cucullatus,hooded merganser,Aves,Birds,2023-01-03,Acadia NP--Witch Hole Pond Carriage Path Loop,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S125311596,NA,eBird,S125311596,9
-Podiceps auritus,horned grebe,Aves,Birds,2023-01-02,Acadia NP--Schoodic Peninsula,44.3403019,-68.0582428,NA,NA,NA,NA,https://ebird.org/checklist/S125252674,NA,eBird,S125252674,1
-Podiceps auritus,horned grebe,Aves,Birds,2023-01-01,Acadia NP--Pretty Marsh picnic area,44.3334847,-68.4041781,NA,NA,NA,NA,https://ebird.org/checklist/S125077857,NA,eBird,S125077857,1
-Pinus banksiana,jack pine,Plantae,Plants,2023-01-01,"Acadia National Park, Birch Harbor, ME, US",44.3338366667,-68.0616695,6,nfisichelli,255732,false,https://www.inaturalist.org/observations/145581983,https://inaturalist-open-data.s3.amazonaws.com/photos/250092300/medium.jpg,iNaturalist,NA,1
-Clangula hyemalis,long-tailed duck,Aves,Birds,2023-01-05,"Ship Harbor Trail, Southwest Harbor, Maine, US (44.229, -68.322)",44.228531,-68.3215672,NA,NA,NA,NA,https://ebird.org/checklist/S125472264,NA,eBird,S125472264,6
-Clangula hyemalis,long-tailed duck,Aves,Birds,2023-01-03,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S125323466,NA,eBird,S125323466,16
-Clangula hyemalis,long-tailed duck,Aves,Birds,2023-01-03,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125317532,NA,eBird,S125317532,4
-Clangula hyemalis,long-tailed duck,Aves,Birds,2023-01-03,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S125310345,NA,eBird,S125310345,18
-Clangula hyemalis,long-tailed duck,Aves,Birds,2023-01-02,Acadia NP--Schoodic Peninsula,44.3403019,-68.0582428,NA,NA,NA,NA,https://ebird.org/checklist/S125252674,NA,eBird,S125252674,2
-Clangula hyemalis,long-tailed duck,Aves,Birds,2023-01-01,Arey Cove turnout,44.336492,-68.0563813,NA,NA,NA,NA,https://ebird.org/checklist/S125100627,NA,eBird,S125100627,1
-Clangula hyemalis,long-tailed duck,Aves,Birds,2022-12-31,Acadia NP--Schooner Head Overlook,44.3396485,-68.1772259,NA,NA,NA,NA,https://ebird.org/checklist/S124992582,NA,eBird,S124992582,1
-Anas platyrhynchos,mallard,Aves,Birds,2023-01-03,Acadia NP--Witch Hole Pond Carriage Path Loop,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S125311596,NA,eBird,S125311596,5
-Zenaida macroura,mourning dove,Aves,Birds,2023-01-05,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S125489601,NA,eBird,S125489601,1
-Cardinalis cardinalis,northern cardinal,Aves,Birds,2022-12-31,Acadia NP--Jesup Path,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S124988510,NA,eBird,S124988510,1
-Circus hudsonius,northern harrier,Aves,Birds,2023-01-03,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S125323466,NA,eBird,S125323466,1
-Dryocopus pileatus,pileated woodpecker,Aves,Birds,2023-01-03,Acadia NP--Witch Hole Pond Carriage Path Loop,44.3990651,-68.2464695,NA,NA,NA,NA,https://ebird.org/checklist/S125311596,NA,eBird,S125311596,1
-Dryocopus pileatus,pileated woodpecker,Aves,Birds,2023-01-02,"Acadia National Park, Mount Desert US-ME 44.31303, -68.21514",44.313033,-68.21514,NA,NA,NA,NA,https://ebird.org/checklist/S125368161,NA,eBird,S125368161,1
-Spinus pinus,pine siskin,Aves,Birds,2023-01-03,"Schoodic Campus Ballfield , Maine, US (44.34, -68.059)",44.3395789,-68.0588486,NA,NA,NA,NA,https://ebird.org/checklist/S125320899,NA,eBird,S125320899,1
-Alca torda,razorbill,Aves,Birds,2023-01-03,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125317532,NA,eBird,S125317532,2
-Loxia curvirostra,red crossbill,Aves,Birds,2023-01-03,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S125323466,NA,eBird,S125323466,7
-Loxia curvirostra,red crossbill,Aves,Birds,2023-01-02,"Pine Ridge Trail, Kittredge Brook Forest Preserve (MCHT)",44.3758491,-68.3046627,NA,NA,NA,NA,https://ebird.org/checklist/S125241484,NA,eBird,S125241484,30
-Loxia curvirostra,red crossbill,Aves,Birds,2023-01-01,Acadia NP-SERC Campus,44.334648,-68.060953,NA,NA,NA,NA,https://ebird.org/checklist/S125101412,NA,eBird,S125101412,5
-Loxia curvirostra,red crossbill,Aves,Birds,2023-01-01,Acadia NP--Beech Mtn./Beech Cliff Trails,44.3146368,-68.3434689,NA,NA,NA,NA,https://ebird.org/checklist/S125067925,NA,eBird,S125067925,5
-Mergus serrator,red-breasted merganser,Aves,Birds,2023-01-05,"Ship Harbor Trail, Southwest Harbor, Maine, US (44.229, -68.322)",44.228531,-68.3215672,NA,NA,NA,NA,https://ebird.org/checklist/S125472264,NA,eBird,S125472264,3
-Mergus serrator,red-breasted merganser,Aves,Birds,2023-01-03,"Schoodic Loop Road, Winter Harbor, Maine, US (44.351, -68.046)",44.3505992,-68.0464508,NA,NA,NA,NA,https://ebird.org/checklist/S125326082,NA,eBird,S125326082,4
-Mergus serrator,red-breasted merganser,Aves,Birds,2023-01-03,Acadia NP--Schoodic Loop Road (Mt. Desert Narrows),44.366956,-68.076409,NA,NA,NA,NA,https://ebird.org/checklist/S125312478,NA,eBird,S125312478,2
-Mergus serrator,red-breasted merganser,Aves,Birds,2023-01-03,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S125310345,NA,eBird,S125310345,3
-Mergus serrator,red-breasted merganser,Aves,Birds,2023-01-01,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125100958,NA,eBird,S125100958,3
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-12-31,"Southwest Harbor, ME, USA",44.2403091382,-68.3057013884,6,wanderingeden,4465482,false,https://www.inaturalist.org/observations/145549949,https://inaturalist-open-data.s3.amazonaws.com/photos/250032094/medium.jpeg,iNaturalist,NA,1
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-01-06,"32 Nannau Wood, Bar Harbor, Maine, US (44.375, -68.195)",44.3745038,-68.1945682,NA,NA,NA,NA,https://ebird.org/checklist/S125523973,NA,eBird,S125523973,1
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-01-05,"Ship Harbor Trail, Southwest Harbor, Maine, US (44.229, -68.322)",44.228531,-68.3215672,NA,NA,NA,NA,https://ebird.org/checklist/S125472264,NA,eBird,S125472264,10
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-01-04,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S125431358,NA,eBird,S125431358,2
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-01-03,"Schoodic Loop Road, Winter Harbor, Maine, US (44.351, -68.046)",44.3505992,-68.0464508,NA,NA,NA,NA,https://ebird.org/checklist/S125326082,NA,eBird,S125326082,9
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-01-03,"Schoodic Campus Ballfield , Maine, US (44.34, -68.059)",44.3395789,-68.0588486,NA,NA,NA,NA,https://ebird.org/checklist/S125320899,NA,eBird,S125320899,8
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-01-03,Acadia NP--Schoodic Institute Campus,44.3353649,-68.0611429,NA,NA,NA,NA,https://ebird.org/checklist/S125352436,NA,eBird,S125352436,4
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-01-03,"42 Main St, Mount Desert US-ME 44.30191, -68.24102",44.301908,-68.241021,NA,NA,NA,NA,https://ebird.org/checklist/S125353727,NA,eBird,S125353727,7
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-01-03,Acadia NP--Schoodic Loop Road (Mt. Desert Narrows),44.366956,-68.076409,NA,NA,NA,NA,https://ebird.org/checklist/S125312478,NA,eBird,S125312478,3
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-01-02,"Pine Ridge Trail, Kittredge Brook Forest Preserve (MCHT)",44.3758491,-68.3046627,NA,NA,NA,NA,https://ebird.org/checklist/S125241484,NA,eBird,S125241484,3
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-01-02,"Acadia National Park, Mount Desert US-ME 44.31303, -68.21514",44.313033,-68.21514,NA,NA,NA,NA,https://ebird.org/checklist/S125368161,NA,eBird,S125368161,21
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-01-02,Acadia NP--Schoodic Peninsula,44.3403019,-68.0582428,NA,NA,NA,NA,https://ebird.org/checklist/S125252674,NA,eBird,S125252674,1
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-01-01,Acadia NP--Sand Beach,44.3292206,-68.1822252,NA,NA,NA,NA,https://ebird.org/checklist/S125161427,NA,eBird,S125161427,2
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-01-01,Acadia NP-SERC Campus,44.334648,-68.060953,NA,NA,NA,NA,https://ebird.org/checklist/S125101412,NA,eBird,S125101412,4
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-01-01,Acadia NP--Beech Mtn./Beech Cliff Trails,44.3146368,-68.3434689,NA,NA,NA,NA,https://ebird.org/checklist/S125067925,NA,eBird,S125067925,22
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-01-01,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125100958,NA,eBird,S125100958,5
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-12-31,Acadia NP--Eagle Lake,44.3766313,-68.2511902,NA,NA,NA,NA,https://ebird.org/checklist/S124989049,NA,eBird,S124989049,1
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-12-31,Acadia NP--Seawall Campground,44.2433544,-68.3073664,NA,NA,NA,NA,https://ebird.org/checklist/S124973822,NA,eBird,S124973822,5
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-12-31,Acadia NP--Cadillac Mtn.,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S124981638,NA,eBird,S124981638,4
-Sitta canadensis,red-breasted nuthatch,Aves,Birds,2022-12-31,Acadia NP--Sargent Mt.,44.3481336,-68.2717656,NA,NA,NA,NA,https://ebird.org/checklist/S124967292,NA,eBird,S124967292,6
-Podiceps grisegena,red-necked grebe,Aves,Birds,2023-01-05,"Ship Harbor Trail, Southwest Harbor, Maine, US (44.229, -68.322)",44.228531,-68.3215672,NA,NA,NA,NA,https://ebird.org/checklist/S125472264,NA,eBird,S125472264,25
-Podiceps grisegena,red-necked grebe,Aves,Birds,2023-01-03,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S125323466,NA,eBird,S125323466,2
-Podiceps grisegena,red-necked grebe,Aves,Birds,2023-01-03,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125317532,NA,eBird,S125317532,1
-Podiceps grisegena,red-necked grebe,Aves,Birds,2023-01-02,Acadia NP--Schoodic Peninsula,44.3403019,-68.0582428,NA,NA,NA,NA,https://ebird.org/checklist/S125252674,NA,eBird,S125252674,1
-Podiceps grisegena,red-necked grebe,Aves,Birds,2023-01-01,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S125099132,NA,eBird,S125099132,3
-Podiceps grisegena,red-necked grebe,Aves,Birds,2022-12-31,Acadia NP--Schooner Head Overlook,44.3396485,-68.1772259,NA,NA,NA,NA,https://ebird.org/checklist/S124992582,NA,eBird,S124992582,4
-Buteo jamaicensis,red-tailed hawk,Aves,Birds,2023-01-01,Acadia NP--Beech Mtn./Beech Cliff Trails,44.3146368,-68.3434689,NA,NA,NA,NA,https://ebird.org/checklist/S125067925,NA,eBird,S125067925,1
-Gavia stellata,red-throated loon,Aves,Birds,2023-01-02,Acadia NP--Schoodic Peninsula,44.3403019,-68.0582428,NA,NA,NA,NA,https://ebird.org/checklist/S125252674,NA,eBird,S125252674,2
-Larus delawarensis,ring-billed gull,Aves,Birds,2023-01-03,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125317532,NA,eBird,S125317532,3
-Bonasa umbellus,ruffed grouse,Aves,Birds,2023-01-02,Acadia NP--Youngs Mtn.,44.3920276,-68.2660389,NA,NA,NA,NA,https://ebird.org/checklist/S125379311,NA,eBird,S125379311,1
-Bubo scandiacus,snowy owl,Aves,Birds,2023-01-02,Acadia NP--Sargent Mt.,44.3481336,-68.2717656,NA,NA,NA,NA,https://ebird.org/checklist/S125220470,NA,eBird,S125220470,2
-Phyllotopsis nidulans,stinking orange oyster,Fungi,Fungi and lichens,2022-12-31,"Acadia National Park, Bar Harbor, ME, US",44.341795,-68.1810833333,4,lisaanne73,1471654,false,https://www.inaturalist.org/observations/145520615,https://static.inaturalist.org/photos/249985367/medium.jpg,iNaturalist,NA,1
-Melanitta perspicillata,surf scoter,Aves,Birds,2023-01-03,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S125310345,NA,eBird,S125310345,9
-Melanitta perspicillata,surf scoter,Aves,Birds,2023-01-02,Acadia NP--Schoodic Peninsula,44.3403019,-68.0582428,NA,NA,NA,NA,https://ebird.org/checklist/S125252674,NA,eBird,S125252674,5
-Sitta carolinensis,white-breasted nuthatch,Aves,Birds,2023-01-06,"32 Nannau Wood, Bar Harbor, Maine, US (44.375, -68.195)",44.3745038,-68.1945682,NA,NA,NA,NA,https://ebird.org/checklist/S125523973,NA,eBird,S125523973,5
-Sitta carolinensis,white-breasted nuthatch,Aves,Birds,2022-12-31,Acadia NP--Eagle Lake,44.3766313,-68.2511902,NA,NA,NA,NA,https://ebird.org/checklist/S124989049,NA,eBird,S124989049,1
-Sitta carolinensis,white-breasted nuthatch,Aves,Birds,2022-12-31,Acadia NP--Cadillac Mtn.,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S124981638,NA,eBird,S124981638,3
-Loxia leucoptera,white-winged crossbill,Aves,Birds,2023-01-01,"Winter Harbor, ME, USA",44.3368932156,-68.0586006539,31,cvschmitt,256926,false,https://www.inaturalist.org/observations/145601922,https://inaturalist-open-data.s3.amazonaws.com/photos/250129711/medium.jpg,iNaturalist,NA,1
-Loxia leucoptera,white-winged crossbill,Aves,Birds,2023-01-01,Acadia NP-SERC Campus,44.334648,-68.060953,NA,NA,NA,NA,https://ebird.org/checklist/S125101412,NA,eBird,S125101412,4
-Loxia leucoptera,white-winged crossbill,Aves,Birds,2022-12-31,Acadia NP--Seawall Campground,44.2433544,-68.3073664,NA,NA,NA,NA,https://ebird.org/checklist/S124973822,NA,eBird,S124973822,5
-Loxia leucoptera,white-winged crossbill,Aves,Birds,2022-12-31,Acadia NP--Sargent Mt.,44.3481336,-68.2717656,NA,NA,NA,NA,https://ebird.org/checklist/S124967292,NA,eBird,S124967292,12
-Melanitta deglandi,white-winged scoter,Aves,Birds,2023-01-03,Arey Cove turnout,44.336492,-68.0563813,NA,NA,NA,NA,https://ebird.org/checklist/S125321554,NA,eBird,S125321554,1
-Melanitta deglandi,white-winged scoter,Aves,Birds,2023-01-01,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S125100958,NA,eBird,S125100958,1
-Meleagris gallopavo,wild turkey,Aves,Birds,2022-12-31,Acadia NP--Cadillac Mtn.,44.3534831,-68.2260418,NA,NA,NA,NA,https://ebird.org/checklist/S124981638,NA,eBird,S124981638,17
-Troglodytes hiemalis,winter wren,Aves,Birds,2022-12-31,Acadia NP--Jesup Path,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S124988510,NA,eBird,S124988510,1
+Anas rubripes,american black duck,Aves,Birds,2023-02-10,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S128004686,NA,eBird,S128004686,6
+Anas rubripes,american black duck,Aves,Birds,2023-02-07,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127814247,NA,eBird,S127814247,6
+Anas rubripes,american black duck,Aves,Birds,2023-02-06,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S127767570,NA,eBird,S127767570,2
+Anas rubripes,american black duck,Aves,Birds,2023-02-05,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127699082,NA,eBird,S127699082,2
+Corvus brachyrhynchos,american crow,Aves,Birds,2023-02-10,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S128013863,NA,eBird,S128013863,1
+Corvus brachyrhynchos,american crow,Aves,Birds,2023-02-10,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S128004686,NA,eBird,S128004686,2
+Corvus brachyrhynchos,american crow,Aves,Birds,2023-02-09,"42 Main St, Mount Desert US-ME 44.30191, -68.24102",44.301908,-68.241021,NA,NA,NA,NA,https://ebird.org/checklist/S127968196,NA,eBird,S127968196,2
+Corvus brachyrhynchos,american crow,Aves,Birds,2023-02-07,Acadia NP--Thunder Hole,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S127833287,NA,eBird,S127833287,1
+Corvus brachyrhynchos,american crow,Aves,Birds,2023-02-07,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127814247,NA,eBird,S127814247,1
+Corvus brachyrhynchos,american crow,Aves,Birds,2023-02-07,Acadia NP--Sieur de Monts Spring and Wild Gardens,44.36181,-68.2079691,NA,NA,NA,NA,https://ebird.org/checklist/S127820602,NA,eBird,S127820602,1
+Corvus brachyrhynchos,american crow,Aves,Birds,2023-02-07,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127807646,NA,eBird,S127807646,1
+Corvus brachyrhynchos,american crow,Aves,Birds,2023-02-06,Acadia NP--Great Meadow,44.3669684,-68.2070087,NA,NA,NA,NA,https://ebird.org/checklist/S127767970,NA,eBird,S127767970,3
+Corvus brachyrhynchos,american crow,Aves,Birds,2023-02-06,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S127767570,NA,eBird,S127767570,2
+Corvus brachyrhynchos,american crow,Aves,Birds,2023-02-05,Acadia NP--Jesup Path,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S127688380,NA,eBird,S127688380,8
+Spinus tristis,american goldfinch,Aves,Birds,2023-02-05,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127699082,NA,eBird,S127699082,1
+Turdus migratorius,american robin,Aves,Birds,2023-02-06,Acadia NP--Great Meadow,44.3669684,-68.2070087,NA,NA,NA,NA,https://ebird.org/checklist/S127767970,NA,eBird,S127767970,1
+Mareca americana,american wigeon,Aves,Birds,2023-02-07,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127814247,NA,eBird,S127814247,2
+Haliaeetus leucocephalus,bald eagle,Aves,Birds,2023-02-10,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S128016163,NA,eBird,S128016163,1
+Haliaeetus leucocephalus,bald eagle,Aves,Birds,2023-02-08,Acadia NP--East Schoodic Drive ,44.3625954,-68.0390396,NA,NA,NA,NA,https://ebird.org/checklist/S127924252,NA,eBird,S127924252,2
+Haliaeetus leucocephalus,bald eagle,Aves,Birds,2023-02-08,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S127923818,NA,eBird,S127923818,1
+Haliaeetus leucocephalus,bald eagle,Aves,Birds,2023-02-05,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127699082,NA,eBird,S127699082,3
+Haliaeetus leucocephalus,bald eagle,Aves,Birds,2023-02-05,Acadia NP--Jesup Path,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S127688380,NA,eBird,S127688380,1
+Haliaeetus leucocephalus,bald eagle,Aves,Birds,2023-02-05,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127689200,NA,eBird,S127689200,1
+Cepphus grylle,black guillemot,Aves,Birds,2023-02-10,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S128016163,NA,eBird,S128016163,2
+Cepphus grylle,black guillemot,Aves,Birds,2023-02-10,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S128013863,NA,eBird,S128013863,4
+Cepphus grylle,black guillemot,Aves,Birds,2023-02-06,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127765130,NA,eBird,S127765130,2
+Cepphus grylle,black guillemot,Aves,Birds,2023-02-05,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127699082,NA,eBird,S127699082,1
+Melanitta americana,black scoter,Aves,Birds,2023-02-10,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S128016163,NA,eBird,S128016163,1
+Melanitta americana,black scoter,Aves,Birds,2023-02-10,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S128013863,NA,eBird,S128013863,3
+Melanitta americana,black scoter,Aves,Birds,2023-02-10,"1 Frazer Point Rd, Birch Harbor US-ME 44.36753, -68.07665",44.367532,-68.076649,NA,NA,NA,NA,https://ebird.org/checklist/S128008442,NA,eBird,S128008442,9
+Melanitta americana,black scoter,Aves,Birds,2023-02-06,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127752928,NA,eBird,S127752928,5
+Melanitta americana,black scoter,Aves,Birds,2023-02-05,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127699082,NA,eBird,S127699082,19
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-02-10,"42 Main St, Mount Desert US-ME 44.30191, -68.24102",44.301908,-68.241021,NA,NA,NA,NA,https://ebird.org/checklist/S128026155,NA,eBird,S128026155,3
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-02-06,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S127767570,NA,eBird,S127767570,3
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-02-05,Acadia NP--Jesup Path,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S127701955,NA,eBird,S127701955,46
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-02-05,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127699082,NA,eBird,S127699082,8
+Poecile atricapillus,black-capped chickadee,Aves,Birds,2023-02-04,Acadia NP--Eagle Lake,44.3766313,-68.2511902,NA,NA,NA,NA,https://ebird.org/checklist/S127745786,NA,eBird,S127745786,4
+Rissa tridactyla,black-legged kittiwake,Aves,Birds,2023-02-08,Acadia NP--East Schoodic Drive ,44.3625954,-68.0390396,NA,NA,NA,NA,https://ebird.org/checklist/S127924252,NA,eBird,S127924252,1
+Cyanocitta cristata,blue jay,Aves,Birds,2023-02-07,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127807646,NA,eBird,S127807646,1
+Bombycilla garrulus,bohemian waxwing,Aves,Birds,2023-02-04,Acadia NP--Eagle Lake,44.3766313,-68.2511902,NA,NA,NA,NA,https://ebird.org/checklist/S127745786,NA,eBird,S127745786,6
+Polytrichum piliferum,bristly haircap moss,Plantae,Plants,2023-02-10,"Bar Harbor, ME 04609, USA",44.39218,-68.228383,NA,plantlovergus,4845465,false,https://www.inaturalist.org/observations/148483991,https://static.inaturalist.org/photos/255709159/medium.jpeg,iNaturalist,NA,1
+Certhia americana,brown creeper,Aves,Birds,2023-02-05,Acadia NP--Jesup Path,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S127688380,NA,eBird,S127688380,3
+Bucephala albeola,bufflehead,Aves,Birds,2023-02-10,"Tremont Rd, Southwest Harbor US-ME (44.2529,-68.3487)",44.252888,-68.348746,NA,NA,NA,NA,https://ebird.org/checklist/S128011656,NA,eBird,S128011656,9
+Bucephala albeola,bufflehead,Aves,Birds,2023-02-10,"1 Frazer Point Rd, Birch Harbor US-ME 44.36753, -68.07665",44.367532,-68.076649,NA,NA,NA,NA,https://ebird.org/checklist/S128008442,NA,eBird,S128008442,3
+Bucephala albeola,bufflehead,Aves,Birds,2023-02-10,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S128004686,NA,eBird,S128004686,6
+Bucephala albeola,bufflehead,Aves,Birds,2023-02-08,Acadia NP--East Schoodic Drive ,44.3625954,-68.0390396,NA,NA,NA,NA,https://ebird.org/checklist/S127924252,NA,eBird,S127924252,7
+Bucephala albeola,bufflehead,Aves,Birds,2023-02-06,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S127767570,NA,eBird,S127767570,5
+Bucephala albeola,bufflehead,Aves,Birds,2023-02-06,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127765130,NA,eBird,S127765130,1
+Bucephala albeola,bufflehead,Aves,Birds,2023-02-06,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S127751521,NA,eBird,S127751521,9
+Branta canadensis,canada goose,Aves,Birds,2023-02-04,Acadia NP--Eagle Lake,44.3766313,-68.2511902,NA,NA,NA,NA,https://ebird.org/checklist/S127745786,NA,eBird,S127745786,3
+Somateria mollissima,common eider,Aves,Birds,2023-02-10,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S128013863,NA,eBird,S128013863,28
+Somateria mollissima,common eider,Aves,Birds,2023-02-06,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127765130,NA,eBird,S127765130,14
+Somateria mollissima,common eider,Aves,Birds,2023-02-05,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127699082,NA,eBird,S127699082,11
+Bucephala clangula,common goldeneye,Aves,Birds,2023-02-10,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S128016163,NA,eBird,S128016163,1
+Bucephala clangula,common goldeneye,Aves,Birds,2023-02-08,Acadia NP--East Schoodic Drive ,44.3625954,-68.0390396,NA,NA,NA,NA,https://ebird.org/checklist/S127924252,NA,eBird,S127924252,4
+Bucephala clangula,common goldeneye,Aves,Birds,2023-02-08,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S127923730,NA,eBird,S127923730,1
+Bucephala clangula,common goldeneye,Aves,Birds,2023-02-06,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S127751521,NA,eBird,S127751521,2
+Quiscalus quiscula,common grackle,Aves,Birds,2023-02-10,"42 Main St, Mount Desert US-ME 44.30191, -68.24102",44.301908,-68.241021,NA,NA,NA,NA,https://ebird.org/checklist/S128026155,NA,eBird,S128026155,1
+Gavia immer,common loon,Aves,Birds,2023-02-10,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S128016163,NA,eBird,S128016163,4
+Gavia immer,common loon,Aves,Birds,2023-02-10,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S128013863,NA,eBird,S128013863,2
+Gavia immer,common loon,Aves,Birds,2023-02-10,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S128004686,NA,eBird,S128004686,2
+Gavia immer,common loon,Aves,Birds,2023-02-08,Acadia NP--East Schoodic Drive ,44.3625954,-68.0390396,NA,NA,NA,NA,https://ebird.org/checklist/S127924252,NA,eBird,S127924252,1
+Gavia immer,common loon,Aves,Birds,2023-02-07,Acadia NP--Thunder Hole,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S127833287,NA,eBird,S127833287,2
+Gavia immer,common loon,Aves,Birds,2023-02-07,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127807646,NA,eBird,S127807646,3
+Gavia immer,common loon,Aves,Birds,2023-02-06,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S127767570,NA,eBird,S127767570,4
+Gavia immer,common loon,Aves,Birds,2023-02-06,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127765130,NA,eBird,S127765130,1
+Corvus corax,common raven,Aves,Birds,2023-02-04,Acadia NP--Eagle Lake,44.3766313,-68.2511902,NA,NA,NA,NA,https://ebird.org/checklist/S127745786,NA,eBird,S127745786,2
+Junco hyemalis,dark-eyed junco,Aves,Birds,2023-02-10,"42 Main St, Mount Desert US-ME 44.30191, -68.24102",44.301908,-68.241021,NA,NA,NA,NA,https://ebird.org/checklist/S128026155,NA,eBird,S128026155,2
+Junco hyemalis,dark-eyed junco,Aves,Birds,2023-02-05,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127699082,NA,eBird,S127699082,4
+Dryobates pubescens,downy woodpecker,Aves,Birds,2023-02-07,Acadia NP--Sieur de Monts Spring and Wild Gardens,44.36181,-68.2079691,NA,NA,NA,NA,https://ebird.org/checklist/S127820602,NA,eBird,S127820602,1
+Dryobates pubescens,downy woodpecker,Aves,Birds,2023-02-05,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127699082,NA,eBird,S127699082,1
+Regulus satrapa,golden-crowned kinglet,Aves,Birds,2023-02-05,Acadia NP--Jesup Path,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S127701955,NA,eBird,S127701955,6
+Larus marinus,great black-backed gull,Aves,Birds,2023-02-05,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127699082,NA,eBird,S127699082,1
+Larus marinus,great black-backed gull,Aves,Birds,2023-02-05,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S127684032,NA,eBird,S127684032,4
+Larus marinus,great black-backed gull,Aves,Birds,2023-02-05,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127689200,NA,eBird,S127689200,1
+Phalacrocorax carbo,great cormorant,Aves,Birds,2023-02-10,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S128016163,NA,eBird,S128016163,4
+Phalacrocorax carbo,great cormorant,Aves,Birds,2023-02-10,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S128013863,NA,eBird,S128013863,2
+Phalacrocorax carbo,great cormorant,Aves,Birds,2023-02-06,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127752928,NA,eBird,S127752928,7
+Phalacrocorax carbo,great cormorant,Aves,Birds,2023-02-05,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127699082,NA,eBird,S127699082,1
+Histrionicus histrionicus,harlequin duck,Aves,Birds,2023-02-10,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S128016163,NA,eBird,S128016163,2
+Larus argentatus,herring gull,Aves,Birds,2023-02-10,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S128013863,NA,eBird,S128013863,5
+Larus argentatus,herring gull,Aves,Birds,2023-02-10,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S128004686,NA,eBird,S128004686,9
+Larus argentatus,herring gull,Aves,Birds,2023-02-07,"42 Main St, Mount Desert US-ME 44.30191, -68.24102",44.301908,-68.241021,NA,NA,NA,NA,https://ebird.org/checklist/S127848700,NA,eBird,S127848700,3
+Larus argentatus,herring gull,Aves,Birds,2023-02-07,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127807646,NA,eBird,S127807646,3
+Larus argentatus,herring gull,Aves,Birds,2023-02-06,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S127767570,NA,eBird,S127767570,6
+Larus argentatus,herring gull,Aves,Birds,2023-02-06,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127765130,NA,eBird,S127765130,NA
+Lophodytes cucullatus,hooded merganser,Aves,Birds,2023-02-06,Acadia NP--Great Meadow,44.3669684,-68.2070087,NA,NA,NA,NA,https://ebird.org/checklist/S127767970,NA,eBird,S127767970,1
+Podiceps auritus,horned grebe,Aves,Birds,2023-02-10,"1 Frazer Point Rd, Birch Harbor US-ME 44.36753, -68.07665",44.367532,-68.076649,NA,NA,NA,NA,https://ebird.org/checklist/S128008442,NA,eBird,S128008442,3
+Podiceps auritus,horned grebe,Aves,Birds,2023-02-10,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S128004686,NA,eBird,S128004686,1
+Clangula hyemalis,long-tailed duck,Aves,Birds,2023-02-10,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S128016163,NA,eBird,S128016163,8
+Clangula hyemalis,long-tailed duck,Aves,Birds,2023-02-10,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S128013863,NA,eBird,S128013863,1
+Clangula hyemalis,long-tailed duck,Aves,Birds,2023-02-10,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S128004686,NA,eBird,S128004686,3
+Clangula hyemalis,long-tailed duck,Aves,Birds,2023-02-08,Acadia NP--East Schoodic Drive ,44.3625954,-68.0390396,NA,NA,NA,NA,https://ebird.org/checklist/S127924252,NA,eBird,S127924252,1
+Clangula hyemalis,long-tailed duck,Aves,Birds,2023-02-08,Acadia NP--Schoodic Point,44.3324746,-68.0603456,NA,NA,NA,NA,https://ebird.org/checklist/S127923818,NA,eBird,S127923818,1
+Clangula hyemalis,long-tailed duck,Aves,Birds,2023-02-07,Acadia NP--Thunder Hole,44.320651,-68.1887506,NA,NA,NA,NA,https://ebird.org/checklist/S127833287,NA,eBird,S127833287,4
+Clangula hyemalis,long-tailed duck,Aves,Birds,2023-02-06,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127765130,NA,eBird,S127765130,3
+Clangula hyemalis,long-tailed duck,Aves,Birds,2023-02-05,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127699082,NA,eBird,S127699082,1
+Anas platyrhynchos,mallard,Aves,Birds,2023-02-10,"Tremont Rd, Southwest Harbor US-ME (44.2529,-68.3487)",44.252888,-68.348746,NA,NA,NA,NA,https://ebird.org/checklist/S128011656,NA,eBird,S128011656,8
+Anas platyrhynchos,mallard,Aves,Birds,2023-02-07,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127814247,NA,eBird,S127814247,8
+Anas platyrhynchos,mallard,Aves,Birds,2023-02-06,Acadia NP--Great Meadow,44.3669684,-68.2070087,NA,NA,NA,NA,https://ebird.org/checklist/S127767970,NA,eBird,S127767970,4
+Zenaida macroura,mourning dove,Aves,Birds,2023-02-10,"Tremont Rd, Southwest Harbor US-ME (44.2529,-68.3487)",44.252888,-68.348746,NA,NA,NA,NA,https://ebird.org/checklist/S128011656,NA,eBird,S128011656,2
+Zenaida macroura,mourning dove,Aves,Birds,2023-02-09,"42 Main St, Mount Desert US-ME 44.30191, -68.24102",44.301908,-68.241021,NA,NA,NA,NA,https://ebird.org/checklist/S127968196,NA,eBird,S127968196,2
+Cardinalis cardinalis,northern cardinal,Aves,Birds,2023-02-05,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127699082,NA,eBird,S127699082,2
+Dryocopus pileatus,pileated woodpecker,Aves,Birds,2023-02-06,"42 Main St, Mount Desert US-ME 44.30191, -68.24102",44.301908,-68.241021,NA,NA,NA,NA,https://ebird.org/checklist/S127786339,NA,eBird,S127786339,1
+Spinus pinus,pine siskin,Aves,Birds,2023-02-04,Acadia NP--Eagle Lake,44.3766313,-68.2511902,NA,NA,NA,NA,https://ebird.org/checklist/S127745786,NA,eBird,S127745786,11
+Alca torda,razorbill,Aves,Birds,2023-02-06,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127752928,NA,eBird,S127752928,1
+Loxia curvirostra,red crossbill,Aves,Birds,2023-02-06,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S127751521,NA,eBird,S127751521,1
+Loxia curvirostra,red crossbill,Aves,Birds,2023-02-05,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S127684032,NA,eBird,S127684032,2
+Melanerpes carolinus,red-bellied woodpecker,Aves,Birds,2023-02-05,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127699082,NA,eBird,S127699082,1
+Mergus serrator,red-breasted merganser,Aves,Birds,2023-02-10,Acadia NP--Blueberry Hill,44.3386398,-68.0454782,NA,NA,NA,NA,https://ebird.org/checklist/S128016163,NA,eBird,S128016163,3
+Mergus serrator,red-breasted merganser,Aves,Birds,2023-02-10,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S128013863,NA,eBird,S128013863,1
+Mergus serrator,red-breasted merganser,Aves,Birds,2023-02-10,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S128004686,NA,eBird,S128004686,2
+Mergus serrator,red-breasted merganser,Aves,Birds,2023-02-08,Acadia NP--East Schoodic Drive ,44.3625954,-68.0390396,NA,NA,NA,NA,https://ebird.org/checklist/S127924252,NA,eBird,S127924252,2
+Mergus serrator,red-breasted merganser,Aves,Birds,2023-02-07,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127807646,NA,eBird,S127807646,1
+Mergus serrator,red-breasted merganser,Aves,Birds,2023-02-06,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S127767570,NA,eBird,S127767570,2
+Mergus serrator,red-breasted merganser,Aves,Birds,2023-02-06,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127765130,NA,eBird,S127765130,1
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-02-10,"42 Main St, Mount Desert US-ME 44.30191, -68.24102",44.301908,-68.241021,NA,NA,NA,NA,https://ebird.org/checklist/S128026155,NA,eBird,S128026155,1
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-02-05,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127699082,NA,eBird,S127699082,1
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-02-05,Acadia NP--Jesup Path,44.3672499,-68.2112038,NA,NA,NA,NA,https://ebird.org/checklist/S127688380,NA,eBird,S127688380,2
+Sitta canadensis,red-breasted nuthatch,Aves,Birds,2023-02-04,Acadia NP--Eagle Lake,44.3766313,-68.2511902,NA,NA,NA,NA,https://ebird.org/checklist/S127745786,NA,eBird,S127745786,1
+Podiceps grisegena,red-necked grebe,Aves,Birds,2023-02-06,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S127767570,NA,eBird,S127767570,1
+Podiceps grisegena,red-necked grebe,Aves,Birds,2023-02-06,Acadia NP--Ocean Drive,44.3231322,-68.1873536,NA,NA,NA,NA,https://ebird.org/checklist/S127751521,NA,eBird,S127751521,3
+Podiceps grisegena,red-necked grebe,Aves,Birds,2023-02-05,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127699082,NA,eBird,S127699082,3
+Larus delawarensis,ring-billed gull,Aves,Birds,2023-02-10,"Tremont Rd, Southwest Harbor US-ME (44.2529,-68.3487)",44.252888,-68.348746,NA,NA,NA,NA,https://ebird.org/checklist/S128011656,NA,eBird,S128011656,14
+Larus delawarensis,ring-billed gull,Aves,Birds,2023-02-06,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127765130,NA,eBird,S127765130,NA
+Larus delawarensis,ring-billed gull,Aves,Birds,2023-02-05,Seal Harbor,44.2959643,-68.2408261,NA,NA,NA,NA,https://ebird.org/checklist/S127684032,NA,eBird,S127684032,1
+Plectrophenax nivalis,snow bunting,Aves,Birds,2023-02-04,Acadia NP--  Cadillac Mountain South Ridge Trail,44.338348,-68.2267982,NA,NA,NA,NA,https://ebird.org/checklist/S127618584,NA,eBird,S127618584,1
+Bubo scandiacus,snowy owl,Aves,Birds,2023-02-04,Acadia NP--  Cadillac Mountain South Ridge Trail,44.338348,-68.2267982,NA,NA,NA,NA,https://ebird.org/checklist/S127618584,NA,eBird,S127618584,1
+Melanitta perspicillata,surf scoter,Aves,Birds,2023-02-10,Acadia NP--Frazer Point,44.3754377,-68.0752723,NA,NA,NA,NA,https://ebird.org/checklist/S128004686,NA,eBird,S128004686,3
+Sitta carolinensis,white-breasted nuthatch,Aves,Birds,2023-02-05,Acadia NP--Dorr Pt. & Compass Harbor,44.375481,-68.1922996,NA,NA,NA,NA,https://ebird.org/checklist/S127699082,NA,eBird,S127699082,1
+Loxia leucoptera,white-winged crossbill,Aves,Birds,2023-02-04,Acadia NP--Eagle Lake,44.3766313,-68.2511902,NA,NA,NA,NA,https://ebird.org/checklist/S127745786,NA,eBird,S127745786,5
+Melanitta deglandi,white-winged scoter,Aves,Birds,2023-02-06,Acadia NP--Seawall Pond,44.2426166,-68.299427,NA,NA,NA,NA,https://ebird.org/checklist/S127752928,NA,eBird,S127752928,5

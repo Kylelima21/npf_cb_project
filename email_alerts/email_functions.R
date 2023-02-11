@@ -72,28 +72,41 @@ inat_recent <- function(place_id) {
                  month = obs_month, 
                  maxresults = 10000) %>% 
       as_tibble() %>% 
-      select(scientific_name, common_name, iconic_taxon_name, observed_on, place_guess, 
+      select(scientific_name, common_name, iconic_taxon_name, observed_on, created_at, place_guess, 
              latitude, longitude, positional_accuracy, user_login, user_id, captive_cultivated, url, image_url) %>% 
-      mutate(common_name = tolower(common_name)) %>% 
+      mutate(common_name = tolower(common_name),
+             created_at = as_datetime(created_at),
+             created_at = date(created_at)) %>% 
       rename_all( ~ str_replace_all(., "_", "."))
     
   }
   
     
   # Pull the previous week of inat data
-  inat_obs <- map2_dfr(year, month, get_inat_data) %>% 
+  inat_obs <- map2_dfr(year, month, get_inat_data)
+  
+  obson <- inat_obs %>% 
     filter(observed.on >= date.filter$date[7] & observed.on <= date.filter$date[1])
   
+  creon <- inat_obs %>% 
+    filter(created.at >= date.filter$date[7] & created.at <= date.filter$date[1])
   
-  inat_obs2 <- inat_obs %>% 
-    # mutate(dup = duplicated(.),
-    #        observed.on = as.Date(observed.on)) %>% 
-    # filter(dup == "FALSE") %>% 
-    # select(-dup) %>% 
+  inat_obs2 <- bind_rows(obson, creon) %>% 
+    distinct() %>% 
     mutate(observed.on = as.Date(observed.on),
            source = "iNaturalist",
            checklist = NA,
            count = 1)
+  
+  # inat_obs2 <- inat_obs %>% 
+  #   # mutate(dup = duplicated(.),
+  #   #        observed.on = as.Date(observed.on)) %>% 
+  #   # filter(dup == "FALSE") %>% 
+  #   # select(-dup) %>% 
+  #   mutate(observed.on = as.Date(observed.on),
+  #          source = "iNaturalist",
+  #          checklist = NA,
+  #          count = 1)
 
   
   return(inat_obs2) 
