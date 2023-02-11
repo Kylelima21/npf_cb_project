@@ -689,6 +689,15 @@ nav a:focus::before {
   overflow: hidden;
 }
 
+.no-imgs {
+  position: relative;
+  overflow: hidden;
+}
+
+.hidden {
+  position: none;
+}
+
 .img-label {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.8);
@@ -700,6 +709,17 @@ nav a:focus::before {
   opacity: 0;
   pointer-events: none;
   transition: opacity 400ms ease-in-out;
+}
+
+.no-photos {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--clr-base-purple);
+  border-radius: 5px;
+  margin: 5% 10% 0 10%;
+  width: 80%;
+  top: 0;
+  pointer-events: none;
 }
 
 .img-container:is(:hover, :focus) .img-label {
@@ -748,7 +768,7 @@ nav a:focus::before {
 
 .about-info-box > h4 {
   font-size: 2.6rem;
-  margin-top: 6rem;
+  margin-top: 4rem;
 }
 
 .about-info-box > h6 {
@@ -761,7 +781,7 @@ nav a:focus::before {
   border-radius: 1rem;
   color: black;
   font-size: 16px;
-  padding: 3rem 3rem 4rem 3rem;
+  padding: 4rem 3rem 4rem 3rem;
   box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
   text-align: center;
   align-content: center;

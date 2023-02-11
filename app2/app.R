@@ -13,27 +13,6 @@ source("00_app_functions.R")
 the_data <- read.csv("www/datasets/the_data.csv") %>% 
   arrange(common.name)
 
-# # Observer summary
-# observers <- read.csv("www/datasets/summary_observers.csv")
-# 
-# # Species summary
-# species <- read.csv("www/datasets/summary_species.csv")
-# 
-# # Taxon summary
-# taxon <- read.csv("www/datasets/summary_taxon.csv")
-# 
-# # New park species
-# new_species <- read.csv("www/datasets/new_species.csv")
-# 
-# # T and E species
-# te_species <- read.csv("www/datasets/te_specieslist.csv")
-# 
-# # Rare species
-# rare_species <- read.csv("www/datasets/rare_specieslist.csv")
-# 
-# # Invasives and pests
-# invasive_species <- read.csv("www/datasets/invasive_pestslist.csv")
-
 # Images
 images <- data.frame(src = list.files('www/img/obs')) %>%
   tidyr::separate(col = 'src', c('id', 'user', "img.num", "type"), sep = '_|\\.', remove = FALSE) %>%
@@ -42,7 +21,11 @@ images <- data.frame(src = list.files('www/img/obs')) %>%
          src = paste0("img/obs/", src)) %>% 
   arrange(img.num)
 
+tdate <- today()
+
 options(dplyr.summarise.inform = FALSE)
+
+
 
 
 #### Shiny ui ####
@@ -216,42 +199,47 @@ ui <- fluidPage(
             icon("image",  class = "body-box-icon"),
             h4("Photo Gallery", class = "body-titles")),
         div(class = "grid-wrapper",
-            div(tabindex = 0, class = "img-container",
+            div(tabindex = 0, class = ifelse(length(images$src) < 1, "no-imgs", "hidden"),
+                img(src = "img/ice.jpg"),
+                div(class = "no-photos",
+                    h3("No research grade photos this week."),
+                    h3("Go take some!"))),
+            div(tabindex = 0, class = ifelse(length(images$src) >= 1, "img-container", "hidden"),
                 img(src = images$src[1]),
                 div(class = "img-label",
                     h3(images$id[1]),
                     h4("©", images$user[1]))),
-            div(tabindex = 0, class = "img-container",
+            div(tabindex = 0, class = ifelse(length(images$src) >= 2, "img-container", "hidden"),
                 img(src = images$src[2]),
                 div(class = "img-label",
                     h3(images$id[2]),
                     h4("©", images$user[2]))),
-            div(tabindex = 0, class = "img-container",
+            div(tabindex = 0, class = ifelse(length(images$src) >= 3, "img-container", "hidden"),
                 img(src = images$src[3]),
                 div(class = "img-label",
                     h3(images$id[3]),
                     h4("©", images$user[3]))),
-            div(tabindex = 0, class = "img-container",
+            div(tabindex = 0, class = ifelse(length(images$src) >= 4, "img-container", "hidden"),
                 img(src = images$src[4]),
                 div(class = "img-label",
                     h3(images$id[4]),
                     h4("©", images$user[4]))),
-            div(tabindex = 0, class = "img-container",
+            div(tabindex = 0, class = ifelse(length(images$src) >= 5, "img-container", "hidden"),
                 img(src = images$src[5]),
                 div(class = "img-label",
                     h3(images$id[5]),
                     h4("©", images$user[5]))),
-            div(tabindex = 0, class = "img-container",
+            div(tabindex = 0, class = ifelse(length(images$src) >= 6, "img-container", "hidden"),
                 img(src = images$src[6]),
                 div(class = "img-label",
                     h3(images$id[6]),
                     h4("©", images$user[6]))),
-            div(tabindex = 0, class = "img-container",
+            div(tabindex = 0, class = ifelse(length(images$src) >= 7, "img-container", "hidden"),
                 img(src = images$src[7]),
                 div(class = "img-label",
                     h3(images$id[7]),
                     h4("©", images$user[7]))),
-            div(tabindex = 0, class = "img-container",
+            div(tabindex = 0, class = ifelse(length(images$src) >= 8, "img-container", "hidden"),
                 img(src = images$src[8]),
                 div(class = "img-label",
                     h3(images$id[8]),
@@ -267,31 +255,43 @@ ui <- fluidPage(
             h4("About This Page", class = "body-titles")),
         div(class = "about-info-box",
             h4("Background"),
-            "This project was made possible in part by a grant from the National Park Foundation. 
-            Due to this grant, ",
+            "This project was made possible in part by a grant from the ",
+            a("National Park Foundation.", href = "https://www.nationalparks.org/", target = "_blank"),
+            "Due to this grant, ",
             a("Schoodic Institute at Acadia National Park", href = "https://schoodicinstitute.org/",
               target = "_blank"),
             "was able to create this Shiny application to communicate citizen science in parks.",
-            h4("Code"),
-            "Code and required elements to generate this Shiny app are available on ",
-            a("Github.", href = "https://github.com/Kylelima21/npf_cb_project",
-              target = "_blank"),
+            br(),br(),
+            "There is a wealth of scientific data collected by citizen scientists that exists 
+            in protected areas like national parks. These data have generally not been analyzed 
+            to inform park management or summarized and communicated back out to the park visitors 
+            who hekped collect the data. This project was created to address these points and assess 
+            the biodiversity of Acadia National Park through building a citizen science analysis
+            workflow that is transferable across protected areas.",
+            # h4("Code"),
+            # "Code and required elements to generate this Shiny app are available on ",
+            # a("Github.", href = "https://github.com/Kylelima21/npf_cb_project",
+            #   target = "_blank"),
             h4("Sources"),
-            "Data supplied by ", a("iNaturalist",
-                                   href = "https://www.inaturalist.org/",
-                                   target = "_blank"), " and ",
-                                 a("eBird.", href = "https://www.ebird.org/", 
-                                   target = "_blank"),
+            "iNaturalist. Available from ", 
+            a("https://www.inaturalist.org.", href = "https://www.inaturalist.org/", target = "_blank"),
+            "Accessed [", paste(tdate), "].",
+            br(), br(),
+            "eBird. eBird: An online database of bird distribution and abundance [web application]. 
+            eBird, Cornell Lab of Ornithology, Ithaca, New York. Available:",
+            a("http://www.ebird.org.", href = "https://www.ebird.org", target = "_blank"), 
+            "(Accessed: Date [", paste(tdate), "]).",
             h4("Get in Touch!"),
-            "Contact Kyle Lima with any questions or concerns at klima@schoodicinstitute.org",
+            "If you are interested in a product like this for a protected area near you, or if you have 
+            any questions or concerns, contact Kyle Lima at klima@schoodicinstitute.org",
             h6(textOutput("today"))),
         div(class = "about-download-box",
             tags$img(src = "img/cit_sci_explorer.png", alt = "Citizen science explorer logo", class = "about-logo"),
             h4("Download the past week's data here:"),
             div(class = "download-button",
                 downloadButton("downloadCsv", "Download as CSV", class = "btn-purple")),
-            h5("Data supplied by iNaturalist and eBird and modified by Schoodic Institute at Acadia National Park.",
-               )
+            h5("Data supplied by iNaturalist and eBird and modified by Schoodic Institute at Acadia National Park.")
+               
             )
         ),
         
