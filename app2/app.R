@@ -42,12 +42,11 @@ ui <- fluidPage(
 
   ### BODY
   tags$body(
-    #div(class = "back-box"),
     
     ## Navigation
-    div(class = "primary-header",
+    tags$header(class = "primary-header",
      div(class = "logo-one",
-         tags$img(src = "img/cit_sci_explorer.png", alt = "Citizen science explorer logo",
+         tags$img(src = "img/schoodic_horizontal.jpeg", alt = "Schoodic Institute at Acadia National Park",
                   class = "cs-logo")),
      div(class = "menu-nav-box",
          tags$nav(tags$ul(`aria-label` = "Primary navigation", role = "list",
@@ -58,9 +57,22 @@ ui <- fluidPage(
                           tags$li(tags$a(href = "#science", "Science")),
                           tags$li(tags$a(href = "#gallery", "Gallery")),
                           tags$li(tags$a(href = "#about", "About"))))),
-     div(class = "logo-two",
-         tags$img(src = "img/schoodic_stacked.jpeg", alt = "Schoodic Institute at Acadia National Park",
-                  class = "logo"))),
+     tags$nav(class = "mobile-nav",
+              tags$button(class = "nav-toggle",
+                          span(class = "vegburger")),
+              tags$ul(class = "nav-list", `aria-label` = "Mobile navigation",
+                      tags$li(class = "nav-item", tags$a(href = "#", class = "nav-link", "Home")),
+                      tags$li(class = "nav-item", tags$a(href = "#intro", class = "nav-link", "Introduction")),
+                      tags$li(class = "nav-item", tags$a(href = "#summary", class = "nav-link", "Summary")),
+                      tags$li(class = "nav-item", tags$a(href = "#spex", class = "nav-link", "Species Explorer")),
+                      tags$li(class = "nav-item", tags$a(href = "#science", class = "nav-link", "Science")),
+                      tags$li(class = "nav-item", tags$a(href = "#gallery", class = "nav-link", "Gallery")),
+                      tags$li(class = "nav-item", tags$a(href = "#about", class = "nav-link", "About"))))
+    ),
+     # div(class = "logo-two",
+     #     tags$img(src = "img/schoodic_stacked.jpeg", alt = "Schoodic Institute at Acadia National Park",
+     #              class = "logo"))),
+    
     
     ## Home
     div(class = "titlebox",
@@ -140,11 +152,11 @@ ui <- fluidPage(
                     icon("feather"),
                     h2(textOutput("total_sp_e"), class = "summary-stat-text")),
                 div(class = "comgroup-format",
-                    h4(tags$b("Total Birds")),
+                    h4(tags$b("Total Individuals")),
                     icon("binoculars"),
                     h2(textOutput("total_birds_e"), class = "summary-stat-text")),
                 div(class = "comsp-format",
-                    h4(tags$b("Most Frequent Species")),
+                    h4(tags$b("Most Common Species")),
                     icon("crow"),
                     h2(textOutput("top_sp_e"), class = "summary-stat-text")),
                 div(class = "percent-format",
@@ -286,12 +298,13 @@ ui <- fluidPage(
             any questions or concerns, contact Kyle Lima at klima@schoodicinstitute.org",
             h6(textOutput("today"))),
         div(class = "about-download-box",
-            tags$img(src = "img/cit_sci_explorer.png", alt = "Citizen science explorer logo", class = "about-logo"),
-            h4("Download the past week's data here:"),
+            #tags$img(src = "img/cit_sci_explorer.png", alt = "Citizen science explorer logo", class = "about-logo"),
+            h4("Explore the past week's data"),
+            div(class = "dattab", 
+                DT::dataTableOutput("tableout")),
             div(class = "download-button",
                 downloadButton("downloadCsv", "Download as CSV", class = "btn-purple")),
             h5("Data supplied by iNaturalist and eBird and modified by Schoodic Institute at Acadia National Park.")
-               
             )
         ),
         
@@ -479,7 +492,7 @@ server <- function(input, output, session) {
   ### eBird
   ## Text output for the top recorded species
   output$top_sp_e <- renderText({
-    species <- the_data %>% 
+    species <- tibble(the_data) %>% 
       filter(source == "eBird") %>% 
       group_by(scientific.name, common.name) %>%
       summarise(count = length(common.name)) %>%
@@ -519,57 +532,67 @@ server <- function(input, output, session) {
     paste(sum(obs$count))
   })
   
-  ## Text output for species of interest description
-  output$descrip_sp <- renderText({
-    "Scientists at Acadia National Park are using your eBird and iNaturalist observations
-         to find out when and where certain species are being seen. We have compiled a list of 
-         species that are important to park managers. If they are reported by people like you,
-         our program summarizes and reports that information to park managers."
+  ## Data table for display
+  output$tableout <- DT::renderDataTable({
+    dat <- tibble(the_data) %>% 
+      select(scientific.name, common.name, observed.on, place.guess, source)
+    
+    DT::datatable(dat, options = list(pageLength = 10, dom = 'Brtip', scrollX = TRUE),
+                  rownames = FALSE, filter = 'top')
   })
+  
+  
+  # ## Text output for species of interest description
+  # output$descrip_sp <- renderText({
+  #   "Scientists at Acadia National Park are using your eBird and iNaturalist observations
+  #        to find out when and where certain species are being seen. We have compiled a list of 
+  #        species that are important to park managers. If they are reported by people like you,
+  #        our program summarizes and reports that information to park managers."
+  # })
 
-  ## Text output for new park species
-  output$newsp <- renderText({
-    if (length(new_species$scientific.name) >= 1) {
-      return(paste0("There were ", length(unique(new_species$scientific.name)), " species recorded 
-                    in the last 7 days that have not been recorded in the park before."))
-    } else {
-      return(paste0("There were no species recorded in the last 7 days that have not been 
-                    recorded in the park before."))
-    }
-  })
-  
-  ## Text output for T/E species
-  output$te <- renderText({
-    if (length(te_species$scientific.name) >= 1) {
-      return(paste0("There were ", length(unique(te_species$scientific.name)), " species recorded 
-                    in the last 7 days that have not been recorded in the park before."))
-    } else {
-      return(paste0("There were no species recorded in the last 7 days that have not been 
-                    recorded in the park before."))
-    }
-  })
-  
-  ## Text for rare species
-  output$rare <- renderText({
-    if (length(rare_species$scientific.name) >= 1) {
-      return(paste0("There were ", length(unique(rare_species$scientific.name)), " species recorded 
-                    in the last 7 days that have not been recorded in the park before."))
-    } else {
-      return(paste0("There were no species recorded in the last 7 days that have not been 
-                    recorded in the park before."))
-    }
-  })
-  
-  ## Text for invasives and pests
-  output$invasive <- renderText({
-    if (length(invasive_species$scientific.name) >= 1) {
-      return(paste0("There were ", length(unique(invasive_species$scientific.name)), 
-                    " invasive and/or pest species recorded in the last 7 days."))
-    } else {
-      return(paste0("There were no invasive or pest species recorded in the last 7 days 
-                    in the park."))
-    }
-  })
+  # ## Text output for new park species
+  # output$newsp <- renderText({
+  #   if (length(new_species$scientific.name) >= 1) {
+  #     return(paste0("There were ", length(unique(new_species$scientific.name)), " species recorded 
+  #                   in the last 7 days that have not been recorded in the park before."))
+  #   } else {
+  #     return(paste0("There were no species recorded in the last 7 days that have not been 
+  #                   recorded in the park before."))
+  #   }
+  # })
+  # 
+  # ## Text output for T/E species
+  # output$te <- renderText({
+  #   if (length(te_species$scientific.name) >= 1) {
+  #     return(paste0("There were ", length(unique(te_species$scientific.name)), " species recorded 
+  #                   in the last 7 days that have not been recorded in the park before."))
+  #   } else {
+  #     return(paste0("There were no species recorded in the last 7 days that have not been 
+  #                   recorded in the park before."))
+  #   }
+  # })
+  # 
+  # ## Text for rare species
+  # output$rare <- renderText({
+  #   if (length(rare_species$scientific.name) >= 1) {
+  #     return(paste0("There were ", length(unique(rare_species$scientific.name)), " species recorded 
+  #                   in the last 7 days that have not been recorded in the park before."))
+  #   } else {
+  #     return(paste0("There were no species recorded in the last 7 days that have not been 
+  #                   recorded in the park before."))
+  #   }
+  # })
+  # 
+  # ## Text for invasives and pests
+  # output$invasive <- renderText({
+  #   if (length(invasive_species$scientific.name) >= 1) {
+  #     return(paste0("There were ", length(unique(invasive_species$scientific.name)), 
+  #                   " invasive and/or pest species recorded in the last 7 days."))
+  #   } else {
+  #     return(paste0("There were no invasive or pest species recorded in the last 7 days 
+  #                   in the park."))
+  #   }
+  # })
   
   ## Text for today's date
   output$today <- renderText({
