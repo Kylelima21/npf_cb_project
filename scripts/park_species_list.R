@@ -31,11 +31,12 @@ scan <- tibble(read.csv("data/SCAN_collection_data.csv")) %>%
 
 
 # Filter obs to those within ANP
-inat_park <- filter_gbif_to_park(inat, "Acadia National Park", "latitude", "longitude")
-ebird_park <- filter_gbif_to_park(ebird, "Acadia National Park", "latitude", "longitude")
-hancock_park <- filter_gbif_to_park(hancock, "Acadia National Park", "latitude", "longitude") %>% 
+inat_park <- filter_nps(inat, "Acadia National Park", "latitude", "longitude")
+ebird_park <- filter_nps(ebird, "Acadia National Park", "latitude", "longitude")
+hancock_park <- filter_nps(hancock, "Acadia National Park", "latitude", "longitude") %>% 
   select(species)
-scan_park <- filter_gbif_to_park(scan, "Acadia National Park", "latitude", "longitude")
+scan_park <- filter_nps(scan, "Acadia National Park", "latitude", "longitude")
+
 
 eis <- tibble(bind_rows(inat_park, ebird_park)) %>% 
   bind_rows(., scan_park) %>% 
@@ -55,7 +56,7 @@ all_species <- eis %>%
 
 # Write out the species list
 write.csv(all_species, "outputs/acad_species_list.csv", row.names = F)
-write.csv(all_species, "app/www/acad_species_list.csv", row.names = F)
+#write.csv(all_species, "app2/www/acad_species_list.csv", row.names = F)
 
 
 

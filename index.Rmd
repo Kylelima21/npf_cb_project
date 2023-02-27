@@ -26,29 +26,41 @@ ebird <- ebird_recent("US-ME-009", "Acadia National Park")
 ## Combine the two data frames
 final_data <- combine_citsci_data(inat, ebird)
 
-# final_data <- read.csv("email_alerts/weeks_data.csv")
+#write.csv(final_data, "email_alerts/weeks_data.csv")
+#final_data <- read.csv("email_alerts/weeks_data.csv")
 
 ## Run the summary function on the final data
 watchlist_species(final_data, "email_alerts/outputs")
+new_npspecies(final_data, "email_alerts/outputs")
 
 pests <- read.csv("email_alerts/outputs/invasive_pestslist.csv") %>% 
   select(scientific.name, common.name, user = user.login, observed.on, url) %>% 
   mutate(link = glue::glue("[view observation]({url})"),
          link = map(link, gt::md)) %>%
-  select(-url)
+  select(-url) %>% 
+  arrange(common.name, observed.on)
 
 rare <- read.csv("email_alerts/outputs/rare_specieslist.csv") %>% 
-  select(scientific.name, common.name, observed.on = date, url) %>% 
+  select(scientific.name, common.name, observed.on, url) %>% 
   mutate(link = glue::glue("[view observation]({url})"),
          link = map(link, gt::md)) %>%
-  select(-url)
+  select(-url) %>% 
+  arrange(common.name, observed.on)
 
 
 te <- read.csv("email_alerts/outputs/te_specieslist.csv") %>% 
   select(scientific.name, common.name, listing.status, observed.on, url) %>% 
   mutate(link = glue::glue("[view observation]({url})"),
          link = map(link, gt::md)) %>%
-  select(-url)
+  select(-url) %>% 
+  arrange(common.name, observed.on)
+
+newsp <- read.csv("email_alerts/outputs/new_species.csv") %>% 
+  select(scientific.name, common.name, observed.on, url) %>% 
+  mutate(link = glue::glue("[view observation]({url})"),
+         link = map(link, gt::md)) %>%
+  select(-url) %>% 
+  arrange(common.name, observed.on)
 
 ```
 
@@ -93,7 +105,7 @@ te <- read.csv("email_alerts/outputs/te_specieslist.csv") %>%
   <h4 class = "body-titles"> Pest Species </h4>
   </div>
   <img src = "email_alerts/img/hwa.jpeg" alt = "A Hemlock tree infested with Hemlock Woolly Adelgid"    class = "pests-img">
-  <h5 class = "cite"> © jesse94 </h5>
+  <h5 class = "cite"> © Jesse Wheeler </h5>
   <div class = "pests-table">
   `r ifelse(length(pests$scientific.name) > 0, kbl(pests) %>% kable_styling(bootstrap_options = "hover"), paste0("<h3> There were no pest species reported this week. </h3>"))`
   </div>
@@ -121,9 +133,23 @@ te <- read.csv("email_alerts/outputs/te_specieslist.csv") %>%
   <h4 class = "body-titles"> Rare Species </h4>
   </div>
   <img src = "email_alerts/img/notr.jpeg" alt = "A flowering Nodding Trillium" class = "rare-img">
-  <h5 class = "cite"> © Kristen_smith2 </h5>
+  <h5 class = "cite" style = "color:white;"> © Andy Fyon </h5>
   <div class = "rare-table">
   `r ifelse(length(rare$scientific.name) > 0, kbl(rare) %>% kable_styling(bootstrap_options = "hover"), paste0("<h3> There were no rare species reported this week. </h3>"))`
+  </div>
+</div>
+
+
+
+<!-- New Park Species -->
+<div class = "new-box">
+  <div class = "body-title-box">
+  <h4 class = "body-titles"> New Park Species </h4>
+  </div>
+  <img src = "email_alerts/img/sacr.jpg" alt = "A something" class = "new-img">
+  <h5 class = "cite"> © Kyle Lima </h5>
+  <div class = "rare-table">
+  `r ifelse(length(newsp$scientific.name) > 0, kbl(newsp) %>% kable_styling(bootstrap_options = "hover"), paste0("<h3> There were no new species to the park reported this week. </h3>"))`
   </div>
 </div>
 
@@ -132,11 +158,30 @@ te <- read.csv("email_alerts/outputs/te_specieslist.csv") %>%
 <!-- Credits -->
 <div class = "credits-box">
   <div>
-  <a href = "https://schoodicinstitute.org/"><img src = "email_alerts/img/schoodic_horizontal.jpeg"     alt = "Schoodic Institute at Acadia National Park logo" class = "schoodic-img"></a>
-  </div>
-  <div class = "credits-text"> 
+  <a href = "https://schoodicinstitute.org/"><img src = "email_alerts/img/schoodic_horizontal.png"      alt = "Schoodic Institute at Acadia National Park logo" class = "schoodic-img"></a>
+  
+  Our mission is inspiring science, learning, and community for a changing world.
+  
   This project was made possible in part by a grant from the National Park Foundation.
   
-  Background art of Acadia National Park created by Ben Tero. 
+  Background art of Acadia National Park © Ben Tero.
+  
+  © `r year(today())` Schoodic Institute at Acadia National Park
+  </div>
+  <div> 
+  Data Citations: <br>
+  iNaturalist. Available from <a href = "https://www.inaturalist.org/" target =                         "_blank"> https://www.inaturalist.org. </a> `r paste0("Accessed [", today(), "].")`
+  
+  eBird. eBird: An online database of bird distribution and abundance [web application].
+  eBird, Cornell Lab of Ornithology, Ithaca, New York. Available:
+  <a href = "https://www.ebird.org" target = "_blank"> http://www.ebird.org. </a> `r paste("(Accessed:   Date [", today(), "]).")`
+  
+  GBIF.org (14 February 2023) GBIF Occurrence Download https://doi.org/10.15468/dl.pqwpft
+  
+  GBIF.org (14 February 2023) GBIF Occurrence Download https://doi.org/10.15468/dl.hhz84h
+  
+  Michonneau F, Collins M, Chamberlain SA (`r year(today())`). ridigbio: An interface to iDigBio's      search API that allows downloading specimen records. R package https://github.com/iDigBio/ridigbio
+  
+  SCAN. 2023. http//:scan-bugs.org/portal/index.php. Accessed on February 14.
   </div>
 </div>

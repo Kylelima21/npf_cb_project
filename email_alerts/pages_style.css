@@ -145,7 +145,7 @@ ol[role="list"] {
 
 .intro-text {
   grid-area: text;
-  margin: auto;
+  margin: 20px auto;
   padding: 20px;
   border-radius: 1rem;
   background-color: rgba(255, 255, 255, 0.8);
@@ -156,7 +156,7 @@ ol[role="list"] {
 
 .intro-img-box {
   grid-area: theimg;
-  margin: auto;
+  margin: 20px auto;
   padding: 20px;
   border-radius: 1rem;
   background-color: var(--clr-opaque-green);
@@ -172,28 +172,24 @@ ol[role="list"] {
   grid-area: inat;
   position: relative;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 20px auto 0px auto;
   height: 80px;
   background-color: rgb(255, 255, 255);
   box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.4);
   padding: 2rem 3.5rem;
   border-radius: 8rem;
-  margin-bottom: 2rem;
 }
 
 .ebird-logo {
   grid-area: ebird;
   position: relative;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 20px auto 0px auto;
   height: 80px;
   background-color: rgb(255, 255, 255);
   box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.4);
   padding: 2rem 3.5rem;
   border-radius: 8rem;
-  margin-bottom: 2rem;
 }
 
 
@@ -220,8 +216,8 @@ ol[role="list"] {
 .pests-img {
   grid-area: images;
   max-height: 250px;
-  width: 95%;
-  margin: 20px 20px 20px 20px;
+  width: 100%;
+  margin: 20px auto;
   box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
   object-fit: cover;
   overflow: hidden;
@@ -230,7 +226,7 @@ ol[role="list"] {
 
 .pests-table {
   grid-area: text;
-  margin: auto;
+  margin: 20px auto auto auto;
   padding: 20px;
   border-radius: 1rem;
   background-color: rgba(255, 255, 255, 0.8);
@@ -263,8 +259,8 @@ ol[role="list"] {
 .te-img {
   grid-area: images;
   max-height: 250px;
-  width: 95%;
-  margin: 20px 20px 20px 20px;
+  width: 100%;
+  margin: 20px auto;
   box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
   object-fit: cover;
   overflow: hidden;
@@ -273,7 +269,7 @@ ol[role="list"] {
 
 .te-table {
   grid-area: text;
-  margin: auto;
+  margin: 20px auto auto auto;
   padding: 20px;
   border-radius: 1rem;
   background-color: rgba(255, 255, 255, 0.8);
@@ -306,8 +302,8 @@ ol[role="list"] {
 .rare-img {
   grid-area: images;
   max-height: 250px;
-  width: 95%;
-  margin: 20px 20px 20px 20px;
+  width: 100%;
+  margin: 20px auto;
   box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
   object-fit: cover;
   overflow: hidden;
@@ -316,7 +312,52 @@ ol[role="list"] {
 
 .rare-table {
   grid-area: text;
-  margin: auto;
+  margin: 20px auto auto auto;
+  padding: 20px;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  color: black;
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+/* New species box styling */
+
+.new-box {
+  position: relative;
+  background-color: var(--clr-body-boxes);
+  margin: 50px auto;
+  width: 100%;
+  padding: 50px 30px 30px 30px;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas: 
+    "images"
+    "text"
+}
+
+.new-img {
+  grid-area: images;
+  max-height: 250px;
+  width: 100%;
+  margin: 20px auto;
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.new-table {
+  grid-area: text;
+  margin: 20px auto auto auto;
   padding: 20px;
   border-radius: 1rem;
   background-color: rgba(255, 255, 255, 0.8);
@@ -335,13 +376,15 @@ ol[role="list"] {
 
 .credits-box {
   position: relative;
-  background-color: transparent;
+  background-color:  rgba(255, 255, 255, 0.8);
+  border-radius: 1rem;
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
   margin: 50px auto;
   width: 100%;
-  padding: 30px 0;
+  padding: 30px;
   display: grid;
-  grid-column-gap: 5%;
-  grid-template-columns: 35% 60%;
+  grid-column-gap: 2%;
+  grid-template-columns: 38% 60%;
   grid-template-areas: 
     "images text"
 }
@@ -350,6 +393,7 @@ ol[role="list"] {
   position: relative;
   grid-area: images;
   width: 100%;
+  margin-bottom: 30px;
   box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
   object-fit: cover;
   overflow: hidden;
@@ -358,12 +402,8 @@ ol[role="list"] {
 
 .credits-text {
   grid-area: text;
-  background-color:  rgba(255, 255, 255, 0.8);
-  border-radius: 1rem;
-  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
   padding: 10px;
   text-align: left;
-  font-style: italic;
   color: black;
   font-size: 20px;
   font-weight: 500;
@@ -395,6 +435,53 @@ ol[role="list"] {
       "inat ebird"
   }
   
+  .inat-logo {
+    margin: auto;
+  }
+  
+  .ebird-logo {
+    margin: auto;
+  }
+  
 }
 
 
+
+@media screen and (max-width: 600px) {
+  
+  .intro-img-box {
+    grid-template-columns: 100%;
+    grid-template-areas: 
+      "inat"
+      "ebird"
+  }
+  
+  .credits-box {
+    grid-row-gap: 30px;
+    grid-template-columns: 100%;
+    grid-template-areas: 
+      "images"
+      "text"
+  }
+  
+  .inat-logo {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .ebird-logo {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+}
+
+
+@media screen and (max-width: 568px) {
+  
+  .te-img {
+    margin: 40px auto 20px auto;
+  }
+  
+  
+}

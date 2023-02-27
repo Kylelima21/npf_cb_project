@@ -30,9 +30,37 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
-a:focus {
+:focus {
+  border-radius: 2px;
   outline: 2px solid rgba(255, 255, 255, 1);
   outline-offset: 3px;
+}
+
+a:focus {
+  border-radius: 2px;
+  outline: 2px solid rgba(255, 255, 255, 1);
+  outline-offset: 3px;
+}
+
+.bootstrap-select .dropdown-toggle:focus {
+  border-radius: 2px;
+  outline: 2px solid rgba(255, 255, 255, 1) !important;
+  outline-offset: 3px !important;
+}
+
+table.dataTable th:focus {
+  outline: 2px solid rgba(0, 0, 0, 1) !important;
+  outline-offset: -1px !important;
+}
+
+.dataTables_paginate:focus {
+  outline: 2px solid rgba(0, 0, 0, 1) !important;
+  outline-offset: 0px !important;
+}
+
+.paginate_button:focus {
+  outline: 2px solid rgba(0, 0, 0, 1) !important;
+  outline-offset: 0px !important;
 }
 
 body {
@@ -99,7 +127,7 @@ ol[role="list"] {
   font-weight: 600;
   font-size: 14px;
   line-height: 1;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   background-color: var(--clr-base-green);
   box-shadow: 0 1.125em 1em -1em black;
 }
@@ -327,6 +355,7 @@ nav a:focus::before {
 
 .intro-text {
   grid-area: textcs;
+  text-align: center;
   margin: 0 auto;
   padding: 2rem;
   border-radius: 1rem;
@@ -341,12 +370,18 @@ nav a:focus::before {
 
 .intro-text > h3 {
   font-size: 20px;
-  margin: 40px auto;
+  text-align: left;
+  margin: 40px auto 3rem auto;
   line-height: 1.5;
+}
+
+.intro-text > a {
+  text-align: center;
 }
 
 .intro-three {
   position: relative;
+  margin-top: 3rem;
   display: grid;
   grid-gap: 10px;
   grid-template-columns: 1fr 1fr 1fr;
@@ -609,6 +644,16 @@ nav a:focus::before {
 
 .science-content {
   position: relative;
+  margin-bottom: 4rem;
+  display: grid;
+  grid-gap: 4%;
+  grid-template-columns: 60% 36%;
+  grid-template-areas: 
+    "texts imgs"
+}
+
+.science-content-last {
+  position: relative;
   display: grid;
   grid-gap: 4%;
   grid-template-columns: 60% 36%;
@@ -620,25 +665,36 @@ nav a:focus::before {
   grid-area: imgs;
   margin: auto;
   width: 100%;
+  max-height: 300px;
   border-radius: 1rem;
   box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
   object-fit: cover;
-  overflow: hidden;
 }
 
 .science-text {
   grid-area: texts;
   margin: 0 auto;
   width: 100%;
-  padding: 2rem;
+  padding: 2rem 2rem 3rem 2rem;
   border-radius: 1rem;
-  background-color: var(--clr-opaque-purple);
   box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+}
+
+.purp {
+  background-color: var(--clr-opaque-purple);
   color: white;
 }
 
+.green {
+  background-color: var(--clr-opaque-green);
+  color: black;
+}
+
 .science-text > h3 {
-  font-size: 20px;
+  font-size: 30px;
+}
+
+.science-text > h4 {
   margin: 30px 0;
   line-height: 1.5;
 }
@@ -1060,8 +1116,20 @@ nav a:focus::before {
     grid-row-gap: 4rem;
     grid-template-columns: 100%;
     grid-template-areas: 
-      "imgs"
       "texts"
+      "imgs"
+  }
+  
+  .science-content-last {
+    grid-row-gap: 4rem;
+    grid-template-columns: 100%;
+    grid-template-areas: 
+      "texts"
+      "imgs"
+  }
+  
+  .science-img {
+    margin-bottom: 40px;
   }
 
   .intro-content,
@@ -1069,6 +1137,7 @@ nav a:focus::before {
   .inat-box,
   .map-box,
   .science-content,
+  .science-content-last,
   .grid-wrapper,
   .about-info-box,
   .about-download-box {
@@ -1155,7 +1224,7 @@ nav a:focus::before {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    padding: 3em 6em;
+    padding: 3em 3em;
   }
   
   .nav-item {

@@ -46,8 +46,9 @@ ui <- fluidPage(
     ## Navigation
     tags$header(class = "primary-header",
      div(class = "logo-one",
-         tags$img(src = "img/schoodic_horizontal.jpeg", alt = "Schoodic Institute at Acadia National Park",
-                  class = "cs-logo")),
+         a(href = "https://schoodicinstitute.org", target = "_blank",
+           tags$img(src = "img/schoodic_horizontal.png", alt = "Schoodic Institute at Acadia National Park",
+                  class = "cs-logo"))),
      div(class = "menu-nav-box",
          tags$nav(tags$ul(`aria-label` = "Primary navigation", role = "list",
                           tags$li(tags$a(href = "#", "Home")),
@@ -69,10 +70,6 @@ ui <- fluidPage(
                       tags$li(class = "nav-item", tags$a(href = "#gallery", class = "nav-link", "Gallery")),
                       tags$li(class = "nav-item", tags$a(href = "#about", class = "nav-link", "About"))))
     ),
-     # div(class = "logo-two",
-     #     tags$img(src = "img/schoodic_stacked.jpeg", alt = "Schoodic Institute at Acadia National Park",
-     #              class = "logo"))),
-    
     
     ## Home
     div(class = "titlebox",
@@ -99,9 +96,11 @@ ui <- fluidPage(
                     h2("Welcome to the Acadia National Park citizen science explorer!"),
                     h3("Here you will find summaries of Acadia National Park iNaturalist and eBird records from the last week.
                         In addition to summaries, we present some recent science that has been made possible
-                        by your contributions to these citizen science projects. We hope that you enjoy
-                        exploring recent sightings in the area, and understand how critical to science your
-                        time and effort are when you contribute to citizen science efforts."),
+                        by citizen science participation in our projects. To get involved with one of our projects
+                        as a citizen scientist, ask for more information in the Rockefeller Hall Visitor Center on the 
+                       Schoodic Institute campus or click the button below!"),
+                    a(href = "https://schoodicinstitute.org/science/citizen-science/", 
+                          target = "_blank", tabindex = "-1", tags$button(class = "btn-purple", "Get involved!")),
                     div(class = "intro-three",
                         img(src = "img/trsw.jpeg", alt = "Tree Swallow sitting on a wooden post"),
                         img(src = "img/frog.jpg", alt = "Northern Leopard Frog in a gravel path"),
@@ -197,12 +196,30 @@ ui <- fluidPage(
             h4("Science", class = "body-titles")),
         div(class = "science-content",
             img(src = "img/atsp.jpg", alt = "An American Tree Sparrow perched in a shrub", class = "science-img"),
-            div(class = "science-text",
-                h2("Acadia National Park Winter Birds: 51 Years of Change Along the Coast of Maine"),
-                h3("This project analyzed 51 years of citizen science effort from the National Audubon Society
+            div(class = "science-text purp",
+                h3("Acadia National Park Winter Birds: 51 Years of Change Along the Coast of Maine"),
+                h4("This project analyzed 51 years of citizen science effort from the National Audubon Society
                    Christmas Bird Counts of Acadia National Park."),
                 a(href = "https://schoodicinstitute.org/new-research-shows-dramatic-declines-in-acadia-national-park-winter-bird-populations/", 
-                  target = "_blank", tabindex = "-1", tags$button(class = "btn-green", "Learn more"))))),
+                  target = "_blank", tabindex = "-1", tags$button(class = "btn-green", "Learn more")))),
+        div(class = "science-content",
+            img(src = "img/cape.jpg", alt = "A Calico Pennant in Acadia National Park", class = "science-img"),
+            div(class = "science-text green",
+                h3("Dragonfly Mercury Project"),
+                h4("This project assessed mercury concentrations in dragonfly larvae from 100 different National Park
+                   Service units and other protected lands, made possible by citizen scientists."),
+                a(href = "https://schoodicinstitute.org/new-research-publication-on-the-dragonfly-mercury-project/", 
+                  target = "_blank", tabindex = "-1", tags$button(class = "btn-purple", "Learn more")))),
+        div(class = "science-content-last",
+            img(src = "img/asco.jpg", alt = "Ascophyllum nodosum or rockweed from Acadia National Park", class = "science-img"),
+            div(class = "science-text purp",
+                h3("Project ASCO (Assessing Seaweed via Community Observations)"),
+                h4("This ongoing project aims to understand how much rockweed exists along the Maine coast so that 
+                   we can inform management and harvesting regulations to ensure that this species can thrive in the future. Learn more or
+                   get involved by following the link below!"),
+                a(href = "https://schoodicinstitute.org/science/marine-ecology-research/latest-projects/project-asco-assessing-seaweed-via-community-observations/", 
+                  target = "_blank", tabindex = "-1", tags$button(class = "btn-green", "Learn more"))))
+        ),
                 
     ## Gallery
     div(class = "box-photo-gallery",
@@ -217,42 +234,42 @@ ui <- fluidPage(
                     h3("No research grade photos this week."),
                     h3("Go take some!"))),
             div(tabindex = 0, class = ifelse(length(images$src) >= 1, "img-container", "hidden"),
-                img(src = images$src[1]),
+                img(src = images$src[1], alt = images$id[1]),
                 div(class = "img-label",
                     h3(images$id[1]),
                     h4("©", images$user[1]))),
             div(tabindex = 0, class = ifelse(length(images$src) >= 2, "img-container", "hidden"),
-                img(src = images$src[2]),
+                img(src = images$src[2], alt = images$id[2]),
                 div(class = "img-label",
                     h3(images$id[2]),
                     h4("©", images$user[2]))),
             div(tabindex = 0, class = ifelse(length(images$src) >= 3, "img-container", "hidden"),
-                img(src = images$src[3]),
+                img(src = images$src[3], alt = images$id[3]),
                 div(class = "img-label",
                     h3(images$id[3]),
                     h4("©", images$user[3]))),
             div(tabindex = 0, class = ifelse(length(images$src) >= 4, "img-container", "hidden"),
-                img(src = images$src[4]),
+                img(src = images$src[4], alt = images$id[4]),
                 div(class = "img-label",
                     h3(images$id[4]),
                     h4("©", images$user[4]))),
             div(tabindex = 0, class = ifelse(length(images$src) >= 5, "img-container", "hidden"),
-                img(src = images$src[5]),
+                img(src = images$src[5], alt = images$id[5]),
                 div(class = "img-label",
                     h3(images$id[5]),
                     h4("©", images$user[5]))),
             div(tabindex = 0, class = ifelse(length(images$src) >= 6, "img-container", "hidden"),
-                img(src = images$src[6]),
+                img(src = images$src[6], alt = images$id[6]),
                 div(class = "img-label",
                     h3(images$id[6]),
                     h4("©", images$user[6]))),
             div(tabindex = 0, class = ifelse(length(images$src) >= 7, "img-container", "hidden"),
-                img(src = images$src[7]),
+                img(src = images$src[7], alt = images$id[7]),
                 div(class = "img-label",
                     h3(images$id[7]),
                     h4("©", images$user[7]))),
             div(tabindex = 0, class = ifelse(length(images$src) >= 8, "img-container", "hidden"),
-                img(src = images$src[8]),
+                img(src = images$src[8], alt = images$id[8]),
                 div(class = "img-label",
                     h3(images$id[8]),
                     h4("©", images$user[8])))
@@ -277,7 +294,7 @@ ui <- fluidPage(
             "There is a wealth of scientific data collected by citizen scientists that exists 
             in protected areas like national parks. These data have generally not been analyzed 
             to inform park management or summarized and communicated back out to the park visitors 
-            who hekped collect the data. This project was created to address these points and assess 
+            who helped collect the data. This project was created to address these points and assess 
             the biodiversity of Acadia National Park through building a citizen science analysis
             workflow that is transferable across protected areas.",
             # h4("Code"),
@@ -313,7 +330,7 @@ ui <- fluidPage(
           div(class = "footer-background",
               div(class = "footer-grid-box",
                   div(class = "footer-left-box",
-                      div(tags$img(src = "img/schoodic_horizontal.jpeg", alt = "Schoodic Institute", class = "footer-logo")),
+                      div(tags$img(src = "img/schoodic_horizontal.png", alt = "Schoodic Institute", class = "footer-logo")),
                       div(class = "logo-text", tags$em("Our mission is inspiring science, learning, and community for a changing world."))),
   
                   div(class = "footer-nav-box",

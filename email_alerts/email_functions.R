@@ -14,8 +14,7 @@ require(purrr)
 require(readxl)
 require(rebird)
 require(downloader)
-require(sp)
-require(rgdal)
+require(sf)
 require(fullPage)
 require(hashids)
 require(shinyalert)
@@ -68,12 +67,13 @@ inat_recent <- function(place_id) {
     
     get_inat_obs(place_id = place_id,
                  geo = TRUE,
-                 year = obs_year, 
-                 month = obs_month, 
+                 year = year[1], 
+                 month = month[1], 
                  maxresults = 10000) %>% 
       as_tibble() %>% 
       select(scientific_name, common_name, iconic_taxon_name, observed_on, created_at, place_guess, 
-             latitude, longitude, positional_accuracy, user_login, user_id, captive_cultivated, url, image_url) %>% 
+             quality_grade, latitude, longitude, positional_accuracy, user_login, user_id, 
+             captive_cultivated, url, image_url) %>% 
       mutate(common_name = tolower(common_name),
              created_at = as_datetime(created_at),
              created_at = date(created_at)) %>% 
@@ -216,41 +216,118 @@ combine_citsci_data <- function(x, y, join) {
 #'
 #' @export
 
-filter_nps <- function(df, park, lat, long) {
+filter_nps <- function(dat, park, lat, long) {
   
+  sf::sf_use_s2(FALSE)
   
-  nps.bounds <- readOGR("email_alerts/nps_boundary/nps_boundary.shp", verbose = FALSE)
-  
-  
-  select.bounds <- nps.bounds[nps.bounds@data$UNIT_NAME==paste(park), ]
-  
-  
-  if (length(select.bounds@polygons) < 1) {
-    stop("Function returned a park with 0 polygons. The park name does not exist. Go to https://rpubs.com/klima21/filternps for a list of valid park names.")
+  if (park == "Acadia National Park") {
+    
+    acad.bounds <- sf::read_sf("data/acad_boundary/ACAD_ParkBoundary_PY_202004.shp") %>% 
+      st_transform(4326)
+    
+    
+    dat2 <- dat %>% 
+      rename(x = paste(long), y = paste(lat)) %>% 
+      mutate(longitude.keep = x,
+             latitude.keep = y) %>% 
+      sf::st_as_sf(., coords = c("x","y"), crs = sf::st_crs(acad.bounds))
+    
+    
+    dat2 %>% 
+      mutate(intersect = as.integer(st_intersects(geometry, acad.bounds))) %>% 
+      filter(!is.na(intersect))
+    
+    
+    output <- sf::st_join(dat2, acad.bounds, left = F) %>% 
+      st_set_geometry(., NULL) %>% 
+      select(-c(CLASS, Acres, Hectares, SHAPE_Leng, SHAPE_Area)) %>% 
+      select(everything(), latitude = latitude.keep, longitude = longitude.keep)
+    
+  } else {
+    
+    nps.bounds <- sf::read_sf("data/nps_boundary/nps_boundary.shp") %>% 
+      st_transform(4326) %>% 
+      filter(UNIT_NAME == paste(park))
+    
+    
+    if (length(nps.bounds) < 1) {
+      stop("Function returned a park with 0 polygons. The park name does not exist. Go to https://rpubs.com/klima21/filternps for a list of valid park names.")
+    }
+    
+    
+    dat2 <- dat %>% 
+      rename(x = paste(long), y = paste(lat)) %>% 
+      mutate(longitude.keep = x,
+             latitude.keep = y) %>% 
+      sf::st_as_sf(., coords = c("x","y"), crs = sf::st_crs(nps.bounds))
+    
+    
+    dat2 %>% 
+      mutate(intersect = as.integer(st_intersects(geometry, nps.bounds))) %>% 
+      filter(!is.na(intersect))
+    
+    
+    output <- sf::st_join(dat2, nps.bounds, left = F) %>% 
+      st_set_geometry(., NULL) %>%
+      select(-c(OBJECTID:Shape_Area)) %>% 
+      select(everything(), latitude = latitude.keep, longitude = longitude.keep)
   }
   
+  return(output)
+}
+
+
+
+
+#' @description A simple function that will take a data frame, filter by records inside ANP, and return a
+#' cleaned data frame. IMPORTANT: This function only work for lat long data separated
+#' in two different columns (one for lat and one for long).
+#'
+#' @param df Name of the data frame you have read in.
+#' @param lat The quoted column name that is your latitude data.
+#' @param long The quoted column name that is your longitude data.
+#'
+#' @return Returns a data frame of the same structure, but filtered to records inside
+#' the specified park/monument. Some column names may change.
+#'
+#' @example
+#'
+#' # Read in data from working directory
+#' bird.dat <- read.csv("ebird_mappingloc_20220217.csv")
+#'
+#' # Use filter_nps function to filter the bird.dat data frame to records inside Acadia National Park
+#' bird.anp <- filter_nps(bird.dat, lat = "y", long = "x")
+#'
+#' @export
+
+filter_acad <- function(dat, lat, long) {
   
-  df <- df %>% rename(latitude=paste(lat), longitude=paste(long))
+  sf::sf_use_s2(FALSE)
   
   
-  df$"long" <- df$longitude
-  df$"lat" <- df$latitude
+  acad.bounds <- sf::read_sf("app2/www/acad_boundary/ACAD_ParkBoundary_PY_202004.shp") %>% 
+    st_transform(4326)
   
   
-  coordinates(df) <- c("long", "lat")
+  dat2 <- dat %>% 
+    rename(x = paste(long), y = paste(lat)) %>% 
+    mutate(longitude.keep = x,
+           latitude.keep = y) %>% 
+    sf::st_as_sf(., coords = c("x","y"), crs = sf::st_crs(acad.bounds))
   
   
-  slot(df, "proj4string") <- slot(select.bounds, "proj4string")
+  dat2 %>% 
+    mutate(intersect = as.integer(st_intersects(geometry, acad.bounds))) %>% 
+    filter(!is.na(intersect))
   
   
-  output <- over(select.bounds, df, returnList = TRUE)
+  output <- sf::st_join(dat2, acad.bounds, left = F) %>% 
+    st_set_geometry(., NULL) %>% 
+    select(-c(11:15)) %>% 
+    select(1:5, latitude = latitude.keep, longitude = longitude.keep, everything())
   
   
-  output.df <- data.frame(output) %>% 
-    rename_with(~str_replace(., "X15.", ""), everything())
-  
-  
-  return(output.df)
+  return(output)
   
 }
 
@@ -327,7 +404,7 @@ watchlist_species <- function(x, output.path) {
     filter(scientific.name %in% state_te_sp$scientific.name) %>% 
     select(scientific.name, common.name, observed.on, place.guess, url) %>% 
     left_join(state_te_sp, by = "scientific.name") %>% 
-    select(scientific.name, common.name = common.name.x, date = observed.on, 
+    select(scientific.name, common.name = common.name.x, observed.on, 
            location = place.guess, listing.status, url)
   
   # Combine and export
@@ -356,7 +433,7 @@ watchlist_species <- function(x, output.path) {
   rares_obs <- x %>% 
     filter(scientific.name %in% rares$scientific.name) %>% 
     arrange(desc(observed.on)) %>%
-    dplyr::select(scientific.name, common.name, date = observed.on, 
+    dplyr::select(scientific.name, common.name, observed.on, 
                   location = place.guess, url)
   
   
@@ -390,7 +467,7 @@ watchlist_species <- function(x, output.path) {
 #' @seealso None
 #' @export
 
-new_npspecies <- function(x, species.list.path, output.path) {
+new_npspecies <- function(x, output.path) {
   
   ## Check to make sure that parameter inputs are correct
   # output.path
@@ -399,12 +476,8 @@ new_npspecies <- function(x, species.list.path, output.path) {
   }
   
   
-  # Custom name repair function to be used later
-  custom_name_repair <- function(x) { tolower(gsub(" ", ".", x)) }
-  
-  
   # Get the full species list
-  park_sp_list <- read.csv(paste(species.list.path))
+  park_sp_list <- read.csv("email_alerts/datasets/acad_species_list.csv")
   
   
   # New species according to the NPSpecies list
@@ -415,10 +488,10 @@ new_npspecies <- function(x, species.list.path, output.path) {
     # slice(1) %>% 
     #mutate(link = paste("<a href=", url, " target='_blank'>view record here</a>")) %>% 
     dplyr::select(scientific.name, common.name, location = place.guess, 
-                  date = observed.on, url)
+                  observed.on, url)
   
   
-  write.csv(new_species, paste(output.path, "new_species.csv", sep = "/"))
+  write.csv(new_species, paste(output.path, "new_species.csv", sep = "/"), row.names = F)
   
   # # Print summary and write out if appropriate
   # if(length(new_species$scientific.name) >= 1) {

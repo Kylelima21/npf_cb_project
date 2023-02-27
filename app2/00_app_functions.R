@@ -14,8 +14,7 @@ require(purrr)
 require(readxl)
 require(rebird)
 require(downloader)
-require(sp)
-require(rgdal)
+require(sf)
 require(fullPage)
 require(hashids)
 require(shinyalert)
@@ -207,7 +206,11 @@ ebird_recent <- function(ebird_loc, parkname) {
   
   
   # Select records inside the designated area
-  filtered <- filter_nps(mid, parkname, lat = "latitude", long = "longitude")
+  if (parkname == "Acadia National Park") {
+    filtered <- filter_acad(mid, lat = "latitude", long = "longitude")
+  } else {
+    filtered <- filter_nps(mid, parkname, lat = "latitude", long = "longitude")
+  }
   
   
   output <- filtered %>% 
@@ -253,8 +256,8 @@ combine_citsci_data <- function(x, y, join) {
 
 
 
-#' @description A simple function that will take a data frame, filter by records inside ANP, and return a
-#' cleaned data frame. IMPORTANT: This function only work for lat long data separated
+#' @description A simple function that will take a data frame, filter by records inside a park service property, 
+#' and return a cleaned data frame. IMPORTANT: This function only work for lat long data separated
 #' in two different columns (one for lat and one for long).
 #'
 #' @param df Name of the data frame you have read in.
@@ -276,7 +279,7 @@ combine_citsci_data <- function(x, y, join) {
 #'
 #' @export
 
-filter_nps <- function(df, park, lat, long) {
+filter_nps <- function(dat, park, lat, long) {
   
   # if (!file.exists("app/www/nps_boundary.zip")) {
   #   download('https://irma.nps.gov/DataStore/DownloadFile/673366', destfile = "app/www/nps_boundary.zip")
@@ -286,40 +289,122 @@ filter_nps <- function(df, park, lat, long) {
   # if (!dir.exists("app/www/nps_boundary")) {
   #   unz("app/www/nps_boundary.zip")
   # }
+  # 
+  # 
+  #nps.bounds <- readOGR("app2/www/nps_boundary/nps_boundary.shp", verbose = FALSE)
+  # 
+  # 
+  #select.bounds <- nps.bounds[nps.bounds@data$UNIT_NAME==paste(park), ]
+  # 
+  # 
+  # if (length(nps.bounds) < 1) {
+  #   stop("Function returned a park with 0 polygons. The park name does not exist. Go to https://rpubs.com/klima21/filternps for a list of valid park names.")
+  # }
+  # 
+  # 
+  # dat <- dat %>% rename(latitude=paste(lat), longitude=paste(long))
+  # 
+  # 
+  # dat$"long" <- dat$longitude
+  # dat$"lat" <- dat$latitude
+  # 
+  # 
+  # coordinates(dat) <- c("long", "lat")
+  # 
+  # 
+  # slot(dat, "proj4string") <- slot(select.bounds, "proj4string")
+  # 
+  # 
+  # output <- over(select.bounds, dat, returnList = TRUE)
+  # 
+  # 
+  # output.df <- data.frame(output) %>% 
+  #   rename_with(~str_replace(., "X15.", ""), everything())
+  
+  sf::sf_use_s2(FALSE)
+  
+  nps.bounds <- sf::read_sf("app2/www/nps_boundary/nps_boundary.shp") %>% 
+    st_transform(4326) %>% 
+    filter(UNIT_NAME == paste(park))
   
   
-  nps.bounds <- readOGR("app/www/nps_boundary/nps_boundary.shp", verbose = FALSE)
-  
-  
-  select.bounds <- nps.bounds[nps.bounds@data$UNIT_NAME==paste(park), ]
-  
-  
-  if (length(select.bounds@polygons) < 1) {
+  if (length(nps.bounds) < 1) {
     stop("Function returned a park with 0 polygons. The park name does not exist. Go to https://rpubs.com/klima21/filternps for a list of valid park names.")
   }
   
   
-  df <- df %>% rename(latitude=paste(lat), longitude=paste(long))
+  dat2 <- dat %>% 
+    rename(x = paste(long), y = paste(lat)) %>% 
+    mutate(longitude.keep = x,
+           latitude.keep = y) %>% 
+    sf::st_as_sf(., coords = c("x","y"), crs = sf::st_crs(nps.bounds))
   
   
-  df$"long" <- df$longitude
-  df$"lat" <- df$latitude
+  dat2 %>% 
+    mutate(intersect = as.integer(st_intersects(geometry, nps.bounds))) %>% 
+    filter(!is.na(intersect))
   
   
-  coordinates(df) <- c("long", "lat")
-  
-  
-  slot(df, "proj4string") <- slot(select.bounds, "proj4string")
-  
-  
-  output <- over(select.bounds, df, returnList = TRUE)
-  
-  
-  output.df <- data.frame(output) %>% 
-    rename_with(~str_replace(., "X15.", ""), everything())
-  
+  output.df <- sf::st_join(dat2, nps.bounds, left = F) %>% 
+    st_set_geometry(., NULL) %>% 
+    select(1:5, latitude = latitude.keep, longitude = longitude.keep, place.guess, checklist, url)
   
   return(output.df)
+  
+}
+
+
+
+
+#' @description A simple function that will take a data frame, filter by records inside ANP, and return a
+#' cleaned data frame. IMPORTANT: This function only work for lat long data separated
+#' in two different columns (one for lat and one for long).
+#'
+#' @param df Name of the data frame you have read in.
+#' @param lat The quoted column name that is your latitude data.
+#' @param long The quoted column name that is your longitude data.
+#'
+#' @return Returns a data frame of the same structure, but filtered to records inside
+#' the specified park/monument. Some column names may change.
+#'
+#' @example
+#'
+#' # Read in data from working directory
+#' bird.dat <- read.csv("ebird_mappingloc_20220217.csv")
+#'
+#' # Use filter_nps function to filter the bird.dat data frame to records inside Acadia National Park
+#' bird.anp <- filter_nps(bird.dat, lat = "y", long = "x")
+#'
+#' @export
+
+filter_acad <- function(dat, lat, long) {
+  
+  sf::sf_use_s2(FALSE)
+  
+  
+  acad.bounds <- sf::read_sf("app2/www/acad_boundary/ACAD_ParkBoundary_PY_202004.shp") %>% 
+    st_transform(4326)
+  
+  
+  dat2 <- dat %>% 
+    rename(x = paste(long), y = paste(lat)) %>% 
+    mutate(longitude.keep = x,
+           latitude.keep = y) %>% 
+    sf::st_as_sf(., coords = c("x","y"), crs = sf::st_crs(acad.bounds))
+  
+  
+  dat2 %>% 
+    mutate(intersect = as.integer(st_intersects(geometry, acad.bounds))) %>% 
+    filter(!is.na(intersect))
+  
+  
+  output <- sf::st_join(dat2, acad.bounds, left = F) %>% 
+    st_set_geometry(., NULL) %>% 
+    select(-c(11:15)) %>% 
+    select(1:5, latitude = latitude.keep, longitude = longitude.keep, everything())
+  
+  
+  return(output)
   
 }
 

@@ -1,14 +1,16 @@
-# This script downloads the data and images that are to be updated daily.
+### This script downloads the data and images that are to be updated daily.
 
-# Source the functions
+## Source the functions
 source("app2/00_app_functions.R")
+library(rsconnect)
 
-## Raw data
-# Pull iNaturalist and eBird data
+
+### Raw data
+## Pull iNaturalist and eBird data
 inat <- inat_recent("49610", "week")
 ebird <- ebird_recent("US-ME-009", "Acadia National Park")
 
-# Make a df with 'groups' to add to the data
+## Make a df with 'groups' to add to the data
 groups <- data.frame(iconic.taxon.name = c("Plantae", "Mammalia", "Animalia", "Aves", "Insecta", 
                                  "Reptilia", "Amphibia", "Fungi", "Protozoa", "Chromista",
                                  "Arachnida", "Mullusca"),
@@ -16,16 +18,22 @@ groups <- data.frame(iconic.taxon.name = c("Plantae", "Mammalia", "Animalia", "A
                       "Amphibians", "Fungi and lichens", "Protozoans", "Kelp and seaweeds", 
                       "Spiders", "Mullusks"))
 
-# Combine the two data frames
+## Combine the two data frames
 final_data <- combine_citsci_data(inat, ebird, join = groups)
 
-# Write out the data
+## Write out the data
 write_csv(final_data, "app2/www/datasets/the_data.csv")
 
 
-## iNaturalist images
-# Download the images to the www folder
+### iNaturalist images
+## Download the images to the www folder
 download_photos(final_data, "app2/www/img/obs")
+
+
+### Deploy updates to shiny app
+deployApp("app2", launch.browser = F, forceUpdate = T)
+
+
 
 ## Run watchlist and new species analysis
 # Get watchlist species
