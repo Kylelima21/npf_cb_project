@@ -20,7 +20,7 @@ jobs:
           R -e 'install.packages("htmltools")'
           R -e 'install.packages("rinat")'
           R -e 'install.packages("rebird")'
-          R -e 'install.packages("rgdal")'
+          R -e 'install.packages("sf")'
           R -e 'install.packages("gt")'
           
       - name: Run rmd to update info
