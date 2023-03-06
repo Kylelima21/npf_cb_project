@@ -323,33 +323,60 @@ filter_nps <- function(dat, park, lat, long) {
   
   sf::sf_use_s2(FALSE)
   
-  nps.bounds <- sf::read_sf("app2/www/nps_boundary/nps_boundary.shp") %>% 
-    st_transform(4326) %>% 
-    filter(UNIT_NAME == paste(park))
-  
-  
-  if (length(nps.bounds) < 1) {
-    stop("Function returned a park with 0 polygons. The park name does not exist. Go to https://rpubs.com/klima21/filternps for a list of valid park names.")
+  if (park == "Acadia National Park") {
+    
+    acad.bounds <- sf::read_sf("data/acad_boundary/ACAD_ParkBoundary_PY_202004.shp") %>% 
+      st_transform(4326)
+    
+    
+    dat2 <- dat %>% 
+      rename(x = paste(long), y = paste(lat)) %>% 
+      mutate(longitude.keep = x,
+             latitude.keep = y) %>% 
+      sf::st_as_sf(., coords = c("x","y"), crs = sf::st_crs(acad.bounds))
+    
+    
+    dat2 %>% 
+      mutate(intersect = as.integer(st_intersects(geometry, acad.bounds))) %>% 
+      filter(!is.na(intersect))
+    
+    
+    output <- sf::st_join(dat2, acad.bounds, left = F) %>% 
+      st_set_geometry(., NULL) %>% 
+      select(-c(CLASS, Acres, Hectares, SHAPE_Leng, SHAPE_Area)) %>% 
+      select(everything(), latitude = latitude.keep, longitude = longitude.keep)
+    
+  } else {
+    
+    nps.bounds <- sf::read_sf("data/nps_boundary/nps_boundary.shp") %>% 
+      st_transform(4326) %>% 
+      filter(UNIT_NAME == paste(park))
+    
+    
+    if (length(nps.bounds) < 1) {
+      stop("Function returned a park with 0 polygons. The park name does not exist. Go to https://rpubs.com/klima21/filternps for a list of valid park names.")
+    }
+    
+    
+    dat2 <- dat %>% 
+      rename(x = paste(long), y = paste(lat)) %>% 
+      mutate(longitude.keep = x,
+             latitude.keep = y) %>% 
+      sf::st_as_sf(., coords = c("x","y"), crs = sf::st_crs(nps.bounds))
+    
+    
+    dat2 %>% 
+      mutate(intersect = as.integer(st_intersects(geometry, nps.bounds))) %>% 
+      filter(!is.na(intersect))
+    
+    
+    output <- sf::st_join(dat2, nps.bounds, left = F) %>% 
+      st_set_geometry(., NULL) %>%
+      select(-c(OBJECTID:Shape_Area)) %>% 
+      select(everything(), latitude = latitude.keep, longitude = longitude.keep)
   }
   
-  
-  dat2 <- dat %>% 
-    rename(x = paste(long), y = paste(lat)) %>% 
-    mutate(longitude.keep = x,
-           latitude.keep = y) %>% 
-    sf::st_as_sf(., coords = c("x","y"), crs = sf::st_crs(nps.bounds))
-  
-  
-  dat2 %>% 
-    mutate(intersect = as.integer(st_intersects(geometry, nps.bounds))) %>% 
-    filter(!is.na(intersect))
-  
-  
-  output.df <- sf::st_join(dat2, nps.bounds, left = F) %>% 
-    st_set_geometry(., NULL) %>% 
-    select(1:5, latitude = latitude.keep, longitude = longitude.keep, place.guess, checklist, url)
-  
-  return(output.df)
+  return(output)
   
 }
 
