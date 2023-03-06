@@ -1,0 +1,592 @@
+<metadata>
+	<NPS_Info>
+		<MetaPurp>NPS</MetaPurp>
+		<NPS_Unit>
+			<UnitCode>ACAD</UnitCode>
+			<UnitType>Park</UnitType>
+		</NPS_Unit>
+		<DatStore>
+			<Category>Infrastructure / Maintenance</Category>
+			<Category>Recreation</Category>
+			<Category>Trails</Category>
+			<DataSite>NR-GIS</DataSite>
+			<DSteward>
+				<cntinfo>
+					<cntperp>
+						<cntper>K.Anderson</cntper>
+						<cntorg>National Park Service</cntorg>
+					</cntperp>
+					<cntpos>GIS Specialist</cntpos>
+					<cntaddr>
+						<address>P.O. Box 177</address>
+						<city>Bar Harbor</city>
+						<state>ME</state>
+						<postal>04609</postal>
+					</cntaddr>
+					<cntvoice>207-288-8724</cntvoice>
+					<cntemail>karen_b_anderson@nps.gov</cntemail>
+				</cntinfo>
+			</DSteward>
+		</DatStore>
+	</NPS_Info>Northeast region<temporal>
+		<tempkt>None</tempkt>
+		<tempkey>2005</tempkey>
+	</temporal>
+	<accconst>None</accconst>
+	<useconst>None</useconst>
+	<ptcontac>
+		<cntinfo>
+			<cntperp>
+				<cntper>Anderson, Karen</cntper>
+				<cntorg>ACAD Resource Management</cntorg>
+			</cntperp>
+			<cntpos>GIS Specialist</cntpos>
+			<cntaddr>
+				<addrtype>mailing</addrtype>
+				<address>PO Box 177</address>
+				<city>Bar Harbor</city>
+				<state>ME</state>
+				<postal>04609</postal>
+			</cntaddr>
+			<cntvoice>207-288-8724</cntvoice>
+			<cntfax>207-288-8709</cntfax>
+			<cntemail>karen_b_anderson@nps.gov</cntemail>
+			<hours>8:00- 4:30 (M-F)</hours>
+		</cntinfo>
+	</ptcontac>
+	<Esri>
+		<CreaDate>20180207</CreaDate>
+		<CreaTime>13570300</CreaTime>
+		<SyncOnce>FALSE</SyncOnce>
+		<SyncDate>20180208</SyncDate>
+		<SyncTime>11460200</SyncTime>
+		<ModDate>20180208</ModDate>
+		<ModTime>11460200</ModTime>
+		<DataProperties>
+			<itemProps>
+				<itemName Sync="TRUE">ACAD_HikingTrails_2018</itemName>
+				<itemLocation>
+					<linkage Sync="TRUE">file://\\INPACAD-067810\F$\KAREN\MXD2018\MiscData\HikeTrailUpdate\ACAD_HikingTrails_2018.shp</linkage>
+					<protocol Sync="TRUE">Local Area Network</protocol>
+				</itemLocation>
+				<nativeExtBox>
+					<westBL Sync="TRUE">527227.885100</westBL>
+					<eastBL Sync="TRUE">576136.547200</eastBL>
+					<southBL Sync="TRUE">4872689.084700</southBL>
+					<northBL Sync="TRUE">4916465.500000</northBL>
+					<exTypeCode Sync="TRUE">1</exTypeCode>
+				</nativeExtBox>
+				<imsContentType Sync="TRUE" export="False">002</imsContentType>
+				<itemSize Sync="TRUE">1.417</itemSize>
+			</itemProps>
+			<coordRef>
+				<type Sync="TRUE">Projected</type>
+				<geogcsn Sync="TRUE">GCS_North_American_1983</geogcsn>
+				<csUnits Sync="TRUE">Linear Unit: Meter (1.000000)</csUnits>
+				<projcsn Sync="TRUE">NAD_1983_UTM_Zone_19N</projcsn>
+				<peXml Sync="TRUE">&lt;ProjectedCoordinateSystem xsi:type='typens:ProjectedCoordinateSystem' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:typens='http://www.esri.com/schemas/ArcGIS/10.5'&gt;&lt;WKT&gt;PROJCS[&amp;quot;NAD_1983_UTM_Zone_19N&amp;quot;,GEOGCS[&amp;quot;GCS_North_American_1983&amp;quot;,DATUM[&amp;quot;D_North_American_1983&amp;quot;,SPHEROID[&amp;quot;GRS_1980&amp;quot;,6378137.0,298.257222101]],PRIMEM[&amp;quot;Greenwich&amp;quot;,0.0],UNIT[&amp;quot;Degree&amp;quot;,0.0174532925199433]],PROJECTION[&amp;quot;Transverse_Mercator&amp;quot;],PARAMETER[&amp;quot;False_Easting&amp;quot;,500000.0],PARAMETER[&amp;quot;False_Northing&amp;quot;,0.0],PARAMETER[&amp;quot;Central_Meridian&amp;quot;,-69.0],PARAMETER[&amp;quot;Scale_Factor&amp;quot;,0.9996],PARAMETER[&amp;quot;Latitude_Of_Origin&amp;quot;,0.0],UNIT[&amp;quot;Meter&amp;quot;,1.0],AUTHORITY[&amp;quot;EPSG&amp;quot;,26919]]&lt;/WKT&gt;&lt;XOrigin&gt;-5120900&lt;/XOrigin&gt;&lt;YOrigin&gt;-9998100&lt;/YOrigin&gt;&lt;XYScale&gt;450445547.3910538&lt;/XYScale&gt;&lt;ZOrigin&gt;-100000&lt;/ZOrigin&gt;&lt;ZScale&gt;10000&lt;/ZScale&gt;&lt;MOrigin&gt;-100000&lt;/MOrigin&gt;&lt;MScale&gt;10000&lt;/MScale&gt;&lt;XYTolerance&gt;0.001&lt;/XYTolerance&gt;&lt;ZTolerance&gt;0.001&lt;/ZTolerance&gt;&lt;MTolerance&gt;0.001&lt;/MTolerance&gt;&lt;HighPrecision&gt;true&lt;/HighPrecision&gt;&lt;WKID&gt;26919&lt;/WKID&gt;&lt;LatestWKID&gt;26919&lt;/LatestWKID&gt;&lt;/ProjectedCoordinateSystem&gt;</peXml>
+			</coordRef>
+		</DataProperties>
+		<ArcGISFormat>1.0</ArcGISFormat>
+		<ArcGISstyle>North American Profile of ISO19115 2003</ArcGISstyle>
+		<ArcGISProfile>NAP</ArcGISProfile>
+		<scaleRange>
+			<minScale>150000000</minScale>
+			<maxScale>5000</maxScale>
+		</scaleRange>
+	</Esri>
+	<mdContact xmlns="">
+		<rpOrgName>National Park Service - USDOI</rpOrgName>
+		<rpCntInfo>
+			<cntAddress addressType="postal">
+				<delPoint>P.O. Box 177</delPoint>
+				<city>Bar Harbor</city>
+				<adminArea>ME</adminArea>
+				<postCode>04609</postCode>
+				<eMailAdd>acad_gis@nps.gov</eMailAdd>
+				<country>US</country>
+			</cntAddress>
+			<cntPhone>
+				<voiceNum>207-288-8724</voiceNum>
+				<faxNum>207-288-8709</faxNum>
+			</cntPhone>
+			<cntHours>8-4:30 Eastern time, M-F, excluding Federal holidays</cntHours>
+		</rpCntInfo>
+		<rpIndName>Acadia National Park</rpIndName>
+		<displayName>Acadia National Park</displayName>
+		<role>
+			<RoleCd value="006"/>
+		</role>
+		<displayName>Acadia National Park</displayName>
+	</mdContact>
+	<distInfo xmlns="">
+		<distFormat xmlns="">
+			<formatName Sync="FALSE">ESRI Shapefile</formatName>
+			<formatVer>ArcGIS 10.5</formatVer>
+		</distFormat>
+		<distTranOps>
+			<transSize Sync="TRUE">1.417</transSize>
+		</distTranOps>
+	</distInfo>
+	<dataIdInfo>
+		<idCitation xmlns="">
+			<presForm xmlns="">
+				<fgdcGeoform>vector digital data</fgdcGeoform>
+				<PresFormCd value="005" Sync="TRUE"/>
+			</presForm>
+			<date>
+				<pubDate>2018-01-31T00:00:00</pubDate>
+			</date>
+			<citRespParty xmlns="">
+				<editorSource>external</editorSource>
+				<editorDigest>fe63e826116cfd2e74c2fadc99e05b2a</editorDigest>
+				<rpIndName>K. Anderson</rpIndName>
+				<rpOrgName>Acadia National Park</rpOrgName>
+				<rpPosName>GIS Specialist</rpPosName>
+				<rpCntInfo>
+					<cntPhone>
+						<voiceNum>207-288-8724</voiceNum>
+						<faxNum>2047-288-8709</faxNum>
+					</cntPhone>
+					<cntAddress addressType="postal">
+						<delPoint>P.O. Box 177</delPoint>
+						<city>Bar Harbor</city>
+						<adminArea>Maine</adminArea>
+						<postCode>04609</postCode>
+						<country>US</country>
+						<eMailAdd>karen_b_anderson@nps.gov</eMailAdd>
+					</cntAddress>
+					<cntHours>0800-1630 M-F</cntHours>
+				</rpCntInfo>
+				<editorSave>True</editorSave>
+				<displayName>K. Anderson</displayName>
+				<role>
+					<RoleCd value="007"/>
+				</role>
+			</citRespParty>
+			<citRespParty xmlns="">
+				<rpOrgName>National Park Service - USDOI</rpOrgName>
+				<rpCntInfo>
+					<cntAddress addressType="postal">
+						<delPoint>P.O. Box 177</delPoint>
+						<city>Bar Harbor</city>
+						<adminArea>ME</adminArea>
+						<postCode>04609</postCode>
+						<eMailAdd>acad_gis@nps.gov</eMailAdd>
+						<country>US</country>
+					</cntAddress>
+					<cntPhone>
+						<voiceNum>207-288-8724</voiceNum>
+						<faxNum>207-288-8709</faxNum>
+					</cntPhone>
+					<cntHours>8-4:30 Eastern time, M-F, excluding Federal holidays</cntHours>
+				</rpCntInfo>
+				<rpIndName>Acadia National Park</rpIndName>
+				<displayName>Acadia National Park</displayName>
+				<role>
+					<RoleCd value="006"/>
+				</role>
+			</citRespParty>
+			<resTitle Sync="TRUE">ACAD_HikingTrails_2018</resTitle>
+		</idCitation>
+		<idPurp>Created to document the location of the hiking trail system of Acadia National Park. Used for planning, cartography, compliance.</idPurp>
+		<idAbs>&lt;DIV STYLE="text-align:Left;"&gt;&lt;DIV&gt;&lt;DIV&gt;&lt;P&gt;&lt;SPAN&gt;Contains lines representing the trail system in Acadia National Park as of 201801. &lt;/SPAN&gt;&lt;/P&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;</idAbs>
+		<idCredit>Credit the National Park Service when using this data.</idCredit>
+		<searchKeys>
+			<keyword>Geographic Information System (GIS)</keyword>
+			<keyword>national parks &amp; reserves</keyword>
+			<keyword>National Park Service</keyword>
+			<keyword>trails</keyword>
+			<keyword>pedestrians</keyword>
+			<keyword>recreation</keyword>
+			<keyword>hiking</keyword>
+			<keyword>Trails</keyword>
+			<keyword>transportation</keyword>
+		</searchKeys>
+		<resConst>
+			<Consts xmlns="">
+				<useLimit>&lt;DIV STYLE="text-align:Left;"&gt;&lt;DIV&gt;&lt;DIV&gt;&lt;P&gt;&lt;SPAN&gt;OK on maps for the public.&lt;/SPAN&gt;&lt;/P&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;</useLimit>
+			</Consts>
+		</resConst>
+		<dataChar>
+			<CharSetCd value="004"/>
+		</dataChar>
+		<idStatus>
+			<ProgCd value="004"/>
+		</idStatus>
+		<dataExt xmlns="">
+			<exDesc>date of currency; date of last update completion
+			</exDesc>
+			<tempEle>
+				<TempExtent>
+					<exTemp>
+						<TM_Instant>
+							<tmPosition>2018-01-31T00:00:00</tmPosition>
+						</TM_Instant>
+					</exTemp>
+				</TempExtent>
+			</tempEle>
+		</dataExt>
+		<idPoC xmlns="">
+			<editorSource>external</editorSource>
+			<editorDigest>fe63e826116cfd2e74c2fadc99e05b2a</editorDigest>
+			<rpIndName>K. Anderson</rpIndName>
+			<rpOrgName>Acadia National Park</rpOrgName>
+			<rpPosName>GIS Specialist</rpPosName>
+			<rpCntInfo xmlns="">
+				<cntPhone>
+					<voiceNum tddtty="">207-288-8724</voiceNum>
+					<faxNum>2047-288-8709</faxNum>
+				</cntPhone>
+				<cntAddress addressType="postal">
+					<delPoint>P.O. Box 177</delPoint>
+					<city>Bar Harbor</city>
+					<adminArea>Maine</adminArea>
+					<postCode>04609</postCode>
+					<country>US</country>
+					<eMailAdd>karen_b_anderson@nps.gov</eMailAdd>
+				</cntAddress>
+				<cntHours>0800-1630 M-F</cntHours>
+			</rpCntInfo>
+			<editorSave>True</editorSave>
+			<displayName>K. Anderson</displayName>
+			<role>
+				<RoleCd value="007"/>
+			</role>
+		</idPoC>
+		<resMaint xmlns="">
+			<maintFreq>
+				<MaintFreqCd value="009"/>
+			</maintFreq>
+		</resMaint>
+		<resConst>
+			<Consts xmlns="">
+				<useLimit>&lt;DIV STYLE="text-align:Left;"&gt;&lt;DIV&gt;&lt;DIV&gt;&lt;P&gt;&lt;SPAN&gt;The National Park Service shall not be held liable for improper or incorrect use of the data described and/or contained herein. These data and related graphics (i.e. "GIF or JPG" format files) are not legal documents and are not intended to be used as such. The information contained in these data is dynamic and may change over time. The data are not better than the original sources from which they were derived. It is the responsibility of the data user to use the data appropriately and consistent within the limitations of geospatial data in general and these data in particular. The related graphics are intended to aid the data user in acquiring relevant data; it is not appropriate to use the related graphics as data. The National Park Service gives no warranty, expressed or implied, as to the accuracy, reliability, or completeness of these data. It is strongly recommended that these data are directly acquired from an NPS server and not indirectly through other sources which may have changed the data in some way. Although these data have been processed successfully on computer systems at the National Park Service, no warranty expressed or implied is made regarding the utility of the data on other systems for general or scientific purposes, nor shall the act of distribution constitute any such warranty. This disclaimer applies both to individual use of the data and aggregate use with other data.&lt;/SPAN&gt;&lt;/P&gt;&lt;P&gt;&lt;SPAN /&gt;&lt;/P&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;</useLimit>
+			</Consts>
+		</resConst>
+		<envirDesc Sync="TRUE">Microsoft Windows 7 Version 6.1 (Build 7601) Service Pack 1; Esri ArcGIS 10.5.0.6491</envirDesc>
+		<dataLang>
+			<languageCode value="eng" Sync="TRUE"/>
+			<countryCode value="USA" Sync="TRUE"/>
+		</dataLang>
+		<spatRpType>
+			<SpatRepTypCd value="001" Sync="TRUE"/>
+		</spatRpType>
+		<dataExt xmlns="">
+			<geoEle xmlns="">
+				<GeoBndBox esriExtentType="search">
+					<exTypeCode Sync="TRUE">1</exTypeCode>
+					<westBL Sync="TRUE">-68.660352</westBL>
+					<eastBL Sync="TRUE">-68.043955</eastBL>
+					<northBL Sync="TRUE">44.400965</northBL>
+					<southBL Sync="TRUE">44.003402</southBL>
+				</GeoBndBox>
+			</geoEle>
+		</dataExt>
+		<tpCat>
+			<TopicCatCd value="018"/>
+		</tpCat>
+	</dataIdInfo>
+	<mdMaint xmlns="">
+		<maintFreq>
+			<MaintFreqCd value="009"/>
+		</maintFreq>
+		<usrDefFreq>
+			<duration>usually done annually</duration>
+		</usrDefFreq>
+	</mdMaint>
+	<refSysInfo>
+		<RefSystem dimension="horizontal">
+			<refSysID xmlns="">
+				<identCode code="26919" Sync="TRUE"/>
+				<idCodeSpace Sync="TRUE">EPSG</idCodeSpace>
+				<idVersion Sync="TRUE">6.13(3.0.1)</idVersion>
+			</refSysID>
+		</RefSystem>
+	</refSysInfo>
+	<eainfo>
+		<detailed Name="ACAD_HikingTrails_2018" xmlns="">
+			<enttyp>
+				<enttypl Sync="TRUE">ACAD_HikingTrails_2018</enttypl>
+				<enttypd>Attribute Table</enttypd>
+				<enttypds Sync="TRUE">None</enttypds>
+				<enttypt Sync="TRUE">Feature Class</enttypt>
+				<enttypc Sync="TRUE">434</enttypc>
+			</enttyp>
+			<attr>
+				<attrlabl Sync="TRUE">FID</attrlabl>
+				<attalias Sync="TRUE">FID</attalias>
+				<attrtype Sync="TRUE">OID</attrtype>
+				<attwidth Sync="TRUE">4</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+				<attrdef Sync="TRUE">Internal feature number.</attrdef>
+				<attrdefs Sync="TRUE">Esri</attrdefs>
+				<attrdomv>
+					<udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom>
+				</attrdomv>
+			</attr>
+			<attr xmlns="">
+				<attrlabl Sync="TRUE">Shape</attrlabl>
+				<attalias Sync="TRUE">Shape</attalias>
+				<attrtype Sync="TRUE">Geometry</attrtype>
+				<attwidth Sync="TRUE">0</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+				<attrdef Sync="TRUE">Feature geometry.</attrdef>
+				<attrdefs Sync="TRUE">ESRI</attrdefs>
+				<attrdomv>
+					<udom Sync="TRUE">Coordinates defining the features.</udom>
+				</attrdomv>
+			</attr>
+			<attr xmlns="">
+				<attrlabl Sync="TRUE">TRAILTYPE</attrlabl>
+				<attwidth Sync="TRUE">25</attwidth>
+				<atoutwid Sync="TRUE">25</atoutwid>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attrdef>Description of the current status or designation of the trail.</attrdef>
+				<attrdefs>K.Anderson, GIS Specialist</attrdefs>
+				<attalias Sync="TRUE">TRAILTYPE</attalias>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+				<attrdomv>
+					<edom xmlns="">
+						<edomv>Existing/Maintained</edomv>
+						<edomvd>This hiking trail is marked and maintained for public use by the NPS inside the park boundary.</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+					<edom xmlns="">
+						<edomv>Non-Park Trail-Existing</edomv>
+						<edomvd>This hiking trail is marked and maintained for public use by the NPS, under agreement, though it is outside the park boundary.</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+				</attrdomv>
+			</attr>
+			<attr xmlns="">
+				<attrlabl Sync="TRUE">TRAILNAME</attrlabl>
+				<attwidth Sync="TRUE">50</attwidth>
+				<atoutwid Sync="TRUE">50</atoutwid>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attrdomv>
+					<udom>Too many unique values.</udom>
+				</attrdomv>
+				<attrdef>Name of the trail according to Acadia National Park's trail crew and current signage.</attrdef>
+				<attrdefs>K.Anderson, GIS Specialist</attrdefs>
+				<attalias Sync="TRUE">TRAILNAME</attalias>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr xmlns="">
+				<attrlabl Sync="TRUE">INPARK</attrlabl>
+				<attwidth Sync="TRUE">2</attwidth>
+				<atoutwid Sync="TRUE">2</atoutwid>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attrdomv>
+					<edom xmlns="">
+						<edomv>Y</edomv>
+						<edomvd>Yes, the trail falls within Acadia National Park</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+					<edom xmlns="">
+						<edomv>N</edomv>
+						<edomvd>No, the trail does not fall within Acadia National Park.</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+				</attrdomv>
+				<attrdef>Is the trail within Acadia National Park</attrdef>
+				<attrdefs>K.Anderson, GIS Specialist</attrdefs>
+				<attalias Sync="TRUE">INPARK</attalias>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr xmlns="">
+				<attrlabl Sync="TRUE">INTENDUSE</attrlabl>
+				<attwidth Sync="TRUE">12</attwidth>
+				<atoutwid Sync="TRUE">12</atoutwid>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attrdomv>
+					<edom xmlns="">
+						<edomv>pedestrian</edomv>
+						<edomvd>This trail is intended to be used only by pedestrians.</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+					<edom xmlns="">
+						<edomv>mixed</edomv>
+						<edomvd>This trail is intended to be used by pedestrian and other users.</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+					<edom xmlns="">
+						<edomv>equestrian</edomv>
+						<edomvd>This trail is intended to be used by equestrians (horseback riders).</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+					<edom xmlns="">
+						<edomv>bicycle</edomv>
+						<edomvd>This trail is intended to be used by bicyclists.</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+					<edom xmlns="">
+						<edomv>snowmobile</edomv>
+						<edomvd>This trail may be used by snowmobiles.</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+				</attrdomv>
+				<attrdef>What is the intended use of this trail?</attrdef>
+				<attrdefs>K.Anderson, GIS Specialist</attrdefs>
+				<attalias Sync="TRUE">INTENDUSE</attalias>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr xmlns="">
+				<attrlabl Sync="TRUE">MAINTBY</attrlabl>
+				<attwidth Sync="TRUE">20</attwidth>
+				<atoutwid Sync="TRUE">20</atoutwid>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attrdomv>
+					<edom xmlns="">
+						<edomv>NPS</edomv>
+						<edomvd>National Park Service maintains this trail.</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+					<edom xmlns="">
+						<edomv>VIS</edomv>
+						<edomvd>A villiage improvement society maintains this trail.</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+					<edom xmlns="">
+						<edomv>FOA</edomv>
+						<edomvd>The non-profit group Friends of Acadia maintains this trail.</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+					<edom xmlns="">
+						<edomv>JPH Consessioner</edomv>
+						<edomvd>The consession operator for Jordan Pond House maintaines this trail.</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+					<edom xmlns="">
+						<edomv>unknown</edomv>
+						<edomvd>we don't know who maintains this trail.</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+					<edom xmlns="">
+						<edomv>[blank]</edomv>
+						<edomvd>same as unknown</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+				</attrdomv>
+				<attrdef>What organization maintains this trail?</attrdef>
+				<attrdefs>K.Anderson, GIS Specialist</attrdefs>
+				<attalias Sync="TRUE">MAINTBY</attalias>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr xmlns="">
+				<attrlabl Sync="TRUE">SURFACE</attrlabl>
+				<attwidth Sync="TRUE">12</attwidth>
+				<atoutwid Sync="TRUE">12</atoutwid>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attrdomv>
+					<edom xmlns="">
+						<edomv>hardened</edomv>
+						<edomvd>the surface of this trail is hardened with concrete or asphalt</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+					<edom xmlns="">
+						<edomv>unhardened</edomv>
+						<edomvd>the surface of this trail is not hardened with concrete or asphalt</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+				</attrdomv>
+				<attrdef>does this trail have a hardened  or unhardened surface</attrdef>
+				<attrdefs>K.Anderson, GIS Specialist</attrdefs>
+				<attalias Sync="TRUE">SURFACE</attalias>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr xmlns="">
+				<attrlabl Sync="TRUE">TC_LENGTH</attrlabl>
+				<attalias Sync="TRUE">TC_LENGTH</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<attrdef>Length of the TRAIL SECTION of which this line segment is a part, in miles, according to the Acadia National Park Trail Crew's database;  this is the number used on the trail signs in the park.  PLEASE NOTE: you should not sum on this field because, if there are multiple arcs making up a section, you'll count it twice!</attrdef>
+				<attrdefs>K.Anderson, GIS Specialist</attrdefs>
+				<attrdomv>
+					<rdom xmlns="">
+						<rdommin>0</rdommin>
+						<rdommax>2.7</rdommax>
+						<attrunit>miles</attrunit>
+						<attrmres>0.1</attrmres>
+					</rdom>
+				</attrdomv>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr xmlns="">
+				<attrlabl Sync="TRUE">MapCOLOR</attrlabl>
+				<attalias Sync="TRUE">MapCOLOR</attalias>
+				<attrtype Sync="TRUE">String</attrtype>
+				<attwidth Sync="TRUE">30</attwidth>
+				<attrdomv>
+					<edom xmlns="">
+						<edomv>Anemone Violet</edomv>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+						<edomvd>one of 5 colors used for existing/maintained trails that fall inside of NPS boundaries;  HSV values 284-100-90</edomvd>
+					</edom>
+					<edom xmlns="">
+						<edomv>Seville Orange</edomv>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+						<edomvd>one of 5 colors used for existing/maintained trails that fall inside of NPS boundaries;  HSV values 40-100-90</edomvd>
+					</edom>
+					<edom xmlns="">
+						<edomv>Lapis Lazuli</edomv>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+						<edomvd>one of 5 colors used for existing/maintained trails that fall inside of NPS boundaries;  HSV values 216-100-90</edomvd>
+					</edom>
+					<edom xmlns="">
+						<edomv>Leaf Green</edomv>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+						<edomvd>one of 5 colors used for existing/maintained trails that fall inside of NPS boundaries;  HSV values 100-100-66</edomvd>
+					</edom>
+					<edom xmlns="">
+						<edomv>Poinsetta Red</edomv>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+						<edomvd>one of 5 colors used for existing/maintained trails that fall inside of NPS boundaries;  HSV values 0-100-90</edomvd>
+					</edom>
+					<edom xmlns="">
+						<edomv>Light Vert</edomv>
+						<edomvd>used for existing/maintained trails that fall OUTside of NPS boundaries;  HSV values 159-50-96</edomvd>
+						<edomvds>K.Anderson, GIS Specialist</edomvds>
+					</edom>
+				</attrdomv>
+				<attrdef>Color used on master map for Trail Crew at Acadia NP, from ArcGIS-ArcMap color palette.  Gives a 6-color depiction with each named trail in a color different from the other trails it touches.</attrdef>
+				<attrdefs>K.Anderson, GIS Specialist</attrdefs>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">Shape_Leng</attrlabl>
+				<attalias Sync="TRUE">Shape_Leng</attalias>
+				<attrtype Sync="TRUE">Double</attrtype>
+				<attwidth Sync="TRUE">19</attwidth>
+				<atprecis Sync="TRUE">0</atprecis>
+				<attscale Sync="TRUE">0</attscale>
+			</attr>
+		</detailed>
+	</eainfo>
+	<mdLang>
+		<languageCode value="eng" Sync="TRUE"/>
+		<countryCode value="USA" Sync="TRUE"/>
+	</mdLang>
+	<mdHrLv>
+		<ScopeCd value="005" Sync="TRUE"/>
+	</mdHrLv>
+	<mdHrLvName Sync="TRUE">dataset</mdHrLvName>
+	<spatRepInfo>
+		<VectSpatRep><geometObjs Name="ACAD_HikingTrails_2018"><geoObjTyp><GeoObjTypCd value="002" Sync="TRUE"></GeoObjTypCd></geoObjTyp><geoObjCnt Sync="TRUE">434</geoObjCnt></geometObjs><topLvl><TopoLevCd value="001" Sync="TRUE"></TopoLevCd></topLvl></VectSpatRep></spatRepInfo>
+	<spdoinfo>
+		<ptvctinf><esriterm Name="ACAD_HikingTrails_2018"><efeatyp Sync="TRUE">Simple</efeatyp><efeageom code="3" Sync="TRUE"></efeageom><esritopo Sync="TRUE">FALSE</esritopo><efeacnt Sync="TRUE">434</efeacnt><spindex Sync="TRUE">TRUE</spindex><linrefer Sync="TRUE">FALSE</linrefer></esriterm></ptvctinf></spdoinfo>
+	<mdDateSt Sync="TRUE">20180208</mdDateSt>
+	<mdChar>
+		<CharSetCd value="004"/>
+	</mdChar>
+</metadata>
