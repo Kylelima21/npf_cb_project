@@ -2,8 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
-/literature
 app/www/
-data/
-outputs/photos/
 app2/www/img/obs/
+data/all_ebird.csv
+data/all_inat.csv
+data/acad_inat_obs.csv
