@@ -54,9 +54,9 @@ ui <- fluidPage(
                           tags$li(tags$a(href = "#", "Home")),
                           tags$li(tags$a(href = "#intro", "Introduction")),
                           tags$li(tags$a(href = "#summary", "Summary")),
+                          tags$li(tags$a(href = "#gallery", "Gallery")),
                           tags$li(tags$a(href = "#spex", "Species Explorer")),
                           tags$li(tags$a(href = "#science", "Science")),
-                          tags$li(tags$a(href = "#gallery", "Gallery")),
                           tags$li(tags$a(href = "#about", "About"))))),
      tags$nav(class = "mobile-nav",
               tags$button(class = "nav-toggle",
@@ -106,7 +106,6 @@ ui <- fluidPage(
                         img(src = "img/frog.jpg", alt = "Northern Leopard Frog in a gravel path"),
                         img(src = "img/monarch.jpg", alt = "Monarch feeding from a red clover flower"))
                     ))
-                    
     )),
     
     ## Data summary
@@ -135,9 +134,10 @@ ui <- fluidPage(
                     h4(tags$b("Most Common Species")),
                     icon("leaf"),
                     h2(textOutput("top_sp"), class = "summary-stat-text")),
-                div(class = "percent-format",
-                    icon("database"),
-                    h2(textOutput("percent_text_i"), class = "percent-stat-text")))),
+                # div(class = "percent-format",
+                #     icon("database"),
+                #     h2(textOutput("percent_text_i"), class = "percent-stat-text"))
+                )),
         div(class = "ebird-box",
             img(src = "img/ebird.png", alt = "eBird", class = "obs-logos"),
             div(class = "sep-line"),
@@ -158,9 +158,65 @@ ui <- fluidPage(
                     h4(tags$b("Most Common Species")),
                     icon("crow"),
                     h2(textOutput("top_sp_e"), class = "summary-stat-text")),
-                div(class = "percent-format",
-                    icon("database"),
-                    h2(textOutput("percent_text_e"), class = "percent-stat-text"))))
+                # div(class = "percent-format",
+                #     icon("database"),
+                #     h2(textOutput("percent_text_e"), class = "percent-stat-text"))
+                ))
+    ),
+    
+    ## Gallery
+    div(class = "box-photo-gallery",
+        div(class = "anchors", id = "gallery"),
+        div(class = "body-title-box",
+            icon("image",  class = "body-box-icon"),
+            h4("Photo Gallery", class = "body-titles")),
+        div(class = "grid-wrapper",
+            div(tabindex = 0, class = ifelse(length(images$src) < 1, "no-imgs", "hidden"),
+                img(src = "img/ice.jpg"),
+                div(class = "no-photos",
+                    h3("No research grade photos this week."),
+                    h3("Go take some!"))),
+            div(tabindex = 0, class = ifelse(length(images$src) >= 1, "img-container", "hidden"),
+                img(src = images$src[1], alt = images$id[1]),
+                div(class = "img-label",
+                    h3(images$id[1]),
+                    h4("©", images$user[1]))),
+            div(tabindex = 0, class = ifelse(length(images$src) >= 2, "img-container", "hidden"),
+                img(src = images$src[2], alt = images$id[2]),
+                div(class = "img-label",
+                    h3(images$id[2]),
+                    h4("©", images$user[2]))),
+            div(tabindex = 0, class = ifelse(length(images$src) >= 3, "img-container", "hidden"),
+                img(src = images$src[3], alt = images$id[3]),
+                div(class = "img-label",
+                    h3(images$id[3]),
+                    h4("©", images$user[3]))),
+            div(tabindex = 0, class = ifelse(length(images$src) >= 4, "img-container", "hidden"),
+                img(src = images$src[4], alt = images$id[4]),
+                div(class = "img-label",
+                    h3(images$id[4]),
+                    h4("©", images$user[4]))),
+            div(tabindex = 0, class = ifelse(length(images$src) >= 5, "img-container", "hidden"),
+                img(src = images$src[5], alt = images$id[5]),
+                div(class = "img-label",
+                    h3(images$id[5]),
+                    h4("©", images$user[5]))),
+            div(tabindex = 0, class = ifelse(length(images$src) >= 6, "img-container", "hidden"),
+                img(src = images$src[6], alt = images$id[6]),
+                div(class = "img-label",
+                    h3(images$id[6]),
+                    h4("©", images$user[6]))),
+            div(tabindex = 0, class = ifelse(length(images$src) >= 7, "img-container", "hidden"),
+                img(src = images$src[7], alt = images$id[7]),
+                div(class = "img-label",
+                    h3(images$id[7]),
+                    h4("©", images$user[7]))),
+            div(tabindex = 0, class = ifelse(length(images$src) >= 8, "img-container", "hidden"),
+                img(src = images$src[8], alt = images$id[8]),
+                div(class = "img-label",
+                    h3(images$id[8]),
+                    h4("©", images$user[8])))
+        )
     ),
 
     ## Species explorer
@@ -219,61 +275,6 @@ ui <- fluidPage(
                    get involved by following the link below!"),
                 a(href = "https://schoodicinstitute.org/science/marine-ecology-research/latest-projects/project-asco-assessing-seaweed-via-community-observations/", 
                   target = "_blank", tabindex = "-1", tags$button(class = "btn-green", "Learn more"))))
-        ),
-                
-    ## Gallery
-    div(class = "box-photo-gallery",
-        div(class = "anchors", id = "gallery"),
-        div(class = "body-title-box",
-            icon("image",  class = "body-box-icon"),
-            h4("Photo Gallery", class = "body-titles")),
-        div(class = "grid-wrapper",
-            div(tabindex = 0, class = ifelse(length(images$src) < 1, "no-imgs", "hidden"),
-                img(src = "img/ice.jpg"),
-                div(class = "no-photos",
-                    h3("No research grade photos this week."),
-                    h3("Go take some!"))),
-            div(tabindex = 0, class = ifelse(length(images$src) >= 1, "img-container", "hidden"),
-                img(src = images$src[1], alt = images$id[1]),
-                div(class = "img-label",
-                    h3(images$id[1]),
-                    h4("©", images$user[1]))),
-            div(tabindex = 0, class = ifelse(length(images$src) >= 2, "img-container", "hidden"),
-                img(src = images$src[2], alt = images$id[2]),
-                div(class = "img-label",
-                    h3(images$id[2]),
-                    h4("©", images$user[2]))),
-            div(tabindex = 0, class = ifelse(length(images$src) >= 3, "img-container", "hidden"),
-                img(src = images$src[3], alt = images$id[3]),
-                div(class = "img-label",
-                    h3(images$id[3]),
-                    h4("©", images$user[3]))),
-            div(tabindex = 0, class = ifelse(length(images$src) >= 4, "img-container", "hidden"),
-                img(src = images$src[4], alt = images$id[4]),
-                div(class = "img-label",
-                    h3(images$id[4]),
-                    h4("©", images$user[4]))),
-            div(tabindex = 0, class = ifelse(length(images$src) >= 5, "img-container", "hidden"),
-                img(src = images$src[5], alt = images$id[5]),
-                div(class = "img-label",
-                    h3(images$id[5]),
-                    h4("©", images$user[5]))),
-            div(tabindex = 0, class = ifelse(length(images$src) >= 6, "img-container", "hidden"),
-                img(src = images$src[6], alt = images$id[6]),
-                div(class = "img-label",
-                    h3(images$id[6]),
-                    h4("©", images$user[6]))),
-            div(tabindex = 0, class = ifelse(length(images$src) >= 7, "img-container", "hidden"),
-                img(src = images$src[7], alt = images$id[7]),
-                div(class = "img-label",
-                    h3(images$id[7]),
-                    h4("©", images$user[7]))),
-            div(tabindex = 0, class = ifelse(length(images$src) >= 8, "img-container", "hidden"),
-                img(src = images$src[8], alt = images$id[8]),
-                div(class = "img-label",
-                    h3(images$id[8]),
-                    h4("©", images$user[8])))
-            )
         ),
     
     ## About
@@ -338,9 +339,9 @@ ui <- fluidPage(
                               tags$li(tags$a(href = "#", "Home")),
                               tags$li(tags$a(href = "#intro", "Introduction")),
                               tags$li(tags$a(href = "#summary", "Summary")),
+                              tags$li(tags$a(href = "#gallery", "Gallery")),
                               tags$li(tags$a(href = "#spex", "Species Explorer")),
                               tags$li(tags$a(href = "#science", "Science")),
-                              tags$li(tags$a(href = "#gallery", "Gallery")),
                               tags$li(tags$a(href = "#about", "About")))),
   
                   div(class = "footer-copyright-box",
@@ -429,24 +430,6 @@ server <- function(input, output, session) {
             legend.position = "bottom")
   }, bg = "transparent")
   
-  ## Percent plot text output
-  output$percent_text_i <- renderText({
-    dat <- the_data %>%
-      group_by(source) %>% 
-      summarise(count = length(source)) %>% 
-      mutate(percent = round((count/sum(count)*100), 0))
-    
-    paste0(dat$percent[2], "% of the data was collected by iNaturalist")
-  })
-  
-  output$percent_text_e <- renderText({
-    dat <- the_data %>%
-      group_by(source) %>% 
-      summarise(count = length(source)) %>% 
-      mutate(percent = round((count/sum(count)*100), 0))
-    
-    paste0(dat$percent[1], "% of the data was collected by eBird")
-  })
   
   ## Reactive data frame for Species Explorer tab
   speciesreact <- reactive({

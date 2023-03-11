@@ -7,7 +7,7 @@ library(rsconnect)
 
 ### Raw data
 ## Pull iNaturalist and eBird data
-inat <- inat_recent("49610", "week")
+inat <- inat_recent("1647", "week", "Acadia National Park")
 ebird <- ebird_recent("US-ME-009", "Acadia National Park")
 
 ## Make a df with 'groups' to add to the data

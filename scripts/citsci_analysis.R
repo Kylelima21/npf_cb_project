@@ -47,7 +47,10 @@ inat <- tibble(read.csv("data/acad_inat_obs.csv")) %>%
 
 
 ## Read, format, filter to ACAD, and clean the eBird data
-ebd
+ebd <- tibble(fread("data/all_ebird.csv")) %>% 
+  select(species, genus, family, order, latitude = decimalLatitude, longitude = decimalLongitude,
+         count = individualCount, day, month, year) %>%  
+  filter_nps(., "Acadia National Park", "latitude", "longitude")
 
 
 
@@ -247,7 +250,6 @@ rds <- sf::read_sf("data/MaineDOT_Public_Roads/MaineDOT_Public_Roads.shp") %>%
 heatdat <- inat %>% 
   filter(positional.accuracy < 50)
 
-#inatheat <- 
   
 leaflet(options = leafletOptions(zoomControl = FALSE)) %>% 
   addMapPane("polygons", zIndex = 300) %>%
@@ -261,54 +263,70 @@ leaflet(options = leafletOptions(zoomControl = FALSE)) %>%
   addPolylines(data = ht, color = "blue", opacity = 1, weight = 1.8, options = pathOptions(pane = "polylines")) %>%
   addPolylines(data = cr, color = "limegreen", opacity = 1, weight = 1.8, options = pathOptions(pane = "polylines")) %>%
   addPolylines(data = bp, color = "purple", opacity = 1, weight = 1.8, options = pathOptions(pane = "polylines")) %>%
-  #addPolylines(data = sw, color = "yellow", opacity = 1, weight = 1.8, options = pathOptions(pane = "polylines")) %>%
   addHeatmap(lng = heatdat[1,]$longitude, lat = heatdat[1,]$latitude, intensity = 2, max = 1, blur = 10, radius = 8)
 
 
-df <- inat %>% 
-  filter(positional.accuracy < 50) %>% 
-  slice(1:50) %>% 
+dat <- inat %>% 
+  filter(positional.accuracy < 10) %>% 
+  #slice(1:3) %>% 
   st_as_sf(coords = c("longitude", "latitude")) %>% 
-  st_set_crs(4326) %>%
-  st_distance(ht) %>% 
-  as.data.frame()
+  st_set_crs(4326)
 
 
+get_dist <- function (rownum) {
+  
+  hike <- dat %>% 
+    filter(row_number() == rownum) %>%
+    st_distance(ht) %>% 
+    as.data.frame() %>% 
+    pivot_longer(everything()) %>% 
+    filter(value == min(value)) %>% 
+    mutate(row = rownum) %>% 
+    select(row, hiking_trail = value)
 
-get_dist <- function (df, rownum) {
+  carriage <- dat %>% 
+    filter(row_number() == rownum) %>%
+    st_distance(cr) %>% 
+    as.data.frame() %>% 
+    pivot_longer(everything()) %>% 
+    filter(value == min(value)) %>% 
+    mutate(row = rownum) %>% 
+    select(row, carriage_road = value)
   
-  if (is.data.frame(test) == T) {
-    
-    dat <- df %>% 
-      filter(row_number() == rownum) %>%
-      pivot_longer(everything()) %>% 
-      filter(value == min(value)) %>% 
-      mutate(row = rownum) %>% 
-      select(row, distance = value)
-  }
+  road <- dat %>% 
+    filter(row_number() == rownum) %>%
+    st_distance(rds) %>% 
+    as.data.frame() %>% 
+    pivot_longer(everything()) %>% 
+    filter(value == min(value)) %>% 
+    mutate(row = rownum) %>% 
+    select(row, public_road = value)
+  
+  bike <- dat %>% 
+    filter(row_number() == rownum) %>%
+    st_distance(bp) %>% 
+    as.data.frame() %>% 
+    pivot_longer(everything()) %>% 
+    filter(value == min(value)) %>% 
+    mutate(row = rownum) %>% 
+    select(row, bike_path = value)
+  
+  final.dat <- left_join(hike, carriage, by = "row") %>% 
+    left_join(road, by = "row") %>% 
+    left_join(bike, by = "row") %>%
+    pivot_longer(cols = c(hiking_trail:bike_path)) %>% 
+    rename(access.type = name, distance = value)
   
   
-  if (is.data.frame(test) == F) {
-  
-    dat <- data.frame(df) %>% 
-      filter(row_number() == rownum) %>%
-      pivot_longer(everything()) %>% 
-      filter(value == min(value)) %>% 
-      mutate(row = rownum) %>% 
-      select(row, distance = value)
-  }
-  
-  return(dat)
+  return(final.dat)
   
 }
 
 
 
+points <- 1:length(dat$common.name)
 
-points <- 1:50
-
-
-map_dfr(get_dist(df, 1))
+point_distances <- map_dfr(points, ~get_dist(.))
 
 
 
@@ -326,8 +344,7 @@ leaflet(options = leafletOptions(zoomControl = FALSE)) %>%
   addPolygons(data = acad.bounds, color = "white", fill = T, fillColor = "black", opacity = 1, fillOpacity = 0.4,
               weight = 2.5, options = pathOptions(pane = "polygons")) %>%
   addPolylines(data = ht, color = "blue", opacity = 1, weight = 1.8, options = pathOptions(pane = "polylines")) %>%
-  addPoints
-(lng = heatdat[1,]$longitude, lat = heatdat[1,]$latitude, intensity = 2, max = 1, blur = 10, radius = 8)
+  addPoints(lng = heatdat[1,]$longitude, lat = heatdat[1,]$latitude, intensity = 2, max = 1, blur = 10, radius = 8)
   
 
 saveWidget(inatheat, "outputs/temp.html", selfcontained = FALSE)

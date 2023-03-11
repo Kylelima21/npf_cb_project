@@ -42,14 +42,13 @@ require(shinyalert)
 #' @return A data frame of recent iNaturalist observations.
 #' @param timespan: The recent time span of interest. Options 
 #' are "week", "threedays", or "yesterday" as inputs for the "timespan" parameter.
-#' @param output.path: The path you want the summary statistic tables to be written to.
-#' @param place: An iNaturalist slug (the place name) as a single string with words separated by hyphens. 
-#' For example, the place Acadia National Park would be "acadia-national-park" as found in the place page
-#' url: https://www.inaturalist.org/observations?place_id=142267
+#' @param place_id: An iNaturalist place ID in quotes. For example, the place id for 
+#' Hancock County Maine would be "1647" as found in the place page url: 
+#' https://www.inaturalist.org/observations?place_id=1647&subview=map
 #' @seealso None
 #' @export
 
-inat_recent <- function(place_id, timespan) {
+inat_recent <- function(place_id, timespan, parkname) {
   
   ## Check to make sure that parameter inputs are correct
   # timespan
@@ -62,14 +61,9 @@ inat_recent <- function(place_id, timespan) {
   } 
   
   
-  # # output.path
-  # if (str_sub(output.path, start = -1) == "/") {
-  #   stop("Directory path cannot end with '/'")
-  # }
-  # if (str_sub(output.path, start = -1) == "`\`") {
-  #   stop("Directory path cannot end with '\'")
-  # }
-  
+  # Stop summarise output message
+  options(dplyr.summarise.inform = FALSE)
+
   
   # Get the past week's dates and format
   date.filter <- format(Sys.Date()-1:7, "%Y-%m-%d") %>% 
@@ -96,15 +90,10 @@ inat_recent <- function(place_id, timespan) {
                  maxresults = 10000) %>% 
       as_tibble() %>% 
       select(scientific_name, common_name, iconic_taxon_name, observed_on, place_guess, 
-             latitude, longitude, positional_accuracy, user_login, user_id, captive_cultivated, url, image_url) %>% 
+             latitude, longitude, positional_accuracy, user_login, user_id, captive_cultivated, url, image_url, license) %>% 
       mutate(common_name = tolower(common_name)) %>% 
       rename_all( ~ str_replace_all(., "_", "."))
     
-  }
-  
-  
-  if(exists("get_inat_data")) {
-    message("Crawling data over from iNaturalist...")
   }
   
   
@@ -144,20 +133,22 @@ inat_recent <- function(place_id, timespan) {
     filter(dup == "FALSE") %>% 
     select(-dup) %>% 
     mutate(source = "iNaturalist",
-           checklist = NA,
+           checklist = NA_character_,
            count = 1)
 
-  
-  # Stop summarise output message
-  options(dplyr.summarise.inform = FALSE)
 
   
-  if(length(inat_obs) >= 1) {
+  # Select records inside the designated area
+  filtered <- filter_nps(inat_obs, parkname, lat = "latitude", long = "longitude")
+  
+  
+  if(length(filtered) >= 1) {
     message("Data retrieval successful!")
+  } else {
+    stop("There are no recent iNatuarlist records inside this park.")
   }
   
-  
-  return(inat_obs) 
+  return(filtered) 
   
 }
 
@@ -174,13 +165,11 @@ inat_recent <- function(place_id, timespan) {
 #' @param ebird_loc: An eBird place name as a single string with components separated by hyphens. 
 #' For example, the Hancock County, Maine, USA is "US-ME-009". A full list of codes can be found 
 #' here: https://support.ebird.org/en/support/solutions/articles/48000838205-download-ebird-data
+#' #' @param parkname The quoted name of the national park/monument that you want to filter records by. Requires
+#' name format to be exact. Find a list of the 427 park names at this link: https://rpubs.com/klima21/filternps.
 #' @export
 
 ebird_recent <- function(ebird_loc, parkname) {
-  
-  # Starting message
-  message("Flying in the data from eBird...")
-  
   
   # Get code list
   codelist <- ebirdregion(loc = ebird_loc, back = 7, key = "kjh86bnmkpfh") %>% 
@@ -206,15 +195,12 @@ ebird_recent <- function(ebird_loc, parkname) {
   
   
   # Select records inside the designated area
-  if (parkname == "Acadia National Park") {
-    filtered <- filter_acad(mid, lat = "latitude", long = "longitude")
-  } else {
-    filtered <- filter_nps(mid, parkname, lat = "latitude", long = "longitude")
-  }
+  filtered <- filter_nps(mid, parkname, lat = "latitude", long = "longitude")
   
   
   output <- filtered %>% 
-    mutate(source = "eBird")
+    mutate(source = "eBird",
+           license = NA_character_)
   
   
   if(length(output) >= 1) {
@@ -738,6 +724,7 @@ download_photos <- function(x, output.path) {
   # Filter the inat obs data frame so that there are no duplicate species
   pic_data <- x %>% 
     filter(!is.na(image.url)) %>% 
+    filter(!is.na(license)) %>% 
     group_by(scientific.name) %>% 
     arrange(desc(observed.on)) %>% 
     distinct() %>% 

@@ -415,10 +415,12 @@ nav a:focus::before {
   margin: 6rem auto;
   border-radius: 1rem;
   box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  grid-column-gap: 4%;
   display: grid;
-  grid-template-columns: 48% 4% 48%;
+  grid-template-columns: 48% 48%;
   grid-template-areas: 
-    "ebird . inat"
+    "ebird inat"
+    "perc perc"
 }
 
 .obs-logos {
@@ -445,7 +447,6 @@ nav a:focus::before {
   color: black;
   background-color: var(--clr-opaque-green);
   padding: 2rem;
-  /* margin: 0 4% 4% 4%; */
   border-radius: 1rem;
   box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.2);
 }
@@ -454,12 +455,12 @@ nav a:focus::before {
   position: relative;
   padding: 1rem;
   text-align: center;
+  grid-column-gap: 4%;
   display: grid;
-  grid-template-columns: 48% 1% 48%;
+  grid-template-columns: 48% 48%;
   grid-template-areas:
-    "observers . observations"
-    "comgroup . comsp"
-    "percent percent percent"
+    "observers observations"
+    "comgroup comsp"
 }
 
 .ebird-box {
@@ -476,12 +477,12 @@ nav a:focus::before {
   text-align: center;
   vertical-align: center;
   color: rgb(255, 255, 255);
+  grid-column-gap: 4%;
   display: grid;
-  grid-template-columns: 48% 4% 48%;
+  grid-template-columns: 48% 48%;
   grid-template-areas:
-    "observers . observations"
-    "comgroup . comsp"
-    "percent percent percent"
+    "observers observations"
+    "comgroup comsp"
 }
 
 .observers-format {
@@ -523,10 +524,19 @@ nav a:focus::before {
   font-weight: 500;
 }
 
+.data-percent {
+  grid-area: perc;
+  text-align: center;
+  color: black;
+  margin-top: 4rem;
+  background-color: rgb(220, 220, 220, 0.7);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.2);
+}
+
 .percent-format {
-  grid-area: percent;
   font-size: 30px;
-  margin-top: 3rem;
   width: 100%;
   display: flex;
   align-items: center;
