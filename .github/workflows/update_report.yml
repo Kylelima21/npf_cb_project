@@ -22,7 +22,7 @@ jobs:
           R -e 'install.packages("rebird")'
           R -e 'install.packages("gt")'
           R -e 'install.packages("udunits2")'
-          R -e 'install.packages("sf", type = "source", configure.args = "--with-proj-lib=$(brew --prefix)/lib/")'
+          R -e 'install.packages("sf")'
           
       - name: Run rmd to update info
         run: Rscript -e 'rmarkdown::render(input = "index.Rmd")'
