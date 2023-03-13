@@ -21,7 +21,6 @@ jobs:
           R -e 'install.packages("rinat")'
           R -e 'install.packages("rebird")'
           R -e 'install.packages("gt")'
-          R -e 'install.packages("gdal")'
           R -e 'install.packages("sf")'
           
       - name: Run rmd to update info
