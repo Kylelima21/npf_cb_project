@@ -1,8 +1,8 @@
 name: Updating Citizen Science Report
 run-name: ${{ github.actor }} is updating the report!
-on: push
-  #schedule:
-    #- cron:  '0 8 * * 1'
+on:
+  schedule:
+    - cron:  '0 8 * * 1'
     
 jobs:
   Update-Citsci-Report-Pages:
@@ -14,6 +14,9 @@ jobs:
           
       - name: Install packages
         run: |
+          brew install pkg-config
+          brew install gdal
+          R -e 'install.packages("sf")'
           R -e 'install.packages("tidyverse")'
           R -e 'install.packages("lubridate")'
           R -e 'install.packages("kableExtra")'
@@ -22,7 +25,6 @@ jobs:
           R -e 'install.packages("rebird")'
           R -e 'install.packages("gt")'
           R -e 'install.packages("rgdal")'
-          R -e 'install.packages("sf")'
           
       - name: Run rmd to update info
         run: Rscript -e 'rmarkdown::render(input = "index.Rmd")'
