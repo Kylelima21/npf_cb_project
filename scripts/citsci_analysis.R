@@ -93,23 +93,23 @@ acad.bounds <- sf::read_sf("data/acad_boundary/ACAD_ParkBoundary_PY_202004.shp")
 
 ## Create Acadia bounds map
 acadmap <- leaflet(options = leafletOptions(zoomControl = FALSE)) %>% 
-  addMapPane("polygons", zIndex = 300) %>%
-  addProviderTiles(providers$Esri.WorldImagery) %>% 
-  addProviderTiles(providers$Stamen.TonerLines, options = providerTileOptions(opacity = 0.35)) %>% 
-  addProviderTiles(providers$CartoDB.PositronOnlyLabels) %>% 
-  addPolygons(data = acad.bounds, color = "none", fill = T, fillColor = "white", opacity = 1, fillOpacity = 0.9,
-              weight = 2, options = pathOptions(pane = "polygons")) %>% 
+  addMapPane("polygons", zIndex = 201) %>%
+  addMapPane("labels", zIndex = 300) %>%
+  addProviderTiles(providers$CartoDB.PositronNoLabels) %>% 
+  addProviderTiles(providers$CartoDB.PositronOnlyLabels, options = providerTileOptions(pane = "labels")) %>% 
+  addPolygons(data = acad.bounds, color = "black", fill = T, fillColor = "forestgreen", opacity = 1, fillOpacity = 0.9,
+              weight = .5, options = pathOptions(pane = "polygons")) %>% 
   addLegend("bottomright", values = ~acad.bounds,
-            colors = c("white"),
+            colors = c("forestgreen"),
             labels = c("Acadia National Park"),
             opacity = 1)
 acadmap
 
 ## Export figure
-# saveWidget(acadmap, "outputs/temp.html", selfcontained = FALSE)
-# webshot("outputs/temp.html", file = "outputs/forpub/acadplot.png",
-#         vwidth = 1100, vheight = 800,
-#         cliprect = "viewport")
+saveWidget(acadmap, "outputs/temp.html", selfcontained = FALSE)
+webshot("outputs/temp.html", file = "outputs/forpub/acadplot.png",
+        vwidth = 1000, vheight = 700,
+        cliprect = "viewport")
 
 
 
@@ -538,7 +538,7 @@ spee <- cumulativespe %>%
 
 
 ## Create panelled figure
-plot_grid(obse, spee, nrow=1, labels=c('a', 'b'), align = "h", label_size = 16)
+plot_grid(obse, spee, nrow = 1, labels = c('a', 'b'), align = "h", label_size = 16)
 
 
 ## Export figure
@@ -632,32 +632,75 @@ sptots <- inat %>%
          scientific.name = ifelse(scientific.name == "Lycaena phlaeas", "Lycaena hypophlaeas", scientific.name))
 
 
-intax2 <- left_join(sptots, intax, by = "scientific.name") %>%
+sptots2 <- left_join(sptots, intax, by = "scientific.name") %>%
   group_by(scientific.name) %>% 
-  summarise(count = length(scientific.name))
   slice(1) %>% 
   arrange(-total)
 
-
-
-
   
 ## Totals species per kingdom
-test %>% 
+sptots2 %>% 
   group_by(taxon.kingdom.name) %>% 
   summarise(count = length(taxon.kingdom.name)) %>% 
   arrange(-count)
 
 
-## Totals per kingdom
+## Totals obs per kingdom
 inat %>% 
-  mutate(iconic.taxon.name = ifelse(iconic.taxon.name != "Plantae" & iconic.taxon.name != "Fungi" 
-                                    & iconic.taxon.name != "Chromista" & 
-                                      iconic.taxon.name != "Protozoa", "Animalia", iconic.taxon.name)) %>% 
+  mutate(iconic.taxon.name = ifelse(iconic.taxon.name == "Insecta"  | iconic.taxon.name == "Mammalia" |
+                                    iconic.taxon.name == "Aves"     | iconic.taxon.name == "Aves" |
+                                    iconic.taxon.name == "Amphibia" | iconic.taxon.name == "Actinopterygii" |
+                                    iconic.taxon.name == "Mollusca" | iconic.taxon.name == "Reptilia" |
+                                    iconic.taxon.name == "Arachnida", "Animalia", iconic.taxon.name)) %>% 
   group_by(iconic.taxon.name) %>% 
   summarise(count = length(iconic.taxon.name)) %>% 
   arrange(-count)
   
+
+## Total species per order Plantae
+sptots2 %>% 
+  filter(taxon.kingdom.name == "Plantae") %>% 
+  group_by(taxon.order.name) %>%
+  summarise(count = length(taxon.order.name)) %>% 
+  arrange(-count)
+
+
+## Total obs per order Plantae
+inat %>% 
+  select(scientific.name, observed.on:positional.accuracy) %>% 
+  left_join(., intax, by = "scientific.name") %>% 
+  filter(taxon.kingdom.name == "Plantae") %>% 
+  group_by(taxon.order.name) %>%
+  summarise(count = length(taxon.order.name)) %>% 
+  arrange(-count)
+  
+
+## Total species per order Animalia
+sptots2 %>% 
+  filter(taxon.kingdom.name == "Animalia") %>% 
+  group_by(taxon.order.name) %>%
+  summarise(count = length(taxon.order.name)) %>% 
+  arrange(-count)
+
+
+## Total obs per order Animalia
+inat %>% 
+  select(scientific.name, observed.on:positional.accuracy) %>% 
+  left_join(., intax, by = "scientific.name") %>% 
+  filter(taxon.kingdom.name == "Animalia") %>% 
+  group_by(taxon.order.name) %>%
+  summarise(count = length(taxon.order.name)) %>% 
+  arrange(-count)
+
+
+## Total orders
+orders <- sptots2 %>% 
+  filter(taxon.order.name != "") %>% 
+  group_by(taxon.order.name) %>% 
+  summarise(length = length(taxon.order.name))
+
+length(orders$taxon.order.name)
+
 
 
 

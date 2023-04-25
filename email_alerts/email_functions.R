@@ -38,11 +38,30 @@ require(shinyalert)
 #'
 #' @inheritParams None
 #' @return A data frame of recent iNaturalist observations.
-#' @param place_id: the id for a place, as found in the url: https://www.inaturalist.org/observations?place_id=142267
+#' @param timespan: The recent time span of interest. Options 
+#' are "week", "threedays", or "yesterday" as inputs for the "timespan" parameter.
+#' @param place_id: An iNaturalist place ID in quotes. For example, the place id for 
+#' Hancock County Maine would be "1647" as found in the place page url: 
+#' https://www.inaturalist.org/observations?place_id=1647&subview=map
 #' @seealso None
 #' @export
 
-inat_recent <- function(place_id) {
+inat_recent <- function(place_id, timespan, parkname) {
+  
+  ## Check to make sure that parameter inputs are correct
+  # timespan
+  if (timespan != "week") {
+    if(timespan != "threeday") {
+      if(timespan != "yesterday") {
+        stop("Entered time span is not accepted. Must be 'week', 'threeday' or 'yesterday'")
+      }
+    }
+  } 
+  
+  
+  # Stop summarise output message
+  options(dplyr.summarise.inform = FALSE)
+  
   
   # Get the past week's dates and format
   date.filter <- format(Sys.Date()-1:7, "%Y-%m-%d") %>% 
@@ -61,51 +80,73 @@ inat_recent <- function(place_id) {
   # This is the function that starts the download of inat data inside park boundary
   get_inat_data <- function(obs_year, obs_month) {
     
-    get_inat_obs(place_id = place_id,
+    get_inat_obs(quality = "research",
+                 place_id = place_id,
                  geo = TRUE,
-                 year = year[1], 
-                 month = month[1], 
+                 year = obs_year, 
+                 month = obs_month, 
                  maxresults = 10000) %>% 
       as_tibble() %>% 
-      select(scientific_name, common_name, iconic_taxon_name, observed_on, created_at, place_guess, 
-             quality_grade, latitude, longitude, positional_accuracy, user_login, user_id, 
-             captive_cultivated, url, image_url) %>% 
-      mutate(common_name = tolower(common_name),
-             created_at = as_datetime(created_at),
-             created_at = date(created_at)) %>% 
+      select(scientific_name, common_name, iconic_taxon_name, observed_on, place_guess, 
+             latitude, longitude, positional_accuracy, user_login, user_id, captive_cultivated, url, image_url, license) %>% 
+      mutate(common_name = tolower(common_name)) %>% 
       rename_all( ~ str_replace_all(., "_", "."))
     
   }
   
+  
+  # Runs if week is called
+  if (timespan == "week") {
     
-  # Pull the previous week of inat data
-  inat_obs <- map2_dfr(year, month, get_inat_data)
+    # Pull the previous week of inat data
+    inat_obs <- map2_dfr(year, month, get_inat_data) %>% 
+      filter(observed.on >= date.filter$date[7] & observed.on <= date.filter$date[1])
+    
+  }
   
-  obson <- inat_obs %>% 
-    filter(observed.on >= date.filter$date[7] & observed.on <= date.filter$date[1])
   
-  creon <- inat_obs %>% 
-    filter(created.at >= date.filter$date[7] & created.at <= date.filter$date[1])
+  # Runs if threedays is called
+  if (timespan == "threeday") {
+    
+    # Subset this to three days
+    inat_obs <- map2_dfr(year, month, get_inat_data) %>% 
+      filter(observed.on >= date.filter$date[3])
+    
+  }
   
-  inat_obs2 <- bind_rows(obson, creon) %>% 
-    distinct() %>% 
-    mutate(observed.on = as.Date(observed.on),
-           source = "iNaturalist",
-           checklist = NA,
+  
+  # Runs if yesterday is called
+  if (timespan == "yesterday") {
+    
+    # Subset this to only yesterday
+    inat_obs <- map2_dfr(year, month, get_inat_data) %>% 
+      filter(observed.on == date.filter$date[1])
+    
+  }
+  
+  
+  inat_obs <- inat_obs %>% 
+    mutate(dup = duplicated(.),
+           observed.on = as.Date(observed.on)) %>% 
+    filter(dup == "FALSE") %>% 
+    select(-dup) %>% 
+    mutate(source = "iNaturalist",
+           checklist = NA_character_,
            count = 1)
   
-  # inat_obs2 <- inat_obs %>% 
-  #   # mutate(dup = duplicated(.),
-  #   #        observed.on = as.Date(observed.on)) %>% 
-  #   # filter(dup == "FALSE") %>% 
-  #   # select(-dup) %>% 
-  #   mutate(observed.on = as.Date(observed.on),
-  #          source = "iNaturalist",
-  #          checklist = NA,
-  #          count = 1)
-
   
-  return(inat_obs2) 
+  
+  # Select records inside the designated area
+  filtered <- filter_nps(inat_obs, parkname, lat = "latitude", long = "longitude")
+  
+  
+  if(length(filtered) >= 1) {
+    message("Data retrieval successful!")
+  } else {
+    stop("There are no recent iNatuarlist records inside this park.")
+  }
+  
+  return(filtered) 
   
 }
 
@@ -122,7 +163,8 @@ inat_recent <- function(place_id) {
 #' @param ebird_loc: An eBird place name as a single string with components separated by hyphens. 
 #' For example, the Hancock County, Maine, USA is "US-ME-009". A full list of codes can be found 
 #' here: https://support.ebird.org/en/support/solutions/articles/48000838205-download-ebird-data
-#' @param parkname: the name of a national park in quotations, such as "Acadia National Park"
+#' #' @param parkname The quoted name of the national park/monument that you want to filter records by. Requires
+#' name format to be exact. Find a list of the 427 park names at this link: https://rpubs.com/klima21/filternps.
 #' @export
 
 ebird_recent <- function(ebird_loc, parkname) {
@@ -155,7 +197,15 @@ ebird_recent <- function(ebird_loc, parkname) {
   
   
   output <- filtered %>% 
-    mutate(source = "eBird")
+    mutate(source = "eBird",
+           license = NA_character_)
+  
+  
+  if(length(output) >= 1) {
+    message("Data retrieval successful!")
+  } else {
+    stop("There are no recent eBird records inside this park.")
+  }
   
   
   return(output)
@@ -180,7 +230,8 @@ combine_citsci_data <- function(x, y, join) {
   
   output <- bind_rows(x, y) %>% 
     mutate(common.name = tolower(common.name)) %>% 
-    select(scientific.name, common.name, iconic.taxon.name, everything()) %>%
+    left_join(., join, by = "iconic.taxon.name") %>% 
+    select(scientific.name, common.name, iconic.taxon.name, groups, everything()) %>%
     mutate(common.name = ifelse(common.name == "", scientific.name, common.name)) %>% 
     arrange(common.name)
   
@@ -434,10 +485,20 @@ watchlist_species <- function(x, output.path) {
   
   
   # Invasives and pests
-  invasive_obs <- x %>% 
-    filter(scientific.name %in% invasive_ne$scientific.name) %>% 
-    arrange(desc(observed.on))
+  invasive_sp <- x %>% 
+    filter(scientific.name %in% invasive_ne$scientific.name)
   
+  inv2 <- listsp %>% 
+    filter(grepl("spp.$", scientific.name)) %>% 
+    mutate(genus = str_remove(scientific.name, "\\s\\w*\\."))
+  
+  invasive_gen <-  x %>% 
+    mutate(genus = str_remove(scientific.name, "\\s\\w*")) %>% 
+    filter(genus %in% inv2$genus) %>% 
+    select(-genus)
+  
+  invasive_obs <- rbind(invasive_sp, invasive_gen) %>% 
+    arrange(desc(observed.on))
   
   # Export
   write.csv(rares_obs, paste(output.path, "rare_specieslist.csv", sep = "/"), row.names = F)

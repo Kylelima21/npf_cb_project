@@ -21,14 +21,22 @@ start <- format(today() - 7, "%d %B %Y")
 end <- format(today()-1, "%d %B %Y")
 
 ## Pull iNaturalist and eBird data
-inat <- inat_recent("49610")
+inat <- inat_recent("1647", "week", "Acadia National Park")
 ebird <- ebird_recent("US-ME-009", "Acadia National Park")
 
-## Combine the two data frames
-final_data <- combine_citsci_data(inat, ebird)
+## Make a df with 'groups' to add to the data
+groups <- data.frame(iconic.taxon.name = c("Plantae", "Mammalia", "Animalia", "Aves", "Insecta", 
+                                 "Reptilia", "Amphibia", "Fungi", "Protozoa", "Chromista",
+                                 "Arachnida", "Mullusca"),
+           groups = c("Plants", "Mammals", "Other animals", "Birds", "Insects", "Reptiles",
+                      "Amphibians", "Fungi and lichens", "Protozoans", "Kelp and seaweeds", 
+                      "Spiders", "Mullusks"))
 
-#write.csv(final_data, "email_alerts/weeks_data.csv")
-#final_data <- read.csv("email_alerts/weeks_data.csv")
+## Combine the two data frames
+final_data <- combine_citsci_data(inat, ebird, join = groups)
+
+# write.csv(final_data, "email_alerts/test_data.csv", row.names = F)
+# final_data <- read.csv("email_alerts/test_data.csv")
 
 ## Run the summary function on the final data
 watchlist_species(final_data, "email_alerts/outputs")
@@ -100,10 +108,10 @@ newsp <- read.csv("email_alerts/outputs/new_species.csv") %>%
 
 
 
-<!-- Pests -->
+<!-- Pests & Invasives -->
 <div class = "pests-box">
   <div class = "body-title-box">
-  <h4 class = "body-titles"> Pest Species </h4>
+  <h4 class = "body-titles"> Pest & Invasive Species </h4>
   </div>
   <img src = "email_alerts/img/hwa.jpeg" alt = "A Hemlock tree infested with Hemlock Woolly Adelgid"    class = "pests-img">
   <h5 class = "cite"> © Jesse Wheeler </h5>
