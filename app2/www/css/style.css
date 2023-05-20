@@ -345,7 +345,6 @@ nav a:focus::before {
 .citsci-image {
   grid-area: imgcs;
   width: 100%;
-  max-height: 700px;
   margin: auto;
   border-radius: 1rem;
   box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
@@ -416,11 +415,12 @@ nav a:focus::before {
   border-radius: 1rem;
   box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
   grid-column-gap: 4%;
+  grid-row-gap: 4rem;
   display: grid;
   grid-template-columns: 48% 48%;
   grid-template-areas: 
     "ebird inat"
-    "perc perc"
+    "downloader downloader"
 }
 
 .obs-logos {
@@ -430,7 +430,7 @@ nav a:focus::before {
   margin-right: auto;
   height: 7vw;
   background-color: rgb(255, 255, 255);
-  padding: 2rem 3.5rem;
+  padding: 2rem 5rem;
   border-radius: 8rem;
   margin-bottom: 2rem;
 }
@@ -549,6 +549,37 @@ nav a:focus::before {
   margin-left: 2rem;
 }
 
+.data-download-box {
+  grid-area: downloader;
+  background-color: var(--clr-opaque-green);
+  border-radius: 1rem;
+  color: black;
+  font-size: 16px;
+  padding: 0rem 3rem 4rem 3rem;
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  text-align: center;
+  align-content: center;
+}
+
+.dattab {
+  position: relative;
+  margin: 2rem 0 4rem 0;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
+  background-color: white;
+}
+
+.data-download-box > h4 {
+  font-size: 30px;
+  font-weight: 500;
+  margin-top: 2rem;
+}
+
+.download-button {
+  margin: 2rem 0;
+}
+
 
 
 
@@ -629,7 +660,7 @@ nav a:focus::before {
 }
 
 .help:hover + .help-desc,
-.help:focus {
+.help:focus + .help-desc {
   transform: scale(1);
 }
 
@@ -652,20 +683,30 @@ nav a:focus::before {
   box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
 }
 
-.science-content {
+.science-content-first {
   position: relative;
   margin-bottom: 4rem;
   display: grid;
-  grid-gap: 4%;
+  grid-column-gap: 2%;
   grid-template-columns: 60% 36%;
   grid-template-areas: 
     "texts imgs"
 }
 
+.science-content-mid {
+  position: relative;
+  margin-bottom: 4rem;
+  display: grid;
+  grid-column-gap: 2%;
+  grid-template-columns: 36% 60%;
+  grid-template-areas: 
+    "imgs texts"
+}
+
 .science-content-last {
   position: relative;
   display: grid;
-  grid-gap: 4%;
+  grid-column-gap: 2%;
   grid-template-columns: 60% 36%;
   grid-template-areas: 
     "texts imgs"
@@ -849,42 +890,6 @@ nav a:focus::before {
   margin-top: 5rem;
 }
 
-.about-download-box {
-  grid-area: downloader;
-  background-color: var(--clr-opaque-green);
-  border-radius: 1rem;
-  color: black;
-  font-size: 16px;
-  padding: 0rem 3rem 4rem 3rem;
-  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
-  text-align: center;
-  align-content: center;
-}
-
-.dattab {
-  position: relative;
-  margin: 4rem 0;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
-  background-color: white;
-}
-
-.about-logo {
-  border-radius: 50%;
-  box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
-  max-width: 80%;
-}
-
-.about-download-box > h4 {
-  font-size: 35px;
-  font-weight: 500;
-  margin-top: 4rem;
-}
-
-.download-button {
-  margin: 2rem 0;
-}
 
 
 
@@ -1080,6 +1085,10 @@ nav a:focus::before {
     line-height: 300%;
   }
   
+  .citsci-image {
+    max-height: 700px;
+  }
+
   .intro-content {
     grid-row-gap: 4rem;
     grid-template-columns: 100%;
@@ -1122,7 +1131,15 @@ nav a:focus::before {
     height: auto;
   }
   
-  .science-content {
+  .science-content-first {
+    grid-row-gap: 4rem;
+    grid-template-columns: 100%;
+    grid-template-areas: 
+      "texts"
+      "imgs"
+  }
+  
+  .science-content-mid {
     grid-row-gap: 4rem;
     grid-template-columns: 100%;
     grid-template-areas: 
@@ -1146,7 +1163,8 @@ nav a:focus::before {
   .ebird-box,
   .inat-box,
   .map-box,
-  .science-content,
+  .science-content-first,
+  .science-content-mid,
   .science-content-last,
   .grid-wrapper,
   .about-info-box,

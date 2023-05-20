@@ -94,16 +94,16 @@ ui <- fluidPage(
                     with iNatuarlist", class = "citsci-image"),
                 div(class = "intro-text",
                     h2("Welcome to the Acadia National Park citizen science explorer!"),
-                    h3("Here you will find summaries of Acadia National Park iNaturalist and eBird records from the last week.
-                        In addition to summaries, we present some recent science that has been made possible
-                        by citizen science participation in our projects. To get involved with one of our projects
-                        as a citizen scientist, ask for more information in the Rockefeller Hall Visitor Center on the 
-                       Schoodic Institute campus or click the button below!"),
+                    h3("This page summarizes iNaturalist and eBird observations from the last week in Acadia National Park.
+                        In addition to this summary, we present some recent science that has been made possible
+                        by citizen science participation in the work we do here at Schoodic Institute. 
+                        To get involved with one of our projects, ask for more information in the Rockefeller Hall
+                        Visitor Center on the Schoodic Institute campus or click the button below!"),
                     a(href = "https://schoodicinstitute.org/science/citizen-science/", 
                           target = "_blank", tabindex = "-1", tags$button(class = "btn-purple", "Get involved!")),
                     div(class = "intro-three",
-                        img(src = "img/trsw.jpeg", alt = "Tree Swallow sitting on a wooden post"),
-                        img(src = "img/frog.jpg", alt = "Northern Leopard Frog in a gravel path"),
+                        img(src = "img/tres.jpeg", alt = "Tree swallow sitting on a wooden post"),
+                        img(src = "img/turtle.jpg", alt = "Common snapping turtle in a gravel path"),
                         img(src = "img/monarch.jpg", alt = "Monarch feeding from a red clover flower"))
                     ))
     )),
@@ -161,7 +161,15 @@ ui <- fluidPage(
                 # div(class = "percent-format",
                 #     icon("database"),
                 #     h2(textOutput("percent_text_e"), class = "percent-stat-text"))
-                ))
+                )),
+        div(class = "data-download-box",
+            #tags$img(src = "img/cit_sci_explorer.png", alt = "Citizen science explorer logo", class = "about-logo"),
+            h4("Explore the past week's data"),
+            div(class = "dattab", 
+                DT::dataTableOutput("tableout")),
+            div(class = "download-button",
+                downloadButton("downloadCsv", "Download as CSV", class = "btn-purple")),
+            h5("Data supplied by iNaturalist and eBird and modified by Schoodic Institute at Acadia National Park."))
     ),
     
     ## Gallery
@@ -250,7 +258,7 @@ ui <- fluidPage(
         div(class = "body-title-box",
             icon("microscope",  class = "body-box-icon"), 
             h4("Science", class = "body-titles")),
-        div(class = "science-content",
+        div(class = "science-content-first",
             img(src = "img/atsp.jpg", alt = "An American Tree Sparrow perched in a shrub", class = "science-img"),
             div(class = "science-text purp",
                 h3("Acadia National Park Winter Birds: 51 Years of Change Along the Coast of Maine"),
@@ -258,7 +266,7 @@ ui <- fluidPage(
                    Christmas Bird Counts of Acadia National Park."),
                 a(href = "https://schoodicinstitute.org/new-research-shows-dramatic-declines-in-acadia-national-park-winter-bird-populations/", 
                   target = "_blank", tabindex = "-1", tags$button(class = "btn-green", "Learn more")))),
-        div(class = "science-content",
+        div(class = "science-content-mid",
             img(src = "img/cape.jpg", alt = "A Calico Pennant in Acadia National Park", class = "science-img"),
             div(class = "science-text green",
                 h3("Dragonfly Mercury Project"),
@@ -271,8 +279,7 @@ ui <- fluidPage(
             div(class = "science-text purp",
                 h3("Project ASCO (Assessing Seaweed via Community Observations)"),
                 h4("This ongoing project aims to understand how much rockweed exists along the Maine coast so that 
-                   we can inform management and harvesting regulations to ensure that this species can thrive in the future. Learn more or
-                   get involved by following the link below!"),
+                   we can inform management and harvesting regulations to ensure that this species can thrive in the future."),
                 a(href = "https://schoodicinstitute.org/science/marine-ecology-research/latest-projects/project-asco-assessing-seaweed-via-community-observations/", 
                   target = "_blank", tabindex = "-1", tags$button(class = "btn-green", "Learn more"))))
         ),
@@ -314,16 +321,7 @@ ui <- fluidPage(
             h4("Get in Touch!"),
             "If you are interested in a product like this for a protected area near you, or if you have 
             any questions or concerns, contact Kyle Lima at klima@schoodicinstitute.org",
-            h6(textOutput("today"))),
-        div(class = "about-download-box",
-            #tags$img(src = "img/cit_sci_explorer.png", alt = "Citizen science explorer logo", class = "about-logo"),
-            h4("Explore the past week's data"),
-            div(class = "dattab", 
-                DT::dataTableOutput("tableout")),
-            div(class = "download-button",
-                downloadButton("downloadCsv", "Download as CSV", class = "btn-purple")),
-            h5("Data supplied by iNaturalist and eBird and modified by Schoodic Institute at Acadia National Park.")
-            )
+            h6(textOutput("today")))
         ),
         
     ## Footer
