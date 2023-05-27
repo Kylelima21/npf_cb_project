@@ -1,0 +1,13 @@
+name: si_citizen_science_display
+title: si_citizen_science_display
+username:
+account: jvgbqc-kyle-lima
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9162967
+bundleId: 7269671
+url: https://schoodic-institute-data.shinyapps.io/si_citizen_science_display/
+when: 1685150339.1658
+lastSyncTime: 1685150339.16581
+asMultiple: FALSE
+asStatic: FALSE

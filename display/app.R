@@ -289,10 +289,20 @@ ui <- fluidPage(
             icon("circle-info",  class = "body-box-icon"),
             h4("About This Page", class = "body-titles")),
         div(class = "about-info-box",
+            h4("Land Acknowledgement Statement"),
+            "The observations summarized here are from across the homeland of the Wabanaki, People of the Dawn.
+            We recognize and respect Wabanaki relations past and present with this area and the surrounding waters. 
+            We support the Penobscot, Passamaquoddy, Maliseet, and Mi’kmaq Nations as they continue to practice and 
+            renew their cultural traditions and identities in Acadia and beyond. Honoring Wabanaki sovereignty benefits 
+            all who live here, today and in the future.",
+            br(),br(),
             h4("Background"),
-            "This project was made possible in part by a grant from the National Park Foundation.",
-            "Due to this grant, Schoodic Institute at Acadia National Park",
-            "was able to create this Shiny application to communicate citizen science in parks.",
+            "Established in 2004, Schoodic Institute at Acadia National Park is a 501(c)(3) nonprofit
+            organization and Acadia National Park’s primary partner in science and education. Based at the
+            largest National Park Service Research Learning Center in Winter Harbor, Maine, in
+            Wabanaki homeland, Schoodic Institute’s focus is understanding environmental change taking
+            place in Acadia and beyond, and helping managers of parks and other protected areas respond
+            and adapt to change while engaging people of all ages in science.",
             br(),br(),
             "There is a wealth of scientific data collected by citizen scientists that exists 
             in protected areas like national parks. These data have generally not been analyzed 
@@ -300,6 +310,8 @@ ui <- fluidPage(
             who helped collect the data. This project was created to address these points and assess 
             the biodiversity of Acadia National Park through building a citizen science analysis
             workflow that is transferable across protected areas.",
+            br(),br(),
+            "This project was made possible in part by a grant from the National Park Foundation.",
             # h4("Code"),
             # "Code and required elements to generate this Shiny app are available on ",
             # a("Github.", href = "https://github.com/Kylelima21/npf_cb_project",
