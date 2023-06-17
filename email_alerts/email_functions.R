@@ -11,7 +11,7 @@ require(readxl)
 require(rebird)
 require(downloader)
 require(sf)
-require(fullPage)
+#require(fullPage)
 require(hashids)
 require(shinyalert)
 
