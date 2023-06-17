@@ -5,7 +5,29 @@ on:
   push:
     
 jobs:
-  update-display-data:
+  deploy:
+    name: Deploy to shinyapp.io
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Install packages
+        run: apt-get install fullpage
+          
+      - name: deploy
+        uses: BDSI-Utwente/shinyapps-deploy-github-action@v1
+        with:
+          # account and application name (https://<accountName>.shinyapps.io/<appName>)
+          appName: si_citizen_science_display
+          accountName: schoodic-institute-data
+
+          # token and secret obtained from https://www.shinyapps.io/admin/#/tokens
+          accountToken: 57B287A6E91E86DCCA29B542392AB8E2
+          accountSecret: 6NZ1FD19vvDi6pKIQ+iMXgxiYyTsgOc2yEzTl4bC
+          
+          
+update-display-data:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2 # Checkout branch into the runner
@@ -35,25 +57,3 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add .
           git diff-index --quiet HEAD || (git commit -m "daily update for display" && git push)
-          
-  deploy:
-    name: Deploy to shinyapp.io
-
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v2
-      
-      - name: Install packages
-        run: |
-          sudo apt-get install fullpage
-          
-      - name: deploy
-        uses: BDSI-Utwente/shinyapps-deploy-github-action@v1
-        with:
-          # account and application name (https://<accountName>.shinyapps.io/<appName>)
-          appName: si_citizen_science_display
-          accountName: schoodic-institute-data
-
-          # token and secret obtained from https://www.shinyapps.io/admin/#/tokens
-          accountToken: 57B287A6E91E86DCCA29B542392AB8E2
-          accountSecret: 6NZ1FD19vvDi6pKIQ+iMXgxiYyTsgOc2yEzTl4bC
