@@ -31,7 +31,7 @@ download_photos(final_data, "app2/www/img/obs")
 
 
 ### Deploy updates to shiny app
-deployApp("app2", launch.browser = F, forceUpdate = T)
+#deployApp("app2", launch.browser = F, forceUpdate = T)
 
 
 
