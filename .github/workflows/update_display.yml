@@ -1,0 +1,34 @@
+name: Update data for display
+on:
+  #schedule:
+  #  - cron:  '0 8 * * 1'
+  push:
+    
+jobs:
+  Update-Display-Data:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2 # Checkout branch into the runner
+      - uses: r-lib/actions/setup-r@v2-branch # Set up R
+      - uses: r-lib/actions/setup-pandoc@v2 # Set up pandoc for RMD file
+          
+      - name: Install packages
+        run: |
+          brew install pkg-config
+          R -e 'install.packages("sf")'
+          R -e 'install.packages("tidyverse")'
+          R -e 'install.packages("lubridate")'
+          R -e 'install.packages("leaflet")'
+          R -e 'install.packages("rinat")'
+          R -e 'install.packages("rebird")'
+          R -e 'install.packages("rsconnect")'
+          
+      - name: Run script to update data
+        run: Rscript -e 'app2/01_get_app_data.R' 
+      
+      - name: Commit files # Commit changes
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add .
+          git diff-index --quiet HEAD || (git commit -m "daily update for display" && git push)
