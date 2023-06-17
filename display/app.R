@@ -295,7 +295,7 @@ ui <- fluidPage(
             We support the Penobscot, Passamaquoddy, Maliseet, and Mi’kmaq Nations as they continue to practice and 
             renew their cultural traditions and identities in Acadia and beyond. Honoring Wabanaki sovereignty benefits 
             all who live here, today and in the future.",
-            br(),br(),
+            br(),
             h4("Background"),
             "Established in 2004, Schoodic Institute at Acadia National Park is a 501(c)(3) nonprofit
             organization and Acadia National Park’s primary partner in science and education. Based at the

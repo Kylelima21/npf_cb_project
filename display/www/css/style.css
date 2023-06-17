@@ -352,6 +352,7 @@ nav a:focus::before {
   box-shadow: 3px 3px 1rem rgba(0, 0, 0, 0.4);
   object-fit: cover;
   overflow: hidden;
+  transform: rotate(0deg);
 }
 
 .intro-text {
@@ -872,7 +873,9 @@ nav a:focus::before {
 
 .grid-wrapper:has(img:hover, img:focus) img:not(:hover, :focus) {
   scale: 0.85;
+  -webkit-transform: scale(0.85);
   opacity: 0.7;
+  -webkit-transform: opacity(0.7);
 }
 
 .img-container {
