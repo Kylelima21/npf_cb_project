@@ -25,7 +25,7 @@ jobs:
           
       - name: Run script to update data
         run: |
-          source("app2/01_get_app_data.R")
+          source("display/01_get_app_data.R")
         shell: Rscript {0} 
       
       - name: Commit files # Commit changes
