@@ -24,9 +24,9 @@ jobs:
           R -e 'install.packages("rsconnect")'
           
       - name: Run script to update data
-        run: 
-        working-directory: app2
-          Rscript -e '01_get_app_data.R' 
+        run: |
+          source("app2/01_get_app_data.R")
+        shell: Rscript {0} 
       
       - name: Commit files # Commit changes
         run: |
