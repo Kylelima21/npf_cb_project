@@ -26,6 +26,7 @@ jobs:
           R -e 'install.packages("rebird")'
           R -e 'install.packages("gt")'
           R -e 'install.packages("rgdal")'
+          R -e 'install.packages("fullPage")'
           
       - name: Run rmd to update info
         run: Rscript -e 'rmarkdown::render(input = "index.Rmd")'
