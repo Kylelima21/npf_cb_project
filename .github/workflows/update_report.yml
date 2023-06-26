@@ -1,7 +1,7 @@
 name: Updating Citizen Science Report
 run-name: ${{ github.actor }} is updating the report!
 on:
-  schedule:
+  #schedule:
     #- cron:  '0 8 * * 1'
     push:
     
@@ -26,8 +26,6 @@ jobs:
           R -e 'install.packages("rebird")'
           R -e 'install.packages("gt")'
           R -e 'install.packages("rgdal")'
-          R -e 'install.packages("remotes")'
-          R -e 'remotes::install_github("RinteRface/fullPage")'
           
           
       - name: Run rmd to update info
