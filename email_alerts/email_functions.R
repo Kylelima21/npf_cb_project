@@ -11,7 +11,6 @@ require(readxl)
 require(rebird)
 require(downloader)
 require(sf)
-require(fullPage)
 require(hashids)
 require(shinyalert)
 
@@ -73,8 +72,10 @@ inat_recent <- function(place_id, timespan, parkname) {
   
   
   # List the month and year for get_inat_obs sub-function
-  year <- date.filter$year
-  month <- date.filter$month
+  year <- date.filter$year %>% 
+    unique()
+  month <- date.filter$month %>% 
+    unique()
   
   
   # This is the function that starts the download of inat data inside park boundary
