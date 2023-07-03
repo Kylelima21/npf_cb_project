@@ -280,7 +280,7 @@ filter_nps <- function(dat, park, lat, long) {
   
   if (park == "Acadia National Park") {
     
-    acad.bounds <- sf::read_sf("data/acad_boundary/ACAD_ParkBoundary_PY_202004.shp") %>% 
+    acad.bounds <- sf::read_sf("email_alerts/acad_boundary/ACAD_ParkBoundary_PY_202004.shp") %>% 
       st_transform(4326)
     
     
@@ -303,7 +303,7 @@ filter_nps <- function(dat, park, lat, long) {
     
   } else {
     
-    nps.bounds <- sf::read_sf("data/nps_boundary/nps_boundary.shp") %>% 
+    nps.bounds <- sf::read_sf("email_alerts/nps_boundary/nps_boundary.shp") %>% 
       st_transform(4326) %>% 
       filter(UNIT_NAME == paste(park))
     
