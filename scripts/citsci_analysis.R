@@ -15,10 +15,12 @@ library(leaflet.extras)
 library(htmlwidgets)
 library(webshot2)
 library(sf)
+library(ggmap)
 library(lwgeom)
 library(purrr)
 library(directlabels)
 library(cowplot)
+library(readxl)
 
 source("functions/analysis_functions.R")
 
@@ -89,8 +91,10 @@ ggplot(data = states) +
 
 
 ## Read in the Acadia boundary layer
-acad.bounds <- sf::read_sf("data/acad_boundary/ACAD_ParkBoundary_PY_202004.shp") %>% 
-  st_transform(4326)
+# acad.bounds <- sf::read_sf("data/acad_boundary/ACAD_ParkBoundary_PY_202004.shp") %>% 
+#   st_transform(4326)
+acad.bounds <- sf::read_sf("data/acad_boundary/acad_feeboundary_polygon.shp")
+
 
 ## Create Acadia bounds map
 acadmap <- leaflet(options = leafletOptions(zoomControl = FALSE)) %>% 
@@ -112,6 +116,129 @@ webshot("outputs/temp.html", file = "outputs/forpub/acadplot.png",
         vwidth = 1000, vheight = 700,
         cliprect = "viewport")
 
+
+
+
+#------------------------------------------------#
+####             4 panel map fig              ####
+#------------------------------------------------#
+
+## Read in the basemap for figures
+acad.bm <- sf::read_sf("data/acad_boundary/formapping.shp")
+
+
+## Create full dataset
+# map_inat <- inat %>% 
+#   filter(positional.accuracy < 50) 
+
+mapdat <- bind_rows(inat, ebd) %>% 
+  select(common.name, scientific.name, observed.on, place.guess, latitude, longitude) %>% 
+  mutate(cat = "All observations")
+
+
+## Run watchlist function to get rare, pest, and te species
+watchlist_species(mapdat, "outputs")
+
+
+### Load in the watchlist csv files
+## Pest species
+pests <- read.csv("outputs/invasive_pestslist.csv") %>% 
+  select(common.name, scientific.name, observed.on, latitude, longitude) %>% 
+  mutate(cat = "Invasive species observations")
+
+## Rare species
+rare <- read.csv("outputs/rare_specieslist.csv") %>% 
+  select(common.name, scientific.name, observed.on, latitude, longitude) %>% 
+  mutate(cat = "Rare native species observations")
+
+## T&E species
+tande <- read.csv("outputs/te_specieslist.csv") %>% 
+  select(common.name, scientific.name, observed.on, latitude, longitude) %>% 
+  mutate(cat = "Threatened/endangered species observations")
+
+
+# acad.reg <- get_stamenmap(bbox = c(left = -68.82, bottom = 43.93, 
+#                                   right = -67.823, top = 44.57), 
+#                          zoom = 10)
+
+# ggmap(acad.reg) +
+#   geom_point(aes(x = longitude, y = latitude), 
+#              shape = 21, size = 1.2, color = "gray", stroke = 0.1,
+#              fill = "black", data = mapdat) +
+#   theme_nothing()
+
+
+## All obs
+all <- ggplot(acad.bm) +
+  geom_sf(fill = "gray") +
+  geom_point(aes(x = longitude, y = latitude),
+             shape = 21, size = 1.4, color = "white", stroke = 0.05,
+             fill = "black", data = mapdat) +
+  #geom_sf(fill = "red", data = acad.bounds, alpha = 0.4) +
+  theme_bw() +
+  theme(#plot.margin = margin(1,2,0,2, unit = "cm"),
+        #panel.border = element_rect(color = "black", size = 1),
+        panel.grid = element_blank(),
+        axis.title = element_blank(),
+        axis.ticks = element_blank(),
+        axis.text = element_blank())
+  
+
+## Pest/invasive species
+pi <- ggplot(acad.bm) +
+  geom_sf(fill = "gray") +
+  geom_point(aes(x = longitude, y = latitude),
+             shape = 21, size = 1.4, color = "white", stroke = 0.05,
+             fill = "black", data = pests) +
+  #geom_sf(fill = "red", data = acad.bounds, alpha = 0.4) +
+  theme_bw() +
+  theme(#plot.margin = margin(1,2,0,2, unit = "cm"),
+        #panel.border = element_rect(color = "black", size = 1),
+        panel.grid = element_blank(),
+        axis.title = element_blank(),
+        axis.ticks = element_blank(),
+        axis.text = element_blank())
+
+
+## Rare native species
+rn <- ggplot(acad.bm) +
+  geom_sf(fill = "gray") +
+  geom_point(aes(x = longitude, y = latitude),
+             shape = 21, size = 1.4, color = "white", stroke = 0.05,
+             fill = "black", data = rare) +
+  #geom_sf(fill = "red", data = acad.bounds, alpha = 0.4) +
+  theme_bw() +
+  theme(#plot.margin = margin(1,2,0,2, unit = "cm"),
+        #panel.border = element_rect(color = "black", size = 1),
+        panel.grid = element_blank(),
+        axis.title = element_blank(),
+        axis.ticks = element_blank(),
+        axis.text = element_blank())
+
+
+## T&E species
+te <- ggplot(acad.bm) +
+  geom_sf(fill = "gray") +
+  geom_point(aes(x = longitude, y = latitude),
+             shape = 21, size = 1.4, color = "white", stroke = 0.05,
+             fill = "black", data = tande) +
+  #geom_sf(fill = "red", data = acad.bounds, alpha = 0.4) +
+  theme_bw() +
+  theme(#plot.margin = margin(1,2,0,2, unit = "cm"),
+        #panel.border = element_rect(color = "black", size = 1),
+        panel.grid = element_blank(),
+        axis.title = element_blank(),
+        axis.ticks = element_blank(),
+        axis.text = element_blank())
+
+
+## Cowplot it
+plot_grid(all, te, rn, pi, nrow = 2, labels = c('a)', 'b)', 'c)', 'd)'), align = "h", label_size = 14,
+          hjust = -1.2)
+
+## Save
+ggsave(paste0("outputs/forpub/four_map_figure_", str_replace_all(today(), "-", ""), ".png"),
+       height = 6, width = 9, units = "in", dpi = 350)
 
 
 
@@ -436,7 +563,7 @@ cumdata %>%
           method = list(dl.trans(x = x + 0.2), "last.points")) +
   theme_classic() +
   labs(x = "Year", y = "Count (n)") +
-  scale_x_continuous(limits = c(1977, 2026), breaks = seq(1960, 2026, by = 10)) +
+  scale_x_continuous(limits = c(1995, 2026), breaks = seq(1990, 2026, by = 5)) +
   # scale_x_date(breaks = seq(as.Date("2004-01-01"), as.Date("2022-12-31"), by = "2 years"), 
   #              date_labels =  "%Y", 
   #              limits = c(as.Date("2004-01-01"), as.Date("2022-12-31"))) +
@@ -516,7 +643,7 @@ obse <- cumulativeobe %>%
         axis.text = element_text(color = "black", size = "16"),
         axis.title = element_text(color = "black", size = "16"),
         axis.title.x = element_text(margin = margin(0.6, 0, 0, 0, "cm")),
-        axis.title.y = element_text(margin = margin(0, 0.5, 0, 0, "cm")))
+        axis.title.y = element_text(margin = margin(0, 0.5, 0, 1, "cm")))
 
 
 ## Plot species
@@ -535,16 +662,17 @@ spee <- cumulativespe %>%
         axis.text = element_text(color = "black", size = "16"),
         axis.title = element_text(color = "black", size = "16"),
         axis.title.x = element_text(margin = margin(0.6, 0, 0, 0, "cm")),
-        axis.title.y = element_text(margin = margin(0, 0.5, 0, 0, "cm")))
+        axis.title.y = element_text(margin = margin(0, 0.5, 0, 1, "cm")),
+        plot.margin = margin(0,0.5,0,0, unit = "cm"))
 
 
 ## Create panelled figure
-plot_grid(obse, spee, nrow = 1, labels = c('a', 'b'), align = "h", label_size = 16)
+plot_grid(obse, spee, nrow = 1, labels = c('a)', 'b)'), align = "h", label_size = 18)
 
 
 ## Export figure
 # ggsave(paste0("outputs/forpub/cumulative_ebird_", str_replace_all(today(), "-", ""), ".png"),
-#        height = 5, width = 11, units = "in", dpi = 350)
+#        height = 5, width = 12, units = "in", dpi = 350)
 
 
 
