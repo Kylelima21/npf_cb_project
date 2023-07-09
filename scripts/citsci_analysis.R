@@ -128,10 +128,10 @@ acad.bm <- sf::read_sf("data/acad_boundary/formapping.shp")
 
 
 ## Create full dataset
-# map_inat <- inat %>% 
-#   filter(positional.accuracy < 50) 
+map_inat <- inat %>%
+  filter(quality.grade == "research")
 
-mapdat <- bind_rows(inat, ebd) %>% 
+mapdat <- bind_rows(map_inat, ebd) %>% 
   select(common.name, scientific.name, observed.on, place.guess, latitude, longitude) %>% 
   mutate(cat = "All observations")
 
@@ -171,12 +171,16 @@ tande <- read.csv("outputs/te_specieslist.csv") %>%
 ## All obs
 all <- ggplot(acad.bm) +
   geom_sf(fill = "gray") +
+  geom_sf(fill = "forestgreen", data = acad.bounds, alpha = 1) +
   geom_point(aes(x = longitude, y = latitude),
-             shape = 21, size = 1.4, color = "white", stroke = 0.05,
-             fill = "black", data = mapdat) +
-  #geom_sf(fill = "red", data = acad.bounds, alpha = 0.4) +
+             shape = 21, size = 1, color = "white", stroke = 0.05,
+             fill = "black", alpha = 0.2, data = mapdat) +
+  geom_text(aes(x = -68.1, y = 44.02), label = "All observations",
+            size = 3, fontface = "bold") +
+  geom_text(aes(x = -68.1, y = 43.98), label = "n = 523,508",
+            size = 3) +
   theme_bw() +
-  theme(#plot.margin = margin(1,2,0,2, unit = "cm"),
+  theme(plot.margin = margin(0.3,0.4,0.3,1, unit = "cm"),
         #panel.border = element_rect(color = "black", size = 1),
         panel.grid = element_blank(),
         axis.title = element_blank(),
@@ -187,12 +191,18 @@ all <- ggplot(acad.bm) +
 ## Pest/invasive species
 pi <- ggplot(acad.bm) +
   geom_sf(fill = "gray") +
+  geom_sf(fill = "forestgreen", data = acad.bounds, alpha = 1) +
   geom_point(aes(x = longitude, y = latitude),
-             shape = 21, size = 1.4, color = "white", stroke = 0.05,
+             shape = 21, size = 1, color = "white", stroke = 0.05,
              fill = "black", data = pests) +
-  #geom_sf(fill = "red", data = acad.bounds, alpha = 0.4) +
+  geom_text(aes(x = -68.1, y = 44.05), label = "Invasive/pest",
+            size = 3, fontface = "bold") +
+  geom_text(aes(x = -68.1, y = 44.02), label = "observations",
+            size = 3, fontface = "bold") +
+  geom_text(aes(x = -68.1, y = 43.98), label = "n = 861",
+            size = 3) +
   theme_bw() +
-  theme(#plot.margin = margin(1,2,0,2, unit = "cm"),
+  theme(plot.margin = margin(0.3,0.4,0.3,1, unit = "cm"),
         #panel.border = element_rect(color = "black", size = 1),
         panel.grid = element_blank(),
         axis.title = element_blank(),
@@ -203,12 +213,18 @@ pi <- ggplot(acad.bm) +
 ## Rare native species
 rn <- ggplot(acad.bm) +
   geom_sf(fill = "gray") +
+  geom_sf(fill = "forestgreen", data = acad.bounds, alpha = 1) +
   geom_point(aes(x = longitude, y = latitude),
-             shape = 21, size = 1.4, color = "white", stroke = 0.05,
+             shape = 21, size = 1, color = "white", stroke = 0.05,
              fill = "black", data = rare) +
-  #geom_sf(fill = "red", data = acad.bounds, alpha = 0.4) +
+  geom_text(aes(x = -68.1, y = 44.05), label = "Rare native",
+            size = 3, fontface = "bold") +
+  geom_text(aes(x = -68.1, y = 44.02), label = "observations",
+            size = 3, fontface = "bold") +
+  geom_text(aes(x = -68.1, y = 43.98), label = "n = 1,217",
+            size = 3) +
   theme_bw() +
-  theme(#plot.margin = margin(1,2,0,2, unit = "cm"),
+  theme(plot.margin = margin(0.3,0.4,0.3,1, unit = "cm"),
         #panel.border = element_rect(color = "black", size = 1),
         panel.grid = element_blank(),
         axis.title = element_blank(),
@@ -219,12 +235,18 @@ rn <- ggplot(acad.bm) +
 ## T&E species
 te <- ggplot(acad.bm) +
   geom_sf(fill = "gray") +
+  geom_sf(fill = "forestgreen", data = acad.bounds, alpha = 1) +
   geom_point(aes(x = longitude, y = latitude),
-             shape = 21, size = 1.4, color = "white", stroke = 0.05,
+             shape = 21, size = 1, color = "white", stroke = 0.05,
              fill = "black", data = tande) +
-  #geom_sf(fill = "red", data = acad.bounds, alpha = 0.4) +
+  geom_text(aes(x = -68.1, y = 44.05), label = "Threatened/endangered",
+            size = 3, fontface = "bold") +
+  geom_text(aes(x = -68.1, y = 44.02), label = "observations",
+            size = 3, fontface = "bold") +
+  geom_text(aes(x = -68.1, y = 43.98), label = "n = 3,268",
+            size = 3) +
   theme_bw() +
-  theme(#plot.margin = margin(1,2,0,2, unit = "cm"),
+  theme(plot.margin = margin(0.3,0.4,0.3,1, unit = "cm"),
         #panel.border = element_rect(color = "black", size = 1),
         panel.grid = element_blank(),
         axis.title = element_blank(),
@@ -233,13 +255,32 @@ te <- ggplot(acad.bm) +
 
 
 ## Cowplot it
-plot_grid(all, te, rn, pi, nrow = 2, labels = c('a)', 'b)', 'c)', 'd)'), align = "h", label_size = 14,
-          hjust = -1.2)
+plot_grid(all, te, rn, pi, nrow = 2, labels = c('a)', 'b)', 'c)', 'd)'), align = "h", label_size = 12,
+          hjust = -0.4)
 
 ## Save
-ggsave(paste0("outputs/forpub/four_map_figure_", str_replace_all(today(), "-", ""), ".png"),
-       height = 6, width = 9, units = "in", dpi = 350)
+# ggsave(paste0("outputs/forpub/four_map_figure_", str_replace_all(today(), "-", ""), ".png"),
+#        height = 5.2, width = 6.5, units = "in", dpi = 350)
 
+
+tibble(pests) %>% 
+  group_by(scientific.name) %>% 
+  summarise(count = length(scientific.name)) %>% 
+  arrange(-count) %>% 
+  print(n = 21)
+
+  
+tibble(tande) %>% 
+  group_by(scientific.name) %>% 
+  summarise(count = length(scientific.name)) %>% 
+  arrange(-count) %>% 
+  print(n = 15)
+
+tibble(rare) %>% 
+  group_by(scientific.name) %>% 
+  summarise(count = length(scientific.name)) %>% 
+  arrange(-count) %>% 
+  print(n = 10) ## 70 obs
 
 
 #------------------------------------------------#
@@ -382,7 +423,7 @@ datesinat <- tibble(date = seq(as.Date("1976/1/1"), as.Date("2022/12/1"), by = "
 
 ## Create data frame for calculations
 inatavg <- datesinat %>% 
-  full_join(alltemp, keep.all = T) %>% 
+  full_join(alltemp) %>% 
   select(date, tot.obs) %>% 
   mutate(tot.obs = ifelse(is.na(tot.obs), 0, tot.obs))
 
@@ -477,7 +518,7 @@ datesebird <- tibble(date = seq(as.Date("1958/1/1"), as.Date("2022/12/1"), by = 
 
 ## Create data frame for calculations
 ebirdavg <- datesebird %>% 
-  full_join(tempck, keep.all = T) %>% 
+  full_join(tempck) %>% 
   select(date, tot.obs) %>% 
   mutate(tot.obs = ifelse(is.na(tot.obs), 0, tot.obs))
 

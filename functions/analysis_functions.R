@@ -271,7 +271,8 @@ watchlist_species <- function(x, output.path) {
     select(scientific.name, common.name, observed.on, place.guess, latitude, longitude) %>% 
     left_join(state_te_sp, by = "scientific.name") %>% 
     select(scientific.name, common.name = common.name.x, observed.on, 
-           location = place.guess, latitude, longitude, listing.status)
+           location = place.guess, latitude, longitude, listing.status) %>% 
+    filter(scientific.name != "Sterna dougallii")
   
   # Combine and export
   all_te_sp <- dplyr::bind_rows(te_specieslist_federal, te_specieslist_state) #%>% 
