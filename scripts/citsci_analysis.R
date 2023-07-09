@@ -195,11 +195,11 @@ pi <- ggplot(acad.bm) +
   geom_point(aes(x = longitude, y = latitude),
              shape = 21, size = 1, color = "white", stroke = 0.05,
              fill = "black", data = pests) +
-  geom_text(aes(x = -68.1, y = 44.05), label = "Invasive/pest",
+  geom_text(aes(x = -68.1, y = 44.05), label = "Invasive and",
             size = 3, fontface = "bold") +
-  geom_text(aes(x = -68.1, y = 44.02), label = "observations",
+  geom_text(aes(x = -68.1, y = 44.02), label = "pest species",
             size = 3, fontface = "bold") +
-  geom_text(aes(x = -68.1, y = 43.98), label = "n = 861",
+  geom_text(aes(x = -68.1, y = 43.98), label = "n = 793",
             size = 3) +
   theme_bw() +
   theme(plot.margin = margin(0.3,0.4,0.3,1, unit = "cm"),
@@ -217,11 +217,11 @@ rn <- ggplot(acad.bm) +
   geom_point(aes(x = longitude, y = latitude),
              shape = 21, size = 1, color = "white", stroke = 0.05,
              fill = "black", data = rare) +
-  geom_text(aes(x = -68.1, y = 44.05), label = "Rare native",
+  geom_text(aes(x = -68.1, y = 44.05), label = "Species of",
             size = 3, fontface = "bold") +
-  geom_text(aes(x = -68.1, y = 44.02), label = "observations",
+  geom_text(aes(x = -68.1, y = 44.02), label = "conservation concern",
             size = 3, fontface = "bold") +
-  geom_text(aes(x = -68.1, y = 43.98), label = "n = 1,217",
+  geom_text(aes(x = -68.1, y = 43.98), label = "n = 1,063",
             size = 3) +
   theme_bw() +
   theme(plot.margin = margin(0.3,0.4,0.3,1, unit = "cm"),
@@ -239,11 +239,11 @@ te <- ggplot(acad.bm) +
   geom_point(aes(x = longitude, y = latitude),
              shape = 21, size = 1, color = "white", stroke = 0.05,
              fill = "black", data = tande) +
-  geom_text(aes(x = -68.1, y = 44.05), label = "Threatened/endangered",
+  geom_text(aes(x = -68.1, y = 44.05), label = "Threatened and",
             size = 3, fontface = "bold") +
-  geom_text(aes(x = -68.1, y = 44.02), label = "observations",
+  geom_text(aes(x = -68.1, y = 44.02), label = "endangered species",
             size = 3, fontface = "bold") +
-  geom_text(aes(x = -68.1, y = 43.98), label = "n = 3,268",
+  geom_text(aes(x = -68.1, y = 43.98), label = "n = 3,267",
             size = 3) +
   theme_bw() +
   theme(plot.margin = margin(0.3,0.4,0.3,1, unit = "cm"),
@@ -259,8 +259,8 @@ plot_grid(all, te, rn, pi, nrow = 2, labels = c('a)', 'b)', 'c)', 'd)'), align =
           hjust = -0.4)
 
 ## Save
-# ggsave(paste0("outputs/forpub/four_map_figure_", str_replace_all(today(), "-", ""), ".png"),
-#        height = 5.2, width = 6.5, units = "in", dpi = 350)
+ggsave(paste0("outputs/forpub/four_map_figure_", str_replace_all(today(), "-", ""), ".png"),
+       height = 5.2, width = 6.5, units = "in", dpi = 350)
 
 
 tibble(pests) %>% 
