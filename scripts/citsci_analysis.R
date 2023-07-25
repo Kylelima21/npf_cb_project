@@ -21,6 +21,7 @@ library(purrr)
 library(directlabels)
 library(cowplot)
 library(readxl)
+library(raster)
 
 source("functions/analysis_functions.R")
 
@@ -66,6 +67,15 @@ ebd <- tibble(read.delim("data/ebd_US-ME_relFeb-2023.txt", header = T, quote = "
   filter(obs.date <= "2022-12-31")
 
 
+## Read in the basemap for figures
+acad.bm <- sf::read_sf("data/acad_boundary/formapping.shp")
+
+## Read in the Acadia boundary layer
+# acad.bounds <- sf::read_sf("data/acad_boundary/ACAD_ParkBoundary_PY_202004.shp") %>% 
+#   st_transform(4326)
+acad.bounds <- sf::read_sf("data/acad_boundary/acad_feeboundary_polygon.shp")
+
+
 
 
 #------------------------------------------------#
@@ -88,12 +98,6 @@ ggplot(data = states) +
 ## Export figure
 # ggsave(paste0("outputs/forpub/context_map_", str_replace_all(today(), "-", ""), ".png"),
 #        height = 5.28, width = 5.28, units = "in", dpi = 350)
-
-
-## Read in the Acadia boundary layer
-# acad.bounds <- sf::read_sf("data/acad_boundary/ACAD_ParkBoundary_PY_202004.shp") %>% 
-#   st_transform(4326)
-acad.bounds <- sf::read_sf("data/acad_boundary/acad_feeboundary_polygon.shp")
 
 
 ## Create Acadia bounds map
@@ -123,10 +127,6 @@ webshot("outputs/temp.html", file = "outputs/forpub/acadplot.png",
 ####             4 panel map fig              ####
 #------------------------------------------------#
 
-## Read in the basemap for figures
-acad.bm <- sf::read_sf("data/acad_boundary/formapping.shp")
-
-
 ## Create full dataset
 map_inat <- inat %>%
   filter(quality.grade == "research")
@@ -155,17 +155,6 @@ rare <- read.csv("outputs/rare_specieslist.csv") %>%
 tande <- read.csv("outputs/te_specieslist.csv") %>% 
   select(common.name, scientific.name, observed.on, latitude, longitude) %>% 
   mutate(cat = "Threatened/endangered species observations")
-
-
-# acad.reg <- get_stamenmap(bbox = c(left = -68.82, bottom = 43.93, 
-#                                   right = -67.823, top = 44.57), 
-#                          zoom = 10)
-
-# ggmap(acad.reg) +
-#   geom_point(aes(x = longitude, y = latitude), 
-#              shape = 21, size = 1.2, color = "gray", stroke = 0.1,
-#              fill = "black", data = mapdat) +
-#   theme_nothing()
 
 
 ## All obs
@@ -878,6 +867,81 @@ length(orders$taxon.order.name)
 ####           Observation Heat Map           ####
 #------------------------------------------------#
 
+## Combine all data
+griddat <- bind_rows(inat, ebd) %>% 
+  select(common.name, scientific.name, observed.on, place.guess, latitude, longitude)
+
+## Specify min/max for grid
+xmn = min(griddat$longitude) - 0.05
+xmx = max(griddat$longitude) + 0.05
+ymn = min(griddat$latitude) - 0.05
+ymx = max(griddat$latitude) + 0.05
+
+## Create grid
+r = raster(matrix(1:10000, 100, 100), xmx = xmx, xmn = xmn, ymx = ymx, ymn = ymn)
+
+## Format points
+pts = griddat %>% 
+  select(longitude, latitude) %>% 
+  rename(x = longitude, y = latitude) %>% 
+  as.data.frame()
+
+# Make a raster of zeroes like the input
+r2 = r
+r2[] = 0
+
+# Get the cell index for each point and make a table
+counts = table(cellFromXY(r,pts))
+
+# Fill in the raster with the counts from the cell index
+r2[as.numeric(names(counts))] = counts
+
+## Change raster into dataframe
+r3 <- as.data.frame(r2, xy = TRUE) %>% 
+  rename(count = layer) %>% 
+  mutate(count2 = as.numeric(ifelse(count == 0, "NA", count)))
+
+
+acad.fee <- sf::read_sf("data/acad_boundary/acad_feeboundary_polygon.shp") %>% 
+  st_transform(4326)
+
+## Plot
+ggplot() +
+  geom_sf(fill = "gray", data = acad.bm) +
+  geom_tile(aes(x = x, y = y, fill = count2),
+            data = r3 %>% filter(!is.na(count2))) +
+  # geom_tile(aes(x = x, y = y, fill = count2), alpha = 0.4, fill = "gray20",
+  #           data = r3 %>% filter(is.na(count2))) +
+  geom_sf(color = "white", fill = "transparent", linewidth = 0.3,
+          data = acad.fee) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_x_continuous(expand = c(0, 0)) +
+  labs(fill = "Observations") +
+  lims(x = c(-68.48, -67.99), y = c(44.17, 44.48)) +
+  scale_fill_viridis_b(breaks = c(1, 500, 1000, 5000, 10000, 20000, 30000, 40000)) +
+  theme_minimal() +
+  theme(
+    legend.position = c(0.9, 0.2),
+    panel.border = element_rect(color = "black", fill = "transparent"),
+    plot.background = element_rect(color = "white"),
+    panel.grid = element_blank(),
+    axis.title = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank()
+  )
+
+## Save plot
+ggsave("outputs/forpub/obs_heatmap.png", dpi = 700, width = 6, height = 6)
+
+
+
+
+
+
+#------------------------------------------------#
+
+## No longer used
+
 heat_inat <- inat %>% 
   filter(positional.accuracy < 50) %>% 
   select(scientific.name, latitude, longitude)
@@ -926,8 +990,6 @@ webshot("outputs/temp.html", file = "outputs/forpub/testplot.png",
 
 
 
-
-
 acad.bounds <- sf::read_sf("data/acad_boundary/ACAD_ParkBoundary_PY_202004.shp") %>% 
   st_transform(4326)
 
@@ -961,6 +1023,8 @@ leaflet(options = leafletOptions(zoomControl = FALSE)) %>%
   addPolylines(data = cr, color = "limegreen", opacity = 1, weight = 1.8, options = pathOptions(pane = "polylines")) %>%
   addPolylines(data = bp, color = "purple", opacity = 1, weight = 1.8, options = pathOptions(pane = "polylines")) %>%
   addHeatmap(lng = heatdat[1,]$longitude, lat = heatdat[1,]$latitude, intensity = 2, max = 1, blur = 10, radius = 8)
+
+
 
 
 # dat <- inat %>% 
