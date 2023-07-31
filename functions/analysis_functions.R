@@ -32,22 +32,15 @@ filter_nps <- function(dat, park, lat, long) {
   
   if (park == "Acadia National Park") {
     
-    # acad.bounds <- sf::read_sf("data/acad_boundary/ACAD_ParkBoundary_PY_202004.shp") %>% 
-    #   st_transform(4326)
     
     acad.bounds <- sf::read_sf("data/acad_boundary/acad_feeboundary_polygon.shp")
-      
+    
      
     dat2 <- dat %>% 
       rename(x = paste(long), y = paste(lat)) %>% 
       mutate(longitude.keep = x,
              latitude.keep = y) %>% 
       sf::st_as_sf(., coords = c("x","y"), crs = sf::st_crs(acad.bounds))
-    
-    
-    # dat2 %>% 
-    #   mutate(intersect = as.integer(st_intersects(geometry, acad.bounds))) %>% 
-    #   filter(!is.na(intersect))
     
     
     output <- sf::st_join(dat2, acad.bounds, left = F) %>% 
