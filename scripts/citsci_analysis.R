@@ -22,6 +22,7 @@ library(directlabels)
 library(cowplot)
 library(readxl)
 library(raster)
+library(geosphere)
 
 source("functions/analysis_functions.R")
 
@@ -37,7 +38,7 @@ inat <- tibble(read.csv("data/acad_inat_obs.csv")) %>%
   mutate(year = year(observed_on),
          month = month(observed_on)) %>% 
   rename_with(~str_replace_all(., "_", "."), .cols = everything()) %>% 
-  select(-c(id, observed.on.string, created.at, updated.at, 
+  dplyr::select(-c(id, observed.on.string, created.at, updated.at, 
             license:num.identification.disagreements, 
             oauth.application.id, private.place.guess:species.guess)) %>% 
   mutate(taxon = str_extract(scientific.name, "^\\w*"),
@@ -47,7 +48,7 @@ inat <- tibble(read.csv("data/acad_inat_obs.csv")) %>%
          subspecies = str_trim(subspecies, "both"),
          species = str_extract(species, "[^\\s]+"),
          species = ifelse(species == "×", NA, species)) %>% 
-  select(common.name, scientific.name, taxon, species, subspecies, 
+  dplyr::select(common.name, scientific.name, taxon, species, subspecies, 
          iconic.taxon.name, observed.on, year, month, quality.grade, latitude, 
          longitude, user.login, everything()) %>% 
   mutate(scientific.name = ifelse(scientific.name == "Heterocampa umbrata", "Heterocampa pulverea", scientific.name),
@@ -55,14 +56,17 @@ inat <- tibble(read.csv("data/acad_inat_obs.csv")) %>%
 
 ## Read, format, filter to ACAD, and clean the eBird data
 ebd <- tibble(read.delim("data/ebd_US-ME_relFeb-2023.txt", header = T, quote = "")) %>% 
-  select(c('COMMON.NAME', 'SCIENTIFIC.NAME', 'CATEGORY', 'OBSERVATION.DATE', 'OBSERVATION.COUNT', 
+  dplyr::select(c('COMMON.NAME', 'SCIENTIFIC.NAME', 'CATEGORY', 'OBSERVATION.DATE', 'OBSERVATION.COUNT', 
            'DURATION.MINUTES', 'SAMPLING.EVENT.IDENTIFIER', 'OBSERVER.ID', 'NUMBER.OBSERVERS',
-           'PROTOCOL.TYPE', 'EFFORT.DISTANCE.KM', 'LOCALITY', 'COUNTY', 'LATITUDE', 'LONGITUDE')) %>% 
+           'PROTOCOL.TYPE', 'ALL.SPECIES.REPORTED', 'EFFORT.DISTANCE.KM', 'LOCALITY', 'COUNTY', 
+           'LATITUDE', 'LONGITUDE')) %>% 
   rename('obs.date'='OBSERVATION.DATE', 'common.name'='COMMON.NAME', 
          'scientific.name'='SCIENTIFIC.NAME', 'count'='OBSERVATION.COUNT', 'locality'='LOCALITY', 
          'checklist.id'='SAMPLING.EVENT.IDENTIFIER', 'latitude'='LATITUDE', 'longitude'='LONGITUDE',
-         'observer.id'='OBSERVER.ID', 'category'='CATEGORY', 'county'='COUNTY', 'protocol'='PROTOCOL.TYPE',
-         'duration.min'='DURATION.MINUTES', 'num.observers'='NUMBER.OBSERVERS', 'distance.km'='EFFORT.DISTANCE.KM') %>% 
+         'observer.id'='OBSERVER.ID', 'category'='CATEGORY', 'county'='COUNTY', 
+         'protocol'='PROTOCOL.TYPE', 'all.species.reported'='ALL.SPECIES.REPORTED', 
+         'duration.min'='DURATION.MINUTES', 'num.observers'='NUMBER.OBSERVERS', 
+         'distance.km'='EFFORT.DISTANCE.KM') %>% 
   filter_nps(., "Acadia National Park", "latitude", "longitude") %>% 
   filter(obs.date <= "2022-12-31")
 
@@ -132,7 +136,7 @@ map_inat <- inat %>%
   filter(quality.grade == "research")
 
 mapdat <- bind_rows(map_inat, ebd) %>% 
-  select(common.name, scientific.name, observed.on, place.guess, latitude, longitude) %>% 
+  dplyr::select(common.name, scientific.name, observed.on, place.guess, latitude, longitude) %>% 
   mutate(cat = "All observations")
 
 
@@ -143,17 +147,17 @@ watchlist_species(mapdat, "outputs")
 ### Load in the watchlist csv files
 ## Pest species
 pests <- read.csv("outputs/invasive_pestslist.csv") %>% 
-  select(common.name, scientific.name, observed.on, latitude, longitude) %>% 
+  dplyr::select(common.name, scientific.name, observed.on, latitude, longitude) %>% 
   mutate(cat = "Invasive species observations")
 
 ## Rare species
 rare <- read.csv("outputs/rare_specieslist.csv") %>% 
-  select(common.name, scientific.name, observed.on, latitude, longitude) %>% 
+  dplyr::select(common.name, scientific.name, observed.on, latitude, longitude) %>% 
   mutate(cat = "Rare native species observations")
 
 ## T&E species
 tande <- read.csv("outputs/te_specieslist.csv") %>% 
-  select(common.name, scientific.name, observed.on, latitude, longitude) %>% 
+  dplyr::select(common.name, scientific.name, observed.on, latitude, longitude) %>% 
   mutate(cat = "Threatened/endangered species observations")
 
 
@@ -168,8 +172,11 @@ all <- ggplot(acad.bm) +
             size = 3, fontface = "bold") +
   geom_text(aes(x = -68.1, y = 43.98), label = "n = 523,508",
             size = 3) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_x_continuous(expand = c(0, 0)) +
+  lims(y = c(43.95, 44.515)) +
   theme_bw() +
-  theme(plot.margin = margin(0.3,0.4,0.3,1, unit = "cm"),
+  theme(plot.margin = margin(0.3,0.4,0.3,1.5, unit = "cm"),
         #panel.border = element_rect(color = "black", size = 1),
         panel.grid = element_blank(),
         axis.title = element_blank(),
@@ -190,8 +197,11 @@ pi <- ggplot(acad.bm) +
             size = 3, fontface = "bold") +
   geom_text(aes(x = -68.1, y = 43.98), label = "n = 793",
             size = 3) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_x_continuous(expand = c(0, 0)) +
+  lims(y = c(43.95, 44.515)) +
   theme_bw() +
-  theme(plot.margin = margin(0.3,0.4,0.3,1, unit = "cm"),
+  theme(plot.margin = margin(0.3,0.4,0.3,1.5, unit = "cm"),
         #panel.border = element_rect(color = "black", size = 1),
         panel.grid = element_blank(),
         axis.title = element_blank(),
@@ -206,14 +216,17 @@ rn <- ggplot(acad.bm) +
   geom_point(aes(x = longitude, y = latitude),
              shape = 21, size = 1, color = "white", stroke = 0.05,
              fill = "black", data = rare) +
-  geom_text(aes(x = -68.1, y = 44.05), label = "Species of",
+  geom_text(aes(x = -68.15, y = 44.05), label = "Species of",
             size = 3, fontface = "bold") +
-  geom_text(aes(x = -68.1, y = 44.02), label = "conservation concern",
+  geom_text(aes(x = -68.15, y = 44.02), label = "conservation concern",
             size = 3, fontface = "bold") +
-  geom_text(aes(x = -68.1, y = 43.98), label = "n = 1,063",
+  geom_text(aes(x = -68.15, y = 43.98), label = "n = 1,063",
             size = 3) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_x_continuous(expand = c(0, 0)) +
+  lims(y = c(43.95, 44.515)) +
   theme_bw() +
-  theme(plot.margin = margin(0.3,0.4,0.3,1, unit = "cm"),
+  theme(plot.margin = margin(0.3,0.4,0.3,1.5, unit = "cm"),
         #panel.border = element_rect(color = "black", size = 1),
         panel.grid = element_blank(),
         axis.title = element_blank(),
@@ -228,14 +241,17 @@ te <- ggplot(acad.bm) +
   geom_point(aes(x = longitude, y = latitude),
              shape = 21, size = 1, color = "white", stroke = 0.05,
              fill = "black", data = tande) +
-  geom_text(aes(x = -68.1, y = 44.05), label = "Threatened and",
+  geom_text(aes(x = -68.15, y = 44.05), label = "Threatened and",
             size = 3, fontface = "bold") +
-  geom_text(aes(x = -68.1, y = 44.02), label = "endangered species",
+  geom_text(aes(x = -68.15, y = 44.02), label = "endangered species",
             size = 3, fontface = "bold") +
-  geom_text(aes(x = -68.1, y = 43.98), label = "n = 3,267",
+  geom_text(aes(x = -68.15, y = 43.98), label = "n = 3,267",
             size = 3) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_x_continuous(expand = c(0, 0)) +
+  lims(y = c(43.95, 44.515)) +
   theme_bw() +
-  theme(plot.margin = margin(0.3,0.4,0.3,1, unit = "cm"),
+  theme(plot.margin = margin(0.3,0.4,0.3,1.5, unit = "cm"),
         #panel.border = element_rect(color = "black", size = 1),
         panel.grid = element_blank(),
         axis.title = element_blank(),
@@ -298,7 +314,7 @@ paste0(round(length(rg$species)/length(inat$species)*100, digits = 2), "% of all
 inat_splist <- inat %>% 
   filter(!is.na(species) & quality.grade == "research") %>% 
   mutate(sci.name = paste(taxon, species, sep = " ")) %>% 
-  select(sci.name) %>% 
+  dplyr::select(sci.name) %>% 
   distinct() %>% 
   arrange(sci.name)
 
@@ -323,7 +339,8 @@ length(ebird_chk$checklist.id)/length(unique(ebd$observer.id))
 
 ## Get all complete checklists
 ebirdcomp <- ebd %>% 
-  filter(protocol == "Traveling" | protocol == "Stationary" & duration.min >= 5) %>% 
+  filter(protocol == "Traveling" | protocol == "Stationary" & duration.min >= 5 & 
+           all.species.reported == 1) %>% 
   distinct(checklist.id)
 
 length(ebirdcomp$checklist.id)
@@ -336,7 +353,7 @@ paste0(round(length(ebirdcomp$checklist.id)/length(ebird_chk$checklist.id)*100, 
 ## Manipulate the data
 ebird_splist <- ebd %>% 
   filter(category == "species") %>% 
-  select(scientific.name) %>% 
+  dplyr::select(scientific.name) %>% 
   distinct() %>% 
   arrange(scientific.name)
 
@@ -413,7 +430,7 @@ datesinat <- tibble(date = seq(as.Date("1976/1/1"), as.Date("2022/12/1"), by = "
 ## Create data frame for calculations
 inatavg <- datesinat %>% 
   full_join(alltemp) %>% 
-  select(date, tot.obs) %>% 
+  dplyr::select(date, tot.obs) %>% 
   mutate(tot.obs = ifelse(is.na(tot.obs), 0, tot.obs))
 
 ## Calculate average obs/month to 2014
@@ -446,7 +463,8 @@ ck_comp <- ebd %>%
   mutate(month = month(obs.date),
          year = year(obs.date)) %>% 
   filter(year > 1957) %>%
-  filter(protocol == "Traveling" | protocol == "Stationary" & duration.min >= 5) %>% 
+  filter(protocol == "Traveling" | protocol == "Stationary" & duration.min >= 5 &
+           all.species.reported == 1) %>% 
   mutate(date = ym(paste0(year, "-", month))) %>% 
   group_by(date) %>% 
   summarise(tot.obs = length(unique(checklist.id))) %>% 
@@ -508,7 +526,7 @@ datesebird <- tibble(date = seq(as.Date("1958/1/1"), as.Date("2022/12/1"), by = 
 ## Create data frame for calculations
 ebirdavg <- datesebird %>% 
   full_join(tempck) %>% 
-  select(date, tot.obs) %>% 
+  dplyr::select(date, tot.obs) %>% 
   mutate(tot.obs = ifelse(is.na(tot.obs), 0, tot.obs))
 
 ## Calculate average checklists/month to 2010
@@ -558,7 +576,7 @@ cumulativesp <- inat %>%
          cumsum = cumsum(cumsum),
          cumsum = ifelse(is.na(cumsum), 0, cumsum),
          data = "Species") %>% 
-  select(year, cumsum, data)
+  dplyr::select(year, cumsum, data)
 
 
 ## Calculate cumulative observers
@@ -576,7 +594,7 @@ cumulativeob <- inat %>%
          cumsum = cumsum(cumsum),
          cumsum = ifelse(is.na(cumsum), 0, cumsum),
          data = "Observers") %>% 
-  select(year, cumsum, data)
+  dplyr::select(year, cumsum, data)
   
 
 ## Bind these data for plotting
@@ -636,7 +654,7 @@ cumulativespe <- ebd %>%
          cumsum = cumsum(cumsum),
          cumsum = ifelse(is.na(cumsum), 0, cumsum),
          data = "Species") %>% 
-  select(year, cumsum, data)
+  dplyr::select(year, cumsum, data)
 
 
 ## Calculate cumulative observers
@@ -654,7 +672,7 @@ cumulativeobe <- ebd %>%
          cumsum = cumsum(cumsum),
          cumsum = ifelse(is.na(cumsum), 0, cumsum),
          data = "Observers") %>% 
-  select(year, cumsum, data)
+  dplyr::select(year, cumsum, data)
 
 
 ## Plot observers
@@ -714,7 +732,7 @@ plot_grid(obse, spee, nrow = 1, labels = c('a)', 'b)'), align = "h", label_size 
 ### eBird taxonomy stats
 ## Read in the eBird taxonomy for merging with ebd
 tax <- read.csv("data/ebird_taxonomy_v2022.csv") %>% 
-  select(scientific.name = SCI_NAME, order = ORDER1, family = FAMILY,
+  dplyr::select(scientific.name = SCI_NAME, order = ORDER1, family = FAMILY,
          species.group = SPECIES_GROUP)
 
 
@@ -826,7 +844,7 @@ sptots2 %>%
 
 ## Total obs per order Plantae
 inat %>% 
-  select(scientific.name, observed.on:positional.accuracy) %>% 
+  dplyr::select(scientific.name, observed.on:positional.accuracy) %>% 
   left_join(., intax, by = "scientific.name") %>% 
   filter(taxon.kingdom.name == "Plantae") %>% 
   group_by(taxon.order.name) %>%
@@ -844,7 +862,7 @@ sptots2 %>%
 
 ## Total obs per order Animalia
 inat %>% 
-  select(scientific.name, observed.on:positional.accuracy) %>% 
+  dplyr::select(scientific.name, observed.on:positional.accuracy) %>% 
   left_join(., intax, by = "scientific.name") %>% 
   filter(taxon.kingdom.name == "Animalia") %>% 
   group_by(taxon.order.name) %>%
@@ -869,7 +887,7 @@ length(orders$taxon.order.name)
 
 ## Combine all data
 griddat <- bind_rows(inat, ebd) %>% 
-  select(common.name, scientific.name, observed.on, place.guess, latitude, longitude)
+  dplyr::select(common.name, scientific.name, observed.on, place.guess, latitude, longitude)
 
 ## Specify min/max for grid
 xmn = min(griddat$longitude) - 0.05
@@ -880,9 +898,10 @@ ymx = max(griddat$latitude) + 0.05
 ## Create grid
 r = raster(matrix(1:10000, 100, 100), xmx = xmx, xmn = xmn, ymx = ymx, ymn = ymn)
 
+
 ## Format points
 pts = griddat %>% 
-  select(longitude, latitude) %>% 
+  dplyr::select(longitude, latitude) %>% 
   rename(x = longitude, y = latitude) %>% 
   as.data.frame()
 
@@ -901,9 +920,13 @@ r3 <- as.data.frame(r2, xy = TRUE) %>%
   rename(count = layer) %>% 
   mutate(count2 = as.numeric(ifelse(count == 0, "NA", count)))
 
+## Calculate grid size
+distm(c(-68.66255, 44.46557), c(-68.66983, 44.46557), fun = distHaversine)
 
+## Read in the fee boundary shapefile
 acad.fee <- sf::read_sf("data/acad_boundary/acad_feeboundary_polygon.shp") %>% 
   st_transform(4326)
+
 
 ## Plot
 ggplot() +
@@ -921,7 +944,37 @@ ggplot() +
   scale_fill_viridis_b(breaks = c(1, 500, 1000, 5000, 10000, 20000, 30000, 40000)) +
   theme_minimal() +
   theme(
-    legend.position = c(0.9, 0.2),
+    legend.position = c(0.112, 0.818),
+    legend.margin = margin(c(5,5,10,6)),
+    legend.background = element_rect(color = "black", fill = "white", linewidth = 0.25),
+    panel.border = element_rect(color = "black", fill = "transparent", linewidth = 0.5),
+    plot.background = element_rect(color = "white"),
+    plot.margin = margin(8,13,4,10),
+    panel.grid = element_blank(),
+    axis.title = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank()
+  )
+
+## Save plot
+ggsave("outputs/forpub/obs_heatmap.png", dpi = 700, width = 6, height = 5.4)
+
+
+## Plot Isle au Haut
+ggplot() +
+  geom_sf(fill = "gray", data = acad.bm) +
+  geom_tile(aes(x = x, y = y, fill = count2),
+            data = r3 %>% filter(!is.na(count2))) +
+  geom_sf(color = "white", fill = "transparent", linewidth = 0.3,
+          data = acad.fee) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_x_continuous(expand = c(0, 0)) +
+  labs(fill = "Observations") +
+  lims(x = c(-68.7099, -68.42), y = c(43.95, 44.12)) +
+  scale_fill_viridis_b(breaks = c(1, 500, 1000, 5000, 10000, 20000, 30000, 40000)) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
     panel.border = element_rect(color = "black", fill = "transparent"),
     plot.background = element_rect(color = "white"),
     panel.grid = element_blank(),
@@ -931,7 +984,7 @@ ggplot() +
   )
 
 ## Save plot
-ggsave("outputs/forpub/obs_heatmap.png", dpi = 700, width = 6, height = 6)
+#ggsave("outputs/forpub/obs_heatmap_isleauhaut.png", dpi = 700, width = 6, height = 6)
 
 
 
@@ -944,10 +997,10 @@ ggsave("outputs/forpub/obs_heatmap.png", dpi = 700, width = 6, height = 6)
 
 heat_inat <- inat %>% 
   filter(positional.accuracy < 50) %>% 
-  select(scientific.name, latitude, longitude)
+  dplyr::select(scientific.name, latitude, longitude)
 
 heat_ebd <- ebd %>% 
-  select(scientific.name, latitude, longitude)
+  dplyr::select(scientific.name, latitude, longitude)
 
 heatdat <- bind_rows(heat_inat, heat_ebd)
   

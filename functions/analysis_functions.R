@@ -45,8 +45,8 @@ filter_nps <- function(dat, park, lat, long) {
     
     output <- sf::st_join(dat2, acad.bounds, left = F) %>% 
       st_set_geometry(., NULL) %>% 
-      select(-c(FID)) %>% 
-      select(everything(), latitude = latitude.keep, longitude = longitude.keep)
+      dplyr::select(-c(FID)) %>% 
+      dplyr::select(everything(), latitude = latitude.keep, longitude = longitude.keep)
     
   } else {
     
@@ -232,7 +232,7 @@ watchlist_species <- function(x, output.path) {
   # Read in the file and filter for the T, E, and SC species
   fed_te_sp <- read_csv("data/federal_list_maine.csv") %>% 
     rename_with(tolower, everything()) %>% 
-    select(scientific.name = "scientific name", common.name = "common name",
+    dplyr::select(scientific.name = "scientific name", common.name = "common name",
            listing.status = "esa listing status") %>% 
     mutate(level = "federal",
            listing.status = tolower(listing.status),
@@ -252,18 +252,18 @@ watchlist_species <- function(x, output.path) {
   # All T, E species from the last week
   te_specieslist_federal <- x %>% 
     filter(scientific.name %in% fed_te_sp$scientific.name) %>% 
-    select(scientific.name, common.name, observed.on, place.guess, latitude, longitude) %>% 
+    dplyr::select(scientific.name, common.name, observed.on, place.guess, latitude, longitude) %>% 
     left_join(fed_te_sp, by = "scientific.name") %>% 
-    select(scientific.name, common.name = common.name.x, observed.on, 
+    dplyr::select(scientific.name, common.name = common.name.x, observed.on, 
            location = place.guess, latitude, longitude, listing.status)
   
   
   # All T, E species from the last week
   te_specieslist_state <- x %>% 
     filter(scientific.name %in% state_te_sp$scientific.name) %>% 
-    select(scientific.name, common.name, observed.on, place.guess, latitude, longitude) %>% 
+    dplyr::select(scientific.name, common.name, observed.on, place.guess, latitude, longitude) %>% 
     left_join(state_te_sp, by = "scientific.name") %>% 
-    select(scientific.name, common.name = common.name.x, observed.on, 
+    dplyr::select(scientific.name, common.name = common.name.x, observed.on, 
            location = place.guess, latitude, longitude, listing.status) %>% 
     filter(scientific.name != "Sterna dougallii")
   
@@ -285,8 +285,8 @@ watchlist_species <- function(x, output.path) {
   
   invasive_ne <- listsp %>% 
     filter(status == "invasive not established" |
-             status == "invasive established" |
-             status == "pest disease")
+           status == "invasive established" |
+           status == "pest disease")
   
   
   # Native but rare
@@ -306,7 +306,7 @@ watchlist_species <- function(x, output.path) {
   invasive_gen <-  x %>% 
     mutate(genus = str_remove(scientific.name, "\\s\\w*")) %>% 
     filter(genus %in% inv2$genus) %>% 
-    select(-genus)
+    dplyr::select(-genus)
   
   invasive_obs <- rbind(invasive_sp, invasive_gen) %>% 
     arrange(desc(observed.on))
