@@ -745,11 +745,14 @@ unique(ebdtax$order)
 
 
 ## Determine the percent of data made up by each order
-ebdtax %>% 
+e_orders <- ebdtax %>% 
+  filter(order != "") %>% 
   group_by(order) %>% 
   summarise(count = length(scientific.name)) %>% 
   arrange(-count) %>% 
-  mutate(count = (count/length(ebd$scientific.name))*100)
+  mutate(count = round((count/length(ebd$scientific.name))*100, digits = 2))
+
+write.csv(e_orders, "outputs/forpub/ebird_orders_table.csv", row.names = F)
 
 
 ## Calculate frequency of obs for each species
@@ -823,7 +826,7 @@ sptots2 %>%
 
 
 ## Totals obs per kingdom
-inat %>% 
+i_kingdoms_table <- inat %>% 
   mutate(iconic.taxon.name = ifelse(iconic.taxon.name == "Insecta"  | iconic.taxon.name == "Mammalia" |
                                     iconic.taxon.name == "Aves"     | iconic.taxon.name == "Aves" |
                                     iconic.taxon.name == "Amphibia" | iconic.taxon.name == "Actinopterygii" |
@@ -833,6 +836,7 @@ inat %>%
   summarise(count = length(iconic.taxon.name)) %>% 
   arrange(-count)
   
+write.csv(i_kingdoms_table, "outputs/forpub/inat_kingdoms_table.csv", row.names = F)
 
 ## Total species per order Plantae
 sptots2 %>% 
