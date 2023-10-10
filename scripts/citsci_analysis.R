@@ -67,8 +67,8 @@ ebd <- tibble(read.delim("data/ebd_US-ME_relFeb-2023.txt", header = T, quote = "
          'protocol'='PROTOCOL.TYPE', 'all.species.reported'='ALL.SPECIES.REPORTED', 
          'duration.min'='DURATION.MINUTES', 'num.observers'='NUMBER.OBSERVERS', 
          'distance.km'='EFFORT.DISTANCE.KM') %>% 
-  filter_nps(., "Acadia National Park", "latitude", "longitude") %>% 
-  filter(obs.date <= "2022-12-31")
+  filter(obs.date <= "2022-12-31") %>% 
+  filter_nps(., "Acadia National Park", "latitude", "longitude")
 
 
 ## Read in the basemap for figures
@@ -139,6 +139,10 @@ mapdat <- bind_rows(map_inat, ebd) %>%
   dplyr::select(common.name, scientific.name, observed.on, place.guess, latitude, longitude) %>% 
   mutate(cat = "All observations")
 
+alldatmap <- bind_rows(inat, ebd) %>% 
+  dplyr::select(common.name, scientific.name, observed.on, place.guess, latitude, longitude) %>% 
+  mutate(cat = "All observations")
+
 
 ## Run watchlist function to get rare, pest, and te species
 watchlist_species(mapdat, "outputs")
@@ -167,7 +171,7 @@ all <- ggplot(acad.bm) +
   geom_sf(fill = "forestgreen", data = acad.bounds, alpha = 1) +
   geom_point(aes(x = longitude, y = latitude),
              shape = 21, size = 1, color = "white", stroke = 0.05,
-             fill = "black", alpha = 0.2, data = mapdat) +
+             fill = "black", alpha = 0.2, data = alldatmap) +
   geom_text(aes(x = -68.1, y = 44.02), label = "All observations",
             size = 3, fontface = "bold") +
   geom_text(aes(x = -68.1, y = 43.98), label = "n = 523,508",
@@ -195,7 +199,7 @@ pi <- ggplot(acad.bm) +
             size = 3, fontface = "bold") +
   geom_text(aes(x = -68.1, y = 44.02), label = "pest species",
             size = 3, fontface = "bold") +
-  geom_text(aes(x = -68.1, y = 43.98), label = "n = 793",
+  geom_text(aes(x = -68.1, y = 43.98), label = "n = 780",
             size = 3) +
   scale_y_continuous(expand = c(0, 0)) +
   scale_x_continuous(expand = c(0, 0)) +
@@ -220,7 +224,7 @@ rn <- ggplot(acad.bm) +
             size = 3, fontface = "bold") +
   geom_text(aes(x = -68.15, y = 44.02), label = "conservation concern",
             size = 3, fontface = "bold") +
-  geom_text(aes(x = -68.15, y = 43.98), label = "n = 1,063",
+  geom_text(aes(x = -68.15, y = 43.98), label = "n = 1,038",
             size = 3) +
   scale_y_continuous(expand = c(0, 0)) +
   scale_x_continuous(expand = c(0, 0)) +
@@ -268,24 +272,52 @@ ggsave(paste0("outputs/forpub/four_map_figure_", str_replace_all(today(), "-", "
        height = 5.2, width = 6.5, units = "in", dpi = 350)
 
 
-tibble(pests) %>% 
+ptab <- tibble(pests) %>% 
   group_by(scientific.name) %>% 
   summarise(count = length(scientific.name)) %>% 
   arrange(-count) %>% 
-  print(n = 21)
+  mutate(category = "pest/invasive")
+
+ptab %>% 
+  print(n = 20)
 
   
-tibble(tande) %>% 
+tetab <- tibble(tande) %>% 
   group_by(scientific.name) %>% 
   summarise(count = length(scientific.name)) %>% 
   arrange(-count) %>% 
+  mutate(category = "threatened/endangered")
+
+tetab %>% 
   print(n = 15)
 
-tibble(rare) %>% 
+
+rtab <- tibble(rare) %>% 
   group_by(scientific.name) %>% 
   summarise(count = length(scientific.name)) %>% 
   arrange(-count) %>% 
-  print(n = 10) ## 70 obs
+  mutate(category = "rare native")
+
+rtab %>% 
+  print(n = 10) ## 68 obs
+
+
+
+## Create table of the watchlist species
+ptr_table <- bind_rows(ptab, tetab, rtab)
+
+write.csv(ptr_table, "outputs/forpub/inv_rare_te_table.csv", row.names = F)
+
+
+
+## What percent of watchlist species have been detected?
+wldet <- read_excel("data/acad_watchlist_species.xlsx") %>% 
+  mutate(citsci.detect = ifelse(scientific.name %in% ptr_table$scientific.name, "yes", "no"))
+  
+
+nrow(wldet %>% filter(citsci.detect == "yes")) / nrow(wldet)
+
+
 
 
 #------------------------------------------------#
@@ -316,10 +348,11 @@ inat_splist <- inat %>%
   mutate(sci.name = paste(taxon, species, sep = " ")) %>% 
   dplyr::select(sci.name) %>% 
   distinct() %>% 
-  arrange(sci.name)
+  rename(scientific.name = sci.name) %>% 
+  arrange(scientific.name)
 
 ## Determine number of species
-paste0("There have been ", length(inat_splist$sci.name), " species recorded from iNaturalist research grade observations")
+paste0("There have been ", length(inat_splist$scientific.name), " species recorded from iNaturalist research grade observations")
 
 
 #------------------------------------------------#
@@ -359,6 +392,14 @@ ebird_splist <- ebd %>%
 
 ## Determine number of species
 paste0("There have been ", length(ebird_splist$scientific.name), " species recorded by eBird users.")
+
+
+#------------------------------------------------#
+
+
+## Total species
+bind_rows(ebird_splist, inat_splist) %>% 
+  distinct(scientific.name)
 
 
 
@@ -752,7 +793,7 @@ e_orders <- ebdtax %>%
   arrange(-count) %>% 
   mutate(count = round((count/length(ebd$scientific.name))*100, digits = 2))
 
-write.csv(e_orders, "outputs/forpub/ebird_orders_table.csv", row.names = F)
+# write.csv(e_orders, "outputs/forpub/ebird_orders_table.csv", row.names = F)
 
 
 ## Calculate frequency of obs for each species
@@ -760,7 +801,7 @@ ebd %>%
   mutate(count = ifelse(count == "X", 1, count),
          count = as.numeric(count)) %>% 
   group_by(common.name, scientific.name) %>% 
-  summarize(frequency = round((length(scientific.name)/length(unique(ebd$checklist.id))), 2)) %>% 
+  summarize(frequency = round((length(scientific.name)/length(unique(ebd$checklist.id))*100), 2)) %>% 
   arrange(-frequency)
 
 
@@ -836,7 +877,8 @@ i_kingdoms_table <- inat %>%
   summarise(count = length(iconic.taxon.name)) %>% 
   arrange(-count)
   
-write.csv(i_kingdoms_table, "outputs/forpub/inat_kingdoms_table.csv", row.names = F)
+# write.csv(i_kingdoms_table, "outputs/forpub/inat_kingdoms_table.csv", row.names = F)
+
 
 ## Total species per order Plantae
 sptots2 %>% 
@@ -875,12 +917,41 @@ inat %>%
 
 
 ## Total orders
-orders <- sptots2 %>% 
+i_orders <- sptots2 %>% 
   filter(taxon.order.name != "") %>% 
   group_by(taxon.order.name) %>% 
-  summarise(length = length(taxon.order.name))
+  summarise(length = length(taxon.order.name)) %>% 
+  arrange(-length) %>% 
+  mutate(count = round((length/length(inat$scientific.name))*100, digits = 2))
 
-length(orders$taxon.order.name)
+length(i_orders$taxon.order.name)
+  
+
+
+#------------------------------------------------#
+
+
+## Total orders in both data sets
+oe <- ordere %>% 
+  dplyr::select(scientific.name, order)
+
+
+oi <- sptots2 %>% 
+  rename(order = taxon.order.name) %>% 
+  dplyr::select(scientific.name, order)
+
+
+oei <- bind_rows(oe, oi) 
+
+allorders <- oei %>% 
+  group_by(order) %>% 
+  summarise(count = length(scientific.name)) %>% 
+  arrange(-count) %>% 
+  mutate(percent = round((count/length(oei$scientific.name))*100, digits = 2)) %>% 
+  filter(order != "")
+
+
+write.csv(allorders, "outputs/forpub/all_orders_table.csv", row.names = F)
 
 
 

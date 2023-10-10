@@ -306,7 +306,8 @@ watchlist_species <- function(x, output.path) {
   invasive_gen <-  x %>% 
     mutate(genus = str_remove(scientific.name, "\\s\\w*")) %>% 
     filter(genus %in% inv2$genus) %>% 
-    dplyr::select(-genus)
+    dplyr::select(-genus) %>% 
+    filter(scientific.name != "Lonicera canadensis")
   
   invasive_obs <- rbind(invasive_sp, invasive_gen) %>% 
     arrange(desc(observed.on))
